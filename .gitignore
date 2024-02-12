@@ -1,0 +1,28 @@
+
+*.yml
+*.html
+*.dat
+data/database/doc/changelog.txt
+data/AlInP_nk.csv
+data/database/doc/Dispersion formulas.docx
+data/database/doc/Dispersion formulas.pdf
+data/database/doc/legalcode.txt
+data/database/permission.txt
+data/GaInP_nk.csv
+data/Ge-Palik.csv
+data/ge_g_sigesn_edge_nk.mat
+data/ge_g_sigesn_nk.mat
+data/Ge_nk.csv
+data/in01gaas.csv
+data/masks_cl.png
+data/masks_illumination.png
+data/masks_sq.png
+data/MgF-ZnS_AR.csv
+data/MgF_nk.csv
+data/Palik_GaAs_Eps1.csv
+data/Palik_GaAs_Eps2.csv
+data/SiCx_nk.csv
+data/SiGeSn_k.txt
+data/SiGeSn_n.txt
+data/SiGeSn_params.txt
+data/ZnS_nk.csv

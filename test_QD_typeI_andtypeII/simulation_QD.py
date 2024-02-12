@@ -346,61 +346,61 @@ set_of_data = []
 # #========================================================================
 # simulation 0d
 # # EQE
-# version = 'test'
-# sim_mat = QDSC_InSb()
-# list_structure = [str(i) for i in sim_mat]
-# solar_cell_solver(sim_mat, "qe",
-#                           user_options={"light_source": light_source,
-#                                         "wavelength": wl,
-#                                         "optics_method": "TMM",}, )
-# data = save_ligth(sim_mat, data, version)
-# for i in con_light:
-#     light_source.concentration = i
-#     # IV
-#     solar_cell_solver(sim_mat,"iv"
-#                           ,user_options={"light_source": light_source,
-#                                          "wavelength": wl,
-#                                          "optics_method": None,
-#                                          "light_iv": True,
-#                                          "mpp": True,
-#                                          "voltages": V,
-#                                          "internal_voltages": vint,
-#                                 },)
-#
-#     data = defultsave(sim_mat, data, version)
-# #========================================================================
-# #simulation 1D
-version = "QDSC_InSb_and_GaSb_barrier_mod"
+version = 'QDSC_InSb_and_GaSb_barrier_mod'
 sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
-list_structure = []
-for size, cell in sim_mat.items():
-    data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[], xeq=[],
-                     neq=[], peq=[])
-    list_structure.append("start item ================================================================================")
-    for i in cell:
-        list_structure.append(str(i))
-    list_structure.append("end item   ================================================================================")
-    solar_cell_solver(cell, "qe",
-                      user_options={"light_source": light_source,
-                                    "wavelength": wl,
-                                    "optics_method": "TMM", }, )
-    data_mode = save_ligth(cell, data_mode, version, save=False)
-    for i in con_light:
-        light_source.concentration = i
-        #IV
-        solar_cell_solver(cell, "iv"
-                          , user_options={"light_source": light_source,
-                                          "wavelength": wl,
-                                          "optics_method": None,
-                                          "light_iv": True,
-                                          "mpp": True,
-                                          "voltages": V,
-                                          "internal_voltages": vint,
-                                          }, )
-        data_mode = defultsave(cell, data_mode, version, save=False)
+list_structure = [str(i) for i in sim_mat]
+solar_cell_solver(sim_mat, "qe",
+                          user_options={"light_source": light_source,
+                                        "wavelength": wl,
+                                        "optics_method": "TMM",}, )
+data = save_ligth(sim_mat, data, version)
+for i in con_light:
+    light_source.concentration = i
+    # IV
+    solar_cell_solver(sim_mat,"iv"
+                          ,user_options={"light_source": light_source,
+                                         "wavelength": wl,
+                                         "optics_method": None,
+                                         "light_iv": True,
+                                         "mpp": True,
+                                         "voltages": V,
+                                         "internal_voltages": vint,
+                                },)
 
-    set_of_data.append(data_mode)
-    back_up_data(set_of_data, version)
+    data = defultsave(sim_mat, data, version)
+# #========================================================================
+# # #simulation 1D
+# version = "QDSC_InSb_and_GaSb_barrier_mod"
+# sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
+# list_structure = []
+# for size, cell in sim_mat.items():
+#     data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[], xeq=[],
+#                      neq=[], peq=[])
+#     list_structure.append("start item ================================================================================")
+#     for i in cell:
+#         list_structure.append(str(i))
+#     list_structure.append("end item   ================================================================================")
+#     solar_cell_solver(cell, "qe",
+#                       user_options={"light_source": light_source,
+#                                     "wavelength": wl,
+#                                     "optics_method": "TMM", }, )
+#     data_mode = save_ligth(cell, data_mode, version, save=False)
+#     for i in con_light:
+#         light_source.concentration = i
+#         #IV
+#         solar_cell_solver(cell, "iv"
+#                           , user_options={"light_source": light_source,
+#                                           "wavelength": wl,
+#                                           "optics_method": None,
+#                                           "light_iv": True,
+#                                           "mpp": True,
+#                                           "voltages": V,
+#                                           "internal_voltages": vint,
+#                                           }, )
+#         data_mode = defultsave(cell, data_mode, version, save=False)
+#
+#     set_of_data.append(data_mode)
+#     back_up_data(set_of_data, version)
 
 #========================================================================
 #show
@@ -417,8 +417,8 @@ for size, cell in sim_mat.items():
 # !!!   Change  !!!
 # !!!   Change  !!!
 
-# save_all_file_0d(data, version,  con_light, list_structure=list_structure )
-save_set_of_data(set_of_data, version, con_light, list_structure=list_structure)
+save_all_file_0d(data, version,  con_light, list_structure=list_structure )
+# save_set_of_data(set_of_data, version, con_light, list_structure=list_structure)
 
 
 
