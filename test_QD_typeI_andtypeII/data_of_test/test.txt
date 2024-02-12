@@ -1,0 +1,6 @@
+<AR1 layer 1e+02nm <'MgF2' material>>
+<AR2 layer 50.0nm <'ZNSCUB' material>>
+<Junction object 
+	{'T': 300, 'kind': 'PDD'}
+	<Emitter layer 2.3e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
