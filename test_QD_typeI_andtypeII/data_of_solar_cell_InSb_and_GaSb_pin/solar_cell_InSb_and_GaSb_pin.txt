@@ -1,0 +1,15 @@
+<AR1 layer 1e+02nm <'MgF2' material>>
+<AR2 layer 50.0nm <'ZNSCUB' material>>
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3.3e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
+	<layer 1e+02nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 50.0nm <'GaAs' material>>
+	<layer 2.5nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.139368687784638e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material>>
+	<layer 20.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 50.0nm <'GaAs' material>>
+	<layer 1e+02nm <'AlGaAs' material Al=0.3 strained=True>>
+	<Base layer 2.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>
+	<BSF layer 1e+02nm <'GaInP' material In=0.42 Na=1.999999999999999e+24>>
+	<Buffer layer 1.5e+02nm <'GaAs' material Na=1.999999999999999e+24>>>
