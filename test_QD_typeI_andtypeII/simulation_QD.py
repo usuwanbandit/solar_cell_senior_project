@@ -343,9 +343,9 @@ deta_mode = {
 set_of_data = []
 
 #
-# #========================================================================
+#========================================================================
 # simulation 0d
-# # EQE
+# EQE
 version = 'QDSC_InSb_and_GaSb_barrier_mod'
 sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
 list_structure = [str(i) for i in sim_mat]

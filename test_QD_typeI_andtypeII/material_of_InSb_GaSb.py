@@ -112,31 +112,25 @@ def QDSC_InSb_and_GaSb_barrier_mod():
                                     electron_mobility=si("3e3 cm2"),
                                     hole_mobility=si("1e3 cm2"),
                                     )
-            match top_barrier:
-                case "AlGaAs":
-                    t_barrier = AlGaAs
-                case 'n_AlGaAs':
-                    t_barrier = n_AlGaAs
-                case 'n_AlInP':
-                    t_barrier = n_AlInP
-                case "AlInP":
-                    t_barrier = AlInP
-                case _:
-                    print('invalid data')
-                    exit()
-            match bot_barrier:
-                case "AlGaAs":
-                    b_barrier = AlGaAs
-                case 'n_AlGaAs':
-                    b_barrier = n_AlGaAs
-                case 'n_AlInP':
-                    b_barrier = n_AlInP
-                case "AlInP":
-                    b_barrier = AlInP
-                case _:
-                    print('invalid data')
-                    exit()
+            if top_barrier == "AlGaAs":
+                t_barrier = AlGaAs
+            elif top_barrier == 'n_AlGaAs':
+                t_barrier = n_AlGaAs
+            elif top_barrier == 'n_AlInP':
+                t_barrier = n_AlInP
+            elif top_barrier == "AlInP":
+                t_barrier = AlInP
 
+            if top_barrier == "AlGaAs":
+                b_barrier = AlGaAs
+            elif top_barrier == 'n_AlGaAs':
+                b_barrier = n_AlGaAs
+            elif top_barrier == 'n_AlInP':
+                b_barrier = n_AlInP
+            elif top_barrier == "AlInP":
+                b_barrier = AlInP
+
+            print(f"top = {top_barrier}, bottom = {bot_barrier}")
             QW = PDD.QWunit([
                                 Layer(width=si(f"100 nm"), material=t_barrier, role="barrier"),
                             ]
@@ -172,7 +166,7 @@ def QDSC_InSb_and_GaSb_barrier_mod():
             solar_each_function[f"top = {top_barrier}, bottom = {bot_barrier}"] = solarcell_InSb_GaSb
     return solar_each_function
 
-set_solar = QDSC_InSb_and_GaSb_barrier_mod()
+# set_solar = QDSC_InSb_and_GaSb_barrier_mod()
 #
 # for key, cell in set_solar.items():
 #     print(key)
