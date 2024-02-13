@@ -1,5 +1,3 @@
-import numpy as np
-
 from solcore.light_source import LightSource
 from solcore.solar_cell_solver import solar_cell_solver
 import matplotlib.pyplot as plt
@@ -10,7 +8,7 @@ from material_and_layer_QD import (QDSC_InSb
                                 , solar_cell_InSb_and_GaSb_sweep_interlayer, solar_cell_InSb_and_GaSb_sweep_n)
 from material_of_InSb_GaSb import QDSC_InSb_and_GaSb_barrier_mod
 
-
+import numpy as np
 from save_picture import schrodinger_graph_LDOS
 import pickle
 import csv

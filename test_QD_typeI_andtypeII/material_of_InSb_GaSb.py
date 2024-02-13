@@ -167,11 +167,11 @@ def QDSC_InSb_and_GaSb_barrier_mod():
             solar_each_function[f"top = {top_barrier}, bottom = {bot_barrier}"] = solarcell_InSb_GaSb
     return solar_each_function
 
-# set_solar = QDSC_InSb_and_GaSb_barrier_mod()
-#
-# for key, cell in set_solar.items():
-#     print(key)
-#     printstructure(cell)
+set_solar = QDSC_InSb_and_GaSb_barrier_mod()
+
+for key, cell in set_solar.items():
+    print(key)
+    printstructure(cell)
 def solar_cell_InSb_and_GaSb_doped():
     interlayer = [5, 15, 25, 35, 45]
     size_InSb = 2.5
