@@ -129,7 +129,8 @@ def QDSC_InSb_and_GaSb_barrier_mod():
                 b_barrier = n_AlInP
             elif top_barrier == "AlInP":
                 b_barrier = AlInP
-                
+
+
             print(f"top = {top_barrier}, bottom = {bot_barrier}")
             QW = PDD.QWunit([
                                 Layer(width=si(f"100 nm"), material=t_barrier, role="barrier"),
