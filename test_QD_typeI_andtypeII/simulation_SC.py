@@ -348,6 +348,8 @@ set_of_data = []
 # version = 'QDSC_InSb_and_GaSb_barrier_mod'
 # sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
 def simulation0D(version, sim_mat):
+
+    data = {"allI": [],"Isc": [],"Voc": [],"FF": [],"Pmpp": [],"absorbed": [],"xsc": [],"nsc": [],"psc": [],"xeq": [],"neq": [],"peq": [],}
     list_structure = [str(i) for i in sim_mat]
     solar_cell_solver(sim_mat, "qe",
                               user_options={"light_source": light_source,
