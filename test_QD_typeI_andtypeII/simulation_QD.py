@@ -125,7 +125,7 @@ def save_all_file_0d(data, version, con):
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig.savefig(f'EQE_{version}.png', dpi=300)
 
-    save_file_direction(f'data_of_{version}', f'{version}', saveing_data=[data])
+    save_file_direction(f'{version}', f'{version}', saveing_data=[data])
 
     def movefile(file, direction):
         save_path = os.path.join(current_path, direction)
@@ -134,9 +134,9 @@ def save_all_file_0d(data, version, con):
         shutil.move(fig1_loc, fig1_loc_new)
 
     current_path = os.getcwd()
-    movefile(f'IV_curve_{version}.png', f'data_of_{version}')
-    movefile(f'performance_{version}.png', f'data_of_{version}')
-    movefile(f'EQE_{version}.png', f'data_of_{version}')
+    movefile(f'IV_curve_{version}.png', f'{version}')
+    movefile(f'performance_{version}.png', f'{version}')
+    movefile(f'EQE_{version}.png', f'{version}')
     print('save complete')
 
 
@@ -266,7 +266,7 @@ def save_set_of_data(set_of_data, version, con):
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    save_file_direction(f'data_of_{version}', f'{version}', saveing_data=set_of_data)
+    save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
 
     def movefile(file, direction):
         save_path = os.path.join(current_path, direction)
@@ -275,9 +275,9 @@ def save_set_of_data(set_of_data, version, con):
         shutil.move(fig1_loc, fig1_loc_new)
 
     current_path = os.getcwd()
-    movefile(f'IV_curve_{version}.png', f'data_of_{version}')
-    movefile(f'performance_{version}.png', f'data_of_{version}')
-    movefile(f'EQE_{version}.png', f'data_of_{version}')
+    movefile(f'IV_curve_{version}.png', f'{version}')
+    movefile(f'performance_{version}.png', f'{version}')
+    movefile(f'EQE_{version}.png', f'{version}')
     print('save complete')
 
 
