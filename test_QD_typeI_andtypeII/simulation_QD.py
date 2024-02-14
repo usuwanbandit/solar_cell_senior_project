@@ -4,8 +4,7 @@ from solcore.solar_cell_solver import solar_cell_solver
 import matplotlib.pyplot as plt
 import os
 import shutil
-from material_and_layer_QD import (QDSC_InSb
-, solar_cell_InSb_and_GaSb_sweep_interlayer, solar_cell_InSb_and_GaSb_sweep_n)
+from material_and_layer_QD import *
 from material_of_InSb_GaSb import *
 from scipy.integrate import trapz
 from save_picture import schrodinger_graph_LDOS
@@ -63,7 +62,7 @@ def save_full_solar_cells(text, solar_cells, name_solar):
     return text
 
 
-def save_file_direction(save_folder, list_structure, name_text):  # find from current file
+def save_file_direction(save_folder, list_structure, name_text, note=""):  # find from current file
     import os
     current_path = os.getcwd()
     current_path = os.path.join(current_path, save_folder)
@@ -73,6 +72,7 @@ def save_file_direction(save_folder, list_structure, name_text):  # find from cu
     complete_Name = os.path.join(current_path, name_text + ".txt")
     with open(complete_Name, 'w') as fin:
         for item in list_structure:
+            fin.write(str(note) + '\n')
             fin.write(str(item) + '\n')
     print('save success')
 
@@ -131,7 +131,7 @@ def save_all_file_0d(data, version, con, list_structure=[]):
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig.savefig(f'EQE_{version}.png', dpi=300)
 
-    save_file_direction(f'data_of_{version}', list_structure, f'{version}')
+    save_file_direction(f'data_of_{version}', list_structure, f'{version}', note=data["note"])
 
     def movefile(file, direction):
         save_path = os.path.join(current_path, direction)
@@ -204,7 +204,7 @@ def save_set_of_data(set_of_data, version, con, list_structure=[]):
         ]
         # print(data)
         try:
-            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / getpowerAM1_5(con[num]), color=red[num], marker=marker[num],
+            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / getpowerAM1_5(con), color=red[num], marker=marker[num],
                                 label=f"{data['mode']}")
             axes[0, 0].set_xlabel("Concentration (suns)")
             axes[0, 0].set_ylabel("Efficiency (%)")
@@ -274,7 +274,7 @@ def save_set_of_data(set_of_data, version, con, list_structure=[]):
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    save_file_direction(f'data_of_{version}', list_structure, f'{version}')
+    save_file_direction(f'data_of_{version}', list_structure, f'{version}', data["note"])
 
     def movefile(file, direction):
         save_path = os.path.join(current_path, direction)
@@ -413,89 +413,88 @@ set_of_data = []
 # ========================================================================
 # simulation 0d
 # EQE
-# version = 'QDSC_InSb_and_GaSb_barrier_mod'
-# sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
-def simulation0D(version, sim_mat):
+version = 'QDSC_InSb_and_GaSb_interlayer'
+sim_mat = solar_cell_InSb_and_GaSb_interlayer()
+note = 'add dot stay at p layer'
+def simulation0D(version, sim_mat, sim_all=True, note=''):
     data = {"allI": [], "Isc": [], "Voc": [], "FF": [], "Pmpp": [], "absorbed": [], "xsc": [], "nsc": [], "psc": [],
-            "xeq": [], "neq": [], "peq": [], }
+            "xeq": [], "neq": [], "peq": [],"note":note}
     list_structure = [str(i) for i in sim_mat]
-    solar_cell_solver(sim_mat, "qe",
-                      user_options={"light_source": light_source,
-                                    "wavelength": wl,
-                                    "optics_method": "TMM", }, )
-    data = save_ligth(sim_mat, data, version)
-    for i in con_light:
-        light_source.concentration = i
-        # IV
-        solar_cell_solver(sim_mat, "iv"
-                          , user_options={"light_source": light_source,
-                                          "wavelength": wl,
-                                          "optics_method": None,
-                                          "light_iv": True,
-                                          "mpp": True,
-                                          "voltages": V,
-                                          "internal_voltages": vint,
-                                          }, )
+    if sim_all:
+        solar_cell_solver(sim_mat, "qe",
+                          user_options={"light_source": light_source,
+                                        "wavelength": wl,
+                                        "optics_method": "TMM", }, )
+        data = save_ligth(sim_mat, data, version)
+        for i in con_light:
+            light_source.concentration = i
+            # IV
+            solar_cell_solver(sim_mat, "iv"
+                              , user_options={"light_source": light_source,
+                                              "wavelength": wl,
+                                              "optics_method": None,
+                                              "light_iv": True,
+                                              "mpp": True,
+                                              "voltages": V,
+                                              "internal_voltages": vint,
+                                              }, )
 
-        data = defultsave(sim_mat, data, version)
-    return data, list_structure
+            data = defultsave(sim_mat, data, version)
+        return data, list_structure
+    else:return list_structure
 
+# list_structure = simulation0D(version, sim_mat, sim_all=False, note=note)
 
-# data, list_structure = simulation0D(version, sim_mat)
+data, list_structure = simulation0D(version, sim_mat, note=note)
 # #========================================================================
 # # #simulation 1D
-version = "QDSC_InSb_and_GaSb_interlayer"
-sim_mat = solar_cell_InSb_and_GaSb_interlayer()
+# version = "QDSC_InAs_GaSb"
+# sim_mat = solar_cell_InAs_GaSb()
 
 
-def simulation1D(version, sim_mat, sim_all=True):
+def simulation1D(version, sim_mat, note=note):
     list_structure = []
     for size, cell in sim_mat.items():
         data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
-                         xeq=[],
-                         neq=[], peq=[])
+                         xeq=[],neq=[], peq=[], note=note)
         list_structure.append(
             "start item ================================================================================")
         for i in cell:
             list_structure.append(str(i))
         list_structure.append(
             "end item   ================================================================================")
-        if sim_all:
-            solar_cell_solver(cell, "qe",
-                              user_options={"light_source": light_source,
-                                            "wavelength": wl,
-                                            "optics_method": "TMM", }, )
-            data_mode = save_ligth(cell, data_mode, version, save=False)
-            for i in con_light:
-                light_source.concentration = i
-                # IV
-                solar_cell_solver(cell, "iv"
-                                  , user_options={"light_source": light_source,
-                                                  "wavelength": wl,
-                                                  "optics_method": None,
-                                                  "light_iv": True,
-                                                  "mpp": True,
-                                                  "voltages": V,
-                                                  "internal_voltages": vint,
-                                                  }, )
-                data_mode = defultsave(cell, data_mode, version, save=False)
+        solar_cell_solver(cell, "qe",
+                          user_options={"light_source": light_source,
+                                        "wavelength": wl,
+                                        "optics_method": "TMM", }, )
+        data_mode = save_ligth(cell, data_mode, version, save=False)
+        for i in con_light:
+            light_source.concentration = i
+            # IV
+            solar_cell_solver(cell, "iv"
+                              , user_options={"light_source": light_source,
+                                              "wavelength": wl,
+                                              "optics_method": None,
+                                              "light_iv": True,
+                                              "mpp": True,
+                                              "voltages": V,
+                                              "internal_voltages": vint,
+                                              }, )
+            data_mode = defultsave(cell, data_mode, version, save=False)
 
-            set_of_data.append(data_mode)
-            back_up_data(set_of_data, version)
-        else:pass
-    if not sim_all:
-        return list_structure
+        set_of_data.append(data_mode)
+        back_up_data(set_of_data, version)
     return set_of_data, list_structure
 
-# list_structure = simulation1D(version, sim_mat, sim_all=False)
-set_of_data, list_structure = simulation1D(version, sim_mat)
+# set_of_data, list_structure = simulation1D(version, sim_mat)
 # ========================================================================
 # show
 #
-# data = load_old_data("solar_cell_InSb_and_GaSb_pin.pkl")
-set_of_data = load_old_data("QDSC_InSb_and_GaSb_interlayer.pkl")
-print([i for i in set_of_data])
-# 'kp8x8_bulk', "strain", "relaxed"
+# data = load_old_data("QDSC_InAs_GaSb_under_interlayer.pkl")
+# data['note']= 'add i_GaAs under dot (InAs)'
+# set_of_data = load_old_data("QDSC_InSb_and_GaSb_barrier_mod.pkl")
+# # print(set_of_data)
+# # 'kp8x8_bulk', "strain", "relaxed"
 # a =  ["mode=kp8x8_bulk", "mode=strain", "mode=relaxed"]
 # for count, i in enumerate(set_of_data):
 #     # i['mode'] = f"dot size = {a[count]}"
@@ -504,8 +503,8 @@ print([i for i in set_of_data])
 # !!!   Change  !!!
 # !!!   Change  !!!
 
-# save_all_file_0d(data, version,  con_light, list_structure=list_structure )
-save_set_of_data(set_of_data, version, con_light, list_structure=list_structure)
+save_all_file_0d(data, version,  con_light, list_structure=list_structure, )
+# save_set_of_data(set_of_data, version, con_light, list_structure=list_structure)
 
 # !!!   Change  !!!
 # !!!   Change  !!!
