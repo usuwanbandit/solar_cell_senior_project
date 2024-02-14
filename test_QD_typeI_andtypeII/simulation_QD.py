@@ -51,19 +51,20 @@ def save_file_direction(save_folder, name_text, saveing_data=list()):  # find fr
     with open(complete_Name, 'w') as fin:
         for item in saveing_data:
             fin.write(str(item["note"]) + '\n')
-            fin.write(str(item['list_structure']) + '\n')
+            for layer in item['list_structure']:
+                fin.write(str(layer) + '\n')
     print('save success')
 
 
 def save_all_file_0d(data, version, con):
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
 
-    ax1.semilogy(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed")
+    ax1.plot(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed")
     ax1.legend(loc="upper right", frameon=False)
     ax1.set_xlabel("Wavelength (nm)")
     ax1.set_ylabel("EQE")
-    ax1.set_ylim(1e-6, 1.1)
-    ax1.set_xlim(350, 1100)
+    ax1.set_ylim(0, 1.1)
+    ax1.set_xlim(300, 3000)
     plt.tight_layout()
     # !!!   Change  !!!
     # !!!   Change  !!!
@@ -152,7 +153,7 @@ def save_set_of_data(set_of_data, version, con):
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
         ax1.set_ylim(0, 1.1)
-        ax1.set_xlim(350, 1200)
+        ax1.set_xlim(300, 3000)
         plt.tight_layout()
 
         # linestyle = ["-", "--", ":", "-."]
