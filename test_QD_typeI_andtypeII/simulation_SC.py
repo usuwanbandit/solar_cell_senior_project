@@ -1,4 +1,6 @@
 import time
+
+import numpy as np
 from solcore.light_source import LightSource
 from solcore.solar_cell_solver import solar_cell_solver
 # import matplotlib.pyplot as plt
@@ -9,10 +11,15 @@ from material_of_InSb_GaSb import *
 from scipy.integrate import trapz
 # from save_picture import schrodinger_graph_LDOS
 import pickle
+import tkinter as tk
+from tkinter import messagebox
 
 
 # ========================================================================
 # setup
+
+def show_warning(text):
+    messagebox.showwarning("time taking", text)
 def sec_to_hms(seconds):
     # Calculate hours, minutes, and seconds
     hours = seconds // 3600
@@ -369,7 +376,8 @@ vint = np.linspace(-3.5, 4, 600)
 # V = np.linspace(-3.5, 3.5, 300)
 # V = np.linspace(0,3.5,300) # pn
 V = np.linspace(-1.5, 0, 300)  # np
-con_light = np.logspace(0, 3, 5)
+# con_light = np.logspace(0, 3, 5)
+con_light = np.linspace(1, 2, 5)
 
 data = {"allI": [],
         "Isc": [],
@@ -470,14 +478,20 @@ def simulation1D(version, sim_mat, note=''):
 #
 def sim0D():
     start = time.perf_counter()
-    version = "test_new_simulator"
-    sim_mat = QDSC_InSb_and_GaSb()
-    note = 'test program'
+    version = "referance_solar_cell_0580A"
+    sim_mat = solar_cell_InSb_and_GaSb_like_paper()
+    note = ''
     data = simulation0D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours}h/{minutes}min/{seconds}sec")
+    root = tk.Tk()
+    root.withdraw()
+    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     save_all_file_0d(data, version, con_light)
+    root.update()
+
+
 
 
 def sim2D():
@@ -489,7 +503,13 @@ def sim2D():
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    root = tk.Tk()
+    root.withdraw()
     save_set_of_data(set_of_data, version, con_light)
+    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    root.update()
+
+
 
 
 def load(version, is1D=False, ):
@@ -504,7 +524,7 @@ def load(version, is1D=False, ):
 def main():
     sim0D()
 
+if __name__ == "__main__":
+    main()
+    plt.show()
 
-
-main()
-plt.show()
