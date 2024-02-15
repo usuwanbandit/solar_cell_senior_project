@@ -1,5 +1,6 @@
 import time
 
+import matplotlib.pyplot as plt
 import numpy as np
 from solcore.light_source import LightSource
 from solcore.solar_cell_solver import solar_cell_solver
@@ -78,44 +79,62 @@ def save_all_file_0d(data, version, con):
     # !!!   Change  !!!
 
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
-    try:
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / get_ligth_power(con=con), "r-o")
-        axes[0, 0].set_xlabel("Concentration (suns)")
-        axes[0, 0].set_ylabel("Efficiency (%)")
+    axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, "r-o")
+    axes[0, 0].set_xlabel("Concentration (suns)")
+    axes[0, 0].set_ylabel("Efficiency (%)")
 
-        axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
-        axes[0, 1].set_xlabel("Concentration (suns)")
-        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+    axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
+    axes[0, 1].set_xlabel("Concentration (suns)")
+    axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-        axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
-        axes[1, 0].set_xlabel("Concentration (suns)")
-        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+    axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
+    axes[1, 0].set_xlabel("Concentration (suns)")
+    axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-        axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
-        axes[1, 1].set_xlabel("Concentration (suns)")
-        axes[1, 1].set_ylabel("Fill Factor (%)")
-        fig1.suptitle(f"{version}")
-        plt.tight_layout()
-        print('this code is working')
-    except:
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, "r-o")
-        axes[0, 0].set_xlabel("Concentration (suns)")
-        axes[0, 0].set_ylabel("Efficiency (%)")
-
-        axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
-        axes[0, 1].set_xlabel("Concentration (suns)")
-        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
-
-        axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
-        axes[1, 0].set_xlabel("Concentration (suns)")
-        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-
-        axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
-        axes[1, 1].set_xlabel("Concentration (suns)")
-        axes[1, 1].set_ylabel("Fill Factor (%)")
-        fig1.suptitle(f"{version}")
-        plt.tight_layout()
-        print('this code is error')
+    axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
+    axes[1, 1].set_xlabel("Concentration (suns)")
+    axes[1, 1].set_ylabel("Fill Factor (%)")
+    fig1.suptitle(f"{version}")
+    plt.tight_layout()
+    # try:
+    #
+    #     axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / get_ligth_power(con=con), "r-o")
+    #     axes[0, 0].set_xlabel("Concentration (suns)")
+    #     axes[0, 0].set_ylabel("Efficiency (%)")
+    #
+    #     axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
+    #     axes[0, 1].set_xlabel("Concentration (suns)")
+    #     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+    #
+    #     axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
+    #     axes[1, 0].set_xlabel("Concentration (suns)")
+    #     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+    #
+    #     axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
+    #     axes[1, 1].set_xlabel("Concentration (suns)")
+    #     axes[1, 1].set_ylabel("Fill Factor (%)")
+    #     fig1.suptitle(f"{version}")
+    #     plt.tight_layout()
+    #     print('this code is working')
+    # except:
+    #     axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, "r-o")
+    #     axes[0, 0].set_xlabel("Concentration (suns)")
+    #     axes[0, 0].set_ylabel("Efficiency (%)")
+    #
+    #     axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
+    #     axes[0, 1].set_xlabel("Concentration (suns)")
+    #     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+    #
+    #     axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
+    #     axes[1, 0].set_xlabel("Concentration (suns)")
+    #     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+    #
+    #     axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
+    #     axes[1, 1].set_xlabel("Concentration (suns)")
+    #     axes[1, 1].set_ylabel("Fill Factor (%)")
+    #     fig1.suptitle(f"{version}")
+    #     plt.tight_layout()
+    #     print('this code is error')
     fig2, axIV = plt.subplots(1, 1, figsize=(6, 4))
     count = 0
     for i in data["allI"]:
@@ -126,6 +145,7 @@ def save_all_file_0d(data, version, con):
     axIV.set_xlim(0, 1.5)
     axIV.set_xlabel("Voltage (V)")
     axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
+    plt.legend()
     plt.tight_layout()
 
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
@@ -165,91 +185,78 @@ def save_set_of_data(set_of_data, version, con):
 
         # linestyle = ["-", "--", ":", "-."]
         marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
-        blue = [
-            (0, 0, 1, 0.1),  # Very light blue
-            (0, 0, 1, 0.3),  # Light blue
-            (0, 0, 1, 0.5),  # Medium blue
-            (0, 0, 1, 0.7),  # Dark blue
-            (0, 0, 1, 0.9),  # Very dark blue
-            (0, 0, 1, 1.0),  # Full blue
-            (0, 0, 1, 1.0)  # Full blue, repeated to have 7 colors
-        ]
-        red = [
-            (1, 0, 0, 0.5),
-            (1, 0.5, 0.5, 0.5),
-            (1, 0, 0.5, 0.5),
-            (1, 0.5, 0, 0.5),
-            (1, 0.5, 0.5, 0.5),
-            (1, 0.5, 0, 0.5),
-            (1, 0.5, 0, 0.5)
-        ]
-        green = [
-            (0, 1, 0, 0.5),
-            (0, 1, 0.5, 0.5),
-            (0, 0.5, 0, 0.5),
-            (0, 0.5, 0.5, 0.5),
-            (0, 0, 0.5, 0.5),
-            (0, 0.5, 0.5, 0.5),
-            (0, 1, 0, 0.5)
-        ]
-        black = [
-            (0, 0, 0, 0.5),
-            (0, 0, 0.5, 0.5),
-            (0, 0.5, 0.5, 0.5),
-            (0, 0.5, 0, 0.5),
-            (0, 0, 0.5, 0.5),
-            (0, 0, 0.5, 0.5),
-            (0, 0, 0, 0.5)
-        ]
+        color = ['blue','green','red','cyan','magenta','yellow','black','white','orange','purple']
         # print(data)
-        try:
-            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / get_ligth_power(con=con)/10, color=red[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[0, 0].set_xlabel("Concentration (suns)")
-            axes[0, 0].set_ylabel("Efficiency (%)")
+        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, color=color[num], marker=marker[num],
+                            label=f"{data['mode']}")
+        axes[0, 0].set_xlabel("Concentration (suns)")
+        axes[0, 0].set_ylabel("Efficiency (%)")
 
-            axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=blue[num], marker=marker[num],
-                              label=f"{data['mode']}")
-            axes[0, 1].set_xlabel("Concentration (suns)")
-            axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+        axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num], marker=marker[num],
+                          label=f"{data['mode']}")
+        axes[0, 1].set_xlabel("Concentration (suns)")
+        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-            axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=green[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 0].set_xlabel("Concentration (suns)")
-            axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+        axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num], marker=marker[num],
+                            label=f"{data['mode']}")
+        axes[1, 0].set_xlabel("Concentration (suns)")
+        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-            axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=black[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 1].set_xlabel("Concentration (suns)")
-            axes[1, 1].set_ylabel("Fill Factor (%)")
-            fig1.suptitle(f"{version}")
-            plt.tight_layout()
-            fig1.legend()
-            print("you susessful can remove try now ")
-        except:
-            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, color=red[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[0, 0].set_xlabel("Concentration (suns)")
-            axes[0, 0].set_ylabel("Efficiency (%)")
-
-            axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=blue[num], marker=marker[num],
-                              label=f"{data['mode']}")
-            axes[0, 1].set_xlabel("Concentration (suns)")
-            axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
-
-            axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=green[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 0].set_xlabel("Concentration (suns)")
-            axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-
-            axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=black[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 1].set_xlabel("Concentration (suns)")
-            axes[1, 1].set_ylabel("Fill Factor (%)")
-            fig1.suptitle(f"{version}")
-            plt.tight_layout()
-            fig1.legend()
-            print('you fail fix bug')
+        axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num], marker=marker[num],
+                            label=f"{data['mode']}")
+        axes[1, 1].set_xlabel("Concentration (suns)")
+        axes[1, 1].set_ylabel("Fill Factor (%)")
+        fig1.suptitle(f"{version}")
+        plt.tight_layout()
+        fig1.legend()
+        # try:
+        #     axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / get_ligth_power(con=con)/10, color=color[num], marker=marker[num],
+        #                         label=f"{data['mode']}")
+        #     axes[0, 0].set_xlabel("Concentration (suns)")
+        #     axes[0, 0].set_ylabel("Efficiency (%)")
+        #
+        #     axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num], marker=marker[num],
+        #                       label=f"{data['mode']}")
+        #     axes[0, 1].set_xlabel("Concentration (suns)")
+        #     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+        #
+        #     axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num], marker=marker[num],
+        #                         label=f"{data['mode']}")
+        #     axes[1, 0].set_xlabel("Concentration (suns)")
+        #     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+        #
+        #     axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num], marker=marker[num],
+        #                         label=f"{data['mode']}")
+        #     axes[1, 1].set_xlabel("Concentration (suns)")
+        #     axes[1, 1].set_ylabel("Fill Factor (%)")
+        #     fig1.suptitle(f"{version}")
+        #     plt.tight_layout()
+        #     fig1.legend()
+        #     print("you susessful can remove try now ")
+        # except:
+        #     axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, color=color[num], marker=marker[num],
+        #                         label=f"{data['mode']}")
+        #     axes[0, 0].set_xlabel("Concentration (suns)")
+        #     axes[0, 0].set_ylabel("Efficiency (%)")
+        #
+        #     axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num], marker=marker[num],
+        #                       label=f"{data['mode']}")
+        #     axes[0, 1].set_xlabel("Concentration (suns)")
+        #     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+        #
+        #     axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num], marker=marker[num],
+        #                         label=f"{data['mode']}")
+        #     axes[1, 0].set_xlabel("Concentration (suns)")
+        #     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+        #
+        #     axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num], marker=marker[num],
+        #                         label=f"{data['mode']}")
+        #     axes[1, 1].set_xlabel("Concentration (suns)")
+        #     axes[1, 1].set_ylabel("Fill Factor (%)")
+        #     fig1.suptitle(f"{version}")
+        #     plt.tight_layout()
+        #     fig1.legend()
+        #     print('you fail fix bug')
 
         for count, i in enumerate(data["allI"]):
             axIV.plot(-V, i / -10, label=f"x = Concentration (suns) = {con[count]} mode = {data['mode']}")
@@ -494,11 +501,11 @@ def sim0D():
 
 
 
-def sim2D():
+def sim1D():
     start = time.perf_counter()
-    version = "QDSC_InSb_and_GaSb_interlayer"
-    sim_mat = solar_cell_InSb_and_GaSb_interlayer()
-    note = 'add dot stay at p layer'
+    version = "referance_all_solar_cell"
+    sim_mat = solar_cell_InSb_and_GaSb_like_paper_sweep_stack()
+    note = '0580A 0581A 0583A'
     set_of_data = simulation1D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
@@ -522,8 +529,8 @@ def load(version, is1D=False, ):
 
 
 def main():
-    sim0D()
-
+    sim1D()
+    0
 if __name__ == "__main__":
     main()
     plt.show()
