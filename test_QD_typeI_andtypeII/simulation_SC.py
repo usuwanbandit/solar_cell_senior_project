@@ -530,7 +530,7 @@ def load(version, is1D=False, ):
 
 def main():
     sim1D()
-    0
+
 if __name__ == "__main__":
     main()
     plt.show()
