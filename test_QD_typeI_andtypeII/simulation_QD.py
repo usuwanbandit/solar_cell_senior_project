@@ -72,7 +72,7 @@ def save_all_file_0d(data, version, con):
 
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     try:
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / get_ligth_power(con=con), "r-o")
+        axes[0, 0].semilogx(con, np.array(data["Pmpp"])  / get_ligth_power(con=con) * 100, "r-o")
         axes[0, 0].set_xlabel("Concentration (suns)")
         axes[0, 0].set_ylabel("Efficiency (%)")
 
@@ -196,7 +196,7 @@ def save_set_of_data(set_of_data, version, con):
         ]
         # print(data)
         try:
-            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / get_ligth_power(con=con)/10, color=red[num], marker=marker[num],
+            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / get_ligth_power(con=con) * 100, color=red[num], marker=marker[num],
                                 label=f"{data['mode']}")
             axes[0, 0].set_xlabel("Concentration (suns)")
             axes[0, 0].set_ylabel("Efficiency (%)")
@@ -482,9 +482,9 @@ def sim0D():
 
 def sim2D():
     start = time.perf_counter()
-    version = "QDSC_InSb_and_GaSb_interlayer"
-    sim_mat = solar_cell_InSb_and_GaSb_interlayer()
-    note = 'add dot stay at p layer'
+    version = "QDSC_InAs_GaSb_pn_vs_pin"
+    sim_mat = QDSC_InAs_GaSb_pn_pin()
+    note = 'pn vs pin eff'
     set_of_data = simulation1D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
@@ -502,9 +502,8 @@ def load(version, is1D=False, ):
 
 
 def main():
-    sim0D()
+    sim2D()
+if __name__ == "__main__":
+    main()
+    plt.show()
 
-
-
-main()
-plt.show()
