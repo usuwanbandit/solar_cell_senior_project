@@ -98,7 +98,7 @@ def save_all_file_0d(data, version, con):
     # plt.tight_layout()
     try:
 
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / get_ligth_power(con=con), "r-o")
+        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) * 100 / get_ligth_power(con=con), "r-o")
         axes[0, 0].set_xlabel("Concentration (suns)")
         axes[0, 0].set_ylabel("Efficiency (%)")
 
@@ -486,8 +486,8 @@ def simulation1D(version, sim_mat, note=''):
 def sim0D():
     start = time.perf_counter()
     version = "referance_solar_cell_0580A"
-    sim_mat = solar_cell_InSb_and_GaSb_like_paper()
-    note = ''
+    sim_mat = QDSC_InSb_and_GaSb()
+    note = 'full reference'
     data = simulation0D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
@@ -529,7 +529,7 @@ def load(version, is1D=False, ):
 
 
 def main():
-    sim1D()
+    sim0D()
 
 if __name__ == "__main__":
     main()
