@@ -1,0 +1,15 @@
+QDSC InAs and GaSb AlGaAS barrier 
+<AR1 layer 1e+02nm <'MgF2' material>>
+<AR2 layer 50.0nm <'ZNSCUB' material>>
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3.3e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
+	<layer 1e+02nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 50.0nm <'GaAs' material>>
+	<layer 15.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 11.0nm <'INAS' material a_c=-8.139056416800001e-19 a_v=-1.60217646e-19 b=-2.883917628e-19 band_gap=9.150650754858653e-20 c11=832900000000.0 c12=452600000000.0 c44=395900000000.0 d=-5.767835256e-19 eff_mass_electron=0.023 eff_mass_electron_Gamma=5.594118349454917e-32 eff_mass_hh_z=9.2830650728988e-32 eff_mass_lh_z=3.29535302447842e-32 electron_affinity=7.299160828547467e-19 electron_auger_recombination=1.500000000000002e-41 electron_minority_lifetime=1.5e-10 electron_mobility=3.5000000000000018 gamma1=20 gamma2=8.5 gamma3=9.2 hole_auger_recombination=1.5000000000000017e-42 hole_minority_lifetime=1e-09 hole_mobility=0.050000000000000024 interband_matrix_element=3.5568317412e-18 lattice_constant=6.0583e-10 relative_permittivity=15.15 spin_orbit_splitting=6.248488194000001e-20 strained=True valence_band_offset=-9.452841114e-20>>
+	<layer 1e+02nm <'AlGaAs' material Al=0.3 strained=True>>
+	<Base layer 2.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>
+	<BSF layer 1e+02nm <'GaInP' material In=0.42 Na=1.999999999999999e+24>>
+	<Buffer layer 1.5e+02nm <'GaAs' material Na=1.999999999999999e+24>>>
