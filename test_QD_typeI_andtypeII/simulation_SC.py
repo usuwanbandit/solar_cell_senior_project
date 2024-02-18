@@ -14,6 +14,7 @@ from scipy.integrate import trapz
 import pickle
 import tkinter as tk
 from tkinter import messagebox
+import mpld3
 
 
 # ========================================================================
@@ -47,6 +48,12 @@ def create_folder(folder):
         os.makedirs(folder)
         print('create folder success')
 
+def get_identical_colors(colormap, num_colors):
+    # Create a normalized array of indices
+    indices = np.linspace(0, 1, num_colors)
+    # Get the same color for all indices
+    cmap_colors = colormap(indices)[:, :3]  # Extract RGB values
+    return cmap_colors
 
 def save_file_direction(save_folder, name_text, saveing_data=list()):  # find from current file
     import os
@@ -58,83 +65,56 @@ def save_file_direction(save_folder, name_text, saveing_data=list()):  # find fr
     complete_Name = os.path.join(current_path, name_text + ".txt")
     with open(complete_Name, 'w') as fin:
         for item in saveing_data:
-            fin.write(str(item["note"]) + '\n')
-            for layer in item['list_structure']:
-                fin.write(str(layer) + '\n')
+            try:
+                fin.write(str(item["note"]) + '\n')
+            except:
+                print('this file have not note')
+                pass
+            try:
+                for layer in item['list_structure']:
+                    fin.write(str(layer) + '\n')
+            except:
+                print('this file have not list_structure')
+                pass
     print('save success')
 
 
 def save_all_file_0d(data, version, con):
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
+    fig3, axCar = plt.subplots(1, 1, figsize=(16, 5))
 
     ax1.plot(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed")
     ax1.legend(loc="upper right", frameon=False)
     ax1.set_xlabel("Wavelength (nm)")
     ax1.set_ylabel("EQE")
     ax1.set_ylim(0, 1.1)
-    ax1.set_xlim(300, 3000)
+    ax1.set_xlim(300,1500)
+    plt.legend()
     plt.tight_layout()
-    # !!!   Change  !!!
-    # !!!   Change  !!!
-    # !!!   Change  !!!
+
 
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
-    # axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, "r-o")
-    # axes[0, 0].set_xlabel("Concentration (suns)")
-    # axes[0, 0].set_ylabel("Efficiency (%)")
-    #
-    # axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
-    # axes[0, 1].set_xlabel("Concentration (suns)")
-    # axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
-    #
-    # axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
-    # axes[1, 0].set_xlabel("Concentration (suns)")
-    # axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-    #
-    # axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
-    # axes[1, 1].set_xlabel("Concentration (suns)")
-    # axes[1, 1].set_ylabel("Fill Factor (%)")
-    # fig1.suptitle(f"{version}")
-    # plt.tight_layout()
-    try:
 
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) * 100 / get_ligth_power(con=con), "r-o")
-        axes[0, 0].set_xlabel("Concentration (suns)")
-        axes[0, 0].set_ylabel("Efficiency (%)")
+    axes[0, 0].semilogx(con, np.array(data["Pmpp"]) * 100 / get_ligth_power(con=con), "r-o")
+    axes[0, 0].set_xlabel("Concentration (suns)")
+    axes[0, 0].set_ylabel("Efficiency (%)")
 
-        axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
-        axes[0, 1].set_xlabel("Concentration (suns)")
-        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+    axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
+    axes[0, 1].set_xlabel("Concentration (suns)")
+    axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-        axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
-        axes[1, 0].set_xlabel("Concentration (suns)")
-        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+    axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
+    axes[1, 0].set_xlabel("Concentration (suns)")
+    axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-        axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
-        axes[1, 1].set_xlabel("Concentration (suns)")
-        axes[1, 1].set_ylabel("Fill Factor (%)")
-        fig1.suptitle(f"{version}")
-        plt.tight_layout()
-        print('this code is working')
-    except:
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, "r-o")
-        axes[0, 0].set_xlabel("Concentration (suns)")
-        axes[0, 0].set_ylabel("Efficiency (%)")
+    axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
+    axes[1, 1].set_xlabel("Concentration (suns)")
+    axes[1, 1].set_ylabel("Fill Factor (%)")
+    fig1.suptitle(f"{version}")
+    plt.legend()
+    plt.tight_layout()
 
-        axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
-        axes[0, 1].set_xlabel("Concentration (suns)")
-        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-        axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
-        axes[1, 0].set_xlabel("Concentration (suns)")
-        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-
-        axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
-        axes[1, 1].set_xlabel("Concentration (suns)")
-        axes[1, 1].set_ylabel("Fill Factor (%)")
-        fig1.suptitle(f"{version}")
-        plt.tight_layout()
-        print('this code is error')
     fig2, axIV = plt.subplots(1, 1, figsize=(6, 4))
     count = 0
     for i in data["allI"]:
@@ -148,13 +128,25 @@ def save_all_file_0d(data, version, con):
     plt.legend()
     plt.tight_layout()
 
+    try:
+        axCar.semilogy(data["xsc"][0] * 1e9, data["nsc"][0], 'b')
+        axCar.semilogy(data["xsc"][0] * 1e9, data["psc"][0], 'r')
+        axCar.semilogy(data["xeq"][0] * 1e9, data["neq"][0], 'b--')
+        axCar.semilogy(data["xeq"][0] * 1e9, data["peq"][0], 'r--')
+        plt.legend()
+        plt.tight_layout()
+    except:
+        pass
+
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig.savefig(f'EQE_{version}.png', dpi=300)
+    mpld3.save_html(fig3, f'carrier_distribution_{version}.html')
 
     save_file_direction(f'{version}', f'{version}', saveing_data=[data])
 
     def movefile(file, direction):
+
         save_path = os.path.join(current_path, direction)
         fig1_loc = os.path.join(current_path, file)
         fig1_loc_new = os.path.join(save_path, file)
@@ -166,97 +158,54 @@ def save_all_file_0d(data, version, con):
     movefile(f'EQE_{version}.png', f'{version}')
     print('save complete')
 
+def movefile(file, direction):
+    current_path = os.getcwd()
+    save_path = os.path.join(current_path, direction)
+    fig1_loc = os.path.join(current_path, file)
+    fig1_loc_new = os.path.join(save_path, file)
+    shutil.move(fig1_loc, fig1_loc_new)
 
 def save_set_of_data(set_of_data, version, con):
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
-    fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(5 * len(set_of_data), 8))
-    num = 0
-    for data in set_of_data:
+    fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
+
+    for num, data in enumerate(set_of_data):
         print(f'loading {data["mode"]}')
         ax1.plot(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed mode = {data['mode']} ")
         ax1.legend(loc="upper right", frameon=False)
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
         ax1.set_ylim(0, 1.1)
-        ax1.set_xlim(300, 3000)
+        ax1.set_xlim(300, 1500)
         plt.tight_layout()
 
         # linestyle = ["-", "--", ":", "-."]
-        marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
-        color = ['blue','green','red','cyan','magenta','yellow','black','white','orange','purple']
-        # print(data)
-        # axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, color=color[num], marker=marker[num],
-        #                     label=f"{data['mode']}")
-        # axes[0, 0].set_xlabel("Concentration (suns)")
-        # axes[0, 0].set_ylabel("Efficiency (%)")
-        #
-        # axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num], marker=marker[num],
-        #                   label=f"{data['mode']}")
-        # axes[0, 1].set_xlabel("Concentration (suns)")
-        # axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
-        #
-        # axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num], marker=marker[num],
-        #                     label=f"{data['mode']}")
-        # axes[1, 0].set_xlabel("Concentration (suns)")
-        # axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-        #
-        # axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num], marker=marker[num],
-        #                     label=f"{data['mode']}")
-        # axes[1, 1].set_xlabel("Concentration (suns)")
-        # axes[1, 1].set_ylabel("Fill Factor (%)")
-        # fig1.suptitle(f"{version}")
-        # plt.tight_layout()
-        # fig1.legend()
-        try:
-            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / get_ligth_power(con=con)/10, color=color[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[0, 0].set_xlabel("Concentration (suns)")
-            axes[0, 0].set_ylabel("Efficiency (%)")
+        # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
+        # color = ['blue','green','red','cyan','magenta','yellow','black','orange','purple']
+        color = [plt.cm.hsv(i /len(set_of_data)) for i in range(len(set_of_data))]
 
-            axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num], marker=marker[num],
-                              label=f"{data['mode']}")
-            axes[0, 1].set_xlabel("Concentration (suns)")
-            axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / con/ 10, color=color[num],label=f"{data['mode']}")
+        axes[0, 0].set_xlabel("Concentration (suns)")
+        axes[0, 0].set_ylabel("Efficiency (%)")
 
-            axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 0].set_xlabel("Concentration (suns)")
-            axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+        axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num])
+        axes[0, 1].set_xlabel("Concentration (suns)")
+        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-            axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 1].set_xlabel("Concentration (suns)")
-            axes[1, 1].set_ylabel("Fill Factor (%)")
-            fig1.suptitle(f"{version}")
-            plt.tight_layout()
-            fig1.legend()
-            print("you susessful can remove try now ")
-        except:
-            axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / 10 / con, color=color[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[0, 0].set_xlabel("Concentration (suns)")
-            axes[0, 0].set_ylabel("Efficiency (%)")
+        axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num])
+        axes[1, 0].set_xlabel("Concentration (suns)")
+        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-            axes[0, 1].loglog(con, abs(np.array(data["Isc"])), color=color[num], marker=marker[num],
-                              label=f"{data['mode']}")
-            axes[0, 1].set_xlabel("Concentration (suns)")
-            axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+        axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num])
+        axes[1, 1].set_xlabel("Concentration (suns)")
+        axes[1, 1].set_ylabel("Fill Factor (%)")
 
-            axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), color=color[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 0].set_xlabel("Concentration (suns)")
-            axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+        fig1.suptitle(f"{version}")
+        plt.tight_layout()
+        fig1.legend()
 
-            axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, color=color[num], marker=marker[num],
-                                label=f"{data['mode']}")
-            axes[1, 1].set_xlabel("Concentration (suns)")
-            axes[1, 1].set_ylabel("Fill Factor (%)")
-            fig1.suptitle(f"{version}")
-            plt.tight_layout()
-            fig1.legend()
-            print('you fail fix bug')
 
         for count, i in enumerate(data["allI"]):
             axIV.plot(-V, i / -10, label=f"x = Concentration (suns) = {con[count]} mode = {data['mode']}")
@@ -268,30 +217,33 @@ def save_set_of_data(set_of_data, version, con):
         plt.tight_layout()
         plt.legend()
         try:
-            axCar[num, 0].semilogy(data["xsc"] * 1e9, data["nsc"], 'b', label=f"{data['mode']}")
-            axCar[num, 0].semilogy(data["xsc"] * 1e9, data["psc"], 'r', label=f"{data['mode']}")
-            axCar[num, 0].semilogy(data["xeq"] * 1e9, data["neq"], 'b--', label=f"{data['mode']}")
-            axCar[num, 0].semilogy(data["xeq"] * 1e9, data["peq"], 'r--', label=f"{data['mode']}")
+
+            axCar[num].set_title(data["mode"])
+            axCar[num].semilogy(data["xsc"][0] * 1e9, data["nsc"][0], 'b')
+            axCar[num].semilogy(data["xsc"][0] * 1e9, data["psc"][0], 'r')
+            axCar[num].semilogy(data["xeq"][0] * 1e9, data["neq"][0], 'b--')
+            axCar[num].semilogy(data["xeq"][0] * 1e9, data["peq"][0], 'r--')
+            plt.tight_layout()
+            plt.legend()
         except:
+            print("something wrong with carrier distibution")
             pass
-        num += 1
+
 
     plt.legend()
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
+    mpld3.save_html(fig3, f'carrier_distribution_{version}.html')
+
     save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
 
-    def movefile(file, direction):
-        save_path = os.path.join(current_path, direction)
-        fig1_loc = os.path.join(current_path, file)
-        fig1_loc_new = os.path.join(save_path, file)
-        shutil.move(fig1_loc, fig1_loc_new)
-
-    current_path = os.getcwd()
     movefile(f'IV_curve_{version}.png', f'{version}')
     movefile(f'performance_{version}.png', f'{version}')
     movefile(f'EQE_{version}.png', f'{version}')
+    # movefile(f'carrier_distribution{version}.html', f'{version}')
+
+    # movefile
     print('save complete')
 
 
@@ -335,7 +287,8 @@ def load_old_data(version):
 
 
 # light
-wl = np.linspace(300, 3000, 700) * 1e-9
+# wl = np.linspace(300, 3000, 700) * 1e-9
+wl = np.linspace(350, 1200, 401)*1e-9 # version1
 light_source = LightSource(source_type="standard"
                            , version="AM1.5g"
                            , x=wl
@@ -383,8 +336,8 @@ vint = np.linspace(-3.5, 4, 600)
 # V = np.linspace(-3.5, 3.5, 300)
 # V = np.linspace(0,3.5,300) # pn
 V = np.linspace(-1.5, 0, 300)  # np
-# con_light = np.logspace(0, 3, 5)
-con_light = np.linspace(1, 2, 5)
+con_light = np.logspace(0, 3, 5)
+# con_light = np.linspace(1, 2, 5)
 
 data = {"allI": [],
         "Isc": [],
@@ -496,6 +449,8 @@ def sim0D():
     root.withdraw()
     show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     save_all_file_0d(data, version, con_light)
+    movefile(f'carrier_distribution_{version}.html', f'{version}')
+
     root.update()
 
 
@@ -503,9 +458,9 @@ def sim0D():
 
 def sim1D():
     start = time.perf_counter()
-    version = "referance_all_solar_cell"
-    sim_mat = solar_cell_InSb_and_GaSb_like_paper_sweep_stack()
-    note = '0580A 0581A 0583A'
+    version = "QDSC_InSb_and_GaSb_barrier_mod"
+    sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
+    note = 'compare eff between barrier AlGaAs, n_AlGaAs, n_AlInP, AlInP'
     set_of_data = simulation1D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
@@ -513,6 +468,8 @@ def sim1D():
     root = tk.Tk()
     root.withdraw()
     save_set_of_data(set_of_data, version, con_light)
+    movefile(f'carrier_distribution_{version}.html', f'{version}')
+
     show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     root.update()
 
@@ -521,7 +478,7 @@ def sim1D():
 
 def load(version, is1D=False, ):
     if is1D:
-        set_of_data = ("QDSC_InAs_GaSb_under_interlayer.pkl")
+        set_of_data = load_old_data("QDSC_InAs_GaSb_under_interlayer.pkl")
         save_set_of_data(set_of_data, version, con_light)
     else:
         data = load_old_data('QDSC_InAs_GaSb_under_interlayer.pkl')
@@ -529,7 +486,8 @@ def load(version, is1D=False, ):
 
 
 def main():
-    sim0D()
+    sim1D()
+
 
 if __name__ == "__main__":
     main()

@@ -34,3 +34,5 @@ solar_cell/
 *.xml
 *.xml
 *.iml
+test_QD_typeI_andtypeII/other.py
+test_QD_typeI_andtypeII/other.py

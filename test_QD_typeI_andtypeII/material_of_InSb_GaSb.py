@@ -103,7 +103,7 @@ def QDSC_InSb_and_GaSb():
 
 def QDSC_InSb_and_GaSb_barrier_mod():
     size_InSb = 2.5
-    size_GaSb = 20
+    size_GaSb = 16.16
 
     top_barriers = ['AlGaAs', 'n_AlGaAs', 'n_AlInP', "AlInP"]
     bottom_barriers = ['AlGaAs', 'n_AlGaAs', 'n_AlInP', 'AlInP']
