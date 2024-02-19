@@ -88,7 +88,7 @@ def save_all_file_0d(data, version, con):
     ax1.set_xlabel("Wavelength (nm)")
     ax1.set_ylabel("EQE")
     ax1.set_ylim(0, 1.1)
-    ax1.set_xlim(300,1500)
+    ax1.set_xlim(350,1200)
     plt.legend()
     plt.tight_layout()
 
@@ -118,10 +118,10 @@ def save_all_file_0d(data, version, con):
     fig2, axIV = plt.subplots(1, 1, figsize=(6, 4))
     count = 0
     for i in data["allI"]:
-        axIV.plot(-V, i / -10, label=f"x = Concentration (suns) = {con[count]}")
+        axIV.plot(-V, i / data["Isc"][count], label=f"x = Concentration (suns) = {con[count]}")
         count += 1
 
-    axIV.set_ylim(0, 1e5)
+    axIV.set_ylim(0, 1.5)
     axIV.set_xlim(0, 1.5)
     axIV.set_xlabel("Voltage (V)")
     axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
@@ -141,7 +141,7 @@ def save_all_file_0d(data, version, con):
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig.savefig(f'EQE_{version}.png', dpi=300)
-    mpld3.save_html(fig3, f'carrier_distribution_{version}.html')
+    mpld3.save_html(fig3, f'Carrier_distribution_{version}.html')
 
     save_file_direction(f'{version}', f'{version}', saveing_data=[data])
 
@@ -178,7 +178,7 @@ def save_set_of_data(set_of_data, version, con):
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
         ax1.set_ylim(0, 1.1)
-        ax1.set_xlim(300, 1500)
+        ax1.set_xlim(350, 1200)
         plt.tight_layout()
 
         # linestyle = ["-", "--", ":", "-."]
@@ -208,9 +208,9 @@ def save_set_of_data(set_of_data, version, con):
 
 
         for count, i in enumerate(data["allI"]):
-            axIV.plot(-V, i / -10, label=f"x = Concentration (suns) = {con[count]} mode = {data['mode']}")
+            axIV.plot(-V, i / data["Isc"][count], label=f"x = Concentration (suns) = {con[count]} mode = {data['mode']}")
 
-        axIV.set_ylim(0, 1e5)
+        axIV.set_ylim(0, 1.5)
         axIV.set_xlim(0, 1.5)
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
@@ -234,7 +234,88 @@ def save_set_of_data(set_of_data, version, con):
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    mpld3.save_html(fig3, f'carrier_distribution_{version}.html')
+    mpld3.save_html(fig3, f'Carrier_distribution_{version}.html')
+
+    save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
+
+    movefile(f'IV_curve_{version}.png', f'{version}')
+    movefile(f'performance_{version}.png', f'{version}')
+    movefile(f'EQE_{version}.png', f'{version}')
+    # movefile(f'carrier_distribution{version}.html', f'{version}')
+
+    # movefile
+    print('save complete')
+
+def save_set_of_data_sun_constant(set_of_data, version, note_from_mat):
+    fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
+    fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
+    fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
+    fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
+
+    for num, data in enumerate(set_of_data):
+        print(f'loading {data["mode"]}')
+        ax1.plot(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed mode = {data['mode']} ")
+        ax1.legend(loc="upper right", frameon=False)
+        ax1.set_xlabel("Wavelength (nm)")
+        ax1.set_ylabel("EQE")
+        ax1.set_ylim(0, 1.1)
+        ax1.set_xlim(350, 1200)
+        plt.tight_layout()
+
+        # linestyle = ["-", "--", ":", "-."]
+        # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
+        # color = ['blue','green','red','cyan','magenta','yellow','black','orange','purple']
+        color = [plt.cm.hsv(i /len(set_of_data)) for i in range(len(set_of_data))]
+
+        axes[0, 0].semilogx(note_from_mat['plot_x'], np.array(data["Pmpp"])  / 10, color=color[num],label=f"{data['mode']}")
+        axes[0, 0].set_xlabel(note_from_mat['labelx'])
+        axes[0, 0].set_ylabel("Efficiency (%)")
+
+        axes[0, 1].loglog(note_from_mat['plot_x'], abs(np.array(data["Isc"])), color=color[num])
+        axes[0, 1].set_xlabel(note_from_mat['labelx'])
+        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+
+        axes[1, 0].semilogx(note_from_mat['plot_x'], abs(np.array(data["Voc"])), color=color[num])
+        axes[1, 0].set_xlabel(note_from_mat['labelx'])
+        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+
+        axes[1, 1].semilogx(note_from_mat['plot_x'], abs(np.array(data["FF"])) * 100, color=color[num])
+        axes[1, 1].set_xlabel(note_from_mat['labelx'])
+        axes[1, 1].set_ylabel("Fill Factor (%)")
+
+        fig1.suptitle(f"{version}")
+        plt.tight_layout()
+        fig1.legend()
+
+
+        for count, i in enumerate(data["allI"]):
+            axIV.plot(-V, i / data["Isc"][count], label=f"{note_from_mat['labelx']} mode = {data['mode']}")
+
+        axIV.set_ylim(0, 1.5)
+        axIV.set_xlim(0, 1.5)
+        axIV.set_xlabel("Voltage (V)")
+        axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
+        plt.tight_layout()
+        plt.legend()
+        try:
+
+            axCar[num].set_title(data["mode"])
+            axCar[num].semilogy(data["xsc"][0] * 1e9, data["nsc"][0], 'b')
+            axCar[num].semilogy(data["xsc"][0] * 1e9, data["psc"][0], 'r')
+            axCar[num].semilogy(data["xeq"][0] * 1e9, data["neq"][0], 'b--')
+            axCar[num].semilogy(data["xeq"][0] * 1e9, data["peq"][0], 'r--')
+            plt.tight_layout()
+            plt.legend()
+        except:
+            print("something wrong with carrier distibution")
+            pass
+
+
+    plt.legend()
+    fig.savefig(f'EQE_{version}.png', dpi=300)
+    fig1.savefig(f'performance_{version}.png', dpi=300)
+    fig2.savefig(f'IV_curve_{version}.png', dpi=300)
+    mpld3.save_html(fig3, f'Carrier_distribution_{version}.html')
 
     save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
 
@@ -432,15 +513,44 @@ def simulation1D(version, sim_mat, note=''):
         back_up_data(set_of_data, version)
     return set_of_data
 
+def simulation1D_sun_constant(version, sim_mat, note=''):
+    for size, cell in sim_mat.items():
+        data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
+                         xeq=[], neq=[], peq=[], note=note, list_structure=[])
+        data_mode['list_structure'].append(
+            "start item ================================================================================")
+        _ = [data_mode['list_structure'].append(str(i)) for i in cell]
+        data_mode['list_structure'].append(
+            "end item   ================================================================================")
+        solar_cell_solver(cell, "qe",
+                          user_options={"light_source": light_source,
+                                        "wavelength": wl,
+                                        "optics_method": "TMM", }, )
+        data_mode = save_ligth(cell, data_mode, version, save=False)
+        # IV
+        solar_cell_solver(cell, "iv"
+                          , user_options={"light_source": light_source,
+                                          "wavelength": wl,
+                                          "optics_method": None,
+                                          "light_iv": True,
+                                          "mpp": True,
+                                          "voltages": V,
+                                          "internal_voltages": vint,
+                                          }, )
+        data_mode = defultsave(cell, data_mode, version, save=False)
+
+        set_of_data.append(data_mode)
+        back_up_data(set_of_data, version)
+    return set_of_data
 
 # ========================================================================
 # show
 #
 def sim0D():
     start = time.perf_counter()
-    version = "referance_solar_cell_0580A"
-    sim_mat = QDSC_InSb_and_GaSb()
-    note = 'full reference'
+    version = "ref_GaAs"
+    sim_mat = ref_GaAs()
+    note = 'reference solar cell of compare differance between no dot and dot'
     data = simulation0D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
@@ -449,7 +559,7 @@ def sim0D():
     root.withdraw()
     show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     save_all_file_0d(data, version, con_light)
-    movefile(f'carrier_distribution_{version}.html', f'{version}')
+    movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
     root.update()
 
@@ -458,9 +568,9 @@ def sim0D():
 
 def sim1D():
     start = time.perf_counter()
-    version = "QDSC_InSb_and_GaSb_barrier_mod"
-    sim_mat = QDSC_InSb_and_GaSb_barrier_mod()
-    note = 'compare eff between barrier AlGaAs, n_AlGaAs, n_AlInP, AlInP'
+    version = "InSb_dot_size"
+    sim_mat, note_mat = InSb_dot_size()
+    note = 'insert InSb dot in GaAs ref that have verier dot size'
     set_of_data = simulation1D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
@@ -468,7 +578,7 @@ def sim1D():
     root = tk.Tk()
     root.withdraw()
     save_set_of_data(set_of_data, version, con_light)
-    movefile(f'carrier_distribution_{version}.html', f'{version}')
+    movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
     show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     root.update()
@@ -480,19 +590,21 @@ def load(version, is1D=False, ):
     if is1D:
         set_of_data = load_old_data("QDSC_InSb_and_GaSb_barrier_mod.pkl")
         save_set_of_data(set_of_data, version, con_light)
-        movefile(f'carrier_distribution_{version}.html', f'{version}')
+        movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
     else:
         data = load_old_data('QDSC_InAs_GaSb_under_interlayer.pkl')
         save_all_file_0d(data, version, con_light)
+        movefile(f'Carrier_distribution_{version}.html', f'{version}')
+
 
 
 
 def main():
-    # sim1D()
-    load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
+    sim1D()
+    # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
 
 if __name__ == "__main__":
     main()
-    plt.show()
+    # plt.show()
 
