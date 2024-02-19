@@ -1,0 +1,319 @@
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.1nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=2.7675165296837667e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.2nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=2.5817500838710595e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.3nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=2.407285012833778e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.4nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=2.193016862733619e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.5nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=2.037661261958782e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.6nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.9086433159525814e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.7nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.837783658980362e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.8nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.7113199967047377e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 0.9nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.6350296705337183e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.0nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.5698662198500727e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.1nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.513449769531014e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.2nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.494861314530068e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.3nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.4210150314405366e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.4nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.3827125472892816e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.5nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.3757330263972474e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.6nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.318184023923084e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.7nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2903863166774515e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.8nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2898031582893772e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.9nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2424408330876458e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.0nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2217980114350694e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.1nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.202454560911046e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.2nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2063162102150052e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.3nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1684445106848249e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.4nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.153345543992716e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.5nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1392034554610427e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.6nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.145075898274355e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.7nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1324512504298394e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.8nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.101953349873144e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+insert InSb dot in GaAs ref that have verier dot size
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.9nm <'InSb' material a_c=-1.11191046324e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0910530414007397e-19 electron_mobility=7.7 gamma1=34.8 gamma2=15.5 gamma3=16.5 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================

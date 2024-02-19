@@ -1,7 +1,7 @@
 import time
 
-import matplotlib.pyplot as plt
-import numpy as np
+# import matplotlib.pyplot as plt
+# import numpy as np
 from solcore.light_source import LightSource
 from solcore.solar_cell_solver import solar_cell_solver
 # import matplotlib.pyplot as plt
@@ -15,6 +15,7 @@ import pickle
 import tkinter as tk
 from tkinter import messagebox
 import mpld3
+from simulation2D import *
 
 
 # ========================================================================
@@ -22,6 +23,8 @@ import mpld3
 
 def show_warning(text):
     messagebox.showwarning("time taking", text)
+
+
 def sec_to_hms(seconds):
     # Calculate hours, minutes, and seconds
     hours = seconds // 3600
@@ -48,6 +51,7 @@ def create_folder(folder):
         os.makedirs(folder)
         print('create folder success')
 
+
 def get_identical_colors(colormap, num_colors):
     # Create a normalized array of indices
     indices = np.linspace(0, 1, num_colors)
@@ -55,7 +59,10 @@ def get_identical_colors(colormap, num_colors):
     cmap_colors = colormap(indices)[:, :3]  # Extract RGB values
     return cmap_colors
 
-def save_file_direction(save_folder, name_text, saveing_data=list()):  # find from current file
+
+def save_file_direction(save_folder, name_text, saveing_data=None):  # find from current file
+    if saveing_data is None:
+        saveing_data = list()
     import os
     current_path = os.getcwd()
     current_path = os.path.join(current_path, save_folder)
@@ -69,13 +76,25 @@ def save_file_direction(save_folder, name_text, saveing_data=list()):  # find fr
                 fin.write(str(item["note"]) + '\n')
             except:
                 print('this file have not note')
-                pass
             try:
                 for layer in item['list_structure']:
                     fin.write(str(layer) + '\n')
             except:
                 print('this file have not list_structure')
                 pass
+            try:
+                for i in item:
+                    try:
+                        fin.write(str(i["note"]) + '\n')
+                    except:
+                        print('this file have not note')
+                    try:
+                        for layer in i['list_structure']:
+                            fin.write(str(layer) + '\n')
+                    except:
+                        print('this file have not list_structure')
+                        pass
+            except:pass
     print('save success')
 
 
@@ -88,10 +107,9 @@ def save_all_file_0d(data, version, con):
     ax1.set_xlabel("Wavelength (nm)")
     ax1.set_ylabel("EQE")
     ax1.set_ylim(0, 1.1)
-    ax1.set_xlim(350,1200)
+    ax1.set_xlim(350, 1200)
     plt.legend()
     plt.tight_layout()
-
 
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
 
@@ -113,7 +131,6 @@ def save_all_file_0d(data, version, con):
     fig1.suptitle(f"{version}")
     plt.legend()
     plt.tight_layout()
-
 
     fig2, axIV = plt.subplots(1, 1, figsize=(6, 4))
     count = 0
@@ -158,12 +175,14 @@ def save_all_file_0d(data, version, con):
     movefile(f'EQE_{version}.png', f'{version}')
     print('save complete')
 
+
 def movefile(file, direction):
     current_path = os.getcwd()
     save_path = os.path.join(current_path, direction)
     fig1_loc = os.path.join(current_path, file)
     fig1_loc_new = os.path.join(save_path, file)
     shutil.move(fig1_loc, fig1_loc_new)
+
 
 def save_set_of_data(set_of_data, version, con):
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
@@ -184,9 +203,9 @@ def save_set_of_data(set_of_data, version, con):
         # linestyle = ["-", "--", ":", "-."]
         # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
         # color = ['blue','green','red','cyan','magenta','yellow','black','orange','purple']
-        color = [plt.cm.hsv(i /len(set_of_data)) for i in range(len(set_of_data))]
+        color = [plt.cm.hsv(i / len(set_of_data)) for i in range(len(set_of_data))]
 
-        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / con/ 10, color=color[num],label=f"{data['mode']}")
+        axes[0, 0].semilogx(con, np.array(data["Pmpp"]) / con / 10, color=color[num], label=f"{data['mode']}")
         axes[0, 0].set_xlabel("Concentration (suns)")
         axes[0, 0].set_ylabel("Efficiency (%)")
 
@@ -206,9 +225,9 @@ def save_set_of_data(set_of_data, version, con):
         plt.tight_layout()
         fig1.legend()
 
-
         for count, i in enumerate(data["allI"]):
-            axIV.plot(-V, i / data["Isc"][count], label=f"x = Concentration (suns) = {con[count]} mode = {data['mode']}")
+            axIV.plot(-V, i / data["Isc"][count],
+                      label=f"x = Concentration (suns) = {con[count]} mode = {data['mode']}")
 
         axIV.set_ylim(0, 1.5)
         axIV.set_xlim(0, 1.5)
@@ -228,7 +247,6 @@ def save_set_of_data(set_of_data, version, con):
         except:
             print("something wrong with carrier distibution")
             pass
-
 
     plt.legend()
     fig.savefig(f'EQE_{version}.png', dpi=300)
@@ -246,12 +264,13 @@ def save_set_of_data(set_of_data, version, con):
     # movefile
     print('save complete')
 
-def save_set_of_data_sun_constant(set_of_data, version, note_from_mat):
+
+def save_set_of_data_sun_constant(set_of_data, version):
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
     fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
-
+    Pmpp = []; Isc=[]; Voc=[];FF=[]
     for num, data in enumerate(set_of_data):
         print(f'loading {data["mode"]}')
         ax1.plot(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed mode = {data['mode']} ")
@@ -260,43 +279,27 @@ def save_set_of_data_sun_constant(set_of_data, version, note_from_mat):
         ax1.set_ylabel("EQE")
         ax1.set_ylim(0, 1.1)
         ax1.set_xlim(350, 1200)
+        ax1.legend()
+
         plt.tight_layout()
 
         # linestyle = ["-", "--", ":", "-."]
         # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
         # color = ['blue','green','red','cyan','magenta','yellow','black','orange','purple']
-        color = [plt.cm.hsv(i /len(set_of_data)) for i in range(len(set_of_data))]
-
-        axes[0, 0].semilogx(note_from_mat['plot_x'], np.array(data["Pmpp"])  / 10, color=color[num],label=f"{data['mode']}")
-        axes[0, 0].set_xlabel(note_from_mat['labelx'])
-        axes[0, 0].set_ylabel("Efficiency (%)")
-
-        axes[0, 1].loglog(note_from_mat['plot_x'], abs(np.array(data["Isc"])), color=color[num])
-        axes[0, 1].set_xlabel(note_from_mat['labelx'])
-        axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
-
-        axes[1, 0].semilogx(note_from_mat['plot_x'], abs(np.array(data["Voc"])), color=color[num])
-        axes[1, 0].set_xlabel(note_from_mat['labelx'])
-        axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-
-        axes[1, 1].semilogx(note_from_mat['plot_x'], abs(np.array(data["FF"])) * 100, color=color[num])
-        axes[1, 1].set_xlabel(note_from_mat['labelx'])
-        axes[1, 1].set_ylabel("Fill Factor (%)")
-
-        fig1.suptitle(f"{version}")
-        plt.tight_layout()
-        fig1.legend()
-
+        Pmpp.append(data["Pmpp"])
+        Isc.append(data["Isc"])
+        Voc.append(data["Voc"])
+        FF.append(data["FF"])
 
         for count, i in enumerate(data["allI"]):
-            axIV.plot(-V, i / data["Isc"][count], label=f"{note_from_mat['labelx']} mode = {data['mode']}")
+            axIV.plot(-V, i / data["Isc"][count], label=f"mode = {data['mode']}")
 
         axIV.set_ylim(0, 1.5)
         axIV.set_xlim(0, 1.5)
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
+        axIV.legend()
         plt.tight_layout()
-        plt.legend()
         try:
 
             axCar[num].set_title(data["mode"])
@@ -305,13 +308,32 @@ def save_set_of_data_sun_constant(set_of_data, version, note_from_mat):
             axCar[num].semilogy(data["xeq"][0] * 1e9, data["neq"][0], 'b--')
             axCar[num].semilogy(data["xeq"][0] * 1e9, data["peq"][0], 'r--')
             plt.tight_layout()
-            plt.legend()
+            # axCar.legend()
         except:
             print("something wrong with carrier distibution")
             pass
+    # color = [plt.cm.hsv(i / len(set_of_data)) for i in range(len(set_of_data))]
+    # axes.text(0.95, 0.95, 'Sample Text', ha='right', va='top', transform=plt.gca().transAxes, fontsize=12)
+    axes[0, 0].plot(set_of_data[0]['x_axis'][:29], np.array(Pmpp) / 10)
+    axes[0, 0].set_xlabel(set_of_data[0]['x_axis_name'])
+    axes[0, 0].set_ylabel("Efficiency (%)")
 
+    axes[0, 1].semilogy(set_of_data[0]['x_axis'][:29], abs(np.array(Isc)),)
+    axes[0, 1].set_xlabel(set_of_data[0]['x_axis_name'])
+    axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-    plt.legend()
+    axes[1, 0].plot(set_of_data[0]['x_axis'][:29], abs(np.array(Voc)),)
+    axes[1, 0].set_xlabel(set_of_data[0]['x_axis_name'])
+    axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+
+    axes[1, 1].plot(set_of_data[0]['x_axis'][:29], abs(np.array(FF))* 100,)
+    axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
+    axes[1, 1].set_ylabel("Fill Factor (%)")
+
+    fig1.suptitle(f"{version}")
+    # plt.tight_layout()
+    # fig1.legend()
+    # plt.legend()
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
@@ -369,7 +391,7 @@ def load_old_data(version):
 
 # light
 # wl = np.linspace(300, 3000, 700) * 1e-9
-wl = np.linspace(350, 1200, 401)*1e-9 # version1
+wl = np.linspace(350, 1200, 401) * 1e-9  # version1
 light_source = LightSource(source_type="standard"
                            , version="AM1.5g"
                            , x=wl
@@ -410,7 +432,6 @@ def get_ligth_power(con=None, source_type="standard", version="AM1.5g", ):
         spectrum = light_source_measure.spectrum()
         power_con = trapz(spectrum, wl)[1]  #
     return power_con  # W/m2
-
 
 
 vint = np.linspace(-3.5, 4, 600)
@@ -513,10 +534,12 @@ def simulation1D(version, sim_mat, note=''):
         back_up_data(set_of_data, version)
     return set_of_data
 
-def simulation1D_sun_constant(version, sim_mat, note=''):
+
+def simulation1D_sun_constant(version, sim_mat, plot_mat, note=''):
+    set_of_data = []
     for size, cell in sim_mat.items():
         data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
-                         xeq=[], neq=[], peq=[], note=note, list_structure=[])
+                         xeq=[], neq=[], peq=[], note=note, list_structure=[], x_axis=plot_mat['x_axis'], x_axis_name=plot_mat["x_axis_name"])
         data_mode['list_structure'].append(
             "start item ================================================================================")
         _ = [data_mode['list_structure'].append(str(i)) for i in cell]
@@ -543,6 +566,7 @@ def simulation1D_sun_constant(version, sim_mat, note=''):
         back_up_data(set_of_data, version)
     return set_of_data
 
+
 # ========================================================================
 # show
 #
@@ -564,12 +588,10 @@ def sim0D():
     root.update()
 
 
-
-
 def sim1D():
     start = time.perf_counter()
     version = "InSb_dot_size"
-    sim_mat, note_mat = InSb_dot_size()
+    sim_mat, plot_note = InSb_dot_size()
     note = 'insert InSb dot in GaAs ref that have verier dot size'
     set_of_data = simulation1D(version, sim_mat, note=note)
     stop = time.perf_counter()
@@ -584,6 +606,22 @@ def sim1D():
     root.update()
 
 
+def sim1D_sun_constant():  # sc = simulation at 1 sun
+    start = time.perf_counter()
+    version = "InSb_dot_size_sc"
+    sim_mat, plot_note = InSb_dot_size()
+    note = 'insert InSb dot in GaAs ref that have verier dot size'
+    set_of_data_sun_constant = simulation1D_sun_constant(version, sim_mat, plot_note, note=note)
+    stop = time.perf_counter()
+    hours, minutes, seconds = sec_to_hms(stop - start)
+    print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    root = tk.Tk()
+    root.withdraw()
+    save_set_of_data_sun_constant(set_of_data_sun_constant, version)
+    # note_from_mat = dict(x_axis=list, x_axis_name="txt")
+    movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    root.update()
 
 
 def load(version, is1D=False, ):
@@ -598,13 +636,20 @@ def load(version, is1D=False, ):
         movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
 
-
-
 def main():
-    sim1D()
+    # set_of_data = load_old_data("QDSC_InSb_and_GaSb_barrier_mod.pkl")
+    version = "InSb_dot_size_sc"
+    set_of_data_sun_constant = load_old_data("InSb_dot_size_sc.pkl")
+    for i in set_of_data_sun_constant:
+        print(i['Pmpp'])
+    save_set_of_data_sun_constant(set_of_data_sun_constant, version)
+    # movefile(f'Carrier_distribution_{version}.html', f'{version}')
+
+    # sim1D_sun_constant()
+    # sim1D()
     # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
+
 
 if __name__ == "__main__":
     main()
     plt.show()
-
