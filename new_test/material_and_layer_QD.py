@@ -112,7 +112,7 @@ def ref_GaAs():
 #===========================================================================================================
 def InSb_dot_size():
     # define setup
-    dot_size = np.linspace(0.1, 5, 10)
+    dot_size = np.linspace(0.1, 3, 10)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     note_from_mat = dict(plot_x=dot_size, labelx="Dot size(nm)")
@@ -161,7 +161,7 @@ def InSb_dot_size():
         solar_each_size_1[f"dot size ={dot} nm"] = my_solar_cell
     return solar_each_size_1, note_from_mat
 
-InSb_dot_size()
+# InSb_dot_size()
 def QDSC_GaSb_Sw_dotsize():
     #define setup
     dot_size = [5, 10, 15, 20]
