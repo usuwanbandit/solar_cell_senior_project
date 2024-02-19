@@ -36,3 +36,4 @@ solar_cell/
 *.iml
 test_QD_typeI_andtypeII/other.py
 test_QD_typeI_andtypeII/other.py
+new_test/__pycache__/material_and_layer_QD.cpython-311.pyc
