@@ -271,19 +271,19 @@ def save_set_of_data_sun_constant(set_of_data, version):
             pass
     # color = [plt.cm.hsv(i / len(set_of_data)) for i in range(len(set_of_data))]
     # axes.text(0.95, 0.95, 'Sample Text', ha='right', va='top', transform=plt.gca().transAxes, fontsize=12)
-    axes[0, 0].plot(set_of_data[0]['x_axis'][:29], np.array(Pmpp) / 10)
+    axes[0, 0].plot(set_of_data[0]['x_axis'], np.array(Pmpp) / 10)
     axes[0, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 0].set_ylabel("Efficiency (%)")
 
-    axes[0, 1].semilogy(set_of_data[0]['x_axis'][:29], abs(np.array(Isc)),)
+    axes[0, 1].semilogy(set_of_data[0]['x_axis'], abs(np.array(Isc)),)
     axes[0, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-    axes[1, 0].plot(set_of_data[0]['x_axis'][:29], abs(np.array(Voc)),)
+    axes[1, 0].plot(set_of_data[0]['x_axis'], abs(np.array(Voc)),)
     axes[1, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-    axes[1, 1].plot(set_of_data[0]['x_axis'][:29], abs(np.array(FF))* 100,)
+    axes[1, 1].plot(set_of_data[0]['x_axis'], abs(np.array(FF))* 100,)
     axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 1].set_ylabel("Fill Factor (%)")
 

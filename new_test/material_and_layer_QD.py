@@ -218,7 +218,7 @@ def dot_InSb_reference():
 #===========================================================================================================
 def InSb_dot_size():
     # define setup
-    dot_size = np.linspace(0.1, 3, 30)
+    dot_size = np.linspace(0.1, 3, 300)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
@@ -233,13 +233,28 @@ def InSb_dot_size():
                                           , eff_mass_lh_z=0.082)
         p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
         InSb = material("InSb")(T=T
-                                , strained=True
-                                , electron_mobility=7.7
-                                , hole_mobility=0.0850, valence_band_offset=si("0.0 eV")
-                                , band_gap=si("0.173723 eV"), spin_orbit_splitting=si("0.81 eV")
-                                , gamma1=34.8, gamma2=15.5, gamma3=16.5
-                                , a_c=si("-6.94 eV"), a_v=si("-0.36 eV"), b=si("-2 eV")
-                                )
+                                 , strained=True
+                                 , valance_band_offset=si("0.0 eV")
+                                 , band_gap=si("0.173723 eV")
+                                 , lattice_constant=6.4793e-10
+                                 , gamma1=34.8, gamma2=15.5, gamma3=16.6
+                                 , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
+                                 , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
+                                 , interband_matrix_element=si("23.3 eV")
+                                 , spin_orbit_splitting=si("0.81 eV")
+                                 , eff_mass_electron_Gamma=0.0135
+                                 , eff_mass_hh_z=0.43
+                                 , eff_mass_lh_z=0.015
+                                 , eff_mass_electron=0.014
+                                 , electron_mobility=si("78000 cm2")
+                                 , hole_mobility=si("500 cm2")
+                                 , electron_affinity=si("4.59 eV")
+                                 , electron_minority_lifetime=si("1e-6 s")
+                                 , hole_minority_lifetime=si("1e-9 s")
+                                 , relative_permittivity=13.943
+                                 , electron_auger_recombination=si("1e-10 cm3")
+                                 , hole_auger_recombination=si("1e-12 cm3")
+                                 )
         GaSb = material("GaSb")(T=T, strained=True, )
         # =============================================================================================
         # combine material
@@ -269,14 +284,14 @@ def InSb_dot_size():
 
 def InSb_dot_size_barrier_mod():
     # define setup
-    dot_size = np.linspace(0.1, 3, 30)
+    dot_size = np.linspace(0.1, 3, 10)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
     solar_each_size_1 = {}
     for dot in dot_size:
         # define material
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e16 cm-3"))
         n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067

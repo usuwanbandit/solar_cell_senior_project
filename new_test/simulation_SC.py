@@ -32,7 +32,7 @@ light_source_measure = LightSource(
 vint = np.linspace(-3.5, 4, 600)
 # V = np.linspace(-3.5, 3.5, 300)
 # V = np.linspace(0,3.5,300) # pn
-V = np.linspace(-1.5, 0, 300)  # np
+V = np.linspace(-1.5, 0, 600)  # np
 con_light = np.logspace(0, 3, 5)
 # con_light = np.linspace(1, 2, 5)
 
@@ -223,7 +223,7 @@ def sim0D():
 
 def sim1D():
     start = time.perf_counter()
-    version = "InSb_dot_size"
+    version = "InSb_dot_size_barrier_mod"
     sim_mat, plot_note = InSb_dot_size()
     note = 'insert InSb dot in GaAs ref that have verier dot size'
     set_of_data = simulation1D(version, sim_mat, note=note)
@@ -242,7 +242,7 @@ def sim1D():
 def sim1D_sun_constant():  # sc = simulation at 1 sun
     start = time.perf_counter()
     version = "InSb_dot_size_barrier_mod_sc"
-    sim_mat, plot_note = InSb_dot_size_barrier_mod()
+    sim_mat, plot_note = InSb_dot_size()
     note = 'insert InSb dot in GaAs ref that have verier dot size'
     set_of_data_sun_constant = simulation1D_sun_constant(version, sim_mat, plot_note, note=note)
     stop = time.perf_counter()
@@ -294,8 +294,8 @@ def main():
     # save_set_of_data_sun_constant(set_of_data_sun_constant, version)
     # movefile(f'Carrier_distribution_{version}.html', f'{version}')
     # sim0D()
+    sim1D()
     sim1D_sun_constant()
-    # sim1D()
     # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
 
 
