@@ -551,15 +551,19 @@ def simulation1D_sun_constant(version, sim_mat, plot_mat, note=''):
                                         "optics_method": "TMM", }, )
         data_mode = save_ligth(cell, data_mode, version, save=False)
         # IV
-        solar_cell_solver(cell, "iv"
-                          , user_options={"light_source": light_source,
-                                          "wavelength": wl,
-                                          "optics_method": None,
-                                          "light_iv": True,
-                                          "mpp": True,
-                                          "voltages": V,
-                                          "internal_voltages": vint,
-                                          }, )
+        try:
+            solar_cell_solver(cell, "iv"
+                              , user_options={"light_source": light_source,
+                                              "wavelength": wl,
+                                              "optics_method": None,
+                                              "light_iv": True,
+                                              "mpp": True,
+                                              "voltages": V,
+                                              "internal_voltages": vint,
+                                              }, )
+        except:
+            print(f"{size} is not working")
+            data_mode['size'] += 'not working'
         data_mode = defultsave(cell, data_mode, version, save=False)
 
         set_of_data.append(data_mode)
@@ -638,14 +642,14 @@ def load(version, is1D=False, ):
 
 def main():
     # set_of_data = load_old_data("QDSC_InSb_and_GaSb_barrier_mod.pkl")
-    version = "InSb_dot_size_sc"
-    set_of_data_sun_constant = load_old_data("InSb_dot_size_sc.pkl")
-    for i in set_of_data_sun_constant:
-        print(i['Pmpp'])
-    save_set_of_data_sun_constant(set_of_data_sun_constant, version)
+    # version = "InSb_dot_size_sc"
+    # set_of_data_sun_constant = load_old_data("InSb_dot_size_sc.pkl")
+    # for i in set_of_data_sun_constant:
+    #     print(i['Pmpp'])
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version)
     # movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
-    # sim1D_sun_constant()
+    sim1D_sun_constant()
     # sim1D()
     # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
 

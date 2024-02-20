@@ -218,7 +218,7 @@ def dot_InSb_referance():
 #===========================================================================================================
 def InSb_dot_size():
     # define setup
-    dot_size = np.linspace(0.1, 3, 30)
+    dot_size = np.linspace(0.1, 3, 300)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
