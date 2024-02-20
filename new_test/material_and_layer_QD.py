@@ -130,8 +130,8 @@ def dot_InSb_default():
                             , electron_mobility=si("78000 cm2")
                             , hole_mobility=si("500 cm2")
                             , electron_affinity=si("4.59 eV")
-                            , electron_minority_lifetime=si("100 ns")
-                            , hole_minority_lifetime=si("10 ps")
+                            , electron_minority_lifetime=si("1e-6 s")
+                            , hole_minority_lifetime=si("1e-9 s")
                             , relative_permittivity=13.943
                             , electron_auger_recombination=si("1e-10 cm3")
                             , hole_auger_recombination=si("1e-12 cm3")
@@ -162,7 +162,7 @@ def dot_InSb_default():
     ]
         , T=T, substrate=p_GaAs)
     return my_solar_cell
-def dot_InSb_referance():
+def dot_InSb_reference():
     #define material
     n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
     p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
@@ -183,8 +183,8 @@ def dot_InSb_referance():
                             , electron_mobility=si("78000 cm2")
                             , hole_mobility=si("500 cm2")
                             , electron_affinity=si("4.59 eV")
-                            , electron_minority_lifetime=si("100 ns")
-                            , hole_minority_lifetime=si("10 ps")
+                            , electron_minority_lifetime=si("1e-6 s")
+                            , hole_minority_lifetime=si("1e-9 s")
                             , relative_permittivity=13.943
                             , electron_auger_recombination=si("1e-10 cm3")
                             , hole_auger_recombination=si("1e-12 cm3")
@@ -218,14 +218,14 @@ def dot_InSb_referance():
 #===========================================================================================================
 def InSb_dot_size():
     # define setup
-    dot_size = np.linspace(0.1, 3, 300)
+    dot_size = np.linspace(0.1, 3, 30)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
     solar_each_size_1 = {}
     for dot in dot_size:
         # define material
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
         n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
@@ -256,7 +256,58 @@ def InSb_dot_size():
                                  ]
                                  + QW_list
                                  + [
-                                     Layer(width=si("250 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si("200 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si("1700 nm"), material=p_GaAs, role="Emitter"),
+                                 ],
+                                 T=T, kind="PDD", substrate=p_GaAs)
+        my_solar_cell = SolarCell([
+            GaAs_junction,
+        ]
+            , T=T, substrate=p_GaAs)
+        solar_each_size_1[f"dot size ={dot} nm"] = my_solar_cell
+    return solar_each_size_1, plot_note
+
+def InSb_dot_size_barrier_mod():
+    # define setup
+    dot_size = np.linspace(0.1, 3, 30)
+    # modes = ['kp8x8_bulk']
+    print(dot_size)
+    plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
+    solar_each_size_1 = {}
+    for dot in dot_size:
+        # define material
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
+        i_GaAs = material("GaAs")(T=T)
+        i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
+                                          , eff_mass_hh_z=0.51
+                                          , eff_mass_lh_z=0.082)
+        p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
+        InSb = material("InSb")(T=T
+                                , strained=True
+                                , electron_mobility=7.7
+                                , hole_mobility=0.0850, valence_band_offset=si("0.0 eV")
+                                , band_gap=si("0.173723 eV"), spin_orbit_splitting=si("0.81 eV")
+                                , gamma1=34.8, gamma2=15.5, gamma3=16.5
+                                , a_c=si("-6.94 eV"), a_v=si("-0.36 eV"), b=si("-2 eV")
+                                )
+        GaSb = material("GaSb")(T=T, strained=True, )
+        # =============================================================================================
+        # combine material
+        QW = PDD.QWunit([
+            Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+            Layer(width=si("100 nm"), material=i_GaAs_barrier, role="barrier"),
+            Layer(width=si(f"{dot} nm"), material=InSb, role="well"),  # 5-20 nm
+            Layer(width=si("50 nm"), material=n_GaAs, role="barrier"),
+            Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
+        ], T=T, repeat=1, substrate=i_GaAs)
+        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
+        GaAs_junction = Junction([
+                                     Layer(width=si("50 nm"), material=n_GaAs, role="Emitter"),
+                                 ]
+                                 + QW_list
+                                 + [
+                                     Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
                                      Layer(width=si("1700 nm"), material=p_GaAs, role="Emitter"),
                                  ],
                                  T=T, kind="PDD", substrate=p_GaAs)
