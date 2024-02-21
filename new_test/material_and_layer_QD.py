@@ -272,28 +272,10 @@ def dot_InSb_n_bot_sweep():
                                           , eff_mass_lh_z=0.082, Nd=si('1e17 cm-3'))
         p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
         InSb = material("InSb")(T=T
-                                 , strained=True
-                                 , valance_band_offset=si("0.0 eV")
-                                 , band_gap=si("0.173723 eV")
-                                 , lattice_constant=6.4793e-10
-                                 , gamma1=34.8, gamma2=15.5, gamma3=16.6
-                                 , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
-                                 , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
-                                 , interband_matrix_element=si("23.3 eV")
-                                 , spin_orbit_splitting=si("0.81 eV")
-                                 , eff_mass_electron_Gamma=0.0135
-                                 , eff_mass_hh_z=0.43
-                                 , eff_mass_lh_z=0.015
-                                 , eff_mass_electron=0.014
-                                 , electron_mobility=si("78000 cm2")
-                                 , hole_mobility=si("850 cm2")
-                                 , electron_affinity=si("4.59 eV")
-                                 , electron_minority_lifetime=si("1e-6 s")
-                                 , hole_minority_lifetime=si("1e-9 s")
-                                 , relative_permittivity=13.943
-                                 , electron_auger_recombination=si("1e-10 cm3")
-                                 , hole_auger_recombination=si("1e-12 cm3")
-                                 )
+                                , strained=True
+                                , electron_mobility=7.8
+                                , hole_mobility=0.0850
+                                )
         GaSb = material("GaSb")(T=T, strained=True, )
         # =============================================================================================
         # combine material
@@ -341,25 +323,8 @@ def dot_InSb_n_top_sweep():
         p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
-                                , valance_band_offset=si("0.0 eV")
-                                , lattice_constant=6.4793e-10
-                                , gamma1=34.8, gamma2=15.5, gamma3=16.6
-                                , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
-                                , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
-                                , interband_matrix_element=si("23.3 eV")
-                                , spin_orbit_splitting=si("0.81 eV")
-                                , eff_mass_electron_Gamma=0.0135
-                                , eff_mass_hh_z=0.43
-                                , eff_mass_lh_z=0.015
-                                , eff_mass_electron=0.014
-                                , electron_mobility=si("78000 cm2")
-                                , hole_mobility=si("850 cm2")
-                                # , electron_affinity=si("4.59 eV")
-                                , electron_minority_lifetime=si("1e-10 s")
-                                , hole_minority_lifetime=si("1e-6 s")
-                                , relative_permittivity=13.943
-                                # , electron_auger_recombination=si("1e-10 cm3")
-                                # , hole_auger_recombination=si("1e-12 cm3")
+                                , electron_mobility=7.8
+                                , hole_mobility=0.0850
                                 )
 
         GaSb = material("GaSb")(T=T, strained=True, )
@@ -411,26 +376,8 @@ def dot_InSb_n_inter_sweep():
         p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
-                                , valance_band_offset=si("0.0 eV")
-                                , band_gap=si("0.173723 eV")
-                                , lattice_constant=6.4793e-10
-                                , gamma1=34.8, gamma2=15.5, gamma3=16.6
-                                , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
-                                , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
-                                , interband_matrix_element=si("23.3 eV")
-                                , spin_orbit_splitting=si("0.81 eV")
-                                , eff_mass_electron_Gamma=0.0135
-                                , eff_mass_hh_z=0.43
-                                , eff_mass_lh_z=0.015
-                                , eff_mass_electron=0.014
-                                , electron_mobility=si("78000 cm2")
-                                , hole_mobility=si("850 cm2")
-                                , electron_affinity=si("4.59 eV")
-                                , electron_minority_lifetime=si("1e-6 s")
-                                , hole_minority_lifetime=si("1e-9 s")
-                                , relative_permittivity=13.943
-                                , electron_auger_recombination=si("1e-10 cm3")
-                                , hole_auger_recombination=si("1e-12 cm3")
+                                , electron_mobility=7.8
+                                , hole_mobility=0.0850
                                 )
         GaSb = material("GaSb")(T=T, strained=True, )
         # =============================================================================================
@@ -480,26 +427,8 @@ def InSb_dot_size():
         p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
-                                , valance_band_offset=si("0.0 eV")
-                                , band_gap=si("0.173723 eV")
-                                , lattice_constant=6.4793e-10
-                                , gamma1=34.8, gamma2=15.5, gamma3=16.6
-                                , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
-                                , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
-                                , interband_matrix_element=si("23.3 eV")
-                                , spin_orbit_splitting=si("0.81 eV")
-                                , eff_mass_electron_Gamma=0.0135
-                                , eff_mass_hh_z=0.43
-                                , eff_mass_lh_z=0.015
-                                , eff_mass_electron=0.014
-                                , electron_mobility=si("78000 cm2")
-                                , hole_mobility=si("850 cm2")
-                                , electron_affinity=si("4.59 eV")
-                                , electron_minority_lifetime=si("1e-6 s")
-                                , hole_minority_lifetime=si("1e-9 s")
-                                , relative_permittivity=13.943
-                                , electron_auger_recombination=si("1e-10 cm3")
-                                , hole_auger_recombination=si("1e-12 cm3")
+                                , electron_mobility=7.8
+                                , hole_mobility=0.0850
                                 )
         GaSb = material("GaSb")(T=T, strained=True, )
         # =============================================================================================

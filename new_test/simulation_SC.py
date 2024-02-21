@@ -341,35 +341,37 @@ def main():
     # fix_simulation1D(version, sim_fix, plot_note, fix_condition, fix_data,  note='fix_data')
     start = time.perf_counter()
     #
-    version = "dot_InSb_default"
-    sim_mat= dot_InSb_default()
-    note = 'default data from solcore'
-    sim0D(version, sim_mat, note)
-
-    version = "dot_InSb_reference"
-    sim_mat = dot_InSb_reference()
-    note = 'reference'
-    sim0D(version, sim_mat, note)
-
-    # version = "dot_InSb_n_top_sweep_sc"
-    # sim_mat, plot_note = dot_InSb_n_top_sweep()
-    # note = 'default'
-    # sim1D_sun_constant(version, sim_mat, plot_note, note)
-
-    # version = "dot_InSb_n_inter_sweep_sc"
-    # sim_mat, plot_note = dot_InSb_n_inter_sweep()
-    # note = 'default'
-    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # version = "dot_InSb_default"
+    # sim_mat= dot_InSb_default()
+    # note = 'default data from solcore'
+    # sim0D(version, sim_mat, note)
     #
-    # version = "dot_InSb_n_bot_sweep_sc"
-    # sim_mat, plot_note = dot_InSb_n_bot_sweep()
-    # note = 'default'
-    # sim1D_sun_constant(version, sim_mat, plot_note, note)
-    #
-    # version = "InSb_dot_size_sc"
-    # sim_mat, plot_note = InSb_dot_size()
-    # note = 'default'
-    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # version = "dot_InSb_reference"
+    # sim_mat = dot_InSb_reference()
+    # note = 'reference'
+    # sim0D(version, sim_mat, note)
+
+    version = "dot_InSb_n_top_sweep_sc"
+    sim_mat, plot_note = dot_InSb_n_top_sweep()
+    note = 'default'
+    sim1D_sun_constant(version, sim_mat, plot_note, note)
+
+    version = "dot_InSb_n_inter_sweep_sc"
+    sim_mat, plot_note = dot_InSb_n_inter_sweep()
+    note = 'default'
+    sim1D_sun_constant(version, sim_mat, plot_note, note)
+
+    version = "dot_InSb_n_bot_sweep_sc"
+    sim_mat, plot_note = dot_InSb_n_bot_sweep()
+    note = 'default'
+    sim1D_sun_constant(version, sim_mat, plot_note, note)
+
+    version = "InSb_dot_size_sc"
+    sim_mat, plot_note = InSb_dot_size()
+    note = 'default'
+    sim1D_sun_constant(version, sim_mat, plot_note, note)
+
+
     # sim0D(version,sim_mat,note)
 
     # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
