@@ -5,31 +5,31 @@ from numpy import trapz
 from simulation_SC import V, wl
 from solcore.light_source import LightSource
 from lib_save_file import *
-def get_ligth_power(con=None, source_type="standard", version="AM1.5g", ):
-    power_con = None
-    if isinstance(con, list) or isinstance(con, np.ndarray):
-        buffer = []
-        for i in con:
-            light_source_measure = LightSource(
-                source_type=source_type,
-                version=version,
-                output_units='power_density_per_m',
-                x=wl,
-                concentration=i, )
-            spectrum = light_source_measure.spectrum()
-            power_buffer = trapz(spectrum, wl)  #
-            buffer.append(power_buffer[1])
-        power_con = np.array(buffer)
-    elif isinstance(con, int):
-        light_source_measure = LightSource(
-            source_type=source_type,
-            version=version,
-            output_units='power_density_per_m',
-            x=wl,
-            concentration=con, )
-        spectrum = light_source_measure.spectrum()
-        power_con = trapz(spectrum, wl)[1]  #
-    return power_con  # W/m2
+# def get_ligth_power(con=None, source_type="standard", version="AM1.5g", ):
+#     power_con = None
+#     if isinstance(con, list) or isinstance(con, np.ndarray):
+#         buffer = []
+#         for i in con:
+#             light_source_measure = LightSource(
+#                 source_type=source_type,
+#                 version=version,
+#                 output_units='power_density_per_m',
+#                 x=wl,
+#                 concentration=i, )
+#             spectrum = light_source_measure.spectrum()
+#             power_buffer = trapz(spectrum, wl)  #
+#             buffer.append(power_buffer[1])
+#         power_con = np.array(buffer)
+#     elif isinstance(con, int):
+#         light_source_measure = LightSource(
+#             source_type=source_type,
+#             version=version,
+#             output_units='power_density_per_m',
+#             x=wl,
+#             concentration=con, )
+#         spectrum = light_source_measure.spectrum()
+#         power_con = trapz(spectrum, wl)[1]  #
+#     return power_con  # W/m2
 
 def defultsave(solarcell, saveaddrest, version, save=True):
     IV_saving = ["Isc", "Voc", "FF", "Pmpp"]
@@ -84,7 +84,7 @@ def save_all_file_0d(data, version, con):
 
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
 
-    axes[0, 0].semilogx(con, np.array(data["Pmpp"]) * 100 / get_ligth_power(con=con), "r-o")
+    axes[0, 0].semilogx(con, np.array(data["Pmpp"]/con/10 ) , "r-o")
     axes[0, 0].set_xlabel("Concentration (suns)")
     axes[0, 0].set_ylabel("Efficiency (%)")
 
@@ -112,7 +112,7 @@ def save_all_file_0d(data, version, con):
     axIV.set_ylim(0, 1.5)
     axIV.set_xlim(0, 1.5)
     axIV.set_xlabel("Voltage (V)")
-    axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
+    axIV.set_ylabel("I$_{normalize}$ ")
     plt.legend()
     plt.tight_layout()
 
@@ -189,7 +189,7 @@ def save_set_of_data(set_of_data, version, con):
         axIV.set_ylim(0, 1.5)
         axIV.set_xlim(0, 1.5)
         axIV.set_xlabel("Voltage (V)")
-        axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
+        axIV.set_ylabel("I$_{normalize}$ ")
         plt.tight_layout()
         plt.legend()
         try:
@@ -249,9 +249,9 @@ def save_set_of_data_sun_constant(set_of_data, version):
         FF.append(data["FF"])
 
         for count, i in enumerate(data["allI"]):
-            axIV.plot(-V, i / data["Isc"][count], label=f"mode = {data['mode']}")
+            axIV.plot(-V, i / -10, label=f"mode = {data['mode']}")
 
-        axIV.set_ylim(0, 1.5)
+        axIV.set_ylim(0, 30)
         axIV.set_xlim(0, 1.5)
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
@@ -271,19 +271,19 @@ def save_set_of_data_sun_constant(set_of_data, version):
             pass
     # color = [plt.cm.hsv(i / len(set_of_data)) for i in range(len(set_of_data))]
     # axes.text(0.95, 0.95, 'Sample Text', ha='right', va='top', transform=plt.gca().transAxes, fontsize=12)
-    axes[0, 0].plot(set_of_data[0]['x_axis'], np.array(Pmpp) / 10)
+    axes[0, 0].plot(set_of_data[0]['x_axis'], np.array(Pmpp) / 10,color='r')
     axes[0, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 0].set_ylabel("Efficiency (%)")
 
-    axes[0, 1].semilogy(set_of_data[0]['x_axis'], abs(np.array(Isc)),)
+    axes[0, 1].semilogy(set_of_data[0]['x_axis'], abs(np.array(Isc)),color='g')
     axes[0, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-    axes[1, 0].plot(set_of_data[0]['x_axis'], abs(np.array(Voc)),)
+    axes[1, 0].plot(set_of_data[0]['x_axis'], abs(np.array(Voc)), color='b')
     axes[1, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-    axes[1, 1].plot(set_of_data[0]['x_axis'], abs(np.array(FF))* 100,)
+    axes[1, 1].plot(set_of_data[0]['x_axis'], abs(np.array(FF))* 100, color='k')
     axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 1].set_ylabel("Fill Factor (%)")
 

@@ -1,0 +1,63 @@
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 2e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 4e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 5e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 6e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 7e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 8e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 9e+02nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================
+find effect of n width layer
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+22>}
+	<Emitter layer 1e+03nm <'GaAs' material Nd=9.999999999999994e+22>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+22>>>
+end item   ================================================================================

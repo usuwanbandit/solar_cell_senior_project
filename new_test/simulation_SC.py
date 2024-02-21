@@ -29,10 +29,10 @@ light_source_measure = LightSource(
 
 
 
-vint = np.linspace(-3.5, 4, 600)
+vint = np.linspace(-3, 3, 600)
+V = np.linspace(-1.5, 0, 300)  # np
 # V = np.linspace(-3.5, 3.5, 300)
 # V = np.linspace(0,3.5,300) # pn
-V = np.linspace(-1.5, 0, 600)  # np
 con_light = np.logspace(0, 3, 5)
 # con_light = np.linspace(1, 2, 5)
 
@@ -70,6 +70,7 @@ set_of_data = []
 #
 # ========================================================================
 # simulation 0d
+
 def simulation0D(version, sim_mat, note=''):
     data = {"allI": [], "Isc": [], "Voc": [], "FF": [], "Pmpp": [], "absorbed": [], "xsc": [], "nsc": [], "psc": [],
             "xeq": [], "neq": [], "peq": [], "note": note, 'list_structure': [str(i) for i in sim_mat]}
@@ -94,9 +95,6 @@ def simulation0D(version, sim_mat, note=''):
         data = defultsave(sim_mat, data, version)
     return data
 
-
-# #========================================================================
-# # #simulation 1D
 def simulation1D(version, sim_mat, note=''):
     for size, cell in sim_mat.items():
         data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
@@ -129,36 +127,33 @@ def simulation1D(version, sim_mat, note=''):
         back_up_data(set_of_data, version)
     return set_of_data
 
-
-def simulation1D_sun_constant(version, sim_mat, plot_mat, note=''):
+def simulation1D_sun_constant(version, sim_mat, plot_note, note=''):
     set_of_data = []
     for size, cell in sim_mat.items():
         data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
-                         xeq=[], neq=[], peq=[], note=note, list_structure=[], x_axis=plot_mat['x_axis'], x_axis_name=plot_mat["x_axis_name"])
+                         xeq=[], neq=[], peq=[], note=note, list_structure=[], x_axis=plot_note['x_axis'], x_axis_name=plot_note["x_axis_name"])
         data_mode['list_structure'].append(
             "start item ================================================================================")
         _ = [data_mode['list_structure'].append(str(i)) for i in cell]
         data_mode['list_structure'].append(
             "end item   ================================================================================")
+        print(data_mode['mode'])
         solar_cell_solver(cell, "qe",
                           user_options={"light_source": light_source,
                                         "wavelength": wl,
                                         "optics_method": "TMM", }, )
         data_mode = save_ligth(cell, data_mode, version, save=False)
         # IV
-        try:
-            solar_cell_solver(cell, "iv"
-                              , user_options={"light_source": light_source,
-                                              "wavelength": wl,
-                                              "optics_method": None,
-                                              "light_iv": True,
-                                              "mpp": True,
-                                              "voltages": V,
-                                              "internal_voltages": vint,
-                                              }, )
-        except:
-            print(f"{size} is not working")
-            data_mode['size'] += 'not working'
+        solar_cell_solver(cell, "iv"
+                          , user_options={"light_source": light_source,
+                                          "wavelength": wl,
+                                          "optics_method": None,
+                                          "light_iv": True,
+                                          "mpp": True,
+                                          "voltages": V,
+                                          "internal_voltages": vint,
+                                          }, )
+
         data_mode = defultsave(cell, data_mode, version, save=False)
 
         set_of_data.append(data_mode)
@@ -200,63 +195,100 @@ def simulation2D_sun_constant(version, sim_mat, plot_note, note=''):
         back_up_data(all_data,version)
     return all_data
 
+def fix_simulation1D(version, sim_fix, plot_note, fix_condition, fix_data,  note=''):
+    count = 0
+    for size, cell in sim_fix.items():
+        if size in fix_condition:
+            data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
+                             xeq=[], neq=[], peq=[], note=note, list_structure=[], x_axis=plot_note['x_axis'],
+                             x_axis_name=plot_note["x_axis_name"])
+            data_mode['list_structure'].append(
+                "start item ================================================================================")
+            _ = [data_mode['list_structure'].append(str(i)) for i in cell]
+            data_mode['list_structure'].append(
+                "end item   ================================================================================")
+            solar_cell_solver(cell, "qe",
+                              user_options={"light_source": light_source,
+                                            "wavelength": wl,
+                                            "optics_method": "TMM", }, )
+            data_mode = save_ligth(cell, data_mode, version, save=False)
+            # IV
+            try:
+                solar_cell_solver(cell, "iv"
+                                  , user_options={"light_source": light_source,
+                                                  "wavelength": wl,
+                                                  "optics_method": None,
+                                                  "light_iv": True,
+                                                  "mpp": True,
+                                                  "voltages": V,
+                                                  "internal_voltages": vint,
+                                                  }, )
+            except:
+                print(f"{size} is not working")
+                data_mode['size'] += 'not working'
+            data_mode = defultsave(cell, data_mode, version, save=False)
+            fix_data[count] = data_mode
+            back_up_data(fix_data, version)
+        count += 1
+    return fix_data
 # ========================================================================
 # show
 #
-def sim0D():
+def sim0D(version, sim_mat, note):
     start = time.perf_counter()
-    version = "dot_InSb_reference"
-    sim_mat = dot_InSb_reference()
-    note = 'reference solar cell of compare differance between no dot and dot'
+    # version = "dot_InSb_default"
+    # sim_mat = dot_InSb_default()
+    # note = 'reference solar cell of compare differance between no dot and dot'
     data = simulation0D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours}h/{minutes}min/{seconds}sec")
-    root = tk.Tk()
-    root.withdraw()
-    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    # root = tk.Tk()
+    # root.withdraw()
+    # show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     save_all_file_0d(data, version, con_light)
     # movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
-    root.update()
+    # root.update()
 
 
-def sim1D():
+def sim1D(version, sim_mat, note):
     start = time.perf_counter()
-    version = "InSb_dot_size_barrier_mod"
-    sim_mat, plot_note = InSb_dot_size()
-    note = 'insert InSb dot in GaAs ref that have verier dot size'
+    # version = "dot_InSb_n_sweep"
+    # sim_mat, plot_note = dot_InSb_n_sweep()
+    # note = 'check between respond between n and dot'
     set_of_data = simulation1D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
-    root = tk.Tk()
-    root.withdraw()
+    # root = tk.Tk()
+    # root.withdraw()
     save_set_of_data(set_of_data, version, con_light)
-    # movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    movefile(f'Carrier_distribution_{version}.html', f'{version}')
 
-    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
-    root.update()
+    # show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    # root.update()
 
 
-def sim1D_sun_constant():  # sc = simulation at 1 sun
+def sim1D_sun_constant(version, sim_mat, plot_note, note):  # sc = simulation at 1 sun
     start = time.perf_counter()
-    version = "InSb_dot_size_barrier_mod_sc"
-    sim_mat, plot_note = InSb_dot_size()
-    note = 'insert InSb dot in GaAs ref that have verier dot size'
+    # version = "dot_InSb_n_sweep"
+    # sim_mat, plot_note = dot_InSb_n_sweep()
+    # note = 'check between respond between n and dot'
     set_of_data_sun_constant = simulation1D_sun_constant(version, sim_mat, plot_note, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
-    root = tk.Tk()
-    root.withdraw()
+    # root = tk.Tk()
+    # root.withdraw()
     save_set_of_data_sun_constant(set_of_data_sun_constant, version)
     # note_from_mat = dict(x_axis=list, x_axis_name="txt")
-    # movefile(f'Carrier_distribution_{version}.html', f'{version}')
-    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
-    root.update()
+    movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    # show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    # root.update()
 
-def sim2D_sun_constant(version, modals):
+
+def sim2D_sun_constant(version, sim_mat, plot_note, note):
     start = time.perf_counter()
     version = "InSb_dot_size_sc"
     sim_mat, plot_note = InSb_dot_size()
@@ -269,9 +301,9 @@ def sim2D_sun_constant(version, modals):
     root.withdraw()
     save_set_of_data_sun_constant(set_of_data_sun_constant, version)
     # note_from_mat = dict(x_axis=list, x_axis_name="txt")
-    # movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    movefile(f'Carrier_distribution_{version}.html', f'{version}')
     show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
-    root.update()
+    # root.update()
 
 def load(version, is1D=False, ):
     if is1D:
@@ -288,16 +320,62 @@ def load(version, is1D=False, ):
 def main():
     # set_of_data = load_old_data("QDSC_InSb_and_GaSb_barrier_mod.pkl")
     # version = "InSb_dot_size_sc"
-    # set_of_data_sun_constant = load_old_data("InSb_dot_size_sc.pkl")
+    # set_of_data_sun_constant = load_old_data("InSb_dot_size_barrier_mod.pkl")
     # for i in set_of_data_sun_constant:
     #     print(i['Pmpp'])
     # save_set_of_data_sun_constant(set_of_data_sun_constant, version)
     # movefile(f'Carrier_distribution_{version}.html', f'{version}')
     # sim0D()
-    sim1D()
-    sim1D_sun_constant()
-    # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
+    # sim1D()
+    # version = "dot_InSb_n_sweep"
+    # sim_fix, plot_note = dot_InSb_n_sweep()
+    # num = 0
+    # replot_list = [1, 4, 5 ,7]
+    # fix_condition = list()
+    # for size, _ in sim_fix.items():
+    #     if num in replot_list:
+    #         fix_condition.append(size)
+    #     num += 1
+    # print(fix_condition)
+    # fix_data = load_old_data('dot_InSb_n_sweep.pkl')
+    # fix_simulation1D(version, sim_fix, plot_note, fix_condition, fix_data,  note='fix_data')
+    start = time.perf_counter()
+    #
+    version = "dot_InSb_default"
+    sim_mat= dot_InSb_default()
+    note = 'default data from solcore'
+    sim0D(version, sim_mat, note)
 
+    version = "dot_InSb_reference"
+    sim_mat = dot_InSb_reference()
+    note = 'reference'
+    sim0D(version, sim_mat, note)
+
+    # version = "dot_InSb_n_top_sweep_sc"
+    # sim_mat, plot_note = dot_InSb_n_top_sweep()
+    # note = 'default'
+    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+
+    # version = "dot_InSb_n_inter_sweep_sc"
+    # sim_mat, plot_note = dot_InSb_n_inter_sweep()
+    # note = 'default'
+    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    #
+    # version = "dot_InSb_n_bot_sweep_sc"
+    # sim_mat, plot_note = dot_InSb_n_bot_sweep()
+    # note = 'default'
+    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    #
+    # version = "InSb_dot_size_sc"
+    # sim_mat, plot_note = InSb_dot_size()
+    # note = 'default'
+    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # sim0D(version,sim_mat,note)
+
+    # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
+    stop = time.perf_counter()
+    hours, minutes, seconds = sec_to_hms(stop - start)
+    print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
 
 if __name__ == "__main__":
     main()
