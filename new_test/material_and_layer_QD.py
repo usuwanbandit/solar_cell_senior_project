@@ -177,7 +177,7 @@ def dot_InSb_default():
     QW = PDD.QWunit([
         Layer(width=si("100 nm"), material=i_GaAs_barrier, role="barrier"),
         Layer(width=si("1 nm"), material=InSb, role="well"),  # 5-20 nm
-        Layer(width=si("50 nm"), material=n_GaAs_barrier, role="barrier"),
+        Layer(width=si("100 nm"), material=n_GaAs_barrier, role="barrier"),
     ], T=T, repeat=1, substrate=i_GaAs, )
     QW_list = QW.GetEffectiveQW(wavelengths=wl)
     GaAs_junction = Junction([
@@ -185,7 +185,7 @@ def dot_InSb_default():
                              ]
                              +QW_list
                              + [
-                                 Layer(width=si("250 nm"), material=n_GaAs, role="Emitter"),
+                                 Layer(width=si("200 nm"), material=n_GaAs, role="Emitter"),
                                  Layer(width=si("1700 nm"), material=p_GaAs, role="Emitter"),
                              ],
                              T=T, kind="PDD", )
@@ -233,7 +233,7 @@ def dot_InSb_reference():
     QW = PDD.QWunit([
         Layer(width=si("100 nm"), material=i_GaAs_barrier, role="barrier"),
         Layer(width=si("1 nm"), material=InSb1, role="well"),  # 5-20 nm
-        Layer(width=si("50 nm"), material=n_GaAs_barrier, role="barrier"),
+        Layer(width=si("100 nm"), material=n_GaAs_barrier, role="barrier"),
     ], T=T, repeat=1, substrate=i_GaAs, )
     QW_list = QW.GetEffectiveQW(wavelengths=wl)
     GaAs_junction = Junction([
@@ -254,7 +254,7 @@ def dot_InSb_reference():
     return my_solar_cell
 def dot_InSb_n_bot_sweep():
     # define setup
-    dot_size = np.linspace(100, 500, 10)
+    dot_size = np.linspace(10, 500, 100)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="n_Layer between dot and p(nm)")
@@ -262,7 +262,7 @@ def dot_InSb_n_bot_sweep():
     for dot in dot_size:
         # define material
         # AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
-        n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
@@ -270,7 +270,7 @@ def dot_InSb_n_bot_sweep():
         n_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
                                           , eff_mass_lh_z=0.082, Nd=si('1e17 cm-3'))
-        p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
+        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
                                 , electron_mobility=7.8
@@ -304,7 +304,7 @@ def dot_InSb_n_bot_sweep():
     return solar_each_size_1, plot_note
 def dot_InSb_n_top_sweep():
     # define setup
-    dot_size = np.linspace(50, 500, 10)
+    dot_size = np.linspace(10, 500, 100)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="top layer (nm)")
@@ -312,7 +312,7 @@ def dot_InSb_n_top_sweep():
     for dot in dot_size:
         # define material
         # AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
-        n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
@@ -320,7 +320,7 @@ def dot_InSb_n_top_sweep():
         n_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
                                           , eff_mass_lh_z=0.082, Nd=si('1e17 cm-3'))
-        p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
+        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
                                 , electron_mobility=7.8
@@ -356,7 +356,7 @@ def dot_InSb_n_top_sweep():
 
 def dot_InSb_n_inter_sweep():
     # define setup
-    dot_size = np.linspace(10, 300, 10)
+    dot_size = np.linspace(20, 300, 100)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="inter layer (nm)")
@@ -365,7 +365,7 @@ def dot_InSb_n_inter_sweep():
         print(dot)
         # define material
         # AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
-        n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
@@ -373,7 +373,7 @@ def dot_InSb_n_inter_sweep():
         n_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
                                           , eff_mass_lh_z=0.082, Nd=si('1e17 cm-3'))
-        p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
+        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
                                 , electron_mobility=7.8
@@ -395,7 +395,7 @@ def dot_InSb_n_inter_sweep():
                                  ]
                                  + QW_list
                                  + [
-                                     Layer(width=si(f"250 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si(f"200 nm"), material=n_GaAs, role="Emitter"),
                                      Layer(width=si("1700 nm"), material=p_GaAs, role="Emitter"),
                                  ],
                                  T=T, kind="PDD", substrate=p_GaAs)
@@ -406,9 +406,9 @@ def dot_InSb_n_inter_sweep():
         solar_each_size_1[f"n layer = {dot}nm"] = my_solar_cell
     return solar_each_size_1, plot_note
 # dot_InSb_n_inter_sweep()
-def InSb_dot_size():
+def InSb_dot_size_sweep():
     # define setup
-    dot_size = np.linspace(0.1, 3, 31)
+    dot_size = np.linspace(0.1, 50, 500)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
@@ -416,7 +416,7 @@ def InSb_dot_size():
     for dot in dot_size:
         # define material
         # AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
-        n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
@@ -424,7 +424,7 @@ def InSb_dot_size():
         n_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
                                           , eff_mass_lh_z=0.082, Nd=si('1e17 cm-3'))
-        p_GaAs = material("GaAs")(T=T, Na=si("1e17 cm-3"), )
+        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
                                 , electron_mobility=7.8
@@ -456,6 +456,8 @@ def InSb_dot_size():
             , T=T, substrate=p_GaAs)
         solar_each_size_1[f"dot size ={dot} nm"] = my_solar_cell
     return solar_each_size_1, plot_note
+# InSb_dot_size_sweep()
+
 
 #===========================================================================================================
 def InSb_dot_size_barrier_mod():

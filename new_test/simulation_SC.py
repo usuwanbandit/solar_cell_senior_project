@@ -291,7 +291,7 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note):  # sc = simulation at
 def sim2D_sun_constant(version, sim_mat, plot_note, note):
     start = time.perf_counter()
     version = "InSb_dot_size_sc"
-    sim_mat, plot_note = InSb_dot_size()
+    sim_mat, plot_note = InSb_dot_size_sweep()
     note = 'insert InSb dot in GaAs ref that have verier dot size'
     set_of_data_sun_constant = simulation2D_sun_constant(version, sim_mat, plot_note, note=note)
     stop = time.perf_counter()
@@ -350,28 +350,33 @@ def main():
     # sim_mat = dot_InSb_reference()
     # note = 'reference'
     # sim0D(version, sim_mat, note)
+    #
+    # version = "dot_InSb_n_top_sweep_sc"
+    # sim_mat, plot_note = dot_InSb_n_top_sweep()
+    # note = 'default'
+    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # try:
+    #     version = "dot_InSb_n_inter_sweep_sc"
+    #     sim_mat, plot_note = dot_InSb_n_inter_sweep()
+    #     note = 'default'
+    #     sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # except:
+    #     pass
+    # try:
+    #     version = "dot_InSb_n_bot_sweep_sc"
+    #     sim_mat, plot_note = dot_InSb_n_bot_sweep()
+    #     note = 'default'
+    #     sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # except:
+    #     pass
 
-    version = "dot_InSb_n_top_sweep_sc"
-    sim_mat, plot_note = dot_InSb_n_top_sweep()
+    version = "InSb_dot_size_sweep_sc"
+    sim_mat, plot_note = InSb_dot_size_sweep()
     note = 'default'
     sim1D_sun_constant(version, sim_mat, plot_note, note)
 
-    version = "dot_InSb_n_inter_sweep_sc"
-    sim_mat, plot_note = dot_InSb_n_inter_sweep()
-    note = 'default'
-    sim1D_sun_constant(version, sim_mat, plot_note, note)
-
-    version = "dot_InSb_n_bot_sweep_sc"
-    sim_mat, plot_note = dot_InSb_n_bot_sweep()
-    note = 'default'
-    sim1D_sun_constant(version, sim_mat, plot_note, note)
-
-    version = "InSb_dot_size_sc"
-    sim_mat, plot_note = InSb_dot_size()
-    note = 'default'
-    sim1D_sun_constant(version, sim_mat, plot_note, note)
-
-
+    # set_of_data = load_old_data("InSb_dot_size_sweep_sc.pkl")
+    # print(len(set_of_data))
     # sim0D(version,sim_mat,note)
 
     # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
@@ -379,6 +384,9 @@ def main():
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
 
+
 if __name__ == "__main__":
     main()
     plt.show()
+
+
