@@ -1,14 +1,14 @@
 from solcore import si, material
 from solcore.structure import Layer, Structure, Junction, SolcoreMaterialToStr
 from solcore.solar_cell import SolarCell
-import solcore.quantum_mechanics as QM
+# import solcore.quantum_mechanics as QM
 import solcore.poisson_drift_diffusion as PDD
-from solcore.quantum_mechanics.high_level_kp_QW import schrodinger
-from save_picture import schrodinger_graph_LDOS
+# from solcore.quantum_mechanics.high_level_kp_QW import schrodinger
+# from save_picture import schrodinger_graph_LDOS
 import numpy as np
-import matplotlib.pyplot as plt
-from solcore.quantum_mechanics.kp_bulk import KPbands
-import pickle
+# import matplotlib.pyplot as plt
+# from solcore.quantum_mechanics.kp_bulk import KPbands
+# import pickle
 
 # ==================================================================================================================
 # setup

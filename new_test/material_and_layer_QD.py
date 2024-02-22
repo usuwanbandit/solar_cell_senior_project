@@ -1,15 +1,15 @@
-import solcore
+# import solcore
 from solcore import si, material
 from solcore.structure import Layer, Structure, Junction, SolcoreMaterialToStr
 from solcore.solar_cell import SolarCell
 import solcore.quantum_mechanics as QM
 import solcore.poisson_drift_diffusion as PDD
-from solcore.quantum_mechanics.high_level_kp_QW import schrodinger
-from save_picture import schrodinger_graph_LDOS
+# from solcore.quantum_mechanics.high_level_kp_QW import schrodinger
+# from save_picture import schrodinger_graph_LDOS
 import numpy as np
-import matplotlib.pyplot as plt
-from solcore.quantum_mechanics.kp_bulk import KPbands
-import pickle
+# import matplotlib.pyplot as plt
+# from solcore.quantum_mechanics.kp_bulk import KPbands
+# import pickle
 
 # ==================================================================================================================
 # setup
@@ -76,24 +76,7 @@ def ref_GaAs():
     #define material
     n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
     p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
-    InSb = material("InSb")(T=T
-                            , strained=True
-                            , electron_mobility=7.7
-                            , hole_mobility=0.0850, valence_band_offset=si("0.0 eV")
-                            , band_gap=si("0.173723 eV"), spin_orbit_splitting=si("0.81 eV")
-                            , gamma1=34.8, gamma2=15.5, gamma3=16.5
-                            , a_c=si("-6.94 eV"), a_v=si("-0.36 eV"), b=si("-2 eV")
-                            )
-    # reference :https://www.ioffe.ru/SVA/NSM/Semicond/InSb/basic.html (electron_affinity)
-    # reference :https://www.ioffe.ru/SVA/NSM/Semicond/InSb/electric.html
-    #========================================================================================================
-    #combine material
-    QW = PDD.QWunit([
-        Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),
-        Layer(width=si("2.54 nm"), material=InSb, role="well"),  # 5-20 nm
-        Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),
-    ], T=T, repeat=5, substrate=i_GaAs, )
-    QW_list = QW.GetEffectiveQW(wavelengths=wl)
+
     GaAs_junction = Junction([
                                  Layer(width=si("600 nm"), material=n_GaAs, role="Emitter"),
                              ]
@@ -162,8 +145,8 @@ def dot_InSb_default():
                             , electron_minority_lifetime=si("1e-6 s")
                             , hole_minority_lifetime=si("1e-9 s")
                             , relative_permittivity=13.943
-                            , electron_auger_recombination=si("5e-26 cm6")
-                            , hole_auger_recombination=si("5e-26 cm6")
+                            , electron_auger_recombination=si("1e-42 cm6")
+                            , hole_auger_recombination=si("1e-42 cm6")
                             )
     InSb = material("InSb")(T=T
                             , strained=True
@@ -222,8 +205,8 @@ def dot_InSb_reference():
                             # , electron_minority_lifetime=si("1e-6 s")
                             # , hole_minority_lifetime=si("1e-9 s")
                             , relative_permittivity=13.943
-                            , electron_auger_recombination=si("5e-26 cm6")
-                            , hole_auger_recombination=si("5e-26 cm6")
+                            , electron_auger_recombination=si("1e-42 cm6")
+                            , hole_auger_recombination=si("1e-42 cm6")
                             )
     InSb = material("InSb")(T=T, strained=True)
     # reference :https://www.ioffe.ru/SVA/NSM/Semicond/InSb/basic.html (electron_affinity)
@@ -300,11 +283,11 @@ def dot_InSb_n_bot_sweep():
             GaAs_junction,
         ]
             , T=T, substrate=p_GaAs)
-        solar_each_size_1[f"n layer = {dot}nm"] = my_solar_cell
+        solar_each_size_1[f"n layer = {dot:.2e}nm"] = my_solar_cell
     return solar_each_size_1, plot_note
 def dot_InSb_n_top_sweep():
     # define setup
-    dot_size = np.linspace(10, 500, 100)
+    dot_size = np.linspace(10, 500, 10)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="top layer (nm)")
@@ -351,7 +334,7 @@ def dot_InSb_n_top_sweep():
             GaAs_junction,
         ]
             , T=T, substrate=p_GaAs)
-        solar_each_size_1[f"n layer = {dot}nm"] = my_solar_cell
+        solar_each_size_1[f"n layer = {dot:.2e}nm"] = my_solar_cell
     return solar_each_size_1, plot_note
 
 def dot_InSb_n_inter_sweep():
@@ -403,12 +386,12 @@ def dot_InSb_n_inter_sweep():
             GaAs_junction,
         ]
             , T=T, substrate=p_GaAs)
-        solar_each_size_1[f"n layer = {dot}nm"] = my_solar_cell
+        solar_each_size_1[f"n layer = {dot:.2e}nm"] = my_solar_cell
     return solar_each_size_1, plot_note
 # dot_InSb_n_inter_sweep()
 def InSb_dot_size_sweep():
     # define setup
-    dot_size = np.linspace(0.1, 50, 500)
+    dot_size = np.linspace(0.1, 3, 5)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
@@ -454,7 +437,7 @@ def InSb_dot_size_sweep():
             GaAs_junction,
         ]
             , T=T, substrate=p_GaAs)
-        solar_each_size_1[f"dot size ={dot} nm"] = my_solar_cell
+        solar_each_size_1[f"dot size ={dot:.2e} nm"] = my_solar_cell
     return solar_each_size_1, plot_note
 # InSb_dot_size_sweep()
 

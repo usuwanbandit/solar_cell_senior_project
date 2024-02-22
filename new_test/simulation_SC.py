@@ -11,7 +11,7 @@ from solcore.light_source import LightSource
 # setup
 # light
 # wl = np.linspace(300, 3000, 700) * 1e-9
-wl = np.linspace(350, 1200, 401) * 1e-9  # version1
+wl = np.linspace(350, 3000, 401) * 1e-9  # version1
 light_source = LightSource(source_type="standard"
                            , version="AM1.5g"
                            , x=wl
@@ -95,6 +95,39 @@ def simulation0D(version, sim_mat, note=''):
         data = defultsave(sim_mat, data, version)
     return data
 
+def simulation0D_sun_con(version, sim_mat, note=''):
+    data = {"allI": [], "Isc": [], "Voc": [], "FF": [], "Pmpp": [], "absorbed": [], "xsc": [], "nsc": [], "psc": [],
+            "xeq": [], "neq": [], "peq": [], "note": note, 'list_structure': [str(i) for i in sim_mat]}
+
+
+
+    # IV
+    solar_cell_solver(sim_mat, "iv"
+                      , user_options={"light_source": light_source,
+                                      "wavelength": wl,
+                                      "optics_method": 'TMM',
+                                      "light_iv": True,
+                                      "mpp": True,
+                                      "voltages": V,
+                                      "internal_voltages": vint,
+                                      }, )
+    data = save_ligth(sim_mat, data, version)
+    data = defultsave(sim_mat, data, version)
+    for i in sim_mat[0].pdd_data:
+        print(i)
+    print(']]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]')
+
+    for i in sim_mat[0].pdd_data['positive_V']['Bandstructure']:
+        print(i)
+    # for i in sim_mat:
+    #     print(i)
+    print(']]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]')
+    for i in sim_mat[0].pdd_data['negative_V']['Bandstructure']:
+        print(i)
+    print(']]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]')
+
+    return data
+
 def simulation1D(version, sim_mat, note=''):
     for size, cell in sim_mat.items():
         data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
@@ -130,8 +163,9 @@ def simulation1D(version, sim_mat, note=''):
 def simulation1D_sun_constant(version, sim_mat, plot_note, note=''):
     set_of_data = []
     for size, cell in sim_mat.items():
-        data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], mode=size, xsc=[], nsc=[], psc=[],
-                         xeq=[], neq=[], peq=[], note=note, list_structure=[], x_axis=plot_note['x_axis'], x_axis_name=plot_note["x_axis_name"])
+        data_mode = dict(allI=[], Isc=[], Voc=[], FF=[], Pmpp=[], absorbed=[], xsc=[], nsc=[], psc=[],
+                         xeq=[], neq=[], peq=[], note=note, list_structure=[], x_axis=plot_note['x_axis'], x_axis_name=plot_note["x_axis_name"]
+                         ,mode = size)
         data_mode['list_structure'].append(
             "start item ================================================================================")
         _ = [data_mode['list_structure'].append(str(i)) for i in cell]
@@ -346,15 +380,15 @@ def main():
     # note = 'default data from solcore'
     # sim0D(version, sim_mat, note)
     #
-    # version = "dot_InSb_reference"
-    # sim_mat = dot_InSb_reference()
+    # version = "remove_this"
+    # sim_mat = ref_GaAs()
     # note = 'reference'
-    # sim0D(version, sim_mat, note)
+    # simulation0D_sun_con(version, sim_mat, note)
     #
-    # version = "dot_InSb_n_top_sweep_sc"
-    # sim_mat, plot_note = dot_InSb_n_top_sweep()
-    # note = 'default'
-    # sim1D_sun_constant(version, sim_mat, plot_note, note)
+    version = "dot_InSb_n_top_sweep_sc"
+    sim_mat, plot_note = dot_InSb_n_top_sweep()
+    note = 'default'
+    sim1D_sun_constant(version, sim_mat, plot_note, note)
     # try:
     #     version = "dot_InSb_n_inter_sweep_sc"
     #     sim_mat, plot_note = dot_InSb_n_inter_sweep()
@@ -370,10 +404,10 @@ def main():
     # except:
     #     pass
 
-    version = "InSb_dot_size_sweep_sc"
-    sim_mat, plot_note = InSb_dot_size_sweep()
-    note = 'default'
-    sim1D_sun_constant(version, sim_mat, plot_note, note)
+    # version = "InSb_dot_size_sweep_sc"
+    # sim_mat, plot_note = InSb_dot_size_sweep()
+    # note = 'default'
+    # sim1D_sun_constant(version, sim_mat, plot_note, note)
 
     # set_of_data = load_old_data("InSb_dot_size_sweep_sc.pkl")
     # print(len(set_of_data))
