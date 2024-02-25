@@ -6,12 +6,12 @@ from lib_save_data import *
 from material_of_InSb_GaSb import *
 from material_and_layer_QD import *
 from solcore.light_source import LightSource
-
+from constant import *
 # ========================================================================
 # setup
 # light
 # wl = np.linspace(300, 3000, 700) * 1e-9
-wl = np.linspace(350, 3000, 401) * 1e-9  # version1
+# wl = np.linspace(350, 3000, 401) * 1e-9  # version1
 light_source = LightSource(source_type="standard"
                            , version="AM1.5g"
                            , x=wl
@@ -29,8 +29,8 @@ light_source_measure = LightSource(
 
 
 
-vint = np.linspace(-3, 3, 600)
-V = np.linspace(-1.5, 0, 300)  # np
+# vint = np.linspace(-3, 3, 600)
+# V = np.linspace(-1.5, 0, 300)  # np
 # V = np.linspace(-3.5, 3.5, 300)
 # V = np.linspace(0,3.5,300) # pn
 con_light = np.logspace(0, 3, 5)

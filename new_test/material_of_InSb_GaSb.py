@@ -5,6 +5,8 @@ from solcore.solar_cell import SolarCell
 import solcore.poisson_drift_diffusion as PDD
 # from solcore.quantum_mechanics.high_level_kp_QW import schrodinger
 # from save_picture import schrodinger_graph_LDOS
+from new_version_saveing_date import wl
+from constant import *
 import numpy as np
 # import matplotlib.pyplot as plt
 # from solcore.quantum_mechanics.kp_bulk import KPbands
@@ -12,8 +14,8 @@ import numpy as np
 
 # ==================================================================================================================
 # setup
-T = 300
-wl = np.linspace(300, 3000, 700) * 1e-9
+# T = 300
+# wl = np.linspace(300, 3000, 700) * 1e-9
 
 
 def printstructure(solar_cell):

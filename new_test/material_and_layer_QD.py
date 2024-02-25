@@ -6,6 +6,8 @@ import solcore.quantum_mechanics as QM
 import solcore.poisson_drift_diffusion as PDD
 # from solcore.quantum_mechanics.high_level_kp_QW import schrodinger
 # from save_picture import schrodinger_graph_LDOS
+# from new_version_saveing_date import wl
+from constant import *
 import numpy as np
 # import matplotlib.pyplot as plt
 # from solcore.quantum_mechanics.kp_bulk import KPbands
@@ -13,8 +15,8 @@ import numpy as np
 
 # ==================================================================================================================
 # setup
-T = 300
-wl = np.linspace(350, 1200, 401) * 1e-9
+# T = 300
+# wl = np.linspace(350, 1200, 401) * 1e-9
 
 def printstructure(solar_cell):
     space = "+" + '=' * 70 + "+"
@@ -685,3 +687,5 @@ def QDSC_GaSb_Sw_dotsize_interlayer():
         solar_each_all_axis[f'InSb dot = {y_axis} nm'] = solar_each_x_axis
     return solar_each_all_axis, plot_note
 
+if __name__ == '__main__':
+    print('this is material_and_layer_QD.py file')

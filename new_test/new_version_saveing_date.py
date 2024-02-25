@@ -12,17 +12,17 @@ from lib_save_file import *
 from solcore.solar_cell_solver import solar_cell_solver
 from solcore.light_source import LightSource
 import time
+from constant import *
+# vint = np.linspace(-3, 3, 600)
+# V = np.linspace(-1.5, 0, 300)  # np
 
-vint = np.linspace(-3, 3, 600)
-V = np.linspace(-1.5, 0, 300)  # np
-
-wl = np.linspace(350, 3000, 401) * 1e-9  # version1
-light_source = LightSource(source_type="standard"
-                           , version="AM1.5g"
-                           , x=wl
-                           , output_units="photon_flux_per_m"
-                           , concentration=1
-                           )
+# wl = np.linspace(350, 3000, 1001) * 1e-9  # version1
+# light_source = LightSource(source_type="standard"
+#                            , version="AM1.5g"
+#                            , x=wl
+#                            , output_units="photon_flux_per_m"
+#                            , concentration=1
+#                            )
 data_solar_cell = dict(
     T=None,
     absorbed=None,
@@ -82,10 +82,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     if len(set_of_data) > 5:
         simpifly = np.linspace(0, len(set_of_data), 5)
         simpifly = [int(i) for i in simpifly].append(len(set_of_data) - 1)
-    Pmpp = [];
-    Isc = [];
-    Voc = [];
-    FF = []
+    Pmpp = []; Isc = []; Voc = []; FF = []
     for num, data in enumerate(set_of_data):
         print(f'loading {data["mode"]}')
         ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']} ")
@@ -102,7 +99,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1_5.legend(loc="upper right", frameon=False)
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
-        ax1_5.set_ylim(0, 0.1)
+        ax1_5.set_ylim(0, 0.01)
         ax1_5.set_xlim(900, 3000)
         ax1_5.legend()
         fig_5.suptitle(f"{version}")
@@ -206,9 +203,10 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 1].set_ylabel("Fill Factor (%)")
 
-    fig1.suptitle(f"EQE of  {version}")
+    fig.suptitle(f"EQE of  {version}")
     fig_5.suptitle(f"Zoom EQE of {version}")
-    fig2.suptitle(f'performance of {version}')
+    fig1.suptitle(f'performance of {version}')
+    fig2.suptitle(f'IV of {version}')
     fig3.suptitle(f"Carrier distribution of {version}")
     fig3_5.suptitle(f"Zoom Carrier distribution of {version}")
     fig_b1.suptitle(f"band gap of {version}")
@@ -257,7 +255,7 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, focus_level=None, not
         focus_level.clamp = 20
         focus_level.nitermax = 100
         focus_level.ATol = 1.5e-8
-
+        focus_level.aug = 1
     else:
         pass
     print(focus_level.meshpoints)
@@ -269,6 +267,7 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, focus_level=None, not
     print(focus_level.clamp)
     print(focus_level.nitermax)
     print(focus_level.ATol)
+
     set_of_data = []
     for mode, cell in sim_mat.items():
         data_mode = data_solar_cell.copy()
@@ -294,7 +293,9 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, focus_level=None, not
                                         "RTol": focus_level.RTol,
                                         "clamp": focus_level.clamp,
                                         'nitermax': focus_level.nitermax,
-                                        'ATol':focus_level.ATol,
+                                        'ATol': focus_level.ATol,
+                                        'aug': focus_level.aug,
+
                                         }, )
         # IV
         solar_cell_solver(cell, "iv"
@@ -313,6 +314,8 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, focus_level=None, not
                                           "RTol": focus_level.RTol,
                                           "clamp": focus_level.clamp,
                                           'nitermax': focus_level.nitermax,
+                                          'ATol': focus_level.ATol,
+                                          'aug': focus_level.aug,
                                           }, )
         data_mode = defultsaveing(cell, data_mode, version)
 
@@ -365,11 +368,11 @@ secret_operation.ATol = 1.5e-08
 secret_operation.RTol = 1e-5
 
 maxfocuse = State()
-maxfocuse.meshpoints = -3000
+maxfocuse.meshpoints = 0
 maxfocuse.growth_rate = 0.3
 maxfocuse.coarse = 20e-9
 maxfocuse.fine = 1e-9
-maxfocuse.ultrafine = 0.01e-9
+maxfocuse.ultrafine = 0.001e-9
 
 maxfocuse.clamp = 15
 maxfocuse.nitermax = 1000
@@ -378,17 +381,17 @@ maxfocuse.RTol = 1.5e-5
 
 
 normal_operation = State()
-normal_operation.meshpoints = 0
-normal_operation.growth_rate = 0.1
-normal_operation.coarse = 20e-9
-normal_operation.fine = 1e-9
+normal_operation.meshpoints = -1000
+normal_operation.growth_rate = 0.5
+normal_operation.coarse = 10e-9
+normal_operation.fine = 0.1e-9
 normal_operation.ultrafine = 0.01e-9
 
 normal_operation.clamp = 20
-normal_operation.nitermax = 1000
+normal_operation.nitermax = 100
 normal_operation.ATol = 1.5e-08
-normal_operation.RTol = 1e-5
-
+normal_operation.RTol = 1e-4
+normal_operation.aug = 1
 
 flash = State()
 flash.meshpoints = -400
@@ -396,7 +399,7 @@ flash.growth_rate = 0.7
 flash.coarse = 20e-9
 flash.fine = 1e-9
 flash.ultrafine = 0.2e-9
-flash.nitermax = 200
+flash.nitermax = 100
 flash.clamp = 20
 flash.ATol = 1.5e-08
 flash.RTol = 1e-4
