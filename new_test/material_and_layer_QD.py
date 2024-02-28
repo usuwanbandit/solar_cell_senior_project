@@ -271,7 +271,7 @@ def dot_InSb_n_bot_sweep():
             Layer(width=si("100 nm"), material=n_GaAs_barrier, role="barrier"),
             # Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier")
         ], T=T, repeat=1, substrate=i_GaAs)
-        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
+        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True, blur=True, blurmode="left", periodic=False, filter_strength=si('0.01 eV'))
         GaAs_junction = Junction([
                                      Layer(width=si("350 nm"), material=n_GaAs, role="Emitter"),
                                  ]
@@ -322,7 +322,7 @@ def dot_InSb_n_top_sweep():
             Layer(width=si("100 nm"), material=n_GaAs_barrier, role="barrier"),
             # Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier")
         ], T=T, repeat=1, substrate=i_GaAs)
-        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
+        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True, blur=True, blurmode="left", periodic=False, filter_strength=si('0.01 eV'))
         GaAs_junction = Junction([
                                      Layer(width=si(f"{dot} nm"), material=n_GaAs, role="Emitter"),
                                  ]
@@ -374,7 +374,7 @@ def dot_InSb_n_inter_sweep():
             Layer(width=si(f"{dot} nm"), material=n_GaAs_barrier, role="barrier"),
             # Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier")
         ], T=T, repeat=1, substrate=i_GaAs)
-        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
+        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True, blur=True, blurmode="left", periodic=False, filter_strength=si('0.01 eV'))
         GaAs_junction = Junction([
                                      Layer(width=si("350 nm"), material=n_GaAs, role="Emitter"),
                                  ]
@@ -393,7 +393,7 @@ def dot_InSb_n_inter_sweep():
 # dot_InSb_n_inter_sweep()
 def InSb_dot_size_sweep():
     # define setup
-    dot_size = np.linspace(0.1, 3, 5)
+    dot_size = np.linspace(1, 3, 5)
     # modes = ['kp8x8_bulk']
     print(dot_size)
     plot_note = dict(x_axis=dot_size, x_axis_name="Dot size(nm)")
@@ -401,15 +401,15 @@ def InSb_dot_size_sweep():
     for dot in dot_size:
         # define material
         # AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
-        n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e16 cm-3'), )
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
                                           , eff_mass_lh_z=0.082)
         n_GaAs_barrier = material("GaAs")(T=T, strained=True, eff_mass_electron_Gamma=0.067
                                           , eff_mass_hh_z=0.51
-                                          , eff_mass_lh_z=0.082, Nd=si('1e17 cm-3'))
-        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
+                                          , eff_mass_lh_z=0.082, Nd=si('1e16 cm-3'))
+        p_GaAs = material("GaAs")(T=T, Na=si("1e18 cm-3"), )
         InSb = material("InSb")(T=T
                                 , strained=True
                                 , electron_mobility=7.8
@@ -422,23 +422,26 @@ def InSb_dot_size_sweep():
             # Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier"),
             Layer(width=si("100 nm"), material=i_GaAs_barrier, role="barrier"),
             Layer(width=si(f"{dot} nm"), material=InSb, role="well"),  # 5-20 nm
-            Layer(width=si("100 nm"), material=n_GaAs_barrier, role="barrier"),
+            Layer(width=si("50 nm"), material=n_GaAs_barrier, role="barrier"),
             # Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier")
         ], T=T, repeat=1, substrate=i_GaAs)
-        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
+        QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True, blur=True, blurmode="even", periodic=False)
         GaAs_junction = Junction([
                                      Layer(width=si("350 nm"), material=n_GaAs, role="Emitter"),
                                  ]
                                  + QW_list
                                  + [
-                                     Layer(width=si("200 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
                                      Layer(width=si("1700 nm"), material=p_GaAs, role="Emitter"),
                                  ],
-                                 T=T, kind="PDD", substrate=p_GaAs)
+                                 T=T, kind="PDD", substrate=p_GaAs
+                                 ,sn=0, sp=0,)
         my_solar_cell = SolarCell([
             GaAs_junction,
         ]
             , T=T, substrate=p_GaAs)
+        # for i in my_solar_cell.__dict__:
+        #     print(i)
         solar_each_size_1[f"dot size ={dot:.2e} nm"] = my_solar_cell
     return solar_each_size_1, plot_note
 # InSb_dot_size_sweep()
@@ -689,3 +692,4 @@ def QDSC_GaSb_Sw_dotsize_interlayer():
 
 if __name__ == '__main__':
     print('this is material_and_layer_QD.py file')
+    InSb_dot_size_sweep()

@@ -1,0 +1,360 @@
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+    meshpoints = -1000
+    growth_rate = 0.2
+    coarse = 10e-9
+    fine = 1e-9
+    ultrafine = 0.01e-9
+    clamp = 10
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 1e-5
+    srh = 0
+    rad = 1
+    aug = 1
+    sur = 0
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 3.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+    meshpoints = -1000
+    growth_rate = 0.2
+    coarse = 10e-9
+    fine = 1e-9
+    ultrafine = 0.01e-9
+    clamp = 10
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 1e-5
+    srh = 0
+    rad = 1
+    aug = 1
+    sur = 0
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 3.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+    meshpoints = -1000
+    growth_rate = 0.2
+    coarse = 10e-9
+    fine = 1e-9
+    ultrafine = 0.01e-9
+    clamp = 10
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 1e-5
+    srh = 0
+    rad = 1
+    aug = 1
+    sur = 0
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 3.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+    meshpoints = -1000
+    growth_rate = 0.2
+    coarse = 10e-9
+    fine = 1e-9
+    ultrafine = 0.01e-9
+    clamp = 10
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 1e-5
+    srh = 0
+    rad = 1
+    aug = 1
+    sur = 0
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 3.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+    meshpoints = -1000
+    growth_rate = 0.2
+    coarse = 10e-9
+    fine = 1e-9
+    ultrafine = 0.01e-9
+    clamp = 10
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 1e-5
+    srh = 0
+    rad = 1
+    aug = 1
+    sur = 0
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 1.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 2.5nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<layer 1e+02nm <'GaAs' material eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<layer 3.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 eff_mass_electron_Gamma=6.862236593612932e-32 eff_mass_hh_z=4.594015944408853e-31 eff_mass_lh_z=9.09455725632964e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
