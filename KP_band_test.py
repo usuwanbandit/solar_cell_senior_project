@@ -1,7 +1,7 @@
 from solcore import si, material
 from solcore.structure import Layer, Structure
 from solcore.constants import *
-
+from solcore.quantum_mechanics import schrodinger
 import solcore.quantum_mechanics as QM
 import numpy as np
 import matplotlib.pyplot as plt
@@ -117,13 +117,15 @@ def get_structure_to_potentials():
         Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
         Layer(width=si(f"{2.5} nm"), material=InSb, role="well"), # 5-20 nm
-        Layer(width=si(f"{10} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{20} nm"), material=GaSb, role="well"),
         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+        # Layer(width=si(f"{20} nm"), material=GaSb, role="well"),
+        # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
         Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
         ]
     # test_structure.substrate = bulk
     test_structure = Structure(test_structure, substrate=bulk)
+    schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
+
     align_test_structure = VBO_align(test_structure)
     fig1, ax_band = plt.subplots(2, 2, figsize=(16.875, 12))
 
@@ -220,7 +222,6 @@ AlInP = material("AlInP")(T=T, Al=0.42, Nd=si('3e17 cm-3'))
 AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
 #
 get_structure_to_potentials()
-# # schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
 # i_GaAs = material("GaAs")(T=T)
 # InSb = material("InSb")(T=T, strained=True)
 # SR = Structure(
@@ -266,3 +267,15 @@ get_structure_to_potentials()
 # add_source('Others', 'custom_mats', custom_nk_path)
 # add_source('Others', 'nk', nk_db_path)
 # add_source('Parameters', 'custom', param_path)
+test_structure =[
+        Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+        Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+        Layer(width=si(f"{1} nm"), material=InSb, role="well"), # 5-20 nm
+        Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+        # Layer(width=si(f"{20} nm"), material=GaSb, role="well"),
+        # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+        Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
+        ]
+    # test_structure.substrate = bulk
+test_structure = Structure(test_structure, substrate=i_GaAs)
+schrodinger(test_structure, show=True, graphtype="potentialsLDOS")

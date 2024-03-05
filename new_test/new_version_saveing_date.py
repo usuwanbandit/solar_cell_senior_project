@@ -1,7 +1,7 @@
 from solcore.state import State
 import mpld3
 from matplotlib import pyplot as plt, cm, ticker
-from material_of_InSb_GaSb import *
+# from material_of_InSb_GaSb import *
 from material_and_layer_QD import *
 from lib_save_file import *
 from solcore.solar_cell_solver import solar_cell_solver
@@ -78,9 +78,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     if len(set_of_data) > 5:
         simpifly = np.linspace(0, len(set_of_data), 5)
         simpifly = [int(i) for i in simpifly].append(len(set_of_data) - 1)
-    Pmpp = [];
-    Isc = [];
-    Voc = [];
+    Pmpp = []
+    Isc = []
+    Voc = []
     FF = []
     for num, data in enumerate(set_of_data):
         print(f'loading {data["mode"]}')
@@ -99,7 +99,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
         ax1_5.set_ylim(1e-12, 1)
-        ax1_5.set_xlim(900, 2500)
+        ax1_5.set_xlim(900, 1200)
         ax1_5.legend()
         fig_5.suptitle(f"{version}")
 
@@ -112,23 +112,25 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         FF.append(data["iv"]["FF"])
         if simpifly is not None and num in simpifly:
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
-            axJ.semilogy(-data["iv"]["IV"][0], data["iv"]["IV"][1], label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
-            axJ.semilogy(-data['iv']['IV'][0], data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
-            axJ.semilogy(-data['iv']['IV'][0], data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
-            axJ.semilogy(-data['iv']['IV'][0], data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
+
             try:
-                axJ.semilogy(-data['iv']['IV'][0], data['recombination_currents']['Jaug'], color=color[num],linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+                axJ.semilogy(-data["iv"]["IV"][0], data["iv"]["IV"][1], label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+                axJ.semilogy(-V, data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
+                axJ.semilogy(-V, data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
+                axJ.semilogy(-V, data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
+                axJ.semilogy(-V, data['recombination_currents']['Jaug'], color=color[num],linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
             except:
                 pass
 
         elif simpifly is None:
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
-            axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]) , label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
-            axJ.semilogy(-data['iv']['IV'][0], abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
-            axJ.semilogy(-data['iv']['IV'][0],abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
-            axJ.semilogy(-data['iv']['IV'][0], abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
+
             try:
-                axJ.semilogy(-data['iv']['IV'][0], abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+                axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+                axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
+                axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
+                axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
+                axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
             except:
                 pass
         axIV.set_ylim(0, 30)
@@ -272,43 +274,50 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     print('save complete')
 
 
-def simulation1D_sun_constant(version, sim_mat, plot_note, focus_level=None, note='', ):
-    if focus_level == None:
-        focus_level = State()
-        focus_level.meshpoints = -400
-        focus_level.growth_rate = 0.7
-        focus_level.coarse = 20e-9
-        focus_level.fine = 1e-9
-        focus_level.ultrafine = 0.2e-9
-        focus_level.RTol = 1e-6
-        focus_level.clamp = 20
-        focus_level.nitermax = 100
-        focus_level.ATol = 1.5e-8
-        focus_level.aug = 0
-        focus_level.gen = 0
-        focus_level.RTol = 1e-4
-        focus_level.srh = 1
-        focus_level.rad = 1
-        focus_level.aug = 1
-        focus_level.sur = 1
-        focus_level.gen = 1
+def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, note='', ):
+    if pdd_options == None:
+        pdd_options = State()
+
+        pdd_options.recalculate_absorption = True
+
+        # Mesh control
+        pdd_options.meshpoints = -400
+        pdd_options.growth_rate = 0.7
+        pdd_options.coarse = 20e-9
+        pdd_options.fine = 1e-9
+        pdd_options.ultrafine = 0.2e-9
+
+        # Convergence control
+        pdd_options.clamp = 20
+        pdd_options.nitermax = 100
+        pdd_options.ATol = 1e-14
+        pdd_options.RTol = 1e-6
+
+        # Recombination control
+        pdd_options.srh = 1
+        pdd_options.rad = 1
+        pdd_options.aug = 0
+        pdd_options.sur = 1
+        pdd_options.gen = 0
     else:
         pass
-    print('focus_level.meshpoints',focus_level.meshpoints)
-    print('focus_level.growth_rate',focus_level.growth_rate)
-    print('focus_level.coarse',focus_level.coarse)
-    print('focus_level.fine',focus_level.fine)
-    print('focus_level.ultrafine',focus_level.ultrafine)
-    print('focus_level.RTol',focus_level.RTol)
-    print('focus_level.clamp',focus_level.clamp)
-    print('focus_level.nitermax',focus_level.nitermax)
-    print('focus_level.ATol',focus_level.ATol)
-    print('focus_level.RTol',focus_level.RTol)
-    print('focus_level.srh',focus_level.srh)
-    print('focus_level.rad',focus_level.rad)
-    print('focus_level.aug',focus_level.aug)
-    print('focus_level.sur',focus_level.sur)
-    print('focus_level.gen',focus_level.gen)
+    print('pdd_options.recalculate_absorption', pdd_options.recalculate_absorption)
+    print('pdd_options.meshpoints',pdd_options.meshpoints)
+    print('pdd_options.growth_rate',pdd_options.growth_rate)
+    print('pdd_options.coarse',pdd_options.coarse)
+    print('pdd_options.fine',pdd_options.fine)
+    print('pdd_options.ultrafine',pdd_options.ultrafine)
+    print('pdd_options.clamp',pdd_options.clamp)
+    print('pdd_options.nitermax',pdd_options.nitermax)
+    print('pdd_options.RTol',pdd_options.RTol)
+    print('pdd_options.ATol',pdd_options.ATol)
+    print('pdd_options.RTol',pdd_options.RTol)
+    print('pdd_options.srh',pdd_options.srh)
+    print('pdd_options.rad',pdd_options.rad)
+    print('pdd_options.aug',pdd_options.aug)
+    print('pdd_options.sur',pdd_options.sur)
+    print('pdd_options.gen',pdd_options.gen)
+
     set_of_data = []
     for mode, cell in sim_mat.items():
         data_mode = data_solar_cell.copy()
@@ -322,83 +331,91 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, focus_level=None, not
         data_mode['list_structure'].append(
             "end item   ================================================================================")
         print(data_mode['mode'])
-        focus_level.position = []
-        offset = 0
-        for junction in cell:
-            for layer in junction:
-                if layer.role is not None:
-                    focus_level.position += np.arange(offset, offset+layer.width, 1e-10).tolist()
-                else:
-                    focus_level.position += np.arange(offset, offset+layer.width, 1e-11).tolist()
-                offset += layer.width
-
-        focus_level.position = np.array(focus_level.position)
-        solar_cell_solver(cell, "qe",
-                          user_options={"light_source": light_source,
-                                        "wavelength": wl,
-                                        "optics_method": "TMM",
-                                        "radiative_coupling": False,
-                                        "coarse": focus_level.coarse,
-                                        "meshpoints": focus_level.meshpoints,
-                                        "growth_rate": focus_level.growth_rate,
-                                        "fine": focus_level.fine,
-                                        "ultrafine": focus_level.ultrafine,
-                                        "clamp": focus_level.clamp,
-                                        'nitermax': focus_level.nitermax,
-                                        'ATol': focus_level.ATol,
-                                        "RTol": focus_level.RTol,
-                                        'srh': focus_level.srh,
-                                        'rad': focus_level.rad,
-                                        'aug': focus_level.aug,
-                                        'sur': focus_level.sur,
-                                        'gen': focus_level.gen,
-
-                                        }, )
-        # IV
-        solar_cell_solver(cell, "iv"
-                          , user_options={"light_source": light_source,
-                                          "wavelength": wl,
-                                          "optics_method": 'TMM',
-                                          "light_iv": True,
-                                          "mpp": True,
-                                          "voltages": V,
-                                          "internal_voltages": vint,
-                                          "radiative_coupling": False,
-                                          "position": focus_level.position,
-                                          "coarse": focus_level.coarse,
-                                          "meshpoints": focus_level.meshpoints,
-                                          "growth_rate": focus_level.growth_rate,
-                                          "fine": focus_level.fine,
-                                          "ultrafine": focus_level.ultrafine,
-                                          "clamp": focus_level.clamp,
-                                          'nitermax': focus_level.nitermax,
-                                          'ATol': focus_level.ATol,
-                                          "RTol": focus_level.RTol,
-                                          'srh': focus_level.srh,
-                                          'rad': focus_level.rad,
-                                          'aug': focus_level.aug,
-                                          'sur': focus_level.sur,
-                                          'gen': focus_level.gen,
-                                          }, )
+        savecell(cell, pdd_options)
         data_mode = defultsaveing(cell, data_mode, version)
-
+        print(data_mode["iv"]["Pmpp"])
+        print(data_mode["iv"]["Isc"])
+        print(data_mode["iv"]["Voc"])
+        print(data_mode["iv"]["FF"])
         set_of_data.append(data_mode)
         back_up_data(set_of_data, version)
     return set_of_data
 
+def savecell(cell, pdd_options):
+    offset = 0
+    pdd_options.position = []
+    # for junction in cell:
+    #     for layer in junction:
+    #                 if layer.role is not None:
+    #                     pdd_options.position.append(max(1e-10, layer.width / 5000))
+    #                 else:
+    #                     pdd_options.position.append(1e-11)
+    #                 offset += layer.width
+    print(pdd_options.position)
+    print(len(pdd_options.position))
+    solar_cell_solver(cell, "qe",
+                      user_options={"light_source": light_source,
+                                    "wavelength": wl,
+                                    "optics_method": "TMM",
+                                    # "internal_voltages": vint,
+                                    # "radiative_coupling": True,
+                                    # 'recalculate_absorption': pdd_options.recalculate_absorption,
+                                    # "position": pdd_options.position,
+                                    "meshpoints": pdd_options.meshpoints,
+                                    "growth_rate": pdd_options.growth_rate,
+                                    "coarse": pdd_options.coarse,
+                                    "fine": pdd_options.fine,
+                                    "ultrafine": pdd_options.ultrafine,
+                                    "clamp": pdd_options.clamp,
+                                    'nitermax': pdd_options.nitermax,
+                                    'ATol': pdd_options.ATol,
+                                    "RTol": pdd_options.RTol,
+                                    'srh': pdd_options.srh,
+                                    'rad': pdd_options.rad,
+                                    'aug': pdd_options.aug,
+                                    'sur': pdd_options.sur,
+                                    'gen': pdd_options.gen,
+                                    }, )
+    # IV
+    solar_cell_solver(cell, "iv"
+                      , user_options={"light_source": light_source,
+                                      "wavelength": wl,
+                                      "optics_method": None,
+                                      "light_iv": True,
+                                      "mpp": True,
+                                      "voltages": V,
+                                      "internal_voltages": vint,
+                                      # "radiative_coupling": True,
+                                      # "position": pdd_options.position,
+                                      "meshpoints": pdd_options.meshpoints,
+                                      "growth_rate": pdd_options.growth_rate,
+                                      "coarse": pdd_options.coarse,
+                                      "fine": pdd_options.fine,
+                                      "ultrafine": pdd_options.ultrafine,
+                                      "clamp": pdd_options.clamp,
+                                      'nitermax': pdd_options.nitermax,
+                                      'ATol': pdd_options.ATol,
+                                      "RTol": pdd_options.RTol,
+                                      'srh': pdd_options.srh,
+                                      'rad': pdd_options.rad,
+                                      'aug': pdd_options.aug,
+                                      'sur': pdd_options.sur,
+                                      'gen': pdd_options.gen,
+                                      }, )
+    return cell
 
-def sim1D_sun_constant(version, sim_mat, plot_note, note, focus_level=None):  # sc = simulation at 1 sun
+def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None):  # sc = simulation at 1 sun
     start = time.perf_counter()
-    # print([i for i in focus_level.__dict__])
-    # print(focus_level.meshpoints)
-    # print(focus_level.growth_rate)
-    # print(focus_level.coarse)
-    # print(focus_level.fine)
-    # print(focus_level.ultrafine)
-    # print(focus_level.RTol)
-    # print(focus_level.clamp)
+    # print([i for i in pdd_options.__dict__])
+    # print(pdd_options.meshpoints)
+    # print(pdd_options.growth_rate)
+    # print(pdd_options.coarse)
+    # print(pdd_options.fine)
+    # print(pdd_options.ultrafine)
+    # print(pdd_options.RTol)
+    # print(pdd_options.clamp)
     set_of_data_sun_constant = simulation1D_sun_constant(version, sim_mat, plot_note, note=note,
-                                                         focus_level=focus_level)
+                                                         pdd_options=pdd_options)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
@@ -415,118 +432,179 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, focus_level=None):  # 
         print(f"Error: {e}")
     # show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     # root.update()
+    # plt.show()
 
 
 # SetMeshParameters(ultrafine=1e-10, growth_rate=0.8)
 
-maxfocuse = State()
-maxfocuse.meshpoints = 0
-maxfocuse.growth_rate = 0.3
-maxfocuse.coarse = 20e-9
-maxfocuse.fine = 1e-9
-maxfocuse.ultrafine = 0.001e-9
-
-maxfocuse.clamp = 15
-maxfocuse.nitermax = 1000
-maxfocuse.ATol = 1.5e-08
-maxfocuse.RTol = 1.5e-5
-
-
 normal_operation = State()
-normal_operation.meshpoints = -1000
-normal_operation.growth_rate = 0.2
-normal_operation.coarse = 10e-9
-normal_operation.fine = 0.1e-9
-normal_operation.ultrafine = 0.01e-9
+normal_operation.recalculate_absorption = True
 
-normal_operation.clamp = 15
+normal_operation.meshpoints = -400
+normal_operation.growth_rate = 0.7
+normal_operation.coarse = 20e-9
+normal_operation.fine = 1e-9
+normal_operation.ultrafine = 0.2e-9
+
+normal_operation.clamp = 0.01
 normal_operation.nitermax = 100
 normal_operation.ATol = 1.5e-08
 normal_operation.RTol = 1e-4
 
 normal_operation.srh = 1
 normal_operation.rad = 1
-normal_operation.aug = 1
+normal_operation.aug = 0
 normal_operation.sur = 1
-normal_operation.gen = 1
+normal_operation.gen = 0
 
 flash = State()
-flash.meshpoints = -1000
-flash.growth_rate = 0.2
-flash.coarse = 10e-9
-flash.fine = 1e-9
-flash.ultrafine = 0.01e-9
+flash.recalculate_absorption = True
 
-flash.clamp = 15
+
+flash.meshpoints = 6000
+flash.growth_rate = 0.5
+flash.coarse = 0.2e-9
+flash.fine = 0.02e-9
+flash.ultrafine = 0.002e-9
+
+flash.clamp = 0.01
 flash.nitermax = 1000
 flash.ATol = 1.5e-08
-flash.RTol = 1e-4
+flash.RTol = 1e-6
 
-flash.srh = 0
+flash.srh = 1
 flash.rad = 1
-flash.aug = 1
-flash.sur = 0
+flash.aug = 0
+flash.sur = 1
 flash.gen = 0
 
-# for i in flash.__dict__:
-#     print(i)
-# 'meshpoints': -400,
-# 'growth_rate': 0.8,
-# 'coarse': 20e-9,
-# 'fine': 1e-9,
-# 'ultrafine': 0.2e-9,
 if __name__ == '__main__':
-    version = "InSb_pn"
-    sim_mat, plot_note = InSb_dot_size_sweep()
-    note = """T=300
+    version = "QDSC_GaSb_Sw_dotsize_ref"
+    sim_mat, plot_note = QDSC_GaSb_Sw_dotsize_ref()
+    note = f"""
     T=300
     vint = np.linspace(-6, 4, 1000)
-    V = np.linspace(-3, 0, 1000)  # np
-    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
-    meshpoints = -1000
-    growth_rate = 0.2
-    coarse = 10e-9
-    fine = 1e-9
-    ultrafine = 0.01e-9
-    clamp = 10
-    nitermax = 100
-    ATol = 1.5e-08
-    RTol = 1e-5
-    srh = 0
-    rad = 1
-    aug = 1
-    sur = 0
-    gen = 0
+    V = np.linspace(0, 3, 1000)  # pn
+    wl = np.linspace(350, 2500, 500) *1e-9   # version1
+    recalculate_absorption = False
+    meshpoints ={flash.meshpoints}
+    growth_rate = {flash.growth_rate}
+    coarse = {flash.coarse}
+    fine = {flash.fine}
+    ultrafine = {flash.ultrafine}
+
+    clamp = {flash.clamp}
+    nitermax = {flash.nitermax}
+    ATol = {flash.ATol}
+    RTol = {flash.RTol}
+
+    srh = {flash.srh}
+    rad = {flash.rad}
+    aug = {flash.aug}
+    sur = {flash.sur}
+    gen = {flash.gen}
     radiative_coupling: False
     optics_method: "TMM",
     """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, focus_level=flash)
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=flash)
 
-    # version = "InSb_pn_lossy_no_radiative_coupling"
-    # sim_mat, plot_note = InSb_dot_size_sweep()
-    # note = """T=300
+    version = "InSb_in_p_mod_custom"
+    sim_mat, plot_note = InSb_dot_size_sweep()
+    note = f"""
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 2500, 500) *1e-9   # version1
+    recalculate_absorption = True
+
+    meshpoints ={flash.meshpoints }
+    
+    growth_rate = {flash.growth_rate  }
+    coarse = {flash.coarse}
+    fine = {flash.fine }
+    ultrafine = {flash.ultrafine}
+
+    clamp = {flash.clamp}
+    nitermax = {flash.nitermax}
+    ATol = {flash.ATol}
+    RTol = {flash.RTol}
+
+    srh = {flash.srh}
+    rad = {flash.rad}
+    aug = {flash.aug}
+    sur = {flash.sur}
+    gen = {flash.gen}
+    radiative_coupling: False
+    optics_method: "TMM",
+    """
+    sim1D_sun_constant(version, sim_mat, plot_note, note
+                       , pdd_options=flash
+                       )
+
+
+    # version = "ref_QDSC_fix_point"
+    # sim_mat, plot_note = ref_QDSC()
+    # note = f"""
+    #     T=300
     # vint = np.linspace(-6, 4, 1000)
     # V = np.linspace(-3, 0, 1000)  # np
-    # wl = np.linspace(350, 2500, 1001)*1e-9   # version1
-    # meshpoints = -1000
-    # growth_rate = 0.2
-    # coarse = 10e-9
-    # fine = 1e-9
-    # ultrafine = 0.01e-9
-    # clamp = 15
-    # nitermax = 100
-    # ATol = 1.5e-08
-    # RTol = 1e-4
-    # srh = 1
-    # rad = 1
-    # aug = 1
-    # sur = 1
-    # radiative_coupling: False
-    # optics_method: "TMM",
-    # """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, focus_level=normal_operation)
-    # version = "InSb_pn_lossy_no_radiative_coupling"
-    # set_of_data_sun_constant = load_old_data('InSb_pn_lossy_no_radiative_coupling.pkl')
+    # wl = np.linspace(350, 2500, 500) * 1e-9  # version1
+    #
+    #     meshpoints ={flash.meshpoints}
+    #     growth_rate = {flash.growth_rate}
+    #     coarse = {flash.coarse}
+    #     fine = {flash.fine}
+    #     ultrafine = {flash.ultrafine}
+    #
+    #     clamp = {flash.clamp}
+    #     nitermax = {flash.nitermax}
+    #     ATol = {flash.ATol}
+    #     RTol = {flash.RTol}
+    #
+    #     srh = {flash.srh}
+    #     rad = {flash.rad}
+    #     aug = {flash.aug}
+    #     sur = {flash.sur}
+    #     gen = {flash.gen}
+    #     radiative_coupling: False
+    #     optics_method: "TMM",
+    #     """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note
+    #                    , pdd_options=flash
+    #                    )
+    #
+    # version = "ref_QDSC_default"
+    # sim_mat, plot_note = ref_QDSC()
+    # note = f"""T=300
+    #     T=300
+    # vint = np.linspace(-6, 4, 1000)
+    # V = np.linspace(-3, 0, 1000)  # np
+    # wl = np.linspace(350, 2500, 500) * 1e-9  # version1
+    #
+    #     recalculate_absorption = True
+    #
+    #     meshpoints ={normal_operation.meshpoints}
+    #     growth_rate = {normal_operation.growth_rate}
+    #     coarse = {normal_operation.coarse}
+    #     fine = {normal_operation.fine}
+    #     ultrafine = {normal_operation.ultrafine}
+    #
+    #     clamp = {normal_operation.clamp}
+    #     nitermax = {normal_operation.nitermax}
+    #     ATol = {normal_operation.ATol}
+    #     RTol = {normal_operation.RTol}
+    #
+    #     srh = {normal_operation.srh}
+    #     rad = {normal_operation.rad}
+    #     aug = {normal_operation.aug}
+    #     sur = {normal_operation.sur}
+    #     gen = {normal_operation.gen}
+    #     radiative_coupling: False
+    #     optics_method: "TMM",
+    #     """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    # version = "InSb_pn"
+    # set_of_data_sun_constant = load_old_data('InSb_pn.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))

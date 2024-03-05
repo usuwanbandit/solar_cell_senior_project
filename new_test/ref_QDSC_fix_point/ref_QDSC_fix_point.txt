@@ -1,0 +1,2745 @@
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+
+        T=300
+        vint = np.linspace(-6, 4, 1000)
+        V = np.linspace(-3, 0, 1000)  # np
+        wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+        recalculate_absorption = True
+
+        meshpoints =1900
+        growth_rate = 0.5
+        coarse = 2e-08
+        fine = 1e-09
+        ultrafine = 2e-11
+
+        clamp = 10
+        nitermax = 100
+        ATol = 1.5e-08
+        RTol = 1e-06
+
+        srh = 1
+        rad = 1
+        aug = 0
+        sur = 1
+        gen = 0
+        radiative_coupling: False
+        optics_method: "TMM",
+        
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'sn': 1000000.0, 'sp': 1000000.0, 'T': 300, 'kind': 'PDD'}
+	<Emitter layer 1.5e+02nm <'GaAs' material Nd=1e+24>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 6.0nm <'InGaAs' material In=0.2 strained=True>>
+	<layer 2.0nm <'GaAs' material>>
+	<layer 5.0nm <'GaAsP' material P=0.1 strained=True>>
+	<Base layer 2e+03nm <'GaAs' material Na=8e+22>>>
+end item   ================================================================================
