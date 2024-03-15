@@ -5,7 +5,7 @@ This is my senior project to simulation by solcore that aim to improve effecienc
 
 
 All .plk file is data for simulation 
-
+All .html have carrier distibution and bandsturcture for positive bias
 
 
 ## Authors
