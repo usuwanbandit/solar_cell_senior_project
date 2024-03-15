@@ -81,7 +81,10 @@ def save_file_direction(save_folder, name_text, saveing_data=list()):  # find fr
 
 def save_all_file_0d(data, version, con):
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
+    fig_, ax1_ = plt.subplots(1, 1, figsize=(6, 4))
+
     fig3, axCar = plt.subplots(1, 1, figsize=(16, 5))
+    fig_b1, band1 = plt.subplots(1, 1, figsize=(16, 5))
 
     ax1.plot(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed")
     ax1.legend(loc="upper right", frameon=False)
@@ -89,36 +92,43 @@ def save_all_file_0d(data, version, con):
     ax1.set_ylabel("EQE")
     ax1.set_ylim(0, 1.1)
     ax1.set_xlim(300,1500)
+
     plt.legend()
     plt.tight_layout()
 
+    ax1_.semilogy(wl * 1e9, data["absorbed"][0], label=f"Total Absorbed")
+    ax1_.legend(loc="upper right", frameon=False)
+    ax1_.set_xlabel("Wavelength (nm)")
+    ax1_.set_ylabel("EQE")
 
-    fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
+    ax1_.set_ylim(1e-6, 0.1)
+    ax1_.set_xlim(900, 1500)
 
-    axes[0, 0].semilogx(con, np.array(data["Pmpp"]) * 100 / get_ligth_power(con=con), "r-o")
-    axes[0, 0].set_xlabel("Concentration (suns)")
-    axes[0, 0].set_ylabel("Efficiency (%)")
+    # fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
 
-    axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
-    axes[0, 1].set_xlabel("Concentration (suns)")
-    axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+    # axes[0, 0].semilogx(con, np.array(data["Pmpp"]) * 100 / get_ligth_power(con=con), "r-o")
+    # axes[0, 0].set_xlabel("Concentration (suns)")
+    # axes[0, 0].set_ylabel("Efficiency (%)")
+    #
+    # axes[0, 1].loglog(con, abs(np.array(data["Isc"])), "b-o")
+    # axes[0, 1].set_xlabel("Concentration (suns)")
+    # axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
+    #
+    # axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
+    # axes[1, 0].set_xlabel("Concentration (suns)")
+    # axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+    #
+    # axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
+    # axes[1, 1].set_xlabel("Concentration (suns)")
+    # axes[1, 1].set_ylabel("Fill Factor (%)")
+    # fig1.suptitle(f"{version}")
 
-    axes[1, 0].semilogx(con, abs(np.array(data["Voc"])), "g-o")
-    axes[1, 0].set_xlabel("Concentration (suns)")
-    axes[1, 0].set_ylabel("V$_{OC}$ (V)")
-
-    axes[1, 1].semilogx(con, abs(np.array(data["FF"])) * 100, "k-o")
-    axes[1, 1].set_xlabel("Concentration (suns)")
-    axes[1, 1].set_ylabel("Fill Factor (%)")
-    fig1.suptitle(f"{version}")
-    plt.legend()
-    plt.tight_layout()
 
 
     fig2, axIV = plt.subplots(1, 1, figsize=(6, 4))
     count = 0
     for i in data["allI"]:
-        axIV.plot(-V, i / -10, label=f"x = Concentration (suns) = {con[count]}")
+        axIV.plot(-V, i / -10, label=f"{version}")
         count += 1
 
     axIV.set_ylim(0, 1e5)
@@ -137,10 +147,30 @@ def save_all_file_0d(data, version, con):
         plt.tight_layout()
     except:
         pass
-
-    fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    fig1.savefig(f'performance_{version}.png', dpi=300)
+    try:
+        x = data['pdd_data']['positive_V']['Bandstructure']['x']
+        Ec = data['pdd_data']['positive_V']['Bandstructure']['Ec']
+        Ev = data['pdd_data']['positive_V']['Bandstructure']['Ev']
+        Efc = data['pdd_data']['positive_V']['Bandstructure']['Efe']
+        Efh = data['pdd_data']['positive_V']['Bandstructure']['Efh']
+        potential = data['pdd_data']['positive_V']['Bandstructure']['potential']
+        band1.set_title(data["mode"])
+        band1.plot(x * 1e9, Ec, 'b', label="Ec")
+        band1.plot(x * 1e9, Ev, 'r', label="Ev")
+        band1.plot(x * 1e9, Efc, 'b--', label="Efe")
+        band1.plot(x * 1e9, Efh, 'r--', label="Efh")
+        band1.plot(x * 1e9, potential, label="potential")
+        band1.set_xlabel('Position (nm)')
+        band1.set_ylabel('Energy (eV)')
+    except:
+        pass
     fig.savefig(f'EQE_{version}.png', dpi=300)
+    fig2.savefig(f'IV_curve_{version}.png', dpi=300)
+    fig_b1.suptitle(f"band gap of {version}")
+
+    fig_b1.tight_layout()
+    # fig1.savefig(f'performance_{version}.png', dpi=300)
+    mpld3.save_html(fig_b1, f'Band_diagramming_of_{version}.html')
     mpld3.save_html(fig3, f'carrier_distribution_{version}.html')
 
     save_file_direction(f'{version}', f'{version}', saveing_data=[data])
@@ -154,7 +184,7 @@ def save_all_file_0d(data, version, con):
 
     current_path = os.getcwd()
     movefile(f'IV_curve_{version}.png', f'{version}')
-    movefile(f'performance_{version}.png', f'{version}')
+    # movefile(f'performance_{version}.png', f'{version}')
     movefile(f'EQE_{version}.png', f'{version}')
     print('save complete')
 
@@ -252,6 +282,7 @@ def defultsave(solarcell, saveaddrest, version, save=True):
     for i in IV_saving:
         saveaddrest[f"{i}"].append(solarcell.iv[f"{i}"])
     saveaddrest["allI"].append(solarcell.iv["IV"][1])
+    saveaddrest['pdd_data'] = solarcell[0].pdd_data.copy()
 
     if save:
         with open(f'{version}.pkl', 'wb') as fin:
@@ -288,7 +319,7 @@ def load_old_data(version):
 
 # light
 # wl = np.linspace(300, 3000, 700) * 1e-9
-wl = np.linspace(350, 1200, 401)*1e-9 # version1
+wl = np.linspace(350, 1100, 300)*1e-9 # version1
 light_source = LightSource(source_type="standard"
                            , version="AM1.5g"
                            , x=wl
@@ -375,26 +406,24 @@ set_of_data = []
 # simulation 0d
 def simulation0D(version, sim_mat, note=''):
     data = {"allI": [], "Isc": [], "Voc": [], "FF": [], "Pmpp": [], "absorbed": [], "xsc": [], "nsc": [], "psc": [],
-            "xeq": [], "neq": [], "peq": [], "note": note, 'list_structure': [str(i) for i in sim_mat]}
+            "xeq": [], "neq": [], "peq": [], "note": note, 'list_structure': [str(i) for i in sim_mat], 'pdd_data':None}
 
     solar_cell_solver(sim_mat, "qe",
                       user_options={"light_source": light_source,
                                     "wavelength": wl,
                                     "optics_method": "TMM", }, )
     data = save_ligth(sim_mat, data, version)
-    for i in con_light:
-        light_source.concentration = i
-        # IV
-        solar_cell_solver(sim_mat, "iv"
-                          , user_options={"light_source": light_source,
-                                          "wavelength": wl,
-                                          "optics_method": None,
-                                          "light_iv": True,
-                                          "mpp": True,
-                                          "voltages": V,
-                                          "internal_voltages": vint,
-                                          }, )
-        data = defultsave(sim_mat, data, version)
+    # IV
+    solar_cell_solver(sim_mat, "iv"
+                      , user_options={"light_source": light_source,
+                                      "wavelength": wl,
+                                      "optics_method": None,
+                                      "light_iv": True,
+                                      "mpp": True,
+                                      "voltages": V,
+                                      "internal_voltages": vint,
+                                      }, )
+    data = defultsave(sim_mat, data, version)
     return data
 
 
@@ -439,19 +468,22 @@ def simulation1D(version, sim_mat, note=''):
 def sim0D():
     start = time.perf_counter()
     version = "referance_solar_cell_0580A"
-    sim_mat = QDSC_InSb_and_GaSb()
+    sim_mat = solar_cell_InSb_and_GaSb_like_paper()
     note = 'full reference'
     data = simulation0D(version, sim_mat, note=note)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours}h/{minutes}min/{seconds}sec")
-    root = tk.Tk()
-    root.withdraw()
-    show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    # root = tk.Tk()
+    # root.withdraw()
+    # show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
     save_all_file_0d(data, version, con_light)
-    movefile(f'carrier_distribution_{version}.html', f'{version}')
-
-    root.update()
+    try:
+        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+        movefile(f'carrier_distribution_{version}.html', f'{version}')
+    except:
+        pass
+    # root.update()
 
 
 
@@ -489,8 +521,8 @@ def load(version, is1D=False, ):
 
 
 def main():
-    # sim1D()
-    load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
+    sim0D()
+    # load("QDSC_InSb_and_GaSb_barrier_mod", is1D=True)
 
 if __name__ == "__main__":
     main()

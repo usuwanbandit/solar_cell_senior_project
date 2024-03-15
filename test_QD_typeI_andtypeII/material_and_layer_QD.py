@@ -14,7 +14,8 @@ import pickle
 # ==================================================================================================================
 # setup
 T = 300
-wl = np.linspace(350, 1200, 401) * 1e-9
+# wl = np.linspace(350, 1200, 401) * 1e-9
+wl = np.linspace(350, 1500, 1000)*1e-9 # version1
 
 def printstructure(solar_cell):
     space = "+" + '=' * 70 + "+"
@@ -639,7 +640,7 @@ def solar_cell_InSb_and_GaSb_like_paper():
     # solar_each_size_1 = {}
     # for i in interlayer:
     AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
-    n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e17 cm-3"))
+    n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e18 cm-3"), strained=True)
     n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
     i_GaAs = material("GaAs")(T=T)
     # p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
@@ -648,35 +649,35 @@ def solar_cell_InSb_and_GaSb_like_paper():
     GaAs_cap = material('GaAs')(T=T, Nd=si('1e16 cm-3'), )
     p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
     InSb = material("InSb")(T=T
-                            , strained=False
+                            , strained=True
                             , electron_mobility=7.7
                             , hole_mobility=0.0850, valence_band_offset=si("0.0 eV")
                             , band_gap=si("0.173723 eV"), spin_orbit_splitting=si("0.81 eV")
                             , gamma1=34.8, gamma2=15.5, gamma3=16.5
                             , a_c=si("-6.94 eV"), a_v=si("-0.36 eV"), b=si("-2 eV")
-                            , Nd=si("5e16 cm-3")
+                            # , Nd=si("5e16 cm-3")
                             )
     GaSb = material("GaSb")(T=T, strained=True,
                             electron_mobility=si("3e3 cm2"),
                             hole_mobility=si("1e3 cm2"),
-                            Nd = si("5e16 cm-3")
+                            # Nd = si("5e16 cm-3")
                             )
     # print(InSb.eff_mass_lh_z)
     QW = PDD.QWunit([
                         Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
                     ]
                     +
-                    [Layer(width=si(f"{100-size_InSb} nm"), material=GaAs_cap, role="interlayer"),
+                    [Layer(width=si(f"{100-size_InSb} nm"), material=i_GaAs, role="interlayer"),
                      Layer(width=si(f"{size_InSb} nm"), material=InSb, role="well"),  # 5-20 nm
-                     Layer(width=si(f"{100-size_GaSb} nm"), material=GaAs_cap, role="interlayer"),
+                     Layer(width=si(f"{100-size_GaSb} nm"), material=i_GaAs, role="interlayer"),
                      Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),
-                     Layer(width=si(f"{50} nm"), material=GaAs_cap, role="interlayer"),
+                     Layer(width=si(f"{50} nm"), material=n_GaAs, role="interlayer"),
                      ]  # 5-20 nm
                     # Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),]*dot
 
                     +
                     [Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier")
-                     ], T=T, repeat=1, substrate=GaAs_cap)
+                     ], T=T, repeat=1, substrate=i_GaAs)
     QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
     GaAs_junction = Junction([
                                  Layer(width=si("50 nm"), material=n_GaAs, role="Emitter"), ]
