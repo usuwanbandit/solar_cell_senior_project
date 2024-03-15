@@ -1,6 +1,5 @@
 
 *.yml
-*.html
 *.dat
 data/database/doc/changelog.txt
 data/AlInP_nk.csv
