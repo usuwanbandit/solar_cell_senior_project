@@ -368,13 +368,13 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
 def savecell(cell, pdd_options):
     offset = 0
     pdd_options.position = []
-    # for junction in cell:
-    #     for layer in junction:
-    #                 if layer.role is not None:
-    #                     pdd_options.position.append(max(1e-10, layer.width / 5000))
-    #                 else:
-    #                     pdd_options.position.append(1e-11)
-    #                 offset += layer.width
+    for junction in cell:
+        for layer in junction:
+                    if layer.role is not None:
+                        pdd_options.position.append(max(1e-10, layer.width / 5000))
+                    else:
+                        pdd_options.position.append(1e-11)
+                    offset += layer.width
     print(pdd_options.position)
     print(len(pdd_options.position))
     solar_cell_solver(cell, "qe",
@@ -469,18 +469,19 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 10
+normal_operation.clamp = 5
 normal_operation.nitermax = 1000
-normal_operation.ATol = 1.5e-08
+normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
-normal_operation.srh = 1
-normal_operation.rad = 1
-normal_operation.aug = 1
-normal_operation.sur = 1
-normal_operation.gen = 1
+normal_operation.srh = 0
+normal_operation.rad = 0
+normal_operation.aug = 0
+normal_operation.sur = 0
+normal_operation.gen = 0
 
 flash = State()
+
 flash.meshpoints = 6000
 flash.growth_rate = 0.5
 flash.coarse = 0.2e-9
@@ -545,61 +546,64 @@ if __name__ == '__main__':
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
 
-    # version = "InSb_dot_size_sweep"
-    # sim_mat, plot_note = InSb_dot_size_sweep()
+
+
+    # version = "solar_cell_InSb_and_GaSb_like_paper"
+    # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
     # note = f"""
-    # T=300
-    # vint = np.linspace(-6, 4, 1000)
-    # V = np.linspace(-1.5, 1.5, 1000)  # np
-    # wl = np.linspace(350, 1200, 500) *1e-9   # version1
-    # recalculate_absorption = False
-    # meshpoints ={normal_operation.meshpoints}
-    # growth_rate = {normal_operation.growth_rate}
-    # coarse = {normal_operation.coarse}
-    # fine = {normal_operation.fine}
-    # ultrafine = {normal_operation.ultrafine}
+    #    T=300
+    #    vint = np.linspace(-3, 3, 1000)
+    #    wl = np.linspace(350, 1200, 500) *1e-9   # version1
+    #    V = np.linspace(-1.5, 1.5, 1000)  # np
+    #    recalculate_absorption = False
+    #    meshpoints ={normal_operation.meshpoints}
+    #    growth_rate = {normal_operation.growth_rate}
+    #    coarse = {normal_operation.coarse}
+    #    fine = {normal_operation.fine}
+    #    ultrafine = {normal_operation.ultrafine}
     #
-    # clamp = {normal_operation.clamp}
-    # nitermax = {normal_operation.nitermax}
-    # ATol = {normal_operation.ATol}
-    # RTol = {normal_operation.RTol}
+    #    clamp = {normal_operation.clamp}
+    #    nitermax = {normal_operation.nitermax}
+    #    ATol = {normal_operation.ATol}
+    #    RTol = {normal_operation.RTol}
     #
-    # srh = {normal_operation.srh}
-    # rad = {normal_operation.rad}
-    # aug = {normal_operation.aug}
-    # sur = {normal_operation.sur}
-    # gen = {normal_operation.gen}
-    # radiative_coupling: False
-    # optics_method: "TMM",
-    # """
+    #    srh = {normal_operation.srh}
+    #    rad = {normal_operation.rad}
+    #    aug = {normal_operation.aug}
+    #    sur = {normal_operation.sur}
+    #    gen = {normal_operation.gen}
+    #    radiative_coupling: False
+    #    optics_method: "TMM",
+    #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "solar_cell_InSb_and_GaSb_like_paper"
-    sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
+
+    version = "QDSC_InSb_GaSb_sweep_InSb"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
     note = f"""
-       T=300
-       vint = np.linspace(-6, 4, 1000)
-       V = np.linspace(-1.5, 0, 500)  # np
-       wl = np.linspace(350, 1200, 500) *1e-9   # version1
-       recalculate_absorption = False
-       meshpoints ={normal_operation.meshpoints}
-       growth_rate = {normal_operation.growth_rate}
-       coarse = {normal_operation.coarse}
-       fine = {normal_operation.fine}
-       ultrafine = {normal_operation.ultrafine}
+    T=300
+    vint = np.linspace(-3, 3, 1000)
+    wl = np.linspace(350, 1200, 500) *1e-9   # version1
+    V = np.linspace(-1.5, 1.5, 1000)  # np
+    recalculate_absorption = False
+    meshpoints ={normal_operation.meshpoints}
+    growth_rate = {normal_operation.growth_rate}
+    coarse = {normal_operation.coarse}
+    fine = {normal_operation.fine}
+    ultrafine = {normal_operation.ultrafine}
 
-       clamp = {normal_operation.clamp}
-       nitermax = {normal_operation.nitermax}
-       ATol = {normal_operation.ATol}
-       RTol = {normal_operation.RTol}
+    clamp = {normal_operation.clamp}
+    nitermax = {normal_operation.nitermax}
+    ATol = {normal_operation.ATol}
+    RTol = {normal_operation.RTol}
 
-       srh = {normal_operation.srh}
-       rad = {normal_operation.rad}
-       aug = {normal_operation.aug}
-       sur = {normal_operation.sur}
-       gen = {normal_operation.gen}
-       radiative_coupling: False
-       optics_method: "TMM",
-       """
+    srh = {normal_operation.srh}
+    rad = {normal_operation.rad}
+    aug = {normal_operation.aug}
+    sur = {normal_operation.sur}
+    gen = {normal_operation.gen}
+    radiative_coupling: False
+    optics_method: "TMM",
+    """
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
     #
     # version = "dot_InSb_n_inter_sweep"

@@ -4,7 +4,7 @@ from solcore.light_source import LightSource
 # import matplotlib.pyplot as plt
 T=300
 vint = np.linspace(-3, 3, 1000)
-wl = np.linspace(350, 1200, 500) *1e-9   # version1
+wl = np.linspace(350, 1200, 1000) *1e-9   # version1
 V = np.linspace(-1.5, 1.5, 1000)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 

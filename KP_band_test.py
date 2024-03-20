@@ -116,14 +116,15 @@ def get_structure_to_potentials():
     test_structure =[
         Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{2.5} nm"), material=InSb, role="well"), # 5-20 nm
+        Layer(width=si(f"{16.16} nm"), material=InSb, role="well"), # 5-20 nm
         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        # Layer(width=si(f"{20} nm"), material=GaSb, role="well"),
+        Layer(width=si(f"{16.16} nm"), material=GaSb, role="well"),
         # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
         Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
         ]
     # test_structure.substrate = bulk
     test_structure = Structure(test_structure, substrate=bulk)
+
     schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
 
     align_test_structure = VBO_align(test_structure)
@@ -256,26 +257,16 @@ get_structure_to_potentials()
 # try_to_plot_band(mode, test_structure)
 # plt.show()
 #
-# import os
-# from solcore.config_tools import add_source
-#
-# home_folder = os.path.expanduser('~')
-# custom_nk_path = os.path.join(home_folder, 'Solcore/custommats')
-# nk_db_path = os.path.join(home_folder, 'Solcore/NK.db')
-# param_path = os.path.join(home_folder, 'Solcore/custom_params.txt')
-#
-# add_source('Others', 'custom_mats', custom_nk_path)
-# add_source('Others', 'nk', nk_db_path)
-# add_source('Parameters', 'custom', param_path)
-test_structure =[
-        Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
-        Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{1} nm"), material=InSb, role="well"), # 5-20 nm
-        Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        # Layer(width=si(f"{20} nm"), material=GaSb, role="well"),
-        # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
-        ]
-    # test_structure.substrate = bulk
-test_structure = Structure(test_structure, substrate=i_GaAs)
-schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
+
+# test_structure =[
+#         Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+#         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+#         Layer(width=si(f"{1} nm"), material=InSb, role="well"), # 5-20 nm
+#         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+#         # Layer(width=si(f"{20} nm"), material=GaSb, role="well"),
+#         # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+#         Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
+#         ]
+#     # test_structure.substrate = bulk
+# test_structure = Structure(test_structure, substrate=i_GaAs)
+# schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
