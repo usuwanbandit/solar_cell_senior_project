@@ -2,9 +2,14 @@ import numpy as np
 from solcore import constants
 from solcore.light_source import LightSource
 # import matplotlib.pyplot as plt
+h = 6.62607015e-34  # Planck constant in m^2 kg / s
+c = 299792458  # Speed of light in m/s
+eV_to_J = 1.60218e-19  # Conversion factor from eV to J
+# ev = np.linspace(0.15, 3.54, 1000) * eV_to_J
 T=300
 vint = np.linspace(-3, 3, 1000)
-wl = np.linspace(350, 1200, 1000) *1e-9   # version1
+# wl = h * c / ev
+wl = np.linspace(350, 2000, 1000) *1e-9   # version1
 V = np.linspace(-1.5, 1.5, 1000)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 

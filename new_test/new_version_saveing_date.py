@@ -1,3 +1,4 @@
+import numpy as np
 from solcore.state import State
 import mpld3
 from matplotlib import pyplot as plt, cm, ticker
@@ -63,13 +64,13 @@ def load_old_data(version):
 
 def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     if focus_area is None:
-        focus_area = (350, 650)
+        focus_area = (50, 650)
     simpifly = None
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
     fig_5, ax1_5 = plt.subplots(1, 1, figsize=(6, 4))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
-    fig2_5, axJ = plt.subplots(1, 1, figsize=(8, 6))
+    # fig2_5, axJ = plt.subplots(1, 1, figsize=(8, 6))
     fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
     fig3_5, axCar2 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
     fig_b1, band1 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
@@ -81,7 +82,11 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     Isc = []
     Voc = []
     FF = []
+    delete_point = []
     for num, data in enumerate(set_of_data):
+        # if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101):
+        #     delete_point.append(num)
+        #     continue
         print(f'loading {data["mode"]}')
         ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']} ")
         ax1.legend(loc="upper right", frameon=False)
@@ -97,8 +102,8 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1_5.legend(loc="upper right", frameon=False)
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
-        ax1_5.set_ylim(1e-8, 1)
-        ax1_5.set_xlim(900, 1200)
+        ax1_5.set_ylim(1e-6, 1)
+        ax1_5.set_xlim(900, max(wl)*1e9)
         ax1_5.legend()
         fig_5.suptitle(f"{version}")
 
@@ -114,37 +119,37 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             # axIV.plot(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1] / 10), label=f"{data['mode']}")
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
 
-            try:
-
-                axJ.semilogy(abs(data["iv"]["IV"][0], data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
-                axJ.semilogy(abs(V), data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
-                axJ.semilogy(abs(V), data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
-                axJ.semilogy(abs(V), data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
-                axJ.semilogy(abs(V), data['recombination_currents']['Jaug'], color=color[num],linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-            except:
-                pass
+            # try:
+            #
+            #     axJ.semilogy(abs(data["iv"]["IV"][0], data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+            #     axJ.semilogy(abs(V), data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
+            #     axJ.semilogy(abs(V), data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
+            #     axJ.semilogy(abs(V), data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
+            #     axJ.semilogy(abs(V), data['recombination_currents']['Jaug'], color=color[num],linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+            # except:
+            #     pass
 
         elif num in simpifly:
             # axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
             # axIV.plot(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1] / 10), label=f"{data['mode']}")
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
 
-            try:
-                # axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-
-                axJ.semilogy(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
-                axJ.semilogy(abs(V), abs(data['recombination_currents']['Jrad']), color=color[num], linestyle=linestyle[1])
-                axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsrh']), color=color[num], linestyle=linestyle[2])
-                axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsur']), color=color[num], linestyle=linestyle[3])
-                axJ.semilogy(abs(V), abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-
-
-            except:
-                pass
+            # try:
+            #     # axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+            #
+            #     axJ.semilogy(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
+            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jrad']), color=color[num], linestyle=linestyle[1])
+            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsrh']), color=color[num], linestyle=linestyle[2])
+            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsur']), color=color[num], linestyle=linestyle[3])
+            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+            #
+            #
+            # except:
+            #     pass
         axIV.set_ylim(0, 30)
         axIV.set_xlim(-0.1, 1.5)
         axIV.set_xlabel("Voltage (V)")
@@ -152,12 +157,12 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         axIV.legend()
         plt.tight_layout()
 
-        axJ.set_xlabel("Voltage (V)")
-        axJ.set_ylabel("J$_{SC}$ (A/m$^{2}$)")
-        axJ.set_ylim(1e-4, 1e5)
-
-        axJ.legend()
-        plt.tight_layout()
+        # axJ.set_xlabel("Voltage (V)")
+        # axJ.set_ylabel("J$_{SC}$ (A/m$^{2}$)")
+        # axJ.set_ylim(1e-4, 1e5)
+        #
+        # axJ.legend()
+        # plt.tight_layout()
 
         try:
             xsc = data["short_circuit_data"]['Bandstructure']['x'] + data['offset']
@@ -223,29 +228,44 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
         except Exception as error:
             print(f'error is {error}')
+    print(delete_point)
+
+    if len(delete_point) > 0:
+        mask = np.ones(len(set_of_data[0]['x_axis']), dtype=bool)
+        mask[delete_point] = False
+        x_axis = np.array(set_of_data[0]['x_axis'])[mask]
+    else:
+        x_axis = np.array(set_of_data[0]['x_axis'])
+
+    print(Pmpp)
+    print(Isc)
+    print(Voc)
+    print(FF)
+    print(x_axis)
+    print(delete_point)
     # color = [plt.cm.hsv(i / len(set_of_data)) for i in range(len(set_of_data))]
     # axes.text(0.95, 0.95, 'Sample Text', ha='right', va='top', transform=plt.gca().transAxes, fontsize=12)
     # print(Pmpp)
-    axes[0, 0].plot(set_of_data[0]['x_axis'], np.array(Pmpp) / 10, color='r', marker='o',)
+    axes[0, 0].plot(x_axis, np.array(Pmpp) / 10, color='r', marker='o',)
     axes[0, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 0].set_ylabel("Efficiency (%)")
 
-    axes[0, 1].semilogy(set_of_data[0]['x_axis'], abs(np.array(Isc)), color='g', marker='o',)
+    axes[0, 1].semilogy(x_axis, abs(np.array(Isc)), color='g', marker='o',)
     axes[0, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-    axes[1, 0].plot(set_of_data[0]['x_axis'], abs(np.array(Voc)), color='b', marker='o',)
+    axes[1, 0].plot(x_axis, abs(np.array(Voc)), color='b', marker='o',)
     axes[1, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-    axes[1, 1].plot(set_of_data[0]['x_axis'], abs(np.array(FF)) * 100, color='k', marker='o',)
+    axes[1, 1].plot(x_axis, abs(np.array(FF)) * 100, color='k', marker='o',)
     axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 1].set_ylabel("Fill Factor (%)")
 
     fig.suptitle(f"EQE of  {version}")
     fig_5.suptitle(f"Zoom EQE of {version}")
     fig2.suptitle(f'IV of {version}')
-    fig2_5.suptitle(f'current of {version} Jtotle - Jrad-- Jsch : Jsur-. Jaug-..' )
+    # fig2_5.suptitle(f'current of {version} Jtotle - Jrad-- Jsch : Jsur-. Jaug-..' )
     fig3.suptitle(f"Carrier distribution of {version}")
     fig3_5.suptitle(f"Zoom Carrier distribution of {version}")
     fig_b1.suptitle(f"band gap of {version}")
@@ -262,7 +282,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig1.tight_layout()
     fig_5.tight_layout()
     fig2.tight_layout()
-    fig2_5.tight_layout()
+    # fig2_5.tight_layout()
     fig3.tight_layout()
     fig3_5.tight_layout()
     fig_b1.tight_layout()
@@ -274,7 +294,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig_5.savefig(f'EQE_{version}_zoom.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    fig2_5.savefig(f'current_curve_{version}.png', dpi=300)
+    # fig2_5.savefig(f'current_curve_{version}.png', dpi=300)
     mpld3.save_html(fig3, f'Carrier_distribution_{version}.html')
     mpld3.save_html(fig3_5, f'Carrier_distribution_{version}_zoom.html')
     mpld3.save_html(fig_b1, f'Band_diagramming_of_{version}.html')
@@ -283,7 +303,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
 
     movefile(f'IV_curve_{version}.png', f'{version}')
-    movefile(f'current_curve_{version}.png', f'{version}')
+    # movefile(f'current_curve_{version}.png', f'{version}')
     movefile(f'performance_{version}.png', f'{version}')
     movefile(f'EQE_{version}_zoom.png', f'{version}')
     movefile(f'EQE_{version}.png', f'{version}')
@@ -366,17 +386,17 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
 
 
 def savecell(cell, pdd_options):
-    offset = 0
-    pdd_options.position = []
-    for junction in cell:
-        for layer in junction:
-                    if layer.role is not None:
-                        pdd_options.position.append(max(1e-10, layer.width / 5000))
-                    else:
-                        pdd_options.position.append(1e-11)
-                    offset += layer.width
-    print(pdd_options.position)
-    print(len(pdd_options.position))
+    # offset = 0
+    # pdd_options.position = []
+    # for junction in cell:
+    #     for layer in junction:
+    #                 if layer.role is not None:
+    #                     pdd_options.position.append(max(1e-10, layer.width / 5000))
+    #                 else:
+    #                     pdd_options.position.append(1e-11)
+    #                 offset += layer.width
+    # print(pdd_options.position)
+    # print(len(pdd_options.position))
     solar_cell_solver(cell, "qe",
                       user_options={"light_source": light_source,
                                     "wavelength": wl,
@@ -469,34 +489,35 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 5
+normal_operation.clamp = 10
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
-normal_operation.srh = 1
-normal_operation.rad = 1
-normal_operation.aug = 1
+normal_operation.srh = 0
+normal_operation.rad = 0
+normal_operation.aug = 0
 normal_operation.sur = 1
-normal_operation.gen = 1
+normal_operation.gen = 0
 
 flash = State()
 
-flash.meshpoints = 6000
+flash.meshpoints = 3000
 flash.growth_rate = 0.5
-flash.coarse = 0.2e-9
-flash.fine = 0.02e-9
-flash.ultrafine = 0.002e-9
+flash.coarse = 20e-9
+flash.fine = 1e-9
+flash.ultrafine = 0.2e-9
 
-flash.clamp = 0.01
+
+flash.clamp = 10
 flash.nitermax = 1000
-flash.ATol = 1.5e-10
-flash.RTol = 1e-6
+flash.ATol = 1.5e-9
+flash.RTol = 1e-4
 
-flash.srh = 1
+flash.srh = 0
 flash.rad = 0
-flash.aug = 1
-flash.sur = 1
+flash.aug = 0
+flash.sur = 0
 flash.gen = 0
 
 
@@ -577,34 +598,34 @@ if __name__ == '__main__':
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
 
-    version = "solar_cell_InSb_and_GaSb_like_paper"
-    sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
+    version = "QDSC_InSb_GaSb_sweep_InSb"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
     note = f"""
     T=300
     vint = np.linspace(-3, 3, 1000)
-    wl = np.linspace(350, 1200, 500) *1e-9   # version1
+    wl = np.linspace(350, 2000, 1000) *1e-9   # version1
     V = np.linspace(-1.5, 1.5, 1000)  # np
     recalculate_absorption = False
-    meshpoints ={flash.meshpoints}
-    growth_rate = {flash.growth_rate}
-    coarse = {flash.coarse}
-    fine = {flash.fine}
-    ultrafine = {flash.ultrafine}
+    meshpoints ={normal_operation.meshpoints}
+    growth_rate = {normal_operation.growth_rate}
+    coarse = {normal_operation.coarse}
+    fine = {normal_operation.fine}
+    ultrafine = {normal_operation.ultrafine}
 
-    clamp = {flash.clamp}
-    nitermax = {flash.nitermax}
-    ATol = {flash.ATol}
-    RTol = {flash.RTol}
+    clamp = {normal_operation.clamp}
+    nitermax = {normal_operation.nitermax}
+    ATol = {normal_operation.ATol}
+    RTol = {normal_operation.RTol}
 
-    srh = {flash.srh}
-    rad = {flash.rad}
-    aug = {flash.aug}
-    sur = {flash.sur}
-    gen = {flash.gen}
+    srh = {normal_operation.srh}
+    rad = {normal_operation.rad}
+    aug = {normal_operation.aug}
+    sur = {normal_operation.sur}
+    gen = {normal_operation.gen}
     radiative_coupling: False
     optics_method: "TMM",
     """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=flash)
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
     #
     # version = "dot_InSb_n_inter_sweep"
     # sim_mat, plot_note = dot_InSb_n_inter_sweep()
@@ -662,14 +683,14 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "InSb_pn"
-    # set_of_data_sun_constant = load_old_data('InSb_pn.pkl')
-    # # for i in set_of_data_sun_constant:
-    # #     print(i)
-    # # print(len(set_of_data_sun_constant))
-    # # print(len(set_of_data_sun_constant))
-    #
-    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(400, 500))
+    # version = "QDSC_InSb_GaSb_sweep_stack"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack.pkl')
+    # # # for i in set_of_data_sun_constant:
+    # # #     print(i)
+    # # # print(len(set_of_data_sun_constant))
+    # # # print(len(set_of_data_sun_constant))
+    # #
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
     # try:
     #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
     #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')

@@ -55,32 +55,31 @@ def save_file_direction(save_folder, name_text, saveing_data=None):  # find from
         print(f'create {current_path} folder ')
     complete_Name = os.path.join(current_path, name_text + ".txt")
     with open(complete_Name, 'w') as fin:
-        for save in saveing_data:
-            for item in save:
-                try:
-                    fin.write(str(item["note"]) + '\n')
-                except:pass
-                    # print('this file have not note')
-                try:
-                    for layer in item['list_structure']:
-                        fin.write(str(layer) + '\n')
-                except:
-                    # print('this file have not list_structure')
-                    pass
-                try:
-                    for i in item:
-                        try:
-                            fin.write(str(i["note"]) + '\n')
-                        except:
-                            # print('this file have not note')
-                            pass
-                        try:
-                            for layer in i['list_structure']:
-                                fin.write(str(layer) + '\n')
-                        except:
-                            # print('this file have not list_structure')
-                            pass
-                except:pass
+        for item in saveing_data:
+            try:
+                fin.write(str(item["note"]) + '\n')
+            except:pass
+                # print('this file have not note')
+            try:
+                for layer in item['list_structure']:
+                    fin.write(str(layer) + '\n')
+            except:
+                # print('this file have not list_structure')
+                pass
+            try:
+                for i in item:
+                    try:
+                        fin.write(str(i["note"]) + '\n')
+                    except:
+                        # print('this file have not note')
+                        pass
+                    try:
+                        for layer in i['list_structure']:
+                            fin.write(str(layer) + '\n')
+                    except:
+                        # print('this file have not list_structure')
+                        pass
+            except:pass
     print('save success')
 
 def movefile(file, direction):

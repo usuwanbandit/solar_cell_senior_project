@@ -114,19 +114,19 @@ def get_structure_to_potentials():
                             hole_mobility=si("1e3 cm2"),
                             )
     test_structure =[
-        Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+        # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+        Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
+        Layer(width=si(f"{20} nm"), material=InSb, role="well"), # 5-20 nm
+        Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
+        Layer(width=si(f"{15} nm"), material=GaSb, role="well"),
         Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{16.16} nm"), material=InSb, role="well"), # 5-20 nm
-        Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{16.16} nm"), material=GaSb, role="well"),
-        # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
+
+        # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
         ]
     # test_structure.substrate = bulk
     test_structure = Structure(test_structure, substrate=bulk)
-
-    schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
-
+    RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
+    schrodinger_graph_LDOS(RS)
     align_test_structure = VBO_align(test_structure)
     fig1, ax_band = plt.subplots(2, 2, figsize=(16.875, 12))
 
