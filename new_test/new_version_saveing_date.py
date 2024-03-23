@@ -497,7 +497,7 @@ normal_operation.RTol = 1e-4
 normal_operation.srh = 0
 normal_operation.rad = 0
 normal_operation.aug = 0
-normal_operation.sur = 0
+normal_operation.sur = 1
 normal_operation.gen = 0
 
 flash = State()
@@ -569,12 +569,12 @@ if __name__ == '__main__':
 
 
 
-    version = "InSb_dot_layer_sweep"
+    version = "InSb_dot_layer_sweep__dot_10_nm "
     sim_mat, plot_note = InSb_dot_layer_sweep()
     note = f"""
        T=300 
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 1200, 500) *1e-9   # version1
+       wl = np.linspace(350, 1400, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 1.5, 1000)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
