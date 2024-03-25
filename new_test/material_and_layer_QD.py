@@ -626,13 +626,29 @@ def InSb_dot_layer_sweep():
         n_GaAs_barrier = material("GaAs")(T=T, strained=True, Nd=si("1e16 cm-3"))
         p_GaAs_barrier = material("GaAs")(T=T, strained=True, Na=si("1e16 cm-3"))
 
-        InSb = material("InSb")(T=T
-                                 , strained=True
-                                 , electron_minority_lifetime=si("1e-6 s")
-                                 , hole_minority_lifetime=si("1e-7 s")
-                                 , relative_permittivity=13.943
-
-                                 )
+        InSb = material("InSb", sopra=True)(T=T
+                                            , strained=True
+                                            , valence_band_offset=si("0.0 eV")
+                                            , band_gap=si("0.173723 eV")
+                                            , lattice_constant=6.4793e-10
+                                            , gamma1=34.8, gamma2=15.5, gamma3=16.6
+                                            , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
+                                            , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
+                                            , interband_matrix_element=si("23.3 eV")
+                                            , spin_orbit_splitting=si("0.81 eV")
+                                            , eff_mass_electron_Gamma=0.0135
+                                            , eff_mass_hh_z=0.05823949620355507
+                                            , eff_mass_lh_z=0.0033633751606916276
+                                            , eff_mass_electron=0.0022617432780656557
+                                            , electron_mobility=si("78000 cm2")
+                                            , hole_mobility=si("500 cm2")
+                                            , electron_affinity=si("4.59 eV")
+                                            , electron_minority_lifetime=si("1e-6 s")
+                                            , hole_minority_lifetime=si("1e-8 s")
+                                            , relative_permittivity=13.943
+                                            , electron_auger_recombination=si("1e-42 cm6")
+                                            , hole_auger_recombination=si("1e-42 cm6")
+                                            )
         # InSb2 = material("InAsSb")(T=T
         #                          , Sb=0.5
         #                          , strained=True
@@ -663,11 +679,11 @@ def InSb_dot_layer_sweep():
 
         QW = PDD.QWunit([
             # Layer(width=si(f"50 nm"), material=AlGaAs, role="barrier"),
-            Layer(width=si(f"100 nm"), material=i_GaAs_barrier, role="interlayer"),
+            Layer(width=si(f"25 nm"), material=i_GaAs_barrier, role="interlayer"),
             # Layer(width=si(f"1 nm"), material=InSb2, role="interlayer"),  # 5-20 nm
-            Layer(width=si(f"10 nm"), material=InSb, role="well"),  # 5-20 nm
+            Layer(width=si(f"5 nm"), material=InSb, role="well"),  # 5-20 nm
             # Layer(width=si(f"1 nm"), material=InSb2, role="interlayer"),  # 5-20 nm
-            Layer(width=si(f"100 nm"), material=i_GaAs_barrier, role="interlayer"),
+            Layer(width=si(f"25 nm"), material=i_GaAs_barrier, role="interlayer"),
             # Layer(width=si(f"50 nm"), material=AlGaAs, role="barrier")
         ], T=T, repeat=dot, substrate=i_GaAs)
         # E = 1240 / (wl * 1e9) * q
@@ -710,7 +726,7 @@ def InSb_dot_layer_sweep():
             , T=T, substrate=p_GaAs,  R_series=0)
         # for i in my_solar_cell.__dict__:
         #     print(i)
-        solar_each_size_1[f"dot stack ={dot} nm"] = my_solar_cell
+        solar_each_size_1[f"dot stack = {dot}"] = my_solar_cell
 
     return solar_each_size_1, plot_note
 

@@ -569,8 +569,8 @@ if __name__ == '__main__':
 
 
 
-    version = "InSb_dot_layer_sweep__dot_10_nm "
-    sim_mat, plot_note = InSb_dot_layer_sweep()
+    version = "QDSC_InSb_GaSb_sweep_InSb_small"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
     note = f"""
        T=300 
        vint = np.linspace(-3, 3, 1000)
