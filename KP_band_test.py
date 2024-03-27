@@ -222,7 +222,7 @@ def try_to_plot_band(data, structure ):
 AlInP = material("AlInP")(T=T, Al=0.42, Nd=si('3e17 cm-3'))
 AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
 #
-get_structure_to_potentials()
+# get_structure_to_potentials()
 # i_GaAs = material("GaAs")(T=T)
 # InSb = material("InSb")(T=T, strained=True)
 # SR = Structure(
@@ -270,3 +270,141 @@ get_structure_to_potentials()
 #     # test_structure.substrate = bulk
 # test_structure = Structure(test_structure, substrate=i_GaAs)
 # schrodinger(test_structure, show=True, graphtype="potentialsLDOS")
+def L(x, centre, hwhm):
+    return 1 / pi * (0.5 * hwhm) / ((x - centre) ** 2 + (0.5 * hwhm) ** 2)  # Lorenzian (area normalised to 1)
+def calculate_in_plane_masses(x, psi, m):
+    """ Calculates the in-plane effective mass for each level, considering that the wavefunction leaks into the barriers."""
+
+    m_out = []
+    for ps in psi:
+        m_out.append(np.trapz(ps ** 2 * m, x))
+
+    return m_out
+def LDOS1D_e(x, E, psi, m, step=0.001, margin=0.02, broad=0.005):
+    Emax = max(E['Ee']) + margin * q
+    Emin = min(E['Ee']) - margin * q
+
+    energy = np.arange(Emin, Emax, step * q)
+    LDOS = np.zeros((len(energy), len(x)))
+
+    for i, ee in enumerate(E['Ee']):
+        m_plane = calculate_in_plane_masses(x, psi['psi_e'], m['me'])
+        LDOS = LDOS + m_plane[i] / pi / hbar ** 2 * np.outer(L(energy, ee, broad * q), psi['psi_e'][i] ** 2)
+
+    return energy, LDOS
+
+
+def LDOS1D_h(x, E, psi, m, step=0.001, margin=0.02, broad=0.005):
+    Emax = max(max(E['Ehh']), max(E['Elh'])) + margin * q
+    Emin = min(min(E['Ehh']), min(E['Elh'])) - margin * q
+
+    energy = np.arange(Emin, Emax, step * q)
+    LDOS = np.zeros((len(energy), len(x)))
+
+    for i, ee in enumerate(E['Ehh']):
+        m_plane = calculate_in_plane_masses(x, psi['psi_hh'], m['mhh'])
+        LDOS = LDOS + m_plane[i] / pi / hbar ** 2 * np.outer(L(energy, ee, broad * q), psi['psi_hh'][i] ** 2)
+
+    for i, ee in enumerate(E['Elh']):
+        m_plane = calculate_in_plane_masses(x, psi['psi_lh'], m['mlh'])
+        LDOS = LDOS + m_plane[i] / pi / hbar ** 2 * np.outer(L(energy, ee, broad * q), psi['psi_lh'][i] ** 2)
+
+    return energy, LDOS
+
+def ploting(SR_list, con):
+    defaults = {'step': 0.001, 'margin': 0.02, 'pdf': False, 'show': False, 'dpi': 100, 'fontsize': 12,
+                'figsize': (7, 6)}
+    fig, ax1 = plt.subplots(nrows=len(SR_list), ncols=1)
+    for num, schrodinger_result in enumerate(SR_list):
+
+
+        effective_masses = schrodinger_result["effective_masses"]
+        potentials = schrodinger_result["potentials"]
+        wavefunctions = schrodinger_result["wavefunctions"]
+        energy_levels = schrodinger_result["E"]
+        x = schrodinger_result["x"]
+
+        if 'EU' in energy_levels.keys():
+            energy_levels['Ehh'] = energy_levels['EU']
+            energy_levels['Elh'] = energy_levels['EU']
+            wavefunctions["psi_hh"] = wavefunctions["psi_g1"]
+            wavefunctions["psi_lh"] = wavefunctions["psi_g2"]
+
+        Ee, LDOSe = LDOS1D_e(x, energy_levels, wavefunctions, effective_masses, defaults['step'], defaults['margin'])
+        Eh, LDOSh = LDOS1D_h(x, energy_levels, wavefunctions, effective_masses, defaults['step'], defaults['margin'])
+
+
+        ax1[num].contourf(x * 1e9, Ee / q, LDOSe, 100, cmap='gnuplot2_r', vmin=0, vmax=max(LDOSe.flatten()) * 1.2)
+        ax1[num].plot(x * 1e9, potentials["Ve"] / q, 'r', linewidth=2, label='Ve')
+        ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
+        ax1[num].tick_params(labelsize=defaults["fontsize"])
+        ax1[num].contourf(x * 1e9, Eh / q, LDOSh, 100, cmap='gnuplot2_r', vmin=0, vmax=max(LDOSh.flatten()) * 1.2)
+        ax1[num].plot(x * 1e9, potentials["Vlh"] / q, 'k--', linewidth=2, label="Vlh"),
+        ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
+        ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
+        ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
+        ax1[num].tick_params(labelsize=defaults["fontsize"])
+        ax1[num].set_title(con[num])
+
+
+def get_structure_to_potentials_sweep():
+    dot_size = np.linspace(0.5, 5, 5)
+    stack = np.arange(2, 11, 2)
+    RS_list = []
+    for i in stack:
+        print(f"make stack {i} nm")
+        i_GaAs = material("GaAs")(T=T)
+        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
+        InSb = material("InSb", sopra=True)(T=T
+                                            , strained=True
+                                            , valence_band_offset=si("0.0 eV")
+                                            , band_gap=si("0.173723 eV")
+                                            , lattice_constant=6.4793e-10
+                                            , gamma1=34.8, gamma2=15.5, gamma3=16.6
+                                            , a_c=si("-6.93 eV"), a_v=si("-0.36 eV"), b=si("-2 eV"), d=si("-4.7 eV")
+                                            , c11=si("684.7 GPa"), c12=si("373.5 GPa"), c44=si("311.1 GPa")
+                                            , interband_matrix_element=si("23.3 eV")
+                                            , spin_orbit_splitting=si("0.81 eV")
+                                            , eff_mass_electron_Gamma=0.0135
+                                            , eff_mass_hh_z=0.05823949620355507
+                                            , eff_mass_lh_z=0.0033633751606916276
+                                            , eff_mass_electron=0.0022617432780656557
+                                            , electron_mobility=si("78000 cm2")
+                                            , hole_mobility=si("500 cm2")
+                                            , electron_affinity=si("4.59 eV")
+                                            , electron_minority_lifetime=si("1e-7 s")
+                                            , hole_minority_lifetime=si("1e-8 s")
+                                            , relative_permittivity=13.943
+                                            , electron_auger_recombination=si("1e-42 cm6")
+                                            , hole_auger_recombination=si("1e-42 cm6")
+                                            )
+
+        # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
+        GaSb = material("GaSb")(T=T, strained=True,
+                                    electron_mobility=si("3e3 cm2"),
+                                    hole_mobility=si("1e3 cm2"),
+                                    )
+        # test_structure.substrate = bulk
+        test_structure = Structure(
+            [Layer(width=si(f"{150} nm"), material=i_GaAs, role="interlayer"), ]
+            +
+            [
+            # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+            Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
+            Layer(width=si(f"{5} nm"), material=InSb, role="well"), # 5-20 nm
+            Layer(width=si(f"{100-15} nm"), material=i_GaAs, role="interlayer"),
+            Layer(width=si(f"{15} nm"), material=GaSb, role="well"),
+            Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+
+            # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
+            ]*i
+            +
+            [Layer(width=si(f"{150} nm"), material=i_GaAs, role="interlayer"),]
+
+        , substrate=p_GaAs)
+        RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
+        RS_list.append(RS)
+    ploting(RS_list, stack)
+    plt.show()
+
+get_structure_to_potentials_sweep()
