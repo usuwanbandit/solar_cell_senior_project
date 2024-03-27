@@ -93,14 +93,14 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     delete_point = []
     skip = 0
     count = 0
-    color1 = get_color(25, darkness=0.9)
+    color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
-        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101):
+        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None:
             delete_point.append(num)
             continue
 
 
-        print(f'loading {data["mode"]}')
+        print(f'loading {data["mode"]} num = {num}')
         ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:19]} num = {num}", color=color1[count])
         ax1.legend(loc="upper right", frameon=False)
         ax1.set_xlabel("Wavelength (nm)")
@@ -259,19 +259,19 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     # color = [plt.cm.hsv(i / len(set_of_data)) for i in range(len(set_of_data))]
     # axes.text(0.95, 0.95, 'Sample Text', ha='right', va='top', transform=plt.gca().transAxes, fontsize=12)
     # print(Pmpp)
-    axes[0, 0].plot(x_axis, np.array(Pmpp) / 10, color='r', marker='o',)
+    axes[0, 0].plot(x_axis[:len(set_of_data)], np.array(Pmpp) / 10, color='r', marker='o',)
     axes[0, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 0].set_ylabel("Efficiency (%)")
 
-    axes[0, 1].semilogy(x_axis, abs(np.array(Isc)), color='g', marker='o',)
+    axes[0, 1].semilogy(x_axis[:len(set_of_data)], abs(np.array(Isc)), color='g', marker='o',)
     axes[0, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[0, 1].set_ylabel("I$_{SC}$ (Am$^{-2}$)")
 
-    axes[1, 0].plot(x_axis, abs(np.array(Voc)), color='b', marker='o',)
+    axes[1, 0].plot(x_axis[:len(set_of_data)], abs(np.array(Voc)), color='b', marker='o',)
     axes[1, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
 
-    axes[1, 1].plot(x_axis, abs(np.array(FF)) * 100, color='k', marker='o',)
+    axes[1, 1].plot(x_axis[:len(set_of_data)], abs(np.array(FF)) * 100, color='k', marker='o',)
     axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 1].set_ylabel("Fill Factor (%)")
 
@@ -326,7 +326,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     print('save complete')
 
 
-def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, note='', ):
+def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, note='', old_data=None ):
     if pdd_options == None:
         pdd_options = State()
 
@@ -371,7 +371,19 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
     print('pdd_options.gen',pdd_options.gen)
 
     set_of_data = []
+    if old_data != None:
+        set_of_data = load_old_data(f'{old_data}.pkl')
+        continue_sim = len(set_of_data)
+        print(continue_sim)
+    else:
+        continue_sim = -1
+    counting = 0
     for mode, cell in sim_mat.items():
+        if continue_sim >= counting: #skip index
+            print("skipping", mode)
+            counting += 1
+            continue
+        counting += 1
         data_mode = data_solar_cell.copy()
         data_mode['mode'] = mode
         data_mode['note'] = note
@@ -461,7 +473,7 @@ def savecell(cell, pdd_options):
                                       }, )
     return cell
 
-def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None):  # sc = simulation at 1 sun
+def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_data=None):  # sc = simulation at 1 sun
     start = time.perf_counter()
     # print([i for i in pdd_options.__dict__])
     # print(pdd_options.meshpoints)
@@ -472,7 +484,7 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None):  # 
     # print(pdd_options.RTol)
     # print(pdd_options.clamp)
     set_of_data_sun_constant = simulation1D_sun_constant(version, sim_mat, plot_note, note=note,
-                                                         pdd_options=pdd_options)
+                                                         pdd_options=pdd_options, old_data=old_data)
     stop = time.perf_counter()
     hours, minutes, seconds = sec_to_hms(stop - start)
     print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
@@ -609,7 +621,7 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation, old_data="QDSC_InSb_GaSb_sweep_InSb_big_long_wl")
     #
     # version = "QDSC_InSb_GaSb_sweep_InSb"
     # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
@@ -696,13 +708,13 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb_big"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_big.pkl')
-    # # # for i in set_of_data_sun_constant:
-    # # #     print(i)
-    # # # print(len(set_of_data_sun_constant))
-    # # # print(len(set_of_data_sun_constant))
-    # #
+    # version = "QDSC_InSb_GaSb_sweep_InSb_big_long_wl"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_big_long_wl.pkl')
+    # # for i in set_of_data_sun_constant:
+    # #     print(i)
+    # # print(len(set_of_data_sun_constant))
+    # # print(len(set_of_data_sun_constant))
+    #
     # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
     # try:
     #     movefile(f'Carrier_distribution_{version}.html', f'{version}')

@@ -1118,7 +1118,7 @@ def ref_QDSC():
     return solar_each_size_1, plot_note
 
 def QDSC_InSb_GaSb_sweep_InSb():
-    dot_size = np.linspace(0.5, 5, 50)
+    dot_size = np.linspace(5, 50, 50)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
