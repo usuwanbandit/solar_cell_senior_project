@@ -608,11 +608,6 @@ def InSb_dot_layer_sweep():
     solar_each_size_1 = {}
     for dot in dot_size:
         # define material
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True,
-                                    # Nd=si("1e16 cm-3")
-                                    )
-        n_GaAs_plus = material('GaAs')(T=T, Nd=si('1e18 cm-3'), band_gap=si("1.422 eV"))
-
         n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'))
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         i_GaAs = material("GaAs")(T=T)
@@ -623,9 +618,6 @@ def InSb_dot_layer_sweep():
                                           # , eff_mass_lh_z=0.082
                                           # , band_gap=si("1.422 eV")
                                           )
-        n_GaAs_barrier = material("GaAs")(T=T, strained=True, Nd=si("1e16 cm-3"))
-        p_GaAs_barrier = material("GaAs")(T=T, strained=True, Na=si("1e16 cm-3"))
-
         InSb = material("InSb", sopra=True)(T=T
                                             , strained=True
                                             , valence_band_offset=si("0.0 eV")
@@ -679,11 +671,11 @@ def InSb_dot_layer_sweep():
 
         QW = PDD.QWunit([
             # Layer(width=si(f"50 nm"), material=AlGaAs, role="barrier"),
-            Layer(width=si(f"25 nm"), material=i_GaAs_barrier, role="interlayer"),
+            Layer(width=si(f"100 nm"), material=i_GaAs_barrier, role="interlayer"),
             # Layer(width=si(f"1 nm"), material=InSb2, role="interlayer"),  # 5-20 nm
-            Layer(width=si(f"5 nm"), material=InSb, role="well"),  # 5-20 nm
+            Layer(width=si(f"10 nm"), material=InSb, role="well"),  # 5-20 nm
             # Layer(width=si(f"1 nm"), material=InSb2, role="interlayer"),  # 5-20 nm
-            Layer(width=si(f"25 nm"), material=i_GaAs_barrier, role="interlayer"),
+            Layer(width=si(f"100 nm"), material=i_GaAs_barrier, role="interlayer"),
             # Layer(width=si(f"50 nm"), material=AlGaAs, role="barrier")
         ], T=T, repeat=dot, substrate=i_GaAs)
         # E = 1240 / (wl * 1e9) * q
@@ -1126,7 +1118,7 @@ def ref_QDSC():
     return solar_each_size_1, plot_note
 
 def QDSC_InSb_GaSb_sweep_InSb():
-    dot_size = np.linspace(5, 50, 50)
+    dot_size = np.linspace(0.5, 5, 50)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
@@ -1235,7 +1227,7 @@ def QDSC_InSb_GaSb_sweep_stack():
     solar_each_size_1 = {}
 
     for i in dot_size:
-        size_InSb = 10
+        size_InSb = 15
         size_GaSb = 15
         AlGaAs = material("AlGaAs")(T=T, Al=0.3)
         n_GaAs = material('GaAs')(T=T, Nd=si('1e19 cm-3'), )

@@ -37,6 +37,14 @@ data_solar_cell = dict(
 )
 
 
+def get_color(number_of_color, darkness=0.5):
+    cmap = plt.get_cmap('RdYlBu')
+    colors = [cmap(i / number_of_color) for i in range(number_of_color)]
+
+    # Darken the colors
+    darkened_colors = [(darkness * r, darkness * g, darkness * b, a) for r, g, b, a in colors]
+
+    return darkened_colors
 def defultsaveing(solarcell, saveaddrest, version, save=True):
     saveaddrest["T"] = solarcell.T
     saveaddrest['absorbed'] = solarcell.absorbed
@@ -83,12 +91,17 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     Voc = []
     FF = []
     delete_point = []
+    skip = 0
+    count = 0
+    color1 = get_color(25, darkness=0.9)
     for num, data in enumerate(set_of_data):
-        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or num in [20, 24, 25] :
+        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101):
             delete_point.append(num)
             continue
+
+
         print(f'loading {data["mode"]}')
-        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']} ")
+        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:19]} num = {num}", color=color1[count])
         ax1.legend(loc="upper right", frameon=False)
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
@@ -98,15 +111,15 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         plt.tight_layout()
         fig1.suptitle(f"{version}")
 
-        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']} ")
-        ax1_5.legend(loc="upper right", frameon=False)
+        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:19]} num = {num}", color=color1[count])
+        ax1_5.legend(loc="upper right", frameon=True)
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
         ax1_5.set_ylim(1e-6, 1)
         ax1_5.set_xlim(900, max(wl)*1e9)
         ax1_5.legend()
         fig_5.suptitle(f"{version}")
-
+        count += 1
         linestyle = ["-", "--", ":", "-.", ]
         # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
         color = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black', 'orange', 'purple']
@@ -569,12 +582,12 @@ if __name__ == '__main__':
 
 
 
-    version = "QDSC_InSb_GaSb_sweep_InSb_small"
+    version = "QDSC_InSb_GaSb_sweep_InSb_big_long_wl"
     sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
     note = f"""
-       T=300 
+       T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 1400, 1000) *1e-9   # version1
+       wl = np.linspace(350, 2000, 1500) *1e-9   # version1
        V = np.linspace(-1.5, 1.5, 1000)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
@@ -683,8 +696,8 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_InSb_big"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_big.pkl')
     # # # for i in set_of_data_sun_constant:
     # # #     print(i)
     # # # print(len(set_of_data_sun_constant))

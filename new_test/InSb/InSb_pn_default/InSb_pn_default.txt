@@ -1,0 +1,635 @@
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+
+    recalculate_absorption = True
+
+    meshpoints =-400
+    growth_rate = 0.7
+    coarse = 2e-08
+    fine = 1e-09
+    ultrafine = 2e-10
+
+    clamp = 20
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 0.0001
+
+    srh = 1
+    rad = 1
+    aug = 0
+    sur = 1
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701067e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.139203824937251e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.098436715625743e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701072e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.1392038249372506e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.0984367156257427e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+
+    recalculate_absorption = True
+
+    meshpoints =-400
+    growth_rate = 0.7
+    coarse = 2e-08
+    fine = 1e-09
+    ultrafine = 2e-10
+
+    clamp = 20
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 0.0001
+
+    srh = 1
+    rad = 1
+    aug = 0
+    sur = 1
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701067e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.139203824937251e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.098436715625743e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701072e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.1392038249372506e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.0984367156257427e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+
+    recalculate_absorption = True
+
+    meshpoints =-400
+    growth_rate = 0.7
+    coarse = 2e-08
+    fine = 1e-09
+    ultrafine = 2e-10
+
+    clamp = 20
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 0.0001
+
+    srh = 1
+    rad = 1
+    aug = 0
+    sur = 1
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701067e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.139203824937251e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.098436715625743e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701072e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.1392038249372506e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.0984367156257427e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+
+    recalculate_absorption = True
+
+    meshpoints =-400
+    growth_rate = 0.7
+    coarse = 2e-08
+    fine = 1e-09
+    ultrafine = 2e-10
+
+    clamp = 20
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 0.0001
+
+    srh = 1
+    rad = 1
+    aug = 0
+    sur = 1
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701067e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.139203824937251e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.098436715625743e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701072e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.1392038249372506e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.0984367156257427e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+T=300
+    T=300
+    vint = np.linspace(-6, 4, 1000)
+    V = np.linspace(-3, 0, 1000)  # np
+    wl = np.linspace(350, 2000, 2000) *1e-9   # version1
+
+    recalculate_absorption = True
+
+    meshpoints =-400
+    growth_rate = 0.7
+    coarse = 2e-08
+    fine = 1e-09
+    ultrafine = 2e-10
+
+    clamp = 20
+    nitermax = 100
+    ATol = 1.5e-08
+    RTol = 0.0001
+
+    srh = 1
+    rad = 1
+    aug = 0
+    sur = 1
+    gen = 0
+    radiative_coupling: False
+    optics_method: "TMM",
+    
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701067e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.139203824937251e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.098436715625743e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.0nm <'InSb' material band_gap=1.2217985062701072e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785470383689477e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278555298301327e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.25nm <'InSb' material band_gap=1.1977469290991058e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785552983013275e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.5nm <'InSb' material band_gap=1.1392038249372506e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.278562826978e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 2.75nm <'InSb' material band_gap=1.1260955499310717e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27856857977427e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+23>, 'sn': 0, 'sp': 0}
+	<collector layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<layer 1e+02nm <'GaAs' material band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<layer 3.0nm <'InSb' material band_gap=1.0984367156257427e-19 electron_mobility=7.8 hole_mobility=0.085 spin_orbit_splitting=1.2977629326000002e-19 strained=True>>
+	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.2785737449684282e-19 eff_mass_electron_Gamma=6.862339157161751e-32 eff_mass_hh_z=4.593999171218828e-31 eff_mass_lh_z=9.094136476664323e-32 strained=True>>
+	<collector layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21 band_gap=2.27829492612e-19>>
+	<collector layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+23>>>
+end item   ================================================================================

@@ -1,9 +1,0 @@
-default data from solcore
-<Junction object 
-	{'T': 300, 'kind': 'PDD'}
-	<Emitter layer 3.5e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
-	<layer 1e+02nm <'GaAs' material strained=True>>
-	<layer 1.0nm <'InSb' material electron_mobility=7.8 hole_mobility=0.085 strained=True valence_band_offset=0.0>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+22 strained=True>>
-	<Emitter layer 2.5e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
-	<Emitter layer 1.7e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
