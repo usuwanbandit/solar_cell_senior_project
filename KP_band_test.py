@@ -314,7 +314,7 @@ def LDOS1D_h(x, E, psi, m, step=0.001, margin=0.02, broad=0.005):
 def ploting(SR_list, con):
     defaults = {'step': 0.001, 'margin': 0.02, 'pdf': False, 'show': False, 'dpi': 100, 'fontsize': 12,
                 'figsize': (7, 6)}
-    fig, ax1 = plt.subplots(nrows=len(SR_list), ncols=1)
+    fig, ax1 = plt.subplots(nrows=1, ncols=len(SR_list))
     for num, schrodinger_result in enumerate(SR_list):
 
 
@@ -343,15 +343,16 @@ def ploting(SR_list, con):
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
         ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
         ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
+        ax1[num].set_xlim(150, 430)
         ax1[num].tick_params(labelsize=defaults["fontsize"])
         ax1[num].set_title(con[num])
 
 
 def get_structure_to_potentials_sweep():
-    dot_size = np.linspace(0.5, 5, 5)
+    dot_size = np.linspace(5, 50, 5)
     stack = np.arange(2, 11, 2)
     RS_list = []
-    for i in stack:
+    for i in dot_size:
         print(f"make stack {i} nm")
         i_GaAs = material("GaAs")(T=T)
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
@@ -386,25 +387,23 @@ def get_structure_to_potentials_sweep():
                                     )
         # test_structure.substrate = bulk
         test_structure = Structure(
-            [Layer(width=si(f"{150} nm"), material=i_GaAs, role="interlayer"), ]
+            [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"), ]
             +
             [
             # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
             Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
-            Layer(width=si(f"{5} nm"), material=InSb, role="well"), # 5-20 nm
-            Layer(width=si(f"{100-15} nm"), material=i_GaAs, role="interlayer"),
+            Layer(width=si(f"{i} nm"), material=InSb, role="well"), # 5-20 nm
+            Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
             Layer(width=si(f"{15} nm"), material=GaSb, role="well"),
             Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-
             # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
-            ]*i
+            ]*5
             +
-            [Layer(width=si(f"{150} nm"), material=i_GaAs, role="interlayer"),]
-
+            [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"),]
         , substrate=p_GaAs)
         RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
         RS_list.append(RS)
-    ploting(RS_list, stack)
+    ploting(RS_list, dot_size)
     plt.show()
 
 get_structure_to_potentials_sweep()

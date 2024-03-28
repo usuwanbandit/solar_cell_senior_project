@@ -95,13 +95,13 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     count = 0
     color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
-        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None:
+        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None or data["iv"]["Voc"] == -1.5:
             delete_point.append(num)
             continue
 
 
         print(f'loading {data["mode"]} num = {num}')
-        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:19]} num = {num}", color=color1[count])
+        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:21]}", color=color1[count])
         ax1.legend(loc="upper right", frameon=False)
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
@@ -111,7 +111,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         plt.tight_layout()
         fig1.suptitle(f"{version}")
 
-        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:19]} num = {num}", color=color1[count])
+        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:21]}", color=color1[count])
         ax1_5.legend(loc="upper right", frameon=True)
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
@@ -514,13 +514,13 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 10
+normal_operation.clamp = 5
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
 normal_operation.srh = 0
-normal_operation.rad = 0
+normal_operation.rad = 1
 normal_operation.aug = 0
 normal_operation.sur = 1
 normal_operation.gen = 0
@@ -591,15 +591,12 @@ if __name__ == '__main__':
     # optics_method: "TMM",
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-
-
-
-    version = "QDSC_InSb_GaSb_sweep_InSb_big_long_wl"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 2000, 1500) *1e-9   # version1
+       wl = np.linspace(350, 1400, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 1.5, 1000)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
@@ -621,7 +618,7 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation, old_data="QDSC_InSb_GaSb_sweep_InSb_big_long_wl")
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
     #
     # version = "QDSC_InSb_GaSb_sweep_InSb"
     # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
@@ -708,8 +705,8 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb_big_long_wl"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_big_long_wl.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_InSb_big"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_big.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))

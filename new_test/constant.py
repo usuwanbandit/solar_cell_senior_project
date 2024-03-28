@@ -9,8 +9,8 @@ eV_to_J = 1.60218e-19  # Conversion factor from eV to J
 T=300
 vint = np.linspace(-3, 3, 1000)
 # wl = h * c / ev
-wl = np.linspace(350, 2000, 1500) *1e-9   # version1
-V = np.linspace(-1.5, 1.5, 1000)  # np
+wl = np.linspace(350, 1400, 1000) *1e-9   # version1
+V = np.linspace(-1.5, 0, 500)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 
 light_source = LightSource(source_type="standard"
