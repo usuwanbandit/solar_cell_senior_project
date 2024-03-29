@@ -354,6 +354,7 @@ def get_structure_to_potentials_sweep():
     RS_list = []
     for i in dot_size:
         print(f"make stack {i} nm")
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3)
         i_GaAs = material("GaAs")(T=T)
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb", sopra=True)(T=T
@@ -386,6 +387,7 @@ def get_structure_to_potentials_sweep():
                                     hole_mobility=si("1e3 cm2"),
                                     )
         # test_structure.substrate = bulk
+
         test_structure = Structure(
             [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"), ]
             +
@@ -396,6 +398,7 @@ def get_structure_to_potentials_sweep():
             Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
             Layer(width=si(f"{15} nm"), material=GaSb, role="well"),
             Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+
             # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
             ]*5
             +
