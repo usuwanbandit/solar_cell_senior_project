@@ -509,18 +509,18 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_
 normal_operation = State()
 
 normal_operation.meshpoints = -400
-normal_operation.growth_rate = 0.4
+normal_operation.growth_rate = 0.5
 normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 5
+normal_operation.clamp = 20
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
 normal_operation.srh = 0
-normal_operation.rad = 1
+normal_operation.rad = 0
 normal_operation.aug = 0
 normal_operation.sur = 1
 normal_operation.gen = 0
@@ -591,13 +591,13 @@ if __name__ == '__main__':
     # optics_method: "TMM",
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs"
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_big"
     sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 1400, 1000) *1e-9   # version1
-       V = np.linspace(-1.5, 1.5, 1000)  # np
+       wl = np.linspace(350, 1400, 500) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
        growth_rate = {normal_operation.growth_rate}
