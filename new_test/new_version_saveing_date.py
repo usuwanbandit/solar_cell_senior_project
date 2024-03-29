@@ -408,6 +408,75 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
         back_up_data(set_of_data, version)
     return set_of_data
 
+def simulation0D_sun_constant(version, cell, plot_note, pdd_options=None, note='', mode="None"):
+    if pdd_options == None:
+        pdd_options = State()
+
+        # pdd_options.recalculate_absorption = True
+
+        # Mesh control
+        pdd_options.meshpoints = -400
+        pdd_options.growth_rate = 0.7
+        pdd_options.coarse = 20e-9
+        pdd_options.fine = 1e-9
+        pdd_options.ultrafine = 0.2e-9
+
+        # Convergence control
+        pdd_options.clamp = 20
+        pdd_options.nitermax = 100
+        pdd_options.ATol = 1e-14
+        pdd_options.RTol = 1e-6
+
+        # Recombination control
+        pdd_options.srh = 1
+        pdd_options.rad = 1
+        pdd_options.aug = 0
+        pdd_options.sur = 1
+        pdd_options.gen = 0
+    else:
+        pass
+    # print('pdd_options.recalculate_absorption', pdd_options.recalculate_absorption)
+    print('pdd_options.meshpoints',pdd_options.meshpoints)
+    print('pdd_options.growth_rate',pdd_options.growth_rate)
+    print('pdd_options.coarse',pdd_options.coarse)
+    print('pdd_options.fine',pdd_options.fine)
+    print('pdd_options.ultrafine',pdd_options.ultrafine)
+    print('pdd_options.clamp',pdd_options.clamp)
+    print('pdd_options.nitermax',pdd_options.nitermax)
+    print('pdd_options.RTol',pdd_options.RTol)
+    print('pdd_options.ATol',pdd_options.ATol)
+    print('pdd_options.RTol',pdd_options.RTol)
+    print('pdd_options.srh',pdd_options.srh)
+    print('pdd_options.rad',pdd_options.rad)
+    print('pdd_options.aug',pdd_options.aug)
+    print('pdd_options.sur',pdd_options.sur)
+    print('pdd_options.gen',pdd_options.gen)
+
+    set_of_data = []
+
+    data_mode = data_solar_cell.copy()
+    data_mode['mode'] = mode
+    data_mode['note'] = note
+    data_mode['x_axis'] = plot_note['x_axis']
+    data_mode['x_axis_name'] = plot_note["x_axis_name"]
+    try:
+        data_mode['x_axis_txt'] = plot_note["x_axis_txt"]
+    except:pass
+    data_mode['list_structure'].append(
+        "start item ================================================================================")
+    _ = [data_mode['list_structure'].append(str(i)) for i in cell]
+    data_mode['list_structure'].append(
+        "end item   ================================================================================")
+    print(data_mode['mode'])
+    cell = savecell(cell, pdd_options)
+    data_mode = defultsaveing(cell, data_mode, version)
+    print(data_mode["iv"]["Pmpp"])
+    print(data_mode["iv"]["Isc"])
+    print(data_mode["iv"]["Voc"])
+    print(data_mode["iv"]["FF"])
+    set_of_data.append(data_mode)
+    back_up_data(set_of_data, version)
+    return set_of_data
 
 
 def savecell(cell, pdd_options):
@@ -514,7 +583,7 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 20
+normal_operation.clamp = 10
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
@@ -589,9 +658,10 @@ if __name__ == '__main__':
     # gen = {normal_operation.gen}
     # radiative_coupling: False
     # optics_method: "TMM",
+
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_big"
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_small"
     sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs()
     note = f"""
        T=300
