@@ -98,10 +98,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None or data["iv"]["Voc"] == -1.5:
             delete_point.append(num)
             continue
-
-
+        count += 1
         print(f'loading {data["mode"]} num = {num}')
-        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:21]}", color=color1[count])
+        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
         ax1.legend(loc="upper right", frameon=False)
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
@@ -111,7 +110,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         plt.tight_layout()
         fig1.suptitle(f"{version}")
 
-        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:21]}", color=color1[count])
+        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
         ax1_5.legend(loc="upper right", frameon=True)
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
@@ -168,7 +167,6 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
         axIV.legend()
-        plt.tight_layout()
 
         # axJ.set_xlabel("Voltage (V)")
         # axJ.set_ylabel("J$_{SC}$ (A/m$^{2}$)")
@@ -205,7 +203,6 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar2[num].set_xlim(focus_area)
             axCar2[num].set_ylim(1e6, 1e25)
 
-            plt.tight_layout()
 
         except:
             print("something wrong with carrier distribution")
