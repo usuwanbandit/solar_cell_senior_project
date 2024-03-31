@@ -1252,7 +1252,7 @@ def QDSC_InSb_GaSb_sweep_InSb():
     return solar_each_size_1, plot_note
 
 def QDSC_GaSb_InSb_sweep_InSb_swap():
-    dot_size = np.linspace(0.5, 5, 5)
+    dot_size = np.linspace(5, 50, 5)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
@@ -1671,6 +1671,7 @@ def QDSC_InSb_GaSb_sweep_InSb_AlGaAs(): #work
         solar_each_size_1[f"InSb dot size = {i:.2e} (nm)"] = solarcell_InSb_GaSb
     return solar_each_size_1, plot_note
 
+
 def QDSC_GaSb_InSb_sweep_InSb_AlGaAs_swap(): #work
     dot_size = np.linspace(0.5, 5, 5)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
@@ -1682,7 +1683,7 @@ def QDSC_GaSb_InSb_sweep_InSb_AlGaAs_swap(): #work
         n_GaAs = material('GaAs')(T=T, Nd=si('1e19 cm-3'), )
         n_GaAs_bot = material('GaAs')(T=T, Nd=si('1e16 cm-3'), )
         n_GaAs_inter = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
-        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e18 cm-3"))
+        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e17 cm-3"))
         i_GaAs = material("GaAs")(T=T)
         p_GaInP = material("GaInP")(T=T, In=0.42, Na=si("2e18 cm-3"))
         p_GaAs_buffer = material("GaAs")(T=T, Na=si("2e18 cm-3"))
@@ -1728,11 +1729,11 @@ def QDSC_GaSb_InSb_sweep_InSb_AlGaAs_swap(): #work
                 Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
                 Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-            ]   # 5-20 nm
+            ]# 5-20 nm
             # Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),]*dot
             # +
             # [Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")]
-            , T=T, repeat=5, substrate=i_GaAs)
+            , T=T, repeat=10, substrate=i_GaAs)
         # E = 1240 / (wl * 1e9) * q
         # alpha_params = {
         #     "well_width": QW.QW_width,
@@ -1750,7 +1751,7 @@ def QDSC_GaSb_InSb_sweep_InSb_AlGaAs_swap(): #work
         GaAs_junction = Junction([
                                      Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
                                      # Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
-                                     Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+                                     Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
 
                                  ]
                                  + QW_list
