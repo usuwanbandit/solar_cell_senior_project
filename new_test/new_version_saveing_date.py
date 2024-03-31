@@ -592,34 +592,34 @@ if __name__ == '__main__':
     # optics_method: "TMM",
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_small"
-    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs()
-    # note = f"""
-    #    T=300
-    #    vint = np.linspace(-3, 3, 1000)
-    #    wl = np.linspace(350, 2000, 1000) *1e-9   # version1
-    #    V = np.linspace(-1.5, 0, 500)  # np
-    #    recalculate_absorption = False
-    #    meshpoints ={normal_operation.meshpoints}
-    #    growth_rate = {normal_operation.growth_rate}
-    #    coarse = {normal_operation.coarse}
-    #    fine = {normal_operation.fine}
-    #    ultrafine = {normal_operation.ultrafine}
-    #
-    #    clamp = {normal_operation.clamp}
-    #    nitermax = {normal_operation.nitermax}
-    #    ATol = {normal_operation.ATol}
-    #    RTol = {normal_operation.RTol}
-    #
-    #    srh = {normal_operation.srh}
-    #    rad = {normal_operation.rad}
-    #    aug = {normal_operation.aug}
-    #    sur = {normal_operation.sur}
-    #    gen = {normal_operation.gen}
-    #    radiative_coupling: False
-    #    optics_method: "TMM",
-    #    """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    version = "QDSC_GaSb_InSb_sweep_InSb_swap"
+    sim_mat, plot_note = QDSC_GaSb_InSb_sweep_InSb_swap()
+    note = f"""
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints ={normal_operation.meshpoints}
+       growth_rate = {normal_operation.growth_rate}
+       coarse = {normal_operation.coarse}
+       fine = {normal_operation.fine}
+       ultrafine = {normal_operation.ultrafine}
+
+       clamp = {normal_operation.clamp}
+       nitermax = {normal_operation.nitermax}
+       ATol = {normal_operation.ATol}
+       RTol = {normal_operation.RTol}
+
+       srh = {normal_operation.srh}
+       rad = {normal_operation.rad}
+       aug = {normal_operation.aug}
+       sur = {normal_operation.sur}
+       gen = {normal_operation.gen}
+       radiative_coupling: False
+       optics_method: "TMM",
+       """
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
 
     # version = "solar_cell_InSb_and_GaSb_like_paper" #TODO set InSb&GaAs no loss and make GaSb have normal condition
     # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
@@ -706,19 +706,19 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_InSb_GaSb_sweep_stack_AlGaAs_10nm"
-    set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack_AlGaAs_10nm.pkl')
-    # for i in set_of_data_sun_constant:
-    #     print(i)
-    # print(len(set_of_data_sun_constant))
-    # print(len(set_of_data_sun_constant))
-
-    save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
-    try:
-        movefile(f'Carrier_distribution_{version}.html', f'{version}')
-        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
-    except PermissionError as e:
-        print(f"Error: {e}")
+    # version = "QDSC_InSb_GaSb_sweep_stack_AlGaAs_10nm"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack_AlGaAs_10nm.pkl')
+    # # for i in set_of_data_sun_constant:
+    # #     print(i)
+    # # print(len(set_of_data_sun_constant))
+    # # print(len(set_of_data_sun_constant))
+    #
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
+    # try:
+    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    # except PermissionError as e:
+    #     print(f"Error: {e}")
     plt.show()
