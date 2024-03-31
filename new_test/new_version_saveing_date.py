@@ -95,10 +95,10 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     count = 0
     color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
-        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None or data["iv"]["Voc"] == -1.5:
+        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None :
             delete_point.append(num)
+            # count += 1
             continue
-        count += 1
         print(f'loading {data["mode"]} num = {num}')
         ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
         ax1.legend(loc="upper right", frameon=False)
@@ -107,7 +107,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1.set_ylim(0, 1.1)
         ax1.set_xlim(350, 1000)
         ax1.legend()
-        plt.tight_layout()
+        # plt.tight_layout()
         fig1.suptitle(f"{version}")
 
         ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
@@ -297,6 +297,8 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig3_5.tight_layout()
     fig_b1.tight_layout()
     fig_b2.tight_layout()
+    plt.tight_layout()
+
     # fig1.legend()
     # plt.legend()
 
@@ -658,8 +660,8 @@ if __name__ == '__main__':
 
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_small"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs()
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_small"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
@@ -685,8 +687,10 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    #
+    # for i in sim_mat:
+    #     print(i)
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation, old_data="QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_small")
+    # #
     # version = "QDSC_InSb_GaSb_sweep_InSb"
     # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
     # note = f"""
@@ -772,8 +776,8 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb_big"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_big.pkl')
+    # version = ("QDSC_InAs_GaSb")
+    # set_of_data_sun_constant = load_old_data('QDSC_InAs_GaSb.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
