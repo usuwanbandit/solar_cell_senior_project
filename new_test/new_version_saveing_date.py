@@ -101,7 +101,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
 
         print(f'loading {data["mode"]} num = {num}')
-        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:21]}", color=color1[count])
+        ax1.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
         ax1.legend(loc="upper right", frameon=False)
         ax1.set_xlabel("Wavelength (nm)")
         ax1.set_ylabel("EQE")
@@ -111,7 +111,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         plt.tight_layout()
         fig1.suptitle(f"{version}")
 
-        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode'][:21]}", color=color1[count])
+        ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
         ax1_5.legend(loc="upper right", frameon=True)
         ax1_5.set_xlabel("Wavelength (nm)")
         ax1_5.set_ylabel("EQE")
@@ -509,18 +509,18 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_
 normal_operation = State()
 
 normal_operation.meshpoints = -400
-normal_operation.growth_rate = 0.4
+normal_operation.growth_rate = 0.7
 normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 5
+normal_operation.clamp = 20
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
 normal_operation.srh = 0
-normal_operation.rad = 1
+normal_operation.rad = 0
 normal_operation.aug = 0
 normal_operation.sur = 1
 normal_operation.gen = 0
@@ -547,6 +547,7 @@ flash.gen = 0
 
 
 
+# to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
     # for srh in [0,1]:
     #     for rad in [0,1]:
@@ -591,13 +592,13 @@ if __name__ == '__main__':
     # optics_method: "TMM",
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs"
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_small"
     sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 1400, 1000) *1e-9   # version1
-       V = np.linspace(-1.5, 1.5, 1000)  # np
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
        growth_rate = {normal_operation.growth_rate}
@@ -619,9 +620,9 @@ if __name__ == '__main__':
        optics_method: "TMM",
        """
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    #
-    # version = "QDSC_InSb_GaSb_sweep_InSb"
-    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb()
+
+    # version = "solar_cell_InSb_and_GaSb_like_paper" #TODO set InSb&GaAs no loss and make GaSb have normal condition
+    # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
     # note = f"""
     # T=300
     # vint = np.linspace(-3, 3, 1000)
