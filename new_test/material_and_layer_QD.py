@@ -1303,7 +1303,7 @@ def QDSC_GaSb_InSb_sweep_InSb_swap():
             # ]
             # +
             [
-                Layer(width=si(f"{100 - size_GaSb} nm"), material=i_GaAs, role="barrier"),
+                Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
                 Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
