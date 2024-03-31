@@ -75,7 +75,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         focus_area = (50, 650)
     simpifly = None
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
-    fig_5, ax1_5 = plt.subplots(1, 1, figsize=(6, 4))
+    fig_5, ax1_5 = plt.subplots(1, 1, figsize=(12, 8))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
     # fig2_5, axJ = plt.subplots(1, 1, figsize=(8, 6))
@@ -95,7 +95,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     count = 0
     color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
-        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101) or data["qe"]["EQE"] is None or data["iv"]["Voc"] == -1.5:
+        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101)  or data["iv"]["Voc"] == -1.5:
             delete_point.append(num)
             continue
 
@@ -509,12 +509,12 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_
 normal_operation = State()
 
 normal_operation.meshpoints = -400
-normal_operation.growth_rate = 0.7
+normal_operation.growth_rate = 0.5
 normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 20
+normal_operation.clamp = 10
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
@@ -549,51 +549,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    # for srh in [0,1]:
-    #     for rad in [0,1]:
-    #         for aug in [0,1]:
-    #             for sur in [0,1]:
-    #                 for gen in [0,1]:
-    #                     print(f'srh {srh} ', end='')
-    #                     print(f'rad {rad} ', end='')
-    #                     print(f'aug {aug} ', end='')
-    #                     print(f'sur {sur} ', end='')
-    #                     print(f'gen {gen} ', end='')
-    # normal_operation.srh = srh
-    # normal_operation.rad = rad
-    # normal_operation.aug = aug
-    # normal_operation.sur = sur
-    # normal_operation.gen = gen
-    # version = f"QDSC_GaSb_Sw_dotsize_srh_{srh}_rad_{rad}_aug_{aug}_sur_{sur}_gen_{gen}"
-    # sim_mat, plot_note = QDSC_GaSb_Sw_dotsize_ref()
-    # note = f"""
-    # T=300
-    # vint = np.linspace(-6, 4, 1000)
-    # V = np.linspace(-3, 3, 2000)  # np
-    # wl = np.linspace(350, 1200, 500) *1e-9   # version1
-    # recalculate_absorption = False
-    # meshpoints ={normal_operation.meshpoints}
-    # growth_rate = {normal_operation.growth_rate}
-    # coarse = {normal_operation.coarse}
-    # fine = {normal_operation.fine}
-    # ultrafine = {normal_operation.ultrafine}
-    #
-    # clamp = {normal_operation.clamp}
-    # nitermax = {normal_operation.nitermax}
-    # ATol = {normal_operation.ATol}
-    # RTol = {normal_operation.RTol}
-    #
-    # srh = {normal_operation.srh}
-    # rad = {normal_operation.rad}
-    # aug = {normal_operation.aug}
-    # sur = {normal_operation.sur}
-    # gen = {normal_operation.gen}
-    # radiative_coupling: False
-    # optics_method: "TMM",
-    # """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_GaSb_InSb_sweep_InSb_swap"
-    sim_mat, plot_note = QDSC_GaSb_InSb_sweep_InSb_swap()
+    version = "QDSC_GaSb_InSb_sweep_InSb_AlGaAs_swap_small"
+    sim_mat, plot_note = QDSC_GaSb_InSb_sweep_InSb_AlGaAs_swap()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)

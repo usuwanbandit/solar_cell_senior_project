@@ -349,9 +349,10 @@ def ploting(SR_list, con):
 
 
 def get_structure_to_potentials_sweep():
-    dot_size = np.linspace(5, 50, 5)
+    dot_size = np.linspace(0.5, 5, 5)
     stack = np.arange(2, 11, 2)
     RS_list = []
+    dot = []
     for i in dot_size:
         print(f"make stack {i} nm")
         AlGaAs = material("AlGaAs")(T=T, Al=0.3)
@@ -383,15 +384,11 @@ def get_structure_to_potentials_sweep():
 
         # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
         GaSb = material("GaSb")(T=T, strained=True,
-                                    electron_mobility=si("3e3 cm2"),
-                                    hole_mobility=si("1e3 cm2"),
-                                    )
+                                electron_mobility=si("3e3 cm2"),
+                                hole_mobility=si("1e3 cm2"),
+                                )
         # test_structure.substrate = bulk
-
-        test_structure = Structure(
-            [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"), ]
-            +
-            [
+        dot += [
             # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
             Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
             Layer(width=si(f"{i} nm"), material=InSb, role="well"), # 5-20 nm
@@ -400,13 +397,19 @@ def get_structure_to_potentials_sweep():
             Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
 
             # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
-            ]*5
-            +
-            [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"),]
+        ]
+    test_structure = Structure(
+        [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"), ]
+        +
+        dot
+        +
+        [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"),]
         , substrate=p_GaAs)
-        RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
-        RS_list.append(RS)
-    ploting(RS_list, dot_size)
+    RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
+    # RS_list.append(RS)
+    # ploting(RS_list, dot_size)
     plt.show()
 
 get_structure_to_potentials_sweep()
+
+
