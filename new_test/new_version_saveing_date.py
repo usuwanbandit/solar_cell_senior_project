@@ -48,13 +48,13 @@ def get_color(number_of_color, darkness=0.5):
 def defultsaveing(solarcell, saveaddrest, version, save=True):#TODO change indexx to 0 befrore run after this
     saveaddrest["T"] = solarcell.T
     saveaddrest['absorbed'] = solarcell.absorbed
-    saveaddrest['short_circuit_data'] = solarcell[2].short_circuit_data.copy()
-    saveaddrest['pdd_data'] = solarcell[2].pdd_data.copy()
-    saveaddrest['recombination_currents'] = solarcell[2].recombination_currents.copy()
-    saveaddrest['equilibrium_data'] = solarcell[2].equilibrium_data.copy()
+    saveaddrest['short_circuit_data'] = solarcell[0].short_circuit_data.copy()
+    saveaddrest['pdd_data'] = solarcell[0].pdd_data.copy()
+    saveaddrest['recombination_currents'] = solarcell[0].recombination_currents.copy()
+    saveaddrest['equilibrium_data'] = solarcell[0].equilibrium_data.copy()
     saveaddrest['iv'] = solarcell.iv.copy()
-    saveaddrest['offset'] = solarcell[2].offset
-    saveaddrest['qe'] = solarcell[2].qe.copy()
+    saveaddrest['offset'] = solarcell[0].offset
+    saveaddrest['qe'] = solarcell[0].qe.copy()
     if save:
         with open(f'{version}.pkl', 'wb') as fin:
             pickle.dump(saveaddrest, fin)
@@ -549,8 +549,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    version = "QDSC_InAs_GaSb"
-    sim_mat, plot_note = QDSC_InAs_GaSb()
+    version = "complete_ref_GaAs"
+    sim_mat, plot_note = complete_ref()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)

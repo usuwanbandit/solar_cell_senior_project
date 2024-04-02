@@ -2539,6 +2539,35 @@ def solar_cell_InSb_and_GaSb_like_paper():
 
     return solar_each_size_1, plot_note
 
+def complete_ref():
+    solar_each_size_1 = {}
+    plot_note = dict(x_axis=[0], x_axis_name="GaAs_ref")
+    n_GaAs_window = material("GaAs")(T=T, Nd=si('4e18 cm-3'))
+    n_AlInP = material("AlInP")(T=T, Al=0.42, Nd=si('3e17 cm-3'))
+    n_GaAs = material("GaAs")(T=T, Nd=si("2e18 cm-3"))
+    p_GaAs = material("GaAs")(T=T, Na=si("5e16 cm-3"))
+    p_GaInP = material("GaInP")(T=T, In=0.35, Na=si("2e18 cm-3"))
+    p_GaAs_buffer = material("GaAs")(T=T, Na=si("2e18 cm-3"))
+    p_GaAs_sub = material('GaAs')(T=T, Na=si('2e17 cm-3'))
+    # layer
+
+    GaAs_junction = Junction([
+        Layer(width=si("300 nm"), material=n_GaAs_window, role="front_contact"),
+        Layer(width=si("30 nm"), material=n_AlInP, role="window"),
+        Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
+        Layer(width=si("2800 nm"), material=p_GaAs, role="Base"),
+        Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+        Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+
+    ],
+        T=T, kind="PDD", )
+    my_solar_cell = SolarCell([
+            GaAs_junction,
+        ]
+            , T=T, substrate=p_GaAs_sub, )
+    solar_each_size_1[f"GaAs_ref"] = my_solar_cell
+    return solar_each_size_1, plot_note
+
 
 if __name__ == '__main__':
     print(si('68.47 GPa'))
