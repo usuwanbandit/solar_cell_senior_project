@@ -2542,6 +2542,7 @@ def solar_cell_InSb_and_GaSb_like_paper():
 def complete_ref():
     solar_each_size_1 = {}
     plot_note = dict(x_axis=[0], x_axis_name="GaAs_ref")
+    solat_cell_with_arc = []
     n_GaAs_window = material("GaAs")(T=T, Nd=si('4e18 cm-3'))
     n_AlInP = material("AlInP")(T=T, Al=0.42, Nd=si('3e17 cm-3'))
     n_GaAs = material("GaAs")(T=T, Nd=si("2e18 cm-3"))
@@ -2561,11 +2562,22 @@ def complete_ref():
 
     ],
         T=T, kind="PDD", )
-    my_solar_cell = SolarCell([
-            GaAs_junction,
-        ]
-            , T=T, substrate=p_GaAs_sub, )
-    solar_each_size_1[f"GaAs_ref"] = my_solar_cell
+
+    SiO2 = material("SiO2")()
+    Si3N4 = material("Si3N4")()
+    MgF2 = material("MgF2")()
+    ZnS = material("ZnScub")()
+    solat_cell_with_arc = SolarCell([
+        # Layer(width=si("402.87 nm"), material=SiO2, role="ARC1"),
+        # Layer(width=si("287 nm"), material=Si3N4, role="ARC2"),
+        Layer(width=si("110 nm"), material=MgF2, role="ARC1"),
+        Layer(width=si("60 nm"), material=ZnS, role="ARC2"),
+
+        GaAs_junction,
+
+    ]
+        , T=T, substrate=p_GaAs_sub, )
+    solar_each_size_1[f"GaAs_ref"] = solat_cell_with_arc
     return solar_each_size_1, plot_note
 
 
