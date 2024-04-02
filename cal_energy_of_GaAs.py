@@ -13,4 +13,4 @@ while(True):
     except:
         exit
     cal_wl_form_ev(state)
-    i = input("insert your state")
+    i = input("insert your state: ")
