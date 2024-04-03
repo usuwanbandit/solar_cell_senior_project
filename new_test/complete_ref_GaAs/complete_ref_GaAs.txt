@@ -28,10 +28,6 @@ start item =====================================================================
 <ARC2 layer 60.0nm <'ZnScub' material>>
 <Junction object 
 	{'T': 300, 'kind': 'PDD'}
-	<front_contact layer 3e+02nm <'GaAs' material Nd=3.999999999999998e+24>>
-	<window layer 30.0nm <'AlInP' material Al=0.42 Nd=2.9999999999999984e+23>>
-	<Emitter layer 1e+02nm <'GaAs' material Nd=1.999999999999999e+24>>
-	<Base layer 2.8e+03nm <'GaAs' material Na=4.999999999999997e+22>>
-	<BSF layer 1e+02nm <'GaInP' material In=0.35 Na=1.999999999999999e+24>>
-	<Buffer layer 1.5e+02nm <'GaAs' material Na=1.999999999999999e+24>>>
+	<Emitter layer 3e+02nm <'GaAs' material Nd=1.999999999999999e+24>>
+	<Base layer 2.8e+03nm <'GaAs' material Na=4.999999999999997e+22>>>
 end item   ================================================================================
