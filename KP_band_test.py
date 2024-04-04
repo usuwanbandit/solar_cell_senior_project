@@ -101,6 +101,8 @@ def get_structure_to_potentials():
     top_layer = Layer(width=si("20nm"), material=bulk)
     well_layer = Layer(width=si("7.2nm"), material=QW)
     barrier_layer = Layer(width=si("5 nm"), material=bulk)
+    AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
+
     bottom_layer = top_layer
     test_structure = assemble_qw_structure(
         repeats=3,
@@ -109,74 +111,83 @@ def get_structure_to_potentials():
         bulk_l_bottom=bottom_layer,
         barrier=barrier_layer,
     )
+    QWmat = material("InGaAs")(T=T, In=0.2, strained=True)
+    Bmat = material("GaAsP")(T=T, P=0.1, strained=True)
+    i_GaAs = material("GaAs")(T=T)
+
+    # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
     GaSb = material("GaSb")(T=T, strained=True,
                             electron_mobility=si("3e3 cm2"),
                             hole_mobility=si("1e3 cm2"),
                             )
-    test_structure =[
-        # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
-        Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{20} nm"), material=InSb, role="well"), # 5-20 nm
-        Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
-        Layer(width=si(f"{15} nm"), material=GaSb, role="well"),
-        Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+    # test_structure.substrate = bulk
 
-        # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
+    test_structure = Structure(
+        [
+            Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier"),
+            Layer(width=si(f"{5} nm"), material=i_GaAs, role="interlayer"),
+            # Layer(width=si(f"{1.5} nm"), material=InSb, role="well"),
+            # Layer(width=si(f"{10} nm"), material=i_GaAs, role="interlayer"),
+            Layer(width=si(f"{2} nm"), material=GaSb, role="well"),  # 5-20 nm
+            Layer(width=si(f"{5} nm"), material=i_GaAs, role="interlayer"),
+            Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier")
         ]
+        , substrate=i_GaAs)
     # test_structure.substrate = bulk
     test_structure = Structure(test_structure, substrate=bulk)
-    RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
+    RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS", periodic=True)
     schrodinger_graph_LDOS(RS)
-    align_test_structure = VBO_align(test_structure)
-    fig1, ax_band = plt.subplots(2, 2, figsize=(16.875, 12))
-
-    result = structure_to_potentials(align_test_structure, mode='kp4x4')
-    ax_band[0, 0].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
-    ax_band[0, 0].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
-    ax_band[0, 0].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
-    ax_band[0, 0].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
-    ax_band[0, 0].set_ylim(-1.5, 1.0)
-    ax_band[0, 0].set_title("mode='kp4x4'")
-
-
-    mode['kp4x4'] = result
-
-    result = structure_to_potentials(align_test_structure, mode='kp6x6')
-    ax_band[0, 1].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
-    ax_band[0, 1].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
-    ax_band[0, 1].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
-    ax_band[0, 1].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
-    ax_band[0, 1].set_ylim(-1.5, 1.0)
-    ax_band[0, 1].set_title("mode='kp6x6'")
-    mode['kp6x6'] = result
-
-
-    result = structure_to_potentials(align_test_structure, mode='strain')
-    ax_band[1, 0].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
-    ax_band[1, 0].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
-    ax_band[1, 0].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
-    ax_band[1, 0].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
-    ax_band[1, 0].set_ylim(-1.5, 1.0)
-    ax_band[1, 0].set_title("mode='strain'")
-    mode['strain'] = result
-
-
-
-    result = structure_to_potentials(align_test_structure, mode='relaxed')
-    ax_band[1, 1].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
-    ax_band[1, 1].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
-    ax_band[1, 1].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
-    ax_band[1, 1].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
-    ax_band[1, 1].set_ylim(-1.5, 1.0)
-    ax_band[1, 1].set_title("mode='relaxed'")
-    mode['relaxed'] = result
-    # bands = potentials_to_wavefunctions_energies(structure=test_structure)
-
-    fig1.suptitle("InSb/GaAs band diagram calculation ")
-    plt.legend()
-    # print(result)
+    # align_test_structure = VBO_align(test_structure)
+    # fig1, ax_band = plt.subplots(2, 2, figsize=(16.875, 12))
+    #
+    # result = structure_to_potentials(align_test_structure, mode='kp4x4')
+    # ax_band[0, 0].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
+    # ax_band[0, 0].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
+    # ax_band[0, 0].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
+    # ax_band[0, 0].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
+    # ax_band[0, 0].set_ylim(-1.5, 1.0)
+    # ax_band[0, 0].set_title("mode='kp4x4'")
+    #
+    #
+    # mode['kp4x4'] = result
+    #
+    # result = structure_to_potentials(align_test_structure, mode='kp6x6')
+    # ax_band[0, 1].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
+    # ax_band[0, 1].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
+    # ax_band[0, 1].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
+    # ax_band[0, 1].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
+    # ax_band[0, 1].set_ylim(-1.5, 1.0)
+    # ax_band[0, 1].set_title("mode='kp6x6'")
+    # mode['kp6x6'] = result
+    #
+    #
+    # result = structure_to_potentials(align_test_structure, mode='strain')
+    # ax_band[1, 0].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
+    # ax_band[1, 0].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
+    # ax_band[1, 0].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
+    # ax_band[1, 0].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
+    # ax_band[1, 0].set_ylim(-1.5, 1.0)
+    # ax_band[1, 0].set_title("mode='strain'")
+    # mode['strain'] = result
+    #
+    #
+    #
+    # result = structure_to_potentials(align_test_structure, mode='relaxed')
+    # ax_band[1, 1].plot(result['x'] * 1e9, result['Ve'] / q, label="Ve")
+    # ax_band[1, 1].plot(result['x'] * 1e9, result['Vhh'] / q, label="Vhh")
+    # ax_band[1, 1].plot(result['x'] * 1e9, result['Vlh'] / q, label="Vlh")
+    # ax_band[1, 1].plot(result['x'] * 1e9, result['Vso'] / q, label="Vso")
+    # ax_band[1, 1].set_ylim(-1.5, 1.0)
+    # ax_band[1, 1].set_title("mode='relaxed'")
+    # mode['relaxed'] = result
+    # # bands = potentials_to_wavefunctions_energies(structure=test_structure)
+    #
+    # fig1.suptitle("InSb/GaAs band diagram calculation ")
+    # plt.legend()
+    # # print(result)
     plt.show()
     return mode, test_structure
+# get_structure_to_potentials()
 def yo():
 
     GaAs = material("GaAs")(T=300)
@@ -343,19 +354,19 @@ def ploting(SR_list, con):
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
         ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
         ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
-        ax1[num].set_xlim(150, 430)
+        ax1[num].set_ylim(-1.2, 1.5)
         ax1[num].tick_params(labelsize=defaults["fontsize"])
         ax1[num].set_title(con[num])
 
 
 def get_structure_to_potentials_sweep():
-    dot_size = np.linspace(0.5, 5, 5)
+    dot_size = np.linspace(0.50, 5, 50)
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
     for i in dot_size:
         print(f"make stack {i} nm")
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3)
+        AlGaAs = material("AlGaAs")(T=T, Al=0.4)
         i_GaAs = material("GaAs")(T=T)
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb", sopra=True)(T=T
@@ -381,6 +392,9 @@ def get_structure_to_potentials_sweep():
                                             , electron_auger_recombination=si("1e-42 cm6")
                                             , hole_auger_recombination=si("1e-42 cm6")
                                             )
+        QWmat = material("InGaAs")(T=T, In=0.2, strained=True)
+        Bmat = material("GaAsP")(T=T, P=0.1, strained=True)
+        i_GaAs = material("GaAs")(T=T)
 
         # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
         GaSb = material("GaSb")(T=T, strained=True,
@@ -388,28 +402,35 @@ def get_structure_to_potentials_sweep():
                                 hole_mobility=si("1e3 cm2"),
                                 )
         # test_structure.substrate = bulk
-        dot += [
-            # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
-            Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
-            Layer(width=si(f"{i} nm"), material=InSb, role="well"), # 5-20 nm
-            Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
-            Layer(width=si(f"{15} nm"), material=GaSb, role="well"),
-            Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
 
-            # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")
-        ]
-    test_structure = Structure(
-        [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"), ]
-        +
-        dot
-        +
-        [Layer(width=si(f"{100} nm"), material=AlGaAs, role="interlayer"),]
-        , substrate=p_GaAs)
-    RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS")
-    # RS_list.append(RS)
-    # ploting(RS_list, dot_size)
+        test_structure = Structure(
+            [
+                Layer(width=30e-9, material=AlGaAs, role="barrier"),
+                # Layer(width=15e-9, material=i_GaAs, role="well"),
+                # Layer(width=si(f"2 nm"), material=GaSb, role="well"),
+                # Layer(width=5e-9, material=i_GaAs, role="well"),
+                # # Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+                # # Layer(width=20e-9, material=i_GaAs, role="well"),
+                #
+                # Layer(width=5e-9, material=AlGaAs, role="barrier"),
+                Layer(width=10e-9, material=i_GaAs, role="well"),
+                Layer(width=si(f"{i} nm"), material=GaSb, role="well"),
+                Layer(width=10e-9, material=i_GaAs, role="well"),
+                # Layer(width=si(f"2 nm"), material=GaSb, role="well"),
+
+                # Layer(width=15e-9, material=i_Ga/As, role="well"),
+                Layer(width=30e-9, material=AlGaAs, role="barrier"),
+
+            ]
+            , substrate=i_GaAs)
+        RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS", periodic=True)
+        RS_list.append(RS)
+    ploting(RS_list, dot_size)
     plt.show()
 
 get_structure_to_potentials_sweep()
+
+
+
 
 

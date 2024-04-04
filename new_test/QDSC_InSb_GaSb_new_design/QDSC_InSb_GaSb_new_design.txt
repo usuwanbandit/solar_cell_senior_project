@@ -1,0 +1,1575 @@
+
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints =-400
+       growth_rate = 0.7
+       coarse = 2e-08
+       fine = 1e-09
+       ultrafine = 2e-10
+
+       clamp = 10
+       nitermax = 1000
+       ATol = 1.5e-09
+       RTol = 0.0001
+
+       srh = 1
+       rad = 1
+       aug = 1
+       sur = 1
+       gen = 1
+       radiative_coupling: False
+       optics_method: "TMM",
+       
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints =-400
+       growth_rate = 0.7
+       coarse = 2e-08
+       fine = 1e-09
+       ultrafine = 2e-10
+
+       clamp = 10
+       nitermax = 1000
+       ATol = 1.5e-09
+       RTol = 0.0001
+
+       srh = 1
+       rad = 1
+       aug = 1
+       sur = 1
+       gen = 1
+       radiative_coupling: False
+       optics_method: "TMM",
+       
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints =-400
+       growth_rate = 0.7
+       coarse = 2e-08
+       fine = 1e-09
+       ultrafine = 2e-10
+
+       clamp = 10
+       nitermax = 1000
+       ATol = 1.5e-09
+       RTol = 0.0001
+
+       srh = 1
+       rad = 1
+       aug = 1
+       sur = 1
+       gen = 1
+       radiative_coupling: False
+       optics_method: "TMM",
+       
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints =-400
+       growth_rate = 0.7
+       coarse = 2e-08
+       fine = 1e-09
+       ultrafine = 2e-10
+
+       clamp = 10
+       nitermax = 1000
+       ATol = 1.5e-09
+       RTol = 0.0001
+
+       srh = 1
+       rad = 1
+       aug = 1
+       sur = 1
+       gen = 1
+       radiative_coupling: False
+       optics_method: "TMM",
+       
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints =-400
+       growth_rate = 0.7
+       coarse = 2e-08
+       fine = 1e-09
+       ultrafine = 2e-10
+
+       clamp = 10
+       nitermax = 1000
+       ATol = 1.5e-09
+       RTol = 0.0001
+
+       srh = 1
+       rad = 1
+       aug = 1
+       sur = 1
+       gen = 1
+       radiative_coupling: False
+       optics_method: "TMM",
+       
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.5nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 0.875nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.25nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 1.62nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+22>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 2.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
+	<layer 5.0nm <'GaAs' material>>
+	<layer 30.0nm <'AlGaAs' material Al=0.3 strained=True>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Na=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================

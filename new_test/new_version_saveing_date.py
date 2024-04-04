@@ -45,16 +45,16 @@ def get_color(number_of_color, darkness=0.5):
     darkened_colors = [(darkness * r, darkness * g, darkness * b, a) for r, g, b, a in colors]
 
     return darkened_colors
-def defultsaveing(solarcell, saveaddrest, version, save=True):#TODO change indexx to 0 befrore run after this
+def defultsaveing(solarcell, saveaddrest, version, save=True):
     saveaddrest["T"] = solarcell.T
     saveaddrest['absorbed'] = solarcell.absorbed
-    saveaddrest['short_circuit_data'] = solarcell[2].short_circuit_data.copy()
-    saveaddrest['pdd_data'] = solarcell[2].pdd_data.copy()
-    saveaddrest['recombination_currents'] = solarcell[2].recombination_currents.copy()
-    saveaddrest['equilibrium_data'] = solarcell[2].equilibrium_data.copy()
+    saveaddrest['short_circuit_data'] = solarcell[0].short_circuit_data.copy()
+    saveaddrest['pdd_data'] = solarcell[0].pdd_data.copy()
+    saveaddrest['recombination_currents'] = solarcell[0].recombination_currents.copy()
+    saveaddrest['equilibrium_data'] = solarcell[0].equilibrium_data.copy()
     saveaddrest['iv'] = solarcell.iv.copy()
-    saveaddrest['offset'] = solarcell[2].offset
-    saveaddrest['qe'] = solarcell[2].qe.copy()
+    saveaddrest['offset'] = solarcell[0].offset
+    saveaddrest['qe'] = solarcell[0].qe.copy()
     if save:
         with open(f'{version}.pkl', 'wb') as fin:
             pickle.dump(saveaddrest, fin)
@@ -514,16 +514,16 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 20
+normal_operation.clamp = 10
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
 normal_operation.srh = 1
 normal_operation.rad = 1
-normal_operation.aug = 0
+normal_operation.aug = 1
 normal_operation.sur = 1
-normal_operation.gen = 0
+normal_operation.gen = 1
 
 flash = State()
 
@@ -532,7 +532,6 @@ flash.growth_rate = 0.5
 flash.coarse = 20e-9
 flash.fine = 1e-9
 flash.ultrafine = 0.2e-9
-
 
 flash.clamp = 10
 flash.nitermax = 1000
@@ -549,8 +548,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    version = "complete_ref_GaAs"
-    sim_mat, plot_note = complete_ref()
+    version = "QDSC_InSb_GaSb_new_design_GaSb"
+    sim_mat, plot_note = QDSC_InSb_GaSb_new_design()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
