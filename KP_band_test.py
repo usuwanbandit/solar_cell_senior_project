@@ -360,13 +360,13 @@ def ploting(SR_list, con):
 
 
 def get_structure_to_potentials_sweep():
-    dot_size = np.linspace(0.50, 5, 50)
+    dot_size = np.linspace(0.50, 5, 5)
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
     for i in dot_size:
         print(f"make stack {i} nm")
-        AlGaAs = material("AlGaAs")(T=T, Al=0.4)
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3)
         i_GaAs = material("GaAs")(T=T)
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb", sopra=True)(T=T
@@ -383,6 +383,7 @@ def get_structure_to_potentials_sweep():
                                             , eff_mass_hh_z=0.05823949620355507
                                             , eff_mass_lh_z=0.0033633751606916276
                                             , eff_mass_electron=0.0022617432780656557
+
                                             , electron_mobility=si("78000 cm2")
                                             , hole_mobility=si("500 cm2")
                                             , electron_affinity=si("4.59 eV")
@@ -404,24 +405,21 @@ def get_structure_to_potentials_sweep():
         # test_structure.substrate = bulk
 
         test_structure = Structure(
+            # [
+            # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+        # ]
+        # +
             [
-                Layer(width=30e-9, material=AlGaAs, role="barrier"),
-                # Layer(width=15e-9, material=i_GaAs, role="well"),
-                # Layer(width=si(f"2 nm"), material=GaSb, role="well"),
-                # Layer(width=5e-9, material=i_GaAs, role="well"),
-                # # Layer(width=si(f"{i} nm"), material=InSb, role="well"),
-                # # Layer(width=20e-9, material=i_GaAs, role="well"),
-                #
-                # Layer(width=5e-9, material=AlGaAs, role="barrier"),
-                Layer(width=10e-9, material=i_GaAs, role="well"),
-                Layer(width=si(f"{i} nm"), material=GaSb, role="well"),
-                Layer(width=10e-9, material=i_GaAs, role="well"),
-                # Layer(width=si(f"2 nm"), material=GaSb, role="well"),
-
-                # Layer(width=15e-9, material=i_Ga/As, role="well"),
-                Layer(width=30e-9, material=AlGaAs, role="barrier"),
-
+                Layer(width=si(f"{100} nm"), material=i_GaAs, role="well"),
+                Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+                Layer(width=si(f"{100} nm"), material=i_GaAs, role="well"),
+                Layer(width=si(f"{15} nm"), material=GaSb, role="well"),  # 5-20 nm
+                Layer(width=si(f"{50} nm"), material=i_GaAs, role="well"),
             ]
+            # +
+            # [
+            #     Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+            # ]
             , substrate=i_GaAs)
         RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS", periodic=True)
         RS_list.append(RS)

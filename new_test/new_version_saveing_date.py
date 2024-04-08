@@ -8,6 +8,7 @@ from lib_save_file import *
 from solcore.solar_cell_solver import solar_cell_solver
 import time
 from constant import *
+import tkinter as tk
 
 # vint = np.linspace(-3, 3, 600)
 # V = np.linspace(-1.5, 0, 300)  # np
@@ -78,7 +79,10 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig_5, ax1_5 = plt.subplots(1, 1, figsize=(12, 8))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
-    # fig2_5, axJ = plt.subplots(1, 1, figsize=(8, 6))
+    fig2_1, axJ = plt.subplots(1, 1, figsize=(8, 6))
+    fig2_2, axJrad = plt.subplots(1, 1, figsize=(8, 6))
+    fig2_3, axJsrh = plt.subplots(1, 1, figsize=(8, 6))
+    fig2_4, axJaug = plt.subplots(1, 1, figsize=(8, 6))
     fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
     fig3_5, axCar2 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
     fig_b1, band1 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
@@ -132,39 +136,39 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             # axIV.plot(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1] / 10), label=f"{data['mode']}")
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
 
-            # try:
-            #
-            #     axJ.semilogy(abs(data["iv"]["IV"][0], data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
-            #     axJ.semilogy(abs(V), data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
-            #     axJ.semilogy(abs(V), data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
-            #     axJ.semilogy(abs(V), data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
-            #     axJ.semilogy(abs(V), data['recombination_currents']['Jaug'], color=color[num],linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-            # except:
-            #     pass
+            try:
+
+                axJ.semilogy(abs(data["iv"]["IV"][0], data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+                axJrad.semilogy(abs(V), data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
+                axJsrh.semilogy(abs(V), data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
+                # axJ.semilogy(abs(V), data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
+                axJaug.semilogy(abs(V), data['recombination_currents']['Jaug'], color=color[num],linestyle=linestyle[3])
+            except:
+                pass
 
         elif num in simpifly:
             # axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
             # axIV.plot(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1] / 10), label=f"{data['mode']}")
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
 
-            # try:
-            #     # axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
-            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
-            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
-            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
-            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-            #
-            #     axJ.semilogy(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
-            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jrad']), color=color[num], linestyle=linestyle[1])
-            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsrh']), color=color[num], linestyle=linestyle[2])
-            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsur']), color=color[num], linestyle=linestyle[3])
-            #     axJ.semilogy(abs(V), abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-            #
-            #
-            # except:
-            #     pass
-        axIV.set_ylim(0, 30)
-        axIV.set_xlim(-0.1, 1.5)
+            try:
+                # axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+                # axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
+                # axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
+                # axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
+                # axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+
+                axJ.semilogy(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
+                axJrad.semilogy(abs(V), abs(data['recombination_currents']['Jrad']), color=color[num], linestyle=linestyle[1])
+                axJsrh.semilogy(abs(V), abs(data['recombination_currents']['Jsrh']), color=color[num], linestyle=linestyle[2])
+                # axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsur']), color=color[num], linestyle=linestyle[3])
+                axJaug.semilogy(abs(V), abs(data['recombination_currents']['Jaug']), color=color[num], linestyle=linestyle[3])
+
+
+            except:
+                pass
+        axIV.set_ylim(-30, 30)
+        axIV.set_xlim(-1.5, 1.5)
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
         axIV.legend()
@@ -307,7 +311,11 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig_5.savefig(f'EQE_{version}_zoom.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    # fig2_5.savefig(f'current_curve_{version}.png', dpi=300)
+    fig2_1.savefig(f'current_curve_{version}.png', dpi=300)
+    fig2_2.savefig(f'radiative_recombination_current_{version}.png', dpi=300)
+    fig2_3.savefig(f'SRH_current_{version}.png', dpi=300)
+    fig2_4.savefig(f'Auger_current_{version}.png', dpi=300)
+
     mpld3.save_html(fig3, f'Carrier_distribution_{version}.html')
     mpld3.save_html(fig3_5, f'Carrier_distribution_{version}_zoom.html')
     mpld3.save_html(fig_b1, f'Band_diagramming_of_{version}.html')
@@ -408,6 +416,75 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
         back_up_data(set_of_data, version)
     return set_of_data
 
+def simulation0D_sun_constant(version, cell, plot_note, pdd_options=None, note='', mode="None"):
+    if pdd_options == None:
+        pdd_options = State()
+
+        # pdd_options.recalculate_absorption = True
+
+        # Mesh control
+        pdd_options.meshpoints = -400
+        pdd_options.growth_rate = 0.7
+        pdd_options.coarse = 20e-9
+        pdd_options.fine = 1e-9
+        pdd_options.ultrafine = 0.2e-9
+
+        # Convergence control
+        pdd_options.clamp = 20
+        pdd_options.nitermax = 100
+        pdd_options.ATol = 1e-14
+        pdd_options.RTol = 1e-6
+
+        # Recombination control
+        pdd_options.srh = 1
+        pdd_options.rad = 1
+        pdd_options.aug = 0
+        pdd_options.sur = 1
+        pdd_options.gen = 0
+    else:
+        pass
+    # print('pdd_options.recalculate_absorption', pdd_options.recalculate_absorption)
+    print('pdd_options.meshpoints',pdd_options.meshpoints)
+    print('pdd_options.growth_rate',pdd_options.growth_rate)
+    print('pdd_options.coarse',pdd_options.coarse)
+    print('pdd_options.fine',pdd_options.fine)
+    print('pdd_options.ultrafine',pdd_options.ultrafine)
+    print('pdd_options.clamp',pdd_options.clamp)
+    print('pdd_options.nitermax',pdd_options.nitermax)
+    print('pdd_options.RTol',pdd_options.RTol)
+    print('pdd_options.ATol',pdd_options.ATol)
+    print('pdd_options.RTol',pdd_options.RTol)
+    print('pdd_options.srh',pdd_options.srh)
+    print('pdd_options.rad',pdd_options.rad)
+    print('pdd_options.aug',pdd_options.aug)
+    print('pdd_options.sur',pdd_options.sur)
+    print('pdd_options.gen',pdd_options.gen)
+
+    set_of_data = []
+
+    data_mode = data_solar_cell.copy()
+    data_mode['mode'] = mode
+    data_mode['note'] = note
+    data_mode['x_axis'] = plot_note['x_axis']
+    data_mode['x_axis_name'] = plot_note["x_axis_name"]
+    try:
+        data_mode['x_axis_txt'] = plot_note["x_axis_txt"]
+    except:pass
+    data_mode['list_structure'].append(
+        "start item ================================================================================")
+    _ = [data_mode['list_structure'].append(str(i)) for i in cell]
+    data_mode['list_structure'].append(
+        "end item   ================================================================================")
+    print(data_mode['mode'])
+    cell = savecell(cell, pdd_options)
+    data_mode = defultsaveing(cell, data_mode, version)
+    print(data_mode["iv"]["Pmpp"])
+    print(data_mode["iv"]["Isc"])
+    print(data_mode["iv"]["Voc"])
+    print(data_mode["iv"]["FF"])
+    set_of_data.append(data_mode)
+    back_up_data(set_of_data, version)
+    return set_of_data
 
 
 def savecell(cell, pdd_options):
@@ -519,11 +596,111 @@ normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
-normal_operation.srh = 1
+normal_operation.srh = 0
 normal_operation.rad = 1
-normal_operation.aug = 1
+normal_operation.aug = 0
 normal_operation.sur = 1
-normal_operation.gen = 1
+normal_operation.gen = 0
+
+#        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+#        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#        Layer(width=si(f"{50} nm"), material=i_GaAs, role="well"),
+#        Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+#         x4
+# srh 0 rad 1 aug 1 sur 0 gen 1 ไม่ได้ที่ res 20 and 1300  -255789 too much
+# srh 0 rad 0 aug 0 sur 0 gen 0 ได้แล้ว แต้ว้่่าต้องมี rad ด้วย
+# srh 0 rad 1 aug 1 sur 0 gen 0  ไม่ได้ที่ res 21 and 1300 -0.636511E-1 ดีขึ้นค่าหลังไม่ค่อยแย่อยู่ที่ -72 QDSC_InSb_GaSb_sweep_InSb_pn
+# srh 1 rad 1 aug 1 sur 0 gen 0  ไม่ได้ที่ res 21 and 1300 -0.636511E-1 เหมือนกับข้างบนแต่ว่าส่วนwlสูงแย่ลง -1429 QDSC_InSb_GaSb_sweep_InSb_pn
+# srh 1 rad 1 aug 0 sur 0 gen 0  เชี้ยเลย กระแส -19 res 368 ดีขึ้น but 1600 trend up long wl fk must something to decrees EQE
+# srh 1 rad 1 aug 0 sur 1 gen 1  เชี้ยเหมือนกัน
+# srh 1 rad 1 aug 0 sur 0 gen 1  เชี้ยเหมือนกัน
+
+# srh 0 rad 1 aug 0 sur 0 gen 0  J: -254. Res 15821 แต่ว่าไม่มีอะไรชูทำให้ 668 ตกและติดลบ
+#  con fix aug to 1e-27 --> 1e-28 --> 1e-29
+# srh 0 rad 1 aug 1 sur 0 gen 0 fix aug 1e-27 cm6 Res: 21 J: -202 wl: 1324 -0.65e-2 and long at 1407 -790
+# srh 0 rad 1 aug 1 sur 0 gen 0 fix aug 1e-28 cm6 Res: 21 J: -202 wl: 1324 -0.86e-2 and long at 1407 -791 ดูดีขึ้นตัวนี้
+# srh 0 rad 1 aug 1 sur 0 gen 0 fix aug 1e-29 cm6 Res: 21 J: -202 มี +- wl: 1324 -0.29e-1 and long at 1407 -792
+
+#  add AlGaAs and
+#        Layer(width=si(f"{100} nm"), material=i_GaAs_barrier, role="interlayer"),
+#        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#        Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
+#        Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="interlayer"),
+#         x5
+# srh 0 rad 1 aug 1 sur 0 gen 0 fix aug 1e-29 cm6 Res: 20.8 J: -204
+# srh 0 rad 1 aug 1 sur 0 gen 1 fix aug 1e-29 cm6 Res 20.8 J:-204 มีภาพ 1354 -0.18e-3 แต่ว่าส่วนหลังๆ runaway ไปทางลบ
+# srh 0 rad 1 aug 1 sur 0 gen 1 Res 20.8 J:-204 มีภาพ 1354 -0.18e-3 แต่ว่าส่วนหลังๆ runaway ไปทางลบ
+# srh 1 rad 1 aug 1 sur 0 gen 1 Res 20.8 J:-204 1354 -0.262906E-03 แต่ว่าส่วนหลังๆ runaway แต่ช้าลง
+#        Layer(width=si(f"{100} nm"), material=i_GaAs_barrier, role="well"),
+#        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#        Layer(width=si(f"{100} nm"), material=i_GaAs, role="well"),
+#        Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+#         x5
+# srh 1 rad 1 aug 1 sur 0 gen 1 เลขบนเป็นบวก J:-204 Res: 20.8  wl 807: -104963.
+# srh 0 rad 1 aug 1 sur 0 gen 0 เลขบนเป็นบวก J:-204 Res: 20.8  wl 802: -98277.
+# srh 0 rad 1 aug 0 sur 0 gen 0 เลขบนเป็นบวก J:-295 Res: 12441  wl 1129: -0.107322E-02 and runaway minus
+# srh 1 rad 1 aug 0 sur 0 gen 0  J:-295 Res: 12441  wl 1354.20: -0.617E-05 and runaway minus
+# srh 1 rad 1 aug 1 sur 0 gen 0 เลขบนเป็นบวก J:-204 Res: 20.8  เหมือนเดิม
+# srh 1 rad 1 aug 0 sur 0 gen 1 เลขบนเป็นบวก J:-204 Res: 20.8  เหมือนเดิม
+# srh 1 rad 1 aug 0 sur 1 gen 1 เลขบนดีขึ้น J:-204 Res: 20.8  wl 1354: -0.616955E-05 and runaway minus ดีขึ้น
+#        Layer(width=si(f"{100} nm"), material=i_GaAs_barrier, role="well"),
+#        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#        Layer(width=si(f"{100} nm"), material=i_GaAs, role="well"),
+#        Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+#         x4 --> x6
+# srh 1 rad 1 aug 0 sur 1 gen 1 เลขบนเป็นบวก J:-203 Res: 21  wl 1354: -0.232454E-03 and -101656 แย่ลง x4
+# srh 1 rad 1 aug 0 sur 1 gen 1 เลขบนเป็นบวก J:-203 Res: 21  wl 1354: -0.508789E-05 and runaway minus ดีขึ้น x6 stack
+# srh 1 rad 1 aug 0 sur 1 gen 1 เลขบนปรกติ J:-203 Res: 24  wl 1354: -0.573689E-05 and runaway minus ดีขึ้น x1 stack
+# srh 1 rad 1 aug 1 sur 1 gen 1 เลขบนเป็นบวก J:-201 Res: 24  wl 1354: -0.486986E-05 and runaway minus ดีขึ้น x1 stack V สูงขึ้นแล้ว
+
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J:-203 Res: 24  wl 1354: -0.486986E-05 and runaway minus ดีขึ้น x1 stack V สูงขึ้นแล้ว
+# change AlGaAs to 50 nm and wl 350-1700 nm
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J:-203 Res: 24  wl 1354: -0.373742E-03 and runaway minus แย่ลง x1 stack V
+# change AlGaAs to 100 nm + strained and wl 350-1700 nm
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24  wl 1354: -0.225507E-02 and -51653 x1 แย่ลง stack
+# wl 350-2000 nm
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24  wl 1354: -0.486986E-05 and runaway x1 แย่ลง stack
+
+# change AlGaAs to 100 nm remove strained and wl 350-1700 nm
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24  wl 1354: -0.225507E-02 and -51653 x1 แย่ลง stack
+# wl 350-2500 nm error --> 350-2000 nm remove AlGaAs
+# [
+#                 Layer(width=si(f"{100} nm"), material =i_GaAs_barrier, role="well"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+#             ]
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขกระแสปรกติ J: -201 Res: 24  wl 1132: -7.51129  and runaway ลองให้ I ห่างขึ้น (รันเร็วขึ้น)
+# add i_GaAs
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขกระแสเป็นบวกลบ J: -201 Res: 22.7  wl 1132: -0.100687E-02 and -7.51129 ลองให้ I ห่างขึ้น
+# change to AlGaAs Al=0.4
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขกระแสปรกติ J: -201 Res: 24.2  wl 1354: -0.183705E-04 and runaway
+# srh 0 rad 1 aug 1 sur 1 gen 1 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354: -0.725411E-05 and runaway ลองให้ I ห่างขึ้น
+# srh 0 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354: -0.725411E-05 and runaway ลองให้ I ห่างขึ้น
+# srh 0 rad 1 aug 0 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354.89: -0.151255E-03 and runaway
+#  con fix aug to 1e-30 add aug to GaSb
+# srh 0 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354.89: -0.151255E-03 and runaway
+# add aug to GaSb
+# srh 0 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354.89: -0.158803E-04 and -87872
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354.89: -0.177417E-04 and runaway
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354.89: -0.177417E-04 and runaway  V เพิ่ม 0.360360E-1
+# srh 0 rad 1 aug 0 sur 1 gen 0 เลขเป็นลบแบบแปลกๆ J: -219 Res: 16677.2  wl 1094.89: -0.151255E-03 and runaway แต่ V เพื่มเป็น 0.5!!!!!!! แค่ตัวแรก ที่เหลือพังหมด
+# srh 1 rad 1 aug 1 sur 1 gen 0 เลขบนเป็นบวก J: -201 Res: 24.2  wl 1354.89: -0.177417E-04 and runaway  V เพิ่ม 0.360360E-1 พังเหมือนันหมก
+
+# srh 1 rad 1 aug 1 sur 0 gen 0 เลขบนเป็นบวก ระเบิด
+# srh 0 rad 1 aug 1 sur 0 gen 0 เลขบนเป็นบวก อันแรกระเบิด อันสองดีขึ้นแต่ระเบิดอยู้ดี
+
+
+
+
+
+
+# ติดลบจะไม่ออก
 
 flash = State()
 
@@ -548,8 +725,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    version = "QDSC_InSb_GaSb_new_design_GaSb"
-    sim_mat, plot_note = QDSC_InSb_GaSb_new_design()
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
@@ -576,35 +753,6 @@ if __name__ == '__main__':
        optics_method: "TMM",
        """
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-
-    # version = "dot_InSb_n_inter_sweep"
-    # sim_mat, plot_note = dot_InSb_n_inter_sweep()
-    # note = f"""
-    #    T=300
-    #    vint = np.linspace(-6, 4, 1000)
-    #    V = np.linspace(-1.5, 0, 500)  # np
-    #    wl = np.linspace(350, 1200, 500) *1e-9   # version1
-    #    recalculate_absorption = False
-    #    meshpoints ={normal_operation.meshpoints}
-    #    growth_rate = {normal_operation.growth_rate}
-    #    coarse = {normal_operation.coarse}
-    #    fine = {normal_operation.fine}
-    #    ultrafine = {normal_operation.ultrafine}
-    #
-    #    clamp = {normal_operation.clamp}
-    #    nitermax = {normal_operation.nitermax}
-    #    ATol = {normal_operation.ATol}
-    #    RTol = {normal_operation.RTol}
-    #
-    #    srh = {normal_operation.srh}
-    #    rad = {normal_operation.rad}
-    #    aug = {normal_operation.aug}
-    #    sur = {normal_operation.sur}
-    #    gen = {normal_operation.gen}
-    #    radiative_coupling: False
-    #    optics_method: "TMM",
-    #    """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
 
     # version = "solar_cell_InSb_and_GaSb_like_paper" #TODO set InSb&GaAs no loss and make GaSb have normal condition
     # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
@@ -635,7 +783,34 @@ if __name__ == '__main__':
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
     #
-
+    # version = "dot_InSb_n_inter_sweep"
+    # sim_mat, plot_note = dot_InSb_n_inter_sweep()
+    # note = f"""
+    #    T=300
+    #    vint = np.linspace(-6, 4, 1000)
+    #    V = np.linspace(-1.5, 0, 500)  # np
+    #    wl = np.linspace(350, 1200, 500) *1e-9   # version1
+    #    recalculate_absorption = False
+    #    meshpoints ={normal_operation.meshpoints}
+    #    growth_rate = {normal_operation.growth_rate}
+    #    coarse = {normal_operation.coarse}
+    #    fine = {normal_operation.fine}
+    #    ultrafine = {normal_operation.ultrafine}
+    #
+    #    clamp = {normal_operation.clamp}
+    #    nitermax = {normal_operation.nitermax}
+    #    ATol = {normal_operation.ATol}
+    #    RTol = {normal_operation.RTol}
+    #
+    #    srh = {normal_operation.srh}
+    #    rad = {normal_operation.rad}
+    #    aug = {normal_operation.aug}
+    #    sur = {normal_operation.sur}
+    #    gen = {normal_operation.gen}
+    #    radiative_coupling: False
+    #    optics_method: "TMM",
+    #    """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
     # version = "dot_InSb_n_bot_sweep"
     # sim_mat, plot_note = dot_InSb_n_bot_sweep()
     # note = f"""
@@ -664,8 +839,8 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_stack_AlGaAs_10nm"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack_AlGaAs_10nm.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
