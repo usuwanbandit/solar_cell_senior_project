@@ -598,8 +598,8 @@ normal_operation.RTol = 1e-4
 
 normal_operation.srh = 0
 normal_operation.rad = 1
-normal_operation.aug = 0
-normal_operation.sur = 1
+normal_operation.aug = 1
+normal_operation.sur = 0
 normal_operation.gen = 0
 
 #        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
@@ -694,7 +694,10 @@ normal_operation.gen = 0
 
 # srh 1 rad 1 aug 1 sur 0 gen 0 เลขบนเป็นบวก ระเบิด
 # srh 0 rad 1 aug 1 sur 0 gen 0 เลขบนเป็นบวก อันแรกระเบิด อันสองดีขึ้นแต่ระเบิดอยู้ดี
-
+# fix p length to 400 nm
+# srh 0 rad 0 aug 0 sur 1 gen 0 every thing work
+# srh 1 rad 1 aug 1 sur 1 gen 1 fail
+# srh 0 rad 1 aug 1 sur 1 gen 0 fail
 
 
 
