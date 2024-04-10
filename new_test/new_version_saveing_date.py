@@ -596,11 +596,11 @@ normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
-normal_operation.srh = 0
+normal_operation.srh = 1
 normal_operation.rad = 1
 normal_operation.aug = 1
 normal_operation.sur = 0
-normal_operation.gen = 0
+normal_operation.gen = 1
 
 #        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
 #        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
@@ -698,6 +698,45 @@ normal_operation.gen = 0
 # srh 0 rad 0 aug 0 sur 1 gen 0 every thing work
 # srh 1 rad 1 aug 1 sur 1 gen 1 fail
 # srh 0 rad 1 aug 1 sur 1 gen 0 fail
+#wl 350-2500 nm
+# srh 1 rad 1 aug 1 sur 0 gen 0 res 33 Jบวกรอบแรก:-199 fail at 1354 -0.1e-1 and runaway
+#wl 350-3000 nm
+# srh 0 rad 1 aug 1 sur 0 gen 0 res 33 Jบวกรอบแรก:-199 fail at 1354 eqe drop 0.123122E-04 but volt fail
+#wl 350-3500 nm
+# srh 0 rad 1 aug 1 sur 0 gen 0 res 699.5 Jบวกรอบแรก:-199 fail at 1232 eqe drop -0.717289E-02 and run away
+#wl 350-4500 nm
+# srh 0 rad 1 aug 1 sur 0 gen 0 res 0.4159E+08  Jบวกรอบแรก:-199 eqe drop 0.379589E-07 but volt fail but 2 dot is fail
+# srh 1 rad 1 aug 1 sur 0 gen 1 res 33  Jบวกรอบแรก:-199 eqe drop 1352.73 -0.564815E-05 but volt fail
+#wl 350-3500 nm
+# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-199 eqe drop 1352.73 -0.564815E-05 but volt fail
+# loww doping n-type
+# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runawayp 1352.73 -0.564815E-05 but volt fail
+# srh 1 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runawayp 1352.73 -0.564815E-05 but volt fail
+# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runaway 1352.73 -0.564815E-05 but volt fail
+# srh 0 rad 1 aug 1 sur 0 gen 0 res 3691  Jบวกรอบแรก:-188 eqe runaway 1352.73 -0.564815E-05 but volt fail
+# loww doping p-type
+# srh 0 rad 0 aug 0 sur 1 gen 0 res 33 fail
+# srh 1 rad 1 aug 0 sur 1 gen 0 res 34  Jแปลกๆ:-197 eqe is looking good but runaway at last but volt fail
+# srh 1 rad 1 aug 0 sur 1 gen 1 res 34  Jแปลกๆ:-197 eqe is getting worst
+# srh 1 rad 1 aug 1 sur 1 gen 0 res 34  Jแปลกๆ:-197 eqe is getting worst
+# loww doping p-type
+# srh 1 rad 1 aug 0 sur 0 gen 0 res 1127  Jแปลกๆ:-197 eqe is getting worst
+#mod barrier
+# srh 1 rad 1 aug 1 sur 1 gen 1 res 448  Jแปลกๆ:-197 eqe is getting worst
+#destack to 1
+# srh 1 rad 1 aug 1 sur 0 gen 1   eqe runaway at start
+# srh 1 rad 1 aug 0 sur 0 gen 1 res 47   eqe 1355 -0.177663E-04 and runaway
+# srh 0 rad 1 aug 0 sur 0 gen 1 res 47   eqe 1355 -0.177663E-04 and runaway
+# srh 0 rad 1 aug 0 sur 0 gen 0 res 47   eqe 1355 -0.177663E-04 and runaway
+# srh 1 rad 0 aug 0 sur 0 gen 0 res 47   fail
+# srh 1 rad 0 aug 1 sur 0 gen 0 res 47   J: is better 194 Res 40 but eqe fail
+# srh 1 rad 0 aug 1 sur 0 gen 1 res 47   J: is better 194 Res 40 but eqe fail
+# srh 1 rad 0 aug 1 sur 1 gen 1 res 47   J: is better 194 Res 40 but eqe fail
+# srh 1 rad 1 aug 1 sur 1 gen 1 res 47   J: is better -187 Res 4998 but eqe fail
+#destack to 3
+# srh 1 rad 1 aug 1 sur 1 gen 1 res 47   J: is better -187 Res 4998 but eqe fail
+
+
 
 
 

@@ -1272,15 +1272,15 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
         size_GaSb = 15
         AlGaAs = material("AlGaAs")(T=T, Al=0.4,)
         n_GaAs = material('GaAs')(T=T, Nd=si('1e16 cm-3'), )
-        p_GaAs_window = material('GaAs')(T=T, Na=si('4e18 cm-3'), )
+        p_GaAs_window = material('GaAs')(T=T, Na=si('4e17 cm-3'), )
         n_GaAs_inter = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
         n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e18 cm-3"))
-        p_AlInP = material("AlInP")(T=T, Al=0.32, Na=si('3e17 cm-3'))
+        p_AlInP = material("AlInP")(T=T, Al=0.32, Na=si('3e16 cm-3'))
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True,)
-        n_GaInP = material("GaInP")(T=T, In=0.42, Nd=si("2e18 cm-3"))
-        n_GaAs_buffer = material("GaAs")(T=T, Nd=si("2e18 cm-3"))
-        p_GaAs = material("GaAs")(T=T, Na=si("1e18 cm-3"), )
+        n_GaInP = material("GaInP")(T=T, In=0.42, Nd=si("2e16 cm-3"))
+        n_GaAs_buffer = material("GaAs")(T=T, Nd=si("2e16  cm-3"))
+        p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb", sopra=True)(T=T
                                             , strained=True
                                             , valence_band_offset=si("0.0 eV")
@@ -1329,7 +1329,7 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
 
             # +
             # [Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier")]
-            , T=T, repeat=5, substrate=i_GaAs)
+            , T=T, repeat=1, substrate=i_GaAs)
         # E = 1240 / (wl * 1e9) * q
         # alpha_params = {
         #     "well_width": QW.QW_width,
@@ -1351,7 +1351,7 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
         # QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
         GaAs_junction = Junction([
                                      Layer(width=si("300 nm"), material=p_GaAs_window, role="Emitter"),
-                                     Layer(width=si("30 nm"), material=p_AlInP, role="window"),
+                                     # Layer(width=si("30 nm"), material=p_AlInP, role="window"),
                                      Layer(width=si("100 nm"), material=p_GaAs, role="Emitter"),
                                      # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
                                  ]
