@@ -765,14 +765,70 @@ normal_operation.gen = 1
 #                 Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
 # srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -209 Res 10664 WL good(best)
 #                 Layer(width=si("150 nm"), material=n_GaAs_window, role="Emitter"),
-# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -212 Res 12380 WL good(best) better very good
-
-# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -215 Res 205
-# change well to intelayer
-# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -215 Res 205
-# change intelayer to well
-
-
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -212 Res 12380 WL good(best) better very good but voltage
+# hole_minority_lifetime 1e-10 --> 1e-9 InSb
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -211 Res 95 WL good(best) better very good but voltage
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs, role="well"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 27 WL good(best) better very good but voltage
+# sim at 1 nm
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: +100 Res 27 WL
+# Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 179517 WL fail
+# add doping at p
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 179517 WL fail
+#                  Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+#                  Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                  Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
+#                  Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                  Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 21 WL good(best) better very good but voltage
+#                                      Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
+#                                      Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                                      Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+#                                  + QW_list
+#                                      Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+#                                      Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                                      Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                                      Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                                      Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -201 Res 21 WL fail
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -201 Res 21 WL fail but look better
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -201 Res 21 WL fail but look better
+#                              Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
+#                              Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                              Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+#                          + QW_list
+#                              Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                              Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                              Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -196 Res 27 WL so realistic 1636:-0.139453E-07 don't runaway!!! miraical
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -187 Res 25 WL so realistic 1636:-0.139453E-15 runaway
+# lower doped
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -190 Res 3277 WL so realistic 1636:-0.139453E-15 runaway miraical again
 
 # ติดลบจะไม่ออก
 

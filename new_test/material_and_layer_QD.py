@@ -1263,23 +1263,24 @@ def QDSC_InSb_GaSb_sweep_InSb():
 
 
 def QDSC_InSb_GaSb_sweep_InSb_pn():
-    dot_size = np.linspace(0.5, 5, 5)
+    dot_size = np.linspace(1, 5, 5)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
     for i in dot_size:
         size_InSb = 2.5
         size_GaSb = 15
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3)
+        AlGaAs = material("AlGaAs")(T=T, strained=True, Al=0.3)
         n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
-        n_GaAs_window = material('GaAs')(T=T, Nd=si('4e18 cm-3'), )
+        n_GaAs_window = material('GaAs')(T=T, Nd=si('4e17 cm-3'), )
         n_GaAs_inter = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
-        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e18 cm-3"))
+        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e17 cm-3"))
+        n_AlGaAs_window = material("AlGaAs")(T=T, Al=0.3, Nd=si("4e18 cm-3"))
         n_AlInP = material("AlInP")(T=T, Al=0.32, Nd=si('3e17 cm-3'))
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, )
-        p_GaInP = material("GaInP")(T=T, In=0.42, Na=si("2e18 cm-3"))
-        p_GaAs_buffer = material("GaAs")(T=T, Na=si("2e18 cm-3"))
+        p_GaInP = material("GaInP")(T=T, In=0.42, Na=si("2e17 cm-3"))
+        p_GaAs_buffer = material("GaAs")(T=T, Na=si("2e17 cm-3"))
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
         InSb = material("InSb", sopra=True)(T=T
                                             , strained=True
@@ -1299,7 +1300,7 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
                                             , hole_mobility=si("500 cm2")
                                             , electron_affinity=si("4.59 eV")
                                             , electron_minority_lifetime=si("1e-6 s")
-                                            , hole_minority_lifetime=si("1e-10 s")
+                                            , hole_minority_lifetime=si("1e-9 s")
                                             , relative_permittivity=13.943
                                             , electron_auger_recombination=si("1e-30 cm6")
                                             , hole_auger_recombination=si("1e-30 cm6")
@@ -1321,11 +1322,11 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
             # ]
             # +
             [
-                Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
-                Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+                Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
-                Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
             ]  # 5-20 nm
             # Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),]*dot
 
@@ -1352,15 +1353,15 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
                                     )
         # QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
         GaAs_junction = Junction([
-                                     Layer(width=si("150 nm"), material=n_GaAs_window, role="Emitter"),
+                                     Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
                                      # Layer(width=si("30 nm"), material=p_AlInP, role="window"),
-                                     Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
-                                     # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
+                                     # Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si(f"250 nm"), material=n_AlGaAs, role="barrier"),
                                  ]
                                  + QW_list
                                  + [
-                                     # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
-                                     Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+                                     # Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+                                     # Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
                                      Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
                                      Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
                                      Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),

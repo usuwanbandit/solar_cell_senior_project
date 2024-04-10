@@ -124,13 +124,11 @@ def get_structure_to_potentials():
 
     test_structure = Structure(
         [
-            Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier"),
-            Layer(width=si(f"{5} nm"), material=i_GaAs, role="interlayer"),
-            # Layer(width=si(f"{1.5} nm"), material=InSb, role="well"),
-            # Layer(width=si(f"{10} nm"), material=i_GaAs, role="interlayer"),
-            Layer(width=si(f"{2} nm"), material=GaSb, role="well"),  # 5-20 nm
-            Layer(width=si(f"{5} nm"), material=i_GaAs, role="interlayer"),
-            Layer(width=si(f"15 nm"), material=AlGaAs, role="barrier")
+            Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+            Layer(width=si(f"{2} nm"), material=InSb, role="well"),
+            Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
+            Layer(width=si(f"{10} nm"), material=GaSb, role="well"),  # 5-20 nm
+            Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
         ]
         , substrate=i_GaAs)
     # test_structure.substrate = bulk
@@ -187,7 +185,7 @@ def get_structure_to_potentials():
     # # print(result)
     plt.show()
     return mode, test_structure
-# get_structure_to_potentials()
+get_structure_to_potentials()
 def yo():
 
     GaAs = material("GaAs")(T=300)
