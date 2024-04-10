@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 from solcore import constants
 from solcore.light_source import LightSource
@@ -9,7 +10,7 @@ eV_to_J = 1.60218e-19  # Conversion factor from eV to J
 T=300
 vint = np.linspace(-3, 3, 1000)
 # wl = h * c / ev
-wl = np.linspace(350, 3500, 1000) *1e-9
+wl = np.linspace(350, 3000, 1000) *1e-9
 V = np.linspace(-1.5, 1.5, 1000)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 
@@ -23,10 +24,10 @@ light_source = LightSource(source_type="standard"
 q = constants.q
 vacuum_permittivity = constants.vacuum_permittivity
 if __name__ == '__main__':
-    print('T', T)
-    print('vint', vint)
-    print('V', V)
-    print('wl', wl)
+    # print('T', T)
+    # print('vint', vint)
+    # print('V', V)
+    # print('wl', wl)
     # plt.plot(wl)
     # plt.show()
     # for srh in [0,1]:
@@ -40,3 +41,24 @@ if __name__ == '__main__':
     #                     print(f'sur {sur} ', end='')
     #                     print(f'gen {gen} ', end='')
     #                     print('')
+    A1= [0, 0.5,0.85, 1.35, 1.95, 3.45, 3.95]
+    V1= [7, 100, 160, 240, 320, 400, 480]
+    # plt.plot(A1,V1)
+    # plt.xlabel("Field current(A)")
+    # plt.ylabel("Armature voltage(V)")
+    # plt.legend
+    # plt.title("Armature Voltage - Field current")
+    # plt.show()
+    A1 = [0, 0.42, 0.7, 1.3, 1.6, 2, 2.4]
+    A2 = [0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48]
+
+    V1 = [400, 410, 425, 435, 450, 460]
+    A2 = [0.48, 0.4, 0.32, 0.24, 0.16, 0]
+    plt.plot(A2, V1)
+    plt.ylabel("Armature Voltage(V)")
+    plt.xlabel("Armature current(A)")
+    plt.ylim(300, 500)
+    plt.xlim(0, 0.5)
+    plt.legend
+    plt.title("Armature Voltage - Armature current at@(field current 4.3A)")
+    plt.show()

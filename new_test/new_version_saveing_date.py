@@ -598,7 +598,7 @@ normal_operation.RTol = 1e-4
 
 normal_operation.srh = 1
 normal_operation.rad = 1
-normal_operation.aug = 1
+normal_operation.aug = 0
 normal_operation.sur = 0
 normal_operation.gen = 1
 
@@ -698,43 +698,45 @@ normal_operation.gen = 1
 # srh 0 rad 0 aug 0 sur 1 gen 0 every thing work
 # srh 1 rad 1 aug 1 sur 1 gen 1 fail
 # srh 0 rad 1 aug 1 sur 1 gen 0 fail
-#wl 350-2500 nm
-# srh 1 rad 1 aug 1 sur 0 gen 0 res 33 Jบวกรอบแรก:-199 fail at 1354 -0.1e-1 and runaway
-#wl 350-3000 nm
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 33 Jบวกรอบแรก:-199 fail at 1354 eqe drop 0.123122E-04 but volt fail
-#wl 350-3500 nm
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 699.5 Jบวกรอบแรก:-199 fail at 1232 eqe drop -0.717289E-02 and run away
-#wl 350-4500 nm
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 0.4159E+08  Jบวกรอบแรก:-199 eqe drop 0.379589E-07 but volt fail but 2 dot is fail
-# srh 1 rad 1 aug 1 sur 0 gen 1 res 33  Jบวกรอบแรก:-199 eqe drop 1352.73 -0.564815E-05 but volt fail
-#wl 350-3500 nm
-# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-199 eqe drop 1352.73 -0.564815E-05 but volt fail
-# loww doping n-type
-# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runawayp 1352.73 -0.564815E-05 but volt fail
-# srh 1 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runawayp 1352.73 -0.564815E-05 but volt fail
-# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runaway 1352.73 -0.564815E-05 but volt fail
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 3691  Jบวกรอบแรก:-188 eqe runaway 1352.73 -0.564815E-05 but volt fail
-# loww doping p-type
-# srh 0 rad 0 aug 0 sur 1 gen 0 res 33 fail
-# srh 1 rad 1 aug 0 sur 1 gen 0 res 34  Jแปลกๆ:-197 eqe is looking good but runaway at last but volt fail
-# srh 1 rad 1 aug 0 sur 1 gen 1 res 34  Jแปลกๆ:-197 eqe is getting worst
-# srh 1 rad 1 aug 1 sur 1 gen 0 res 34  Jแปลกๆ:-197 eqe is getting worst
-# loww doping p-type
-# srh 1 rad 1 aug 0 sur 0 gen 0 res 1127  Jแปลกๆ:-197 eqe is getting worst
-#mod barrier
-# srh 1 rad 1 aug 1 sur 1 gen 1 res 448  Jแปลกๆ:-197 eqe is getting worst
-#destack to 1
-# srh 1 rad 1 aug 1 sur 0 gen 1   eqe runaway at start
-# srh 1 rad 1 aug 0 sur 0 gen 1 res 47   eqe 1355 -0.177663E-04 and runaway
-# srh 0 rad 1 aug 0 sur 0 gen 1 res 47   eqe 1355 -0.177663E-04 and runaway
-# srh 0 rad 1 aug 0 sur 0 gen 0 res 47   eqe 1355 -0.177663E-04 and runaway
-# srh 1 rad 0 aug 0 sur 0 gen 0 res 47   fail
-# srh 1 rad 0 aug 1 sur 0 gen 0 res 47   J: is better 194 Res 40 but eqe fail
-# srh 1 rad 0 aug 1 sur 0 gen 1 res 47   J: is better 194 Res 40 but eqe fail
-# srh 1 rad 0 aug 1 sur 1 gen 1 res 47   J: is better 194 Res 40 but eqe fail
-# srh 1 rad 1 aug 1 sur 1 gen 1 res 47   J: is better -187 Res 4998 but eqe fail
-#destack to 3
-# srh 1 rad 1 aug 1 sur 1 gen 1 res 47   J: is better -187 Res 4998 but eqe fail
+# change lifetime to 1e-6 to InSb
+# srh 0 rad 1 aug 0 sur 0 gen 0 fail
+# srh 0 rad 0 aug 0 sur 0 gen 0 fail
+# change lifetime to 1e-6 to GaSb
+# srh 0 rad 0 aug 0 sur 0 gen 0 fail
+# srh 0 rad 1 aug 0 sur 0 gen 0 worst
+# change lifetime to GaSb to off and 1e-9 to InSb
+# srh 0 rad 1 aug 0 sur 0 gen 0 worst
+# change hole lifetime 1e-10 to InSb
+# srh 0 rad 1 aug 0 sur 0 gen 0 worst
+# srh 0 rad 0 aug 0 sur 0 gen 0 get better but fail Res:7484
+# change hole lifetime 1e-11 to InSb
+# change to np and change n-doped
+# srh 0 rad 0 aug 0 sur 0 gen 0 Jมีบวกลบตอนแรก: -197 Res:34 EQE 933: -0.65E-2
+# wl 350-3000nm
+# srh 0 rad 0 aug 0 sur 0 gen 0 Jมีบวกลบตอนแรก: -197 Res:34 EQE 933: -0.65E-2
+# 5x stack
+# srh 0 rad 0 aug 0 sur 0 gen 0 J norm: -197 Res:34 EQE 1355: -0.345E-3 and constant !!!!!!! V is work
+# srh 0 rad 1 aug 0 sur 0 gen 0 J frist not good: -215 Res: 8159 EQE drop:
+# srh 1 rad 0 aug 0 sur 0 gen 0 J frist good: -200 Res: 33 EQE drop:
+# srh 0 rad 0 aug 1 sur 0 gen 0 J frist not good: -200 Res: 33 EQE drop:
+# srh 0 rad 0 aug 0 sur 0 gen 1 J frist good: -200 Res: 34 EQE 1355 drop: -0.344767E-03
+# change hole lifetime 1e-10 electron 1e-6 to InSb
+# srh 0 rad 0 aug 0 sur 0 gen 1 J frist good: -200 Res: 34 EQE 1355 drop: -0.344767E-03
+# srh 0 rad 1 aug 0 sur 0 gen 1 J frist good: -200 Res: 34 EQE 588 drop: -0.344767E-03
+#stack 4
+# srh 0 rad 1 aug 0 sur 0 gen 1 J abnorm: -208 Res 7916 EQE 631 drop: -0.344767E-03
+#stack 3
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -215 Res 205 EQE work Voltage 0.2
+# srh 1 rad 1 aug 1 sur 0 gen 1 J abnorm: -194 Res 662 EQE don't work
+#hole_minority_lifetime InSb 1e-10--> 1e-11
+# srh 1 rad 1 aug 1 sur 0 gen 1 J abnorm: -196 Res 546 EQE 952: don't work Voltage 0.2
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -233 Res 1611115 EQE runaway
+#electron_minority_lifetime InSb 1e-6--> 1e-7
+# srh 1 rad 1 aug 1 sur 0 gen 1 J almost norm but +-: -199 Res 391 EQE  don't work Voltage 0.2
+#hole_minority_lifetime InSb 1e-10--> 1e-9
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -221 Res 139 EQE runaway
+#hole_minority_lifetime InSb 1e-9--> 1e-10
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -221 Res 205 EQE runaway
 
 
 
@@ -772,7 +774,7 @@ if __name__ == '__main__':
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
