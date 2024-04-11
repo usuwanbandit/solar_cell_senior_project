@@ -1,8 +1,8 @@
 
        T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       vint = np.linspace(-6, 4, 1000)
        V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
        recalculate_absorption = False
        meshpoints =-400
        growth_rate = 0.5
@@ -15,11 +15,11 @@
        ATol = 1.5e-09
        RTol = 0.0001
 
-       srh = 1
-       rad = 1
-       aug = 1
-       sur = 1
-       gen = 1
+       srh = 0
+       rad = 0
+       aug = 0
+       sur = 0
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -150,9 +150,9 @@ start item =====================================================================
 end item   ================================================================================
 
        T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       vint = np.linspace(-6, 4, 1000)
        V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
        recalculate_absorption = False
        meshpoints =-400
        growth_rate = 0.5
@@ -165,11 +165,11 @@ end item   =====================================================================
        ATol = 1.5e-09
        RTol = 0.0001
 
-       srh = 1
-       rad = 1
-       aug = 1
-       sur = 1
-       gen = 1
+       srh = 0
+       rad = 0
+       aug = 0
+       sur = 0
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -300,9 +300,9 @@ start item =====================================================================
 end item   ================================================================================
 
        T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       vint = np.linspace(-6, 4, 1000)
        V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
        recalculate_absorption = False
        meshpoints =-400
        growth_rate = 0.5
@@ -315,11 +315,11 @@ end item   =====================================================================
        ATol = 1.5e-09
        RTol = 0.0001
 
-       srh = 1
-       rad = 1
-       aug = 1
-       sur = 1
-       gen = 1
+       srh = 0
+       rad = 0
+       aug = 0
+       sur = 0
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -450,9 +450,9 @@ start item =====================================================================
 end item   ================================================================================
 
        T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       vint = np.linspace(-6, 4, 1000)
        V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
        recalculate_absorption = False
        meshpoints =-400
        growth_rate = 0.5
@@ -465,11 +465,11 @@ end item   =====================================================================
        ATol = 1.5e-09
        RTol = 0.0001
 
-       srh = 1
-       rad = 1
-       aug = 1
-       sur = 1
-       gen = 1
+       srh = 0
+       rad = 0
+       aug = 0
+       sur = 0
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -600,9 +600,9 @@ start item =====================================================================
 end item   ================================================================================
 
        T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       vint = np.linspace(-6, 4, 1000)
        V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
        recalculate_absorption = False
        meshpoints =-400
        growth_rate = 0.5
@@ -615,11 +615,11 @@ end item   =====================================================================
        ATol = 1.5e-09
        RTol = 0.0001
 
-       srh = 1
-       rad = 1
-       aug = 1
-       sur = 1
-       gen = 1
+       srh = 0
+       rad = 0
+       aug = 0
+       sur = 0
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        

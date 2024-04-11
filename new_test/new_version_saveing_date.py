@@ -77,6 +77,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     simpifly = None
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
     fig_5, ax1_5 = plt.subplots(1, 1, figsize=(12, 8))
+    fig_6, ax1_6 = plt.subplots(1, 1, figsize=(12, 8))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
     fig2_1, axJ = plt.subplots(1, 1, figsize=(8, 6))
@@ -123,6 +124,15 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1_5.set_xlim(900, max(wl)*1e9)
         ax1_5.legend()
         fig_5.suptitle(f"{version}")
+
+        ax1_6.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
+        ax1_6.legend(loc="upper right", frameon=True)
+        ax1_6.set_xlabel("Wavelength (nm)")
+        ax1_6.set_ylabel("EQE")
+        ax1_6.set_ylim(-1,1)
+        ax1_6.set_xlim(900, max(wl) * 1e9)
+        ax1_6.legend()
+        fig_6.suptitle(f"{version}")
         count += 1
         linestyle = ["-", "--", ":", "-.", ]
         # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
@@ -172,7 +182,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
         axIV.legend()
-        plt.tight_layout()
+        # plt.tight_layout()
 
         # axJ.set_xlabel("Voltage (V)")
         # axJ.set_ylabel("J$_{SC}$ (A/m$^{2}$)")
@@ -209,7 +219,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar2[num].set_xlim(focus_area)
             axCar2[num].set_ylim(1e6, 1e25)
 
-            plt.tight_layout()
+            # plt.tight_layout()
 
         except:
             print("something wrong with carrier distribution")
@@ -281,6 +291,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
     fig.suptitle(f"EQE of  {version}")
     fig_5.suptitle(f"Zoom EQE of {version}")
+    fig_6.suptitle(f"Check EQE of {version}")
     fig2.suptitle(f'IV of {version}')
     # fig2_5.suptitle(f'current of {version} Jtotle - Jrad-- Jsch : Jsur-. Jaug-..' )
     fig3.suptitle(f"Carrier distribution of {version}")
@@ -309,6 +320,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig_5.savefig(f'EQE_{version}_zoom.png', dpi=300)
+    fig_6.savefig(f'EQE_{version}_Check.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
     fig2_1.savefig(f'current_curve_{version}.png', dpi=300)
@@ -324,6 +336,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
 
     movefile(f'IV_curve_{version}.png', f'{version}')
+    movefile(f'EQE_{version}_Check.png', f"{version}")
     # movefile(f'current_curve_{version}.png', f'{version}')
     movefile(f'performance_{version}.png', f'{version}')
     movefile(f'EQE_{version}_zoom.png', f'{version}')
@@ -503,9 +516,9 @@ def savecell(cell, pdd_options):
                       user_options={"light_source": light_source,
                                     "wavelength": wl,
                                     "optics_method": "TMM",
-                                    # "internal_voltages": vint,
+                                    "internal_voltages": vint,
                                     # "radiative_coupling": True,
-                                    # 'recalculate_absorption': pdd_options.recalculate_absorption,
+                                    'recalculate_absorption': pdd_options.recalculate_absorption,
                                     # "position": pdd_options.position,
                                     "meshpoints": pdd_options.meshpoints,
                                     "growth_rate": pdd_options.growth_rate,
@@ -598,9 +611,9 @@ normal_operation.RTol = 1e-4
 
 normal_operation.srh = 1
 normal_operation.rad = 1
-normal_operation.aug = 0
+normal_operation.aug = 1
 normal_operation.sur = 1
-normal_operation.gen = 1
+normal_operation.gen = 0
 
 #        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
 #        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
@@ -829,7 +842,21 @@ normal_operation.gen = 1
 #                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
 #                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
 # srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -190 Res 3277 WL so realistic 1636:-0.139453E-15 runaway miraical again
-
+# srh 0 rad 1 aug 0 sur 1 gen 1 J abnorm: -190 Res 3277 WL so realistic 1636:-0.139453E-15 runaway miraical again
+# disable window and change to n_AlGaAs stack x5
+#                   Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
+#                   Layer(width=si("30 nm"), material=n_AlInP, role="window"),
+#                   Layer(width=si(f"200 nm"), material=n_AlGaAs, role="barrier"),
+#                                  + QW_list
+#                   Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                   Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                   Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
+# srh 1 rad 1 aug 1 sur 1 gen 1 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
+#wait for runing
+# srh 1 rad 1 aug 1 sur 0 gen 0 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
+#wait for runing
+# srh 0 rad 0 aug 0 sur 0 gen 0 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
 # ติดลบจะไม่ออก
 
 flash = State()
@@ -855,71 +882,29 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
-    note = f"""
-       T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
-       V = np.linspace(-1.5, 0, 500)  # np
-       recalculate_absorption = False
-       meshpoints ={normal_operation.meshpoints}
-       growth_rate = {normal_operation.growth_rate}
-       coarse = {normal_operation.coarse}
-       fine = {normal_operation.fine}
-       ultrafine = {normal_operation.ultrafine}
-
-       clamp = {normal_operation.clamp}
-       nitermax = {normal_operation.nitermax}
-       ATol = {normal_operation.ATol}
-       RTol = {normal_operation.RTol}
-
-       srh = {normal_operation.srh}
-       rad = {normal_operation.rad}
-       aug = {normal_operation.aug}
-       sur = {normal_operation.sur}
-       gen = {normal_operation.gen}
-       radiative_coupling: False
-       optics_method: "TMM",
-       """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-
-    # version = "solar_cell_InSb_and_GaSb_like_paper" #TODO set InSb&GaAs no loss and make GaSb have normal condition
-    # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
-    # note = f"""
-    # T=300
-    # vint = np.linspace(-3, 3, 1000)
-    # wl = np.linspace(350, 2000, 1000) *1e-9   # version1
-    # V = np.linspace(-1.5, 1.5, 1000)  # np
-    # recalculate_absorption = False
-    # meshpoints ={normal_operation.meshpoints}
-    # growth_rate = {normal_operation.growth_rate}
-    # coarse = {normal_operation.coarse}
-    # fine = {normal_operation.fine}
-    # ultrafine = {normal_operation.ultrafine}
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
+    # # for i in set_of_data_sun_constant:
+    # #     print(i)
+    # # print(len(set_of_data_sun_constant))
+    # # print(len(set_of_data_sun_constant))
     #
-    # clamp = {normal_operation.clamp}
-    # nitermax = {normal_operation.nitermax}
-    # ATol = {normal_operation.ATol}
-    # RTol = {normal_operation.RTol}
-    #
-    # srh = {normal_operation.srh}
-    # rad = {normal_operation.rad}
-    # aug = {normal_operation.aug}
-    # sur = {normal_operation.sur}
-    # gen = {normal_operation.gen}
-    # radiative_coupling: False
-    # optics_method: "TMM",
-    # """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    #
-    # version = "dot_InSb_n_inter_sweep"
-    # sim_mat, plot_note = dot_InSb_n_inter_sweep()
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
+    # try:
+    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    # except PermissionError as e:
+    #     print(f"Error: {e}")
+    # plt.show()
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_srh_rad_aug_sur"
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
     # note = f"""
     #    T=300
-    #    vint = np.linspace(-6, 4, 1000)
+    #    vint = np.linspace(-3, 3, 1000)
+    #    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
     #    V = np.linspace(-1.5, 0, 500)  # np
-    #    wl = np.linspace(350, 1200, 500) *1e-9   # version1
     #    recalculate_absorption = False
     #    meshpoints ={normal_operation.meshpoints}
     #    growth_rate = {normal_operation.growth_rate}
@@ -941,6 +926,101 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    #
+    normal_operation2 = State()
+
+    normal_operation2.meshpoints = -400
+    normal_operation2.growth_rate = 0.5
+    normal_operation2.coarse = 20e-9
+    normal_operation2.fine = 1e-9
+    normal_operation2.ultrafine = 0.2e-9
+
+    normal_operation2.clamp = 5
+    normal_operation2.nitermax = 1000
+    normal_operation2.ATol = 1.5e-09
+    normal_operation2.RTol = 1e-4
+
+    normal_operation2.srh = 0
+    normal_operation2.rad = 1
+    normal_operation2.aug = 0
+    normal_operation2.sur = 0
+    normal_operation2.gen = 0
+
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_rad" #TODO set InSb&GaAs no loss and make GaSb have normal condition
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    # note = f"""
+    # T=300
+    # vint = np.linspace(-3, 3, 1000)
+    # wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+    # V = np.linspace(-1.5, 1.5, 1000)  # np
+    # recalculate_absorption = False
+    # meshpoints ={normal_operation2.meshpoints}
+    # growth_rate = {normal_operation2.growth_rate}
+    # coarse = {normal_operation2.coarse}
+    # fine = {normal_operation2.fine}
+    # ultrafine = {normal_operation2.ultrafine}
+    #
+    # clamp = {normal_operation2.clamp}
+    # nitermax = {normal_operation2.nitermax}
+    # ATol = {normal_operation2.ATol}
+    # RTol = {normal_operation2.RTol}
+    #
+    # srh = {normal_operation2.srh}
+    # rad = {normal_operation2.rad}
+    # aug = {normal_operation2.aug}
+    # sur = {normal_operation2.sur}
+    # gen = {normal_operation2.gen}
+    # radiative_coupling: False
+    # optics_method: "TMM",
+    # """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation2)
+    #
+    normal_operation3 = State()
+
+    normal_operation3.meshpoints = -400
+    normal_operation3.growth_rate = 0.5
+    normal_operation3.coarse = 20e-9
+    normal_operation3.fine = 1e-9
+    normal_operation3.ultrafine = 0.2e-9
+
+    normal_operation3.clamp = 10
+    normal_operation3.nitermax = 1000
+    normal_operation3.ATol = 1.5e-09
+    normal_operation3.RTol = 1e-4
+
+    normal_operation3.srh = 0
+    normal_operation3.rad = 0
+    normal_operation3.aug = 0
+    normal_operation3.sur = 0
+    normal_operation3.gen = 0
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_no_loss"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    note = f"""
+       T=300
+       vint = np.linspace(-6, 4, 1000)
+       V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
+       recalculate_absorption = False
+       meshpoints ={normal_operation3.meshpoints}
+       growth_rate = {normal_operation3.growth_rate}
+       coarse = {normal_operation3.coarse}
+       fine = {normal_operation3.fine}
+       ultrafine = {normal_operation3.ultrafine}
+
+       clamp = {normal_operation3.clamp}
+       nitermax = {normal_operation3.nitermax}
+       ATol = {normal_operation3.ATol}
+       RTol = {normal_operation3.RTol}
+
+       srh = {normal_operation3.srh}
+       rad = {normal_operation3.rad}
+       aug = {normal_operation3.aug}
+       sur = {normal_operation3.sur}
+       gen = {normal_operation3.gen}
+       radiative_coupling: False
+       optics_method: "TMM",
+       """
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation3)
     # version = "dot_InSb_n_bot_sweep"
     # sim_mat, plot_note = dot_InSb_n_bot_sweep()
     # note = f"""
@@ -969,19 +1049,19 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
-    # # for i in set_of_data_sun_constant:
-    # #     print(i)
-    # # print(len(set_of_data_sun_constant))
-    # # print(len(set_of_data_sun_constant))
-    #
-    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
-    # try:
-    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
-    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
-    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
-    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
-    # except PermissionError as e:
-    #     print(f"Error: {e}")
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
+    # for i in set_of_data_sun_constant:
+    #     print(i)
+    # print(len(set_of_data_sun_constant))
+    # print(len(set_of_data_sun_constant))
+
+    save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
+    try:
+        movefile(f'Carrier_distribution_{version}.html', f'{version}')
+        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    except PermissionError as e:
+        print(f"Error: {e}")
     plt.show()

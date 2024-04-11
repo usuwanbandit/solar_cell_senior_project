@@ -19,7 +19,7 @@
        rad = 1
        aug = 1
        sur = 1
-       gen = 1
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -169,7 +169,7 @@ end item   =====================================================================
        rad = 1
        aug = 1
        sur = 1
-       gen = 1
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -319,7 +319,7 @@ end item   =====================================================================
        rad = 1
        aug = 1
        sur = 1
-       gen = 1
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -469,7 +469,7 @@ end item   =====================================================================
        rad = 1
        aug = 1
        sur = 1
-       gen = 1
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        
@@ -619,7 +619,7 @@ end item   =====================================================================
        rad = 1
        aug = 1
        sur = 1
-       gen = 1
+       gen = 0
        radiative_coupling: False
        optics_method: "TMM",
        

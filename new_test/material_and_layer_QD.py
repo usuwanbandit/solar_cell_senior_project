@@ -1272,11 +1272,11 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
         size_GaSb = 15
         AlGaAs = material("AlGaAs")(T=T, strained=True, Al=0.3)
         n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
-        n_GaAs_window = material('GaAs')(T=T, Nd=si('4e17 cm-3'), )
+        n_GaAs_window = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
         n_GaAs_inter = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
-        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e17 cm-3"))
+        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("5e16 cm-3"))
         n_AlGaAs_window = material("AlGaAs")(T=T, Al=0.3, Nd=si("4e18 cm-3"))
-        n_AlInP = material("AlInP")(T=T, Al=0.32, Nd=si('3e17 cm-3'))
+        n_AlInP = material("AlInP")(T=T, Al=0.32, Nd=si('3e18 cm-3'))
         i_GaAs = material("GaAs")(T=T)
         i_GaAs_barrier = material("GaAs")(T=T, strained=True, )
         p_GaInP = material("GaInP")(T=T, In=0.42, Na=si("2e17 cm-3"))
@@ -1353,10 +1353,10 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
                                     )
         # QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
         GaAs_junction = Junction([
-                                     Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
-                                     # Layer(width=si("30 nm"), material=p_AlInP, role="window"),
+                                     Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
+                                     Layer(width=si("30 nm"), material=n_AlInP, role="window"),
                                      # Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
-                                     Layer(width=si(f"250 nm"), material=n_AlGaAs, role="barrier"),
+                                     Layer(width=si(f"200 nm"), material=n_AlGaAs, role="barrier"),
                                  ]
                                  + QW_list
                                  + [
@@ -1372,7 +1372,7 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
             # Layer(width=si("50 nm"), material=ZnS, role="AR2"),
             GaAs_junction,
         ]
-            , T=T, substrate=p_GaAs)
+            , T=T, substrate=p_GaAs_buffer)
         solar_each_size_1[f"InSb dot size ={i} (nm)"] = solarcell_InSb_GaSb
     return solar_each_size_1, plot_note
 

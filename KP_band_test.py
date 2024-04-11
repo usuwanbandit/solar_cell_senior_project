@@ -114,6 +114,7 @@ def get_structure_to_potentials():
     QWmat = material("InGaAs")(T=T, In=0.2, strained=True)
     Bmat = material("GaAsP")(T=T, P=0.1, strained=True)
     i_GaAs = material("GaAs")(T=T)
+    n_AlInP = material("AlInP")(T=T, Al=0.32, Nd=si('3e18 cm-3'))
 
     # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
     GaSb = material("GaSb")(T=T, strained=True,
@@ -124,6 +125,7 @@ def get_structure_to_potentials():
 
     test_structure = Structure(
         [
+            Layer(width=si(f"{25} nm"), material=n_AlInP, role="barrier"),
             Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
             Layer(width=si(f"{2} nm"), material=InSb, role="well"),
             Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
