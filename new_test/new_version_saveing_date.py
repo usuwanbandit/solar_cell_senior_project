@@ -77,6 +77,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     simpifly = None
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
     fig_5, ax1_5 = plt.subplots(1, 1, figsize=(12, 8))
+    fig_6, ax1_6 = plt.subplots(1, 1, figsize=(12, 8))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
     fig2_1, axJ = plt.subplots(1, 1, figsize=(8, 6))
@@ -123,6 +124,15 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1_5.set_xlim(900, max(wl)*1e9)
         ax1_5.legend()
         fig_5.suptitle(f"{version}")
+
+        ax1_6.plot(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
+        ax1_6.legend(loc="upper right", frameon=True)
+        ax1_6.set_xlabel("Wavelength (nm)")
+        ax1_6.set_ylabel("EQE")
+        ax1_6.set_ylim(-1,1)
+        ax1_6.set_xlim(900, max(wl) * 1e9)
+        ax1_6.legend()
+        fig_6.suptitle(f"{version}")
         count += 1
         linestyle = ["-", "--", ":", "-.", ]
         # marker = [".", ",", "o", 'v', "^", "<", ">", "s", "p", "*", "h", "+", "x", "D", "d"]
@@ -172,7 +182,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         axIV.set_xlabel("Voltage (V)")
         axIV.set_ylabel("J$_{SC}$ (mA/cm$^{2}$)")
         axIV.legend()
-        plt.tight_layout()
+        # plt.tight_layout()
 
         # axJ.set_xlabel("Voltage (V)")
         # axJ.set_ylabel("J$_{SC}$ (A/m$^{2}$)")
@@ -209,7 +219,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar2[num].set_xlim(focus_area)
             axCar2[num].set_ylim(1e6, 1e25)
 
-            plt.tight_layout()
+            # plt.tight_layout()
 
         except:
             print("something wrong with carrier distribution")
@@ -281,6 +291,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
     fig.suptitle(f"EQE of  {version}")
     fig_5.suptitle(f"Zoom EQE of {version}")
+    fig_6.suptitle(f"Check EQE of {version}")
     fig2.suptitle(f'IV of {version}')
     # fig2_5.suptitle(f'current of {version} Jtotle - Jrad-- Jsch : Jsur-. Jaug-..' )
     fig3.suptitle(f"Carrier distribution of {version}")
@@ -309,6 +320,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
     fig.savefig(f'EQE_{version}.png', dpi=300)
     fig_5.savefig(f'EQE_{version}_zoom.png', dpi=300)
+    fig_6.savefig(f'EQE_{version}_Check.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
     fig2_1.savefig(f'current_curve_{version}.png', dpi=300)
@@ -324,6 +336,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     save_file_direction(f'{version}', f'{version}', saveing_data=set_of_data)
 
     movefile(f'IV_curve_{version}.png', f'{version}')
+    movefile(f'EQE_{version}_Check.png', f"{version}")
     # movefile(f'current_curve_{version}.png', f'{version}')
     movefile(f'performance_{version}.png', f'{version}')
     movefile(f'EQE_{version}_zoom.png', f'{version}')
@@ -503,9 +516,9 @@ def savecell(cell, pdd_options):
                       user_options={"light_source": light_source,
                                     "wavelength": wl,
                                     "optics_method": "TMM",
-                                    # "internal_voltages": vint,
+                                    "internal_voltages": vint,
                                     # "radiative_coupling": True,
-                                    # 'recalculate_absorption': pdd_options.recalculate_absorption,
+                                    'recalculate_absorption': pdd_options.recalculate_absorption,
                                     # "position": pdd_options.position,
                                     "meshpoints": pdd_options.meshpoints,
                                     "growth_rate": pdd_options.growth_rate,
@@ -599,8 +612,8 @@ normal_operation.RTol = 1e-4
 normal_operation.srh = 1
 normal_operation.rad = 1
 normal_operation.aug = 1
-normal_operation.sur = 0
-normal_operation.gen = 1
+normal_operation.sur = 1
+normal_operation.gen = 0
 
 #        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
 #        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
@@ -698,50 +711,152 @@ normal_operation.gen = 1
 # srh 0 rad 0 aug 0 sur 1 gen 0 every thing work
 # srh 1 rad 1 aug 1 sur 1 gen 1 fail
 # srh 0 rad 1 aug 1 sur 1 gen 0 fail
-#wl 350-2500 nm
-# srh 1 rad 1 aug 1 sur 0 gen 0 res 33 Jบวกรอบแรก:-199 fail at 1354 -0.1e-1 and runaway
-#wl 350-3000 nm
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 33 Jบวกรอบแรก:-199 fail at 1354 eqe drop 0.123122E-04 but volt fail
-#wl 350-3500 nm
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 699.5 Jบวกรอบแรก:-199 fail at 1232 eqe drop -0.717289E-02 and run away
-#wl 350-4500 nm
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 0.4159E+08  Jบวกรอบแรก:-199 eqe drop 0.379589E-07 but volt fail but 2 dot is fail
-# srh 1 rad 1 aug 1 sur 0 gen 1 res 33  Jบวกรอบแรก:-199 eqe drop 1352.73 -0.564815E-05 but volt fail
-#wl 350-3500 nm
-# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-199 eqe drop 1352.73 -0.564815E-05 but volt fail
-# loww doping n-type
-# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runawayp 1352.73 -0.564815E-05 but volt fail
-# srh 1 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runawayp 1352.73 -0.564815E-05 but volt fail
-# srh 0 rad 1 aug 1 sur 0 gen 1 res 3691  Jบวกรอบแรก:-188 eqe runaway 1352.73 -0.564815E-05 but volt fail
-# srh 0 rad 1 aug 1 sur 0 gen 0 res 3691  Jบวกรอบแรก:-188 eqe runaway 1352.73 -0.564815E-05 but volt fail
-# loww doping p-type
-# srh 0 rad 0 aug 0 sur 1 gen 0 res 33 fail
-# srh 1 rad 1 aug 0 sur 1 gen 0 res 34  Jแปลกๆ:-197 eqe is looking good but runaway at last but volt fail
-# srh 1 rad 1 aug 0 sur 1 gen 1 res 34  Jแปลกๆ:-197 eqe is getting worst
-# srh 1 rad 1 aug 1 sur 1 gen 0 res 34  Jแปลกๆ:-197 eqe is getting worst
-# loww doping p-type
-# srh 1 rad 1 aug 0 sur 0 gen 0 res 1127  Jแปลกๆ:-197 eqe is getting worst
-#mod barrier
-# srh 1 rad 1 aug 1 sur 1 gen 1 res 448  Jแปลกๆ:-197 eqe is getting worst
-#destack to 1
-# srh 1 rad 1 aug 1 sur 0 gen 1   eqe runaway at start
-# srh 1 rad 1 aug 0 sur 0 gen 1 res 47   eqe 1355 -0.177663E-04 and runaway
-# srh 0 rad 1 aug 0 sur 0 gen 1 res 47   eqe 1355 -0.177663E-04 and runaway
-# srh 0 rad 1 aug 0 sur 0 gen 0 res 47   eqe 1355 -0.177663E-04 and runaway
-# srh 1 rad 0 aug 0 sur 0 gen 0 res 47   fail
-# srh 1 rad 0 aug 1 sur 0 gen 0 res 47   J: is better 194 Res 40 but eqe fail
-# srh 1 rad 0 aug 1 sur 0 gen 1 res 47   J: is better 194 Res 40 but eqe fail
-# srh 1 rad 0 aug 1 sur 1 gen 1 res 47   J: is better 194 Res 40 but eqe fail
-# srh 1 rad 1 aug 1 sur 1 gen 1 res 47   J: is better -187 Res 4998 but eqe fail
-#destack to 3
-# srh 1 rad 1 aug 1 sur 1 gen 1 res 47   J: is better -187 Res 4998 but eqe fail
-
-
-
-
-
-
-
+# change lifetime to 1e-6 to InSb
+# srh 0 rad 1 aug 0 sur 0 gen 0 fail
+# srh 0 rad 0 aug 0 sur 0 gen 0 fail
+# change lifetime to 1e-6 to GaSb
+# srh 0 rad 0 aug 0 sur 0 gen 0 fail
+# srh 0 rad 1 aug 0 sur 0 gen 0 worst
+# change lifetime to GaSb to off and 1e-9 to InSb
+# srh 0 rad 1 aug 0 sur 0 gen 0 worst
+# change hole lifetime 1e-10 to InSb
+# srh 0 rad 1 aug 0 sur 0 gen 0 worst
+# srh 0 rad 0 aug 0 sur 0 gen 0 get better but fail Res:7484
+# change hole lifetime 1e-11 to InSb
+# change to np and change n-doped
+# srh 0 rad 0 aug 0 sur 0 gen 0 Jมีบวกลบตอนแรก: -197 Res:34 EQE 933: -0.65E-2
+# wl 350-3000nm
+# srh 0 rad 0 aug 0 sur 0 gen 0 Jมีบวกลบตอนแรก: -197 Res:34 EQE 933: -0.65E-2
+# 5x stack
+# srh 0 rad 0 aug 0 sur 0 gen 0 J norm: -197 Res:34 EQE 1355: -0.345E-3 and constant !!!!!!! V is work
+# srh 0 rad 1 aug 0 sur 0 gen 0 J frist not good: -215 Res: 8159 EQE drop:
+# srh 1 rad 0 aug 0 sur 0 gen 0 J frist good: -200 Res: 33 EQE drop:
+# srh 0 rad 0 aug 1 sur 0 gen 0 J frist not good: -200 Res: 33 EQE drop:
+# srh 0 rad 0 aug 0 sur 0 gen 1 J frist good: -200 Res: 34 EQE 1355 drop: -0.344767E-03
+# change hole lifetime 1e-10 electron 1e-6 to InSb
+# srh 0 rad 0 aug 0 sur 0 gen 1 J frist good: -200 Res: 34 EQE 1355 drop: -0.344767E-03
+# srh 0 rad 1 aug 0 sur 0 gen 1 J frist good: -200 Res: 34 EQE 588 drop: -0.344767E-03
+#stack 4
+# srh 0 rad 1 aug 0 sur 0 gen 1 J abnorm: -208 Res 7916 EQE 631 drop: -0.344767E-03
+#stack 3
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -215 Res 205 EQE work Voltage 0.2
+# srh 1 rad 1 aug 1 sur 0 gen 1 J abnorm: -194 Res 662 EQE don't work
+#hole_minority_lifetime InSb 1e-10--> 1e-11
+# srh 1 rad 1 aug 1 sur 0 gen 1 J abnorm: -196 Res 546 EQE 952: don't work Voltage 0.2
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -233 Res 1611115 EQE runaway
+#electron_minority_lifetime InSb 1e-6--> 1e-7
+# srh 1 rad 1 aug 1 sur 0 gen 1 J almost norm but +-: -199 Res 391 EQE  don't work Voltage 0.2
+#hole_minority_lifetime InSb 1e-10--> 1e-9
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -221 Res 139 EQE runaway
+#hole_minority_lifetime InSb 1e-9--> 1e-10
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -221 Res 205 EQE work Voltage 0.2
+#stack x5-->x4
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -215 Res 205 EQE work Voltage 0.2
+#stack x4-->x3
+# srh 1 rad 1 aug 0 sur 0 gen 1 J abnorm: -215 Res 205 EQE work Voltage 0.2
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -215 Res 205 EQE work Voltage 0.2
+#stack x3-->x1
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm but better: -198 Res 257 EQE work drop and minus Voltage 0.2
+#stack x1-->x2
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm but better: 502 Res 46017 EQE runaway and minus Voltage 0.2
+#                    Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
+#                    Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                + QW_list
+#                    Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                    Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                    Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                    Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+#electron_minority_lifetime InSb 1e-7 --> 1e-6
+# stack x2--> x3
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -233 Res 519 WL 917: -0.299514E-02
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -198 Res 64008 WL 1254: -0.168449E-03
+#                 Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -209 Res 10664 WL good(best)
+#                 Layer(width=si("150 nm"), material=n_GaAs_window, role="Emitter"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -212 Res 12380 WL good(best) better very good but voltage
+# hole_minority_lifetime 1e-10 --> 1e-9 InSb
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -211 Res 95 WL good(best) better very good but voltage
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs, role="well"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 27 WL good(best) better very good but voltage
+# sim at 1 nm
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: +100 Res 27 WL
+# Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 179517 WL fail
+# add doping at p
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 179517 WL fail
+#                  Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+#                  Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                  Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
+#                  Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                  Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -199 Res 21 WL good(best) better very good but voltage
+#                                      Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
+#                                      Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                                      Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+#                                  + QW_list
+#                                      Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+#                                      Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                                      Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                                      Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                                      Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -201 Res 21 WL fail
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -201 Res 21 WL fail but look better
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -201 Res 21 WL fail but look better
+#                              Layer(width=si("50 nm"), material=n_GaAs_window, role="Emitter"),
+#                              Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
+#                              Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+#                          + QW_list
+#                              Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                              Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                              Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -196 Res 27 WL so realistic 1636:-0.139453E-07 don't runaway!!! miraical
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{100} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -187 Res 25 WL so realistic 1636:-0.139453E-15 runaway
+# lower doped
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+#                 Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
+#                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+#                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J norm: -190 Res 3277 WL so realistic 1636:-0.139453E-15 runaway miraical again
+# srh 0 rad 1 aug 0 sur 1 gen 1 J abnorm: -190 Res 3277 WL so realistic 1636:-0.139453E-15 runaway miraical again
+# disable window and change to n_AlGaAs stack x5
+#                   Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
+#                   Layer(width=si("30 nm"), material=n_AlInP, role="window"),
+#                   Layer(width=si(f"200 nm"), material=n_AlGaAs, role="barrier"),
+#                                  + QW_list
+#                   Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
+#                   Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+#                   Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+# srh 1 rad 1 aug 0 sur 1 gen 1 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
+# srh 1 rad 1 aug 1 sur 1 gen 1 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
+#wait for runing
+# srh 1 rad 1 aug 1 sur 0 gen 0 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
+#wait for runing
+# srh 0 rad 0 aug 0 sur 0 gen 0 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
 # ติดลบจะไม่ออก
 
 flash = State()
@@ -767,71 +882,29 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
-    note = f"""
-       T=300
-       vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 2000, 1000) *1e-9   # version1
-       V = np.linspace(-1.5, 0, 500)  # np
-       recalculate_absorption = False
-       meshpoints ={normal_operation.meshpoints}
-       growth_rate = {normal_operation.growth_rate}
-       coarse = {normal_operation.coarse}
-       fine = {normal_operation.fine}
-       ultrafine = {normal_operation.ultrafine}
-
-       clamp = {normal_operation.clamp}
-       nitermax = {normal_operation.nitermax}
-       ATol = {normal_operation.ATol}
-       RTol = {normal_operation.RTol}
-
-       srh = {normal_operation.srh}
-       rad = {normal_operation.rad}
-       aug = {normal_operation.aug}
-       sur = {normal_operation.sur}
-       gen = {normal_operation.gen}
-       radiative_coupling: False
-       optics_method: "TMM",
-       """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-
-    # version = "solar_cell_InSb_and_GaSb_like_paper" #TODO set InSb&GaAs no loss and make GaSb have normal condition
-    # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
-    # note = f"""
-    # T=300
-    # vint = np.linspace(-3, 3, 1000)
-    # wl = np.linspace(350, 2000, 1000) *1e-9   # version1
-    # V = np.linspace(-1.5, 1.5, 1000)  # np
-    # recalculate_absorption = False
-    # meshpoints ={normal_operation.meshpoints}
-    # growth_rate = {normal_operation.growth_rate}
-    # coarse = {normal_operation.coarse}
-    # fine = {normal_operation.fine}
-    # ultrafine = {normal_operation.ultrafine}
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
+    # # for i in set_of_data_sun_constant:
+    # #     print(i)
+    # # print(len(set_of_data_sun_constant))
+    # # print(len(set_of_data_sun_constant))
     #
-    # clamp = {normal_operation.clamp}
-    # nitermax = {normal_operation.nitermax}
-    # ATol = {normal_operation.ATol}
-    # RTol = {normal_operation.RTol}
-    #
-    # srh = {normal_operation.srh}
-    # rad = {normal_operation.rad}
-    # aug = {normal_operation.aug}
-    # sur = {normal_operation.sur}
-    # gen = {normal_operation.gen}
-    # radiative_coupling: False
-    # optics_method: "TMM",
-    # """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    #
-    # version = "dot_InSb_n_inter_sweep"
-    # sim_mat, plot_note = dot_InSb_n_inter_sweep()
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
+    # try:
+    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    # except PermissionError as e:
+    #     print(f"Error: {e}")
+    # plt.show()
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_srh_rad_aug_sur"
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
     # note = f"""
     #    T=300
-    #    vint = np.linspace(-6, 4, 1000)
+    #    vint = np.linspace(-3, 3, 1000)
+    #    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
     #    V = np.linspace(-1.5, 0, 500)  # np
-    #    wl = np.linspace(350, 1200, 500) *1e-9   # version1
     #    recalculate_absorption = False
     #    meshpoints ={normal_operation.meshpoints}
     #    growth_rate = {normal_operation.growth_rate}
@@ -853,6 +926,101 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    #
+    normal_operation2 = State()
+
+    normal_operation2.meshpoints = -400
+    normal_operation2.growth_rate = 0.5
+    normal_operation2.coarse = 20e-9
+    normal_operation2.fine = 1e-9
+    normal_operation2.ultrafine = 0.2e-9
+
+    normal_operation2.clamp = 5
+    normal_operation2.nitermax = 1000
+    normal_operation2.ATol = 1.5e-09
+    normal_operation2.RTol = 1e-4
+
+    normal_operation2.srh = 0
+    normal_operation2.rad = 1
+    normal_operation2.aug = 0
+    normal_operation2.sur = 0
+    normal_operation2.gen = 0
+
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_rad" #TODO set InSb&GaAs no loss and make GaSb have normal condition
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    # note = f"""
+    # T=300
+    # vint = np.linspace(-3, 3, 1000)
+    # wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+    # V = np.linspace(-1.5, 1.5, 1000)  # np
+    # recalculate_absorption = False
+    # meshpoints ={normal_operation2.meshpoints}
+    # growth_rate = {normal_operation2.growth_rate}
+    # coarse = {normal_operation2.coarse}
+    # fine = {normal_operation2.fine}
+    # ultrafine = {normal_operation2.ultrafine}
+    #
+    # clamp = {normal_operation2.clamp}
+    # nitermax = {normal_operation2.nitermax}
+    # ATol = {normal_operation2.ATol}
+    # RTol = {normal_operation2.RTol}
+    #
+    # srh = {normal_operation2.srh}
+    # rad = {normal_operation2.rad}
+    # aug = {normal_operation2.aug}
+    # sur = {normal_operation2.sur}
+    # gen = {normal_operation2.gen}
+    # radiative_coupling: False
+    # optics_method: "TMM",
+    # """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation2)
+    #
+    normal_operation3 = State()
+
+    normal_operation3.meshpoints = -400
+    normal_operation3.growth_rate = 0.5
+    normal_operation3.coarse = 20e-9
+    normal_operation3.fine = 1e-9
+    normal_operation3.ultrafine = 0.2e-9
+
+    normal_operation3.clamp = 10
+    normal_operation3.nitermax = 1000
+    normal_operation3.ATol = 1.5e-09
+    normal_operation3.RTol = 1e-4
+
+    normal_operation3.srh = 0
+    normal_operation3.rad = 0
+    normal_operation3.aug = 0
+    normal_operation3.sur = 0
+    normal_operation3.gen = 0
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_no_loss"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    note = f"""
+       T=300
+       vint = np.linspace(-6, 4, 1000)
+       V = np.linspace(-1.5, 0, 500)  # np
+       wl = np.linspace(350, 1200, 500) *1e-9   # version1
+       recalculate_absorption = False
+       meshpoints ={normal_operation3.meshpoints}
+       growth_rate = {normal_operation3.growth_rate}
+       coarse = {normal_operation3.coarse}
+       fine = {normal_operation3.fine}
+       ultrafine = {normal_operation3.ultrafine}
+
+       clamp = {normal_operation3.clamp}
+       nitermax = {normal_operation3.nitermax}
+       ATol = {normal_operation3.ATol}
+       RTol = {normal_operation3.RTol}
+
+       srh = {normal_operation3.srh}
+       rad = {normal_operation3.rad}
+       aug = {normal_operation3.aug}
+       sur = {normal_operation3.sur}
+       gen = {normal_operation3.gen}
+       radiative_coupling: False
+       optics_method: "TMM",
+       """
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation3)
     # version = "dot_InSb_n_bot_sweep"
     # sim_mat, plot_note = dot_InSb_n_bot_sweep()
     # note = f"""
@@ -881,19 +1049,19 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
-    # # for i in set_of_data_sun_constant:
-    # #     print(i)
-    # # print(len(set_of_data_sun_constant))
-    # # print(len(set_of_data_sun_constant))
-    #
-    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
-    # try:
-    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
-    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
-    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
-    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
-    # except PermissionError as e:
-    #     print(f"Error: {e}")
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
+    # for i in set_of_data_sun_constant:
+    #     print(i)
+    # print(len(set_of_data_sun_constant))
+    # print(len(set_of_data_sun_constant))
+
+    save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
+    try:
+        movefile(f'Carrier_distribution_{version}.html', f'{version}')
+        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    except PermissionError as e:
+        print(f"Error: {e}")
     plt.show()
