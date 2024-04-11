@@ -1261,7 +1261,7 @@ def QDSC_InSb_GaSb_sweep_InSb():
         solar_each_size_1[f"InSb dot size ={i} (nm)"] = solarcell_InSb_GaSb
     return solar_each_size_1, plot_note
 
-
+ #TODO check radiative_recombination
 def QDSC_InSb_GaSb_sweep_InSb_pn():
     dot_size = np.linspace(1, 5, 5)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
@@ -1300,19 +1300,23 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
                                             , hole_mobility=si("500 cm2")
                                             , electron_affinity=si("4.59 eV")
                                             , electron_minority_lifetime=si("1e-6 s")
-                                            , hole_minority_lifetime=si("1e-9 s")
+                                            , hole_minority_lifetime=si("1e-7 s")
                                             , relative_permittivity=13.943
-                                            , electron_auger_recombination=si("1e-30 cm6")
+                                            , electron_auger_recombination=si("1e-31 cm6")
                                             , hole_auger_recombination=si("1e-30 cm6")
+                                            , radiative_recombination=si("5e-12 cm3") # add rad_coff
                                             )
 
         # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
         GaSb = material("GaSb")(T=T, strained=True
                                 , electron_mobility=si("4800 cm2")
                                 , hole_mobility=si("900 cm2")
-                                # , electron_minority_lifetime=si("1e-6 s")
-                                # , hole_minority_lifetime=si("1e-6 s")
-                                , electron_auger_recombination = si("1e-30 cm6")
+                                , electron_minority_lifetime=si("1e-7 s")
+                                , hole_minority_lifetime=si("1e-7 s")
+                                , radiative_recombination=si("5e-12 cm3")
+                                # , radiative_recombination=si("5e-15 cm3")  # add rad_coff
+
+                                , electron_auger_recombination = si("1e-31 cm6")
                                 , hole_auger_recombination = si("1e-30 cm6")
                                 )
 
@@ -2826,7 +2830,7 @@ if __name__ == '__main__':
     # InSb_dot_size_sweep(show=True)
     # AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
     # i_GaAs = material("GaAs")(T=T, strained=True, band_gap=si("1.422 eV"))
-    GaSb = material("GaAs")(T=T
+    GaSb = material("InSb")(T=T
                             # , strained=False
                             # , electron_mobility=7.7
                             # , hole_mobility=0.0850, valence_band_offset=si("0.0 eV")
@@ -2933,6 +2937,11 @@ if __name__ == '__main__':
     print('lattice_constant')
     print(GaSb.lattice_constant)
     print('-----------------------------------------')
+    print('radiative_recombination')
+    print(GaSb.radiative_recombination)
+    print('-----------------------------------------')
+
+
     # atts.append(GaAs.band_gap)
     # atts.append(GaAs.T)
     # atts.append(GaAs.strained)
