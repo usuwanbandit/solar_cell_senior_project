@@ -604,16 +604,18 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 10
+normal_operation.clamp = 20
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
 normal_operation.srh = 1
 normal_operation.rad = 1
-normal_operation.aug = 1
-normal_operation.sur = 1
+normal_operation.aug = 0
+normal_operation.sur = 0
 normal_operation.gen = 0
+
+normal_operation.recalculate_absorption = True
 
 #        Layer(width=si(f"{50} nm"), material=i_GaAs_barrier, role="well"),
 #        Layer(width=si(f"{i} nm"), material=InSb, role="well"),
@@ -858,6 +860,23 @@ normal_operation.gen = 0
 #wait for runing
 # srh 0 rad 0 aug 0 sur 0 gen 0 J abnorm: -196 Res 26 WL so realistic 1636:-0.139453E-15 runaway miraical again
 # ติดลบจะไม่ออก
+#radiative_recombination InSb --> 5e-12 GaSb --> 5e-11
+# srh 0 rad 1 aug 1 sur 1 gen 0 Voltage is bad  0.470470  -339.085
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 1e-15 electron_lifetime --> 1e-6
+#electron_auger_recombination GaSb --> 1e-31 and radiative_recombination --> 1e-15 electron_lifetime --> 1e-6
+# srh 1 rad 1 aug 0 sur 0 gen 0 Voltage is bad  0.470470  -339.085
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 5e-11 electron_lifetime --> 1e-7
+#electron_auger_recombination GaSb --> 1e-31 and radiative_recombination --> off electron_lifetime --> 1e-7
+# srh 1 rad 1 aug 0 sur 0 gen 0 Voltage is bad  0.470470  -339.085
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 5e-11 electron_lifetime --> 1e-8
+# srh 1 rad 1 aug 0 sur 0 gen 0 got lower current but still minus
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 5e-11 electron_lifetime --> 1e-6
+# srh 1 rad 1 aug 0 sur 0 gen 0 got lower current but still minus but look better
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 5e-11 hole_lifetime --> 1e-8
+# srh 1 rad 1 aug 0 sur 0 gen 0 got lower current but still minus but look better
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 5e-11 hole_lifetime --> 1e-10
+# srh 1 rad 1 aug 0 sur 0 gen 0 got lower current but still minus don't change
+#electron_auger_recombination InSb --> 1e-31 and radiative_recombination --> 5e-12 hole_lifetime --> 1e-10
 
 flash = State()
 
@@ -882,8 +901,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_no_loss"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_no_loss.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
@@ -898,60 +917,64 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_srh_rad_aug_sur"
-    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
-    # note = f"""
-    #    T=300
-    #    vint = np.linspace(-3, 3, 1000)
-    #    wl = np.linspace(350, 3000, 1000) *1e-9   # version1
-    #    V = np.linspace(-1.5, 0, 500)  # np
-    #    recalculate_absorption = False
-    #    meshpoints ={normal_operation.meshpoints}
-    #    growth_rate = {normal_operation.growth_rate}
-    #    coarse = {normal_operation.coarse}
-    #    fine = {normal_operation.fine}
-    #    ultrafine = {normal_operation.ultrafine}
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_rad_aug_sur"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    note = f"""
+       T=300
+       vint = np.linspace(-3, 3, 1000)
+       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       V = np.linspace(-1.5, 0, 500)  # np
+       recalculate_absorption = False
+       meshpoints ={normal_operation.meshpoints}
+       growth_rate = {normal_operation.growth_rate}
+       coarse = {normal_operation.coarse}
+       fine = {normal_operation.fine}
+       ultrafine = {normal_operation.ultrafine}
+
+       clamp = {normal_operation.clamp}
+       nitermax = {normal_operation.nitermax}
+       ATol = {normal_operation.ATol}
+       RTol = {normal_operation.RTol}
+
+       srh = {normal_operation.srh}
+       rad = {normal_operation.rad}
+       aug = {normal_operation.aug}
+       sur = {normal_operation.sur}
+       gen = {normal_operation.gen}
+       
+       recalculate_absorption = {normal_operation.recalculate_absorption}
+       radiative_coupling: False
+       optics_method: "TMM",
+       """
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
     #
-    #    clamp = {normal_operation.clamp}
-    #    nitermax = {normal_operation.nitermax}
-    #    ATol = {normal_operation.ATol}
-    #    RTol = {normal_operation.RTol}
+    # normal_operation2 = State()
     #
-    #    srh = {normal_operation.srh}
-    #    rad = {normal_operation.rad}
-    #    aug = {normal_operation.aug}
-    #    sur = {normal_operation.sur}
-    #    gen = {normal_operation.gen}
-    #    radiative_coupling: False
-    #    optics_method: "TMM",
-    #    """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    # normal_operation2.meshpoints = -400
+    # normal_operation2.growth_rate = 0.5
+    # normal_operation2.coarse = 20e-9
+    # normal_operation2.fine = 1e-9
+    # normal_operation2.ultrafine = 0.2e-9
     #
-    normal_operation2 = State()
-
-    normal_operation2.meshpoints = -400
-    normal_operation2.growth_rate = 0.5
-    normal_operation2.coarse = 20e-9
-    normal_operation2.fine = 1e-9
-    normal_operation2.ultrafine = 0.2e-9
-
-    normal_operation2.clamp = 5
-    normal_operation2.nitermax = 1000
-    normal_operation2.ATol = 1.5e-09
-    normal_operation2.RTol = 1e-4
-
-    normal_operation2.srh = 0
-    normal_operation2.rad = 1
-    normal_operation2.aug = 0
-    normal_operation2.sur = 0
-    normal_operation2.gen = 0
-
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_rad" #TODO set InSb&GaAs no loss and make GaSb have normal condition
+    # normal_operation2.clamp = 5
+    # normal_operation2.nitermax = 1000
+    # normal_operation2.ATol = 1.5e-09
+    # normal_operation2.RTol = 1e-4
+    #
+    # normal_operation2.srh = 0
+    # normal_operation2.rad = 0
+    # normal_operation2.aug = 0
+    # normal_operation2.sur = 1
+    # normal_operation2.gen = 0
+    #
+    # normal_operation2.recalculate_absorption = True
+    #
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_sur" #TODO set InSb&GaAs no loss and make GaSb have normal condition
     # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
     # note = f"""
     # T=300
     # vint = np.linspace(-3, 3, 1000)
-    # wl = np.linspace(350, 2000, 1000) *1e-9   # version1
+    # wl = np.linspace(350, 3000, 1000) *1e-9   # version1
     # V = np.linspace(-1.5, 1.5, 1000)  # np
     # recalculate_absorption = False
     # meshpoints ={normal_operation2.meshpoints}
@@ -970,57 +993,59 @@ if __name__ == '__main__':
     # aug = {normal_operation2.aug}
     # sur = {normal_operation2.sur}
     # gen = {normal_operation2.gen}
+    # recalculate_absorption = {normal_operation2.recalculate_absorption}
+    #
     # radiative_coupling: False
     # optics_method: "TMM",
     # """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation2)
+
+    # normal_operation3 = State()
     #
-    normal_operation3 = State()
-
-    normal_operation3.meshpoints = -400
-    normal_operation3.growth_rate = 0.5
-    normal_operation3.coarse = 20e-9
-    normal_operation3.fine = 1e-9
-    normal_operation3.ultrafine = 0.2e-9
-
-    normal_operation3.clamp = 10
-    normal_operation3.nitermax = 1000
-    normal_operation3.ATol = 1.5e-09
-    normal_operation3.RTol = 1e-4
-
-    normal_operation3.srh = 0
-    normal_operation3.rad = 0
-    normal_operation3.aug = 0
-    normal_operation3.sur = 0
-    normal_operation3.gen = 0
-    version = "QDSC_InSb_GaSb_sweep_InSb_pn_no_loss"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
-    note = f"""
-       T=300
-       vint = np.linspace(-6, 4, 1000)
-       V = np.linspace(-1.5, 0, 500)  # np
-       wl = np.linspace(350, 1200, 500) *1e-9   # version1
-       recalculate_absorption = False
-       meshpoints ={normal_operation3.meshpoints}
-       growth_rate = {normal_operation3.growth_rate}
-       coarse = {normal_operation3.coarse}
-       fine = {normal_operation3.fine}
-       ultrafine = {normal_operation3.ultrafine}
-
-       clamp = {normal_operation3.clamp}
-       nitermax = {normal_operation3.nitermax}
-       ATol = {normal_operation3.ATol}
-       RTol = {normal_operation3.RTol}
-
-       srh = {normal_operation3.srh}
-       rad = {normal_operation3.rad}
-       aug = {normal_operation3.aug}
-       sur = {normal_operation3.sur}
-       gen = {normal_operation3.gen}
-       radiative_coupling: False
-       optics_method: "TMM",
-       """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation3)
+    # normal_operation3.meshpoints = -400
+    # normal_operation3.growth_rate = 0.5
+    # normal_operation3.coarse = 20e-9
+    # normal_operation3.fine = 1e-9
+    # normal_operation3.ultrafine = 0.2e-9
+    #
+    # normal_operation3.clamp = 10
+    # normal_operation3.nitermax = 1000
+    # normal_operation3.ATol = 1.5e-09
+    # normal_operation3.RTol = 1e-4
+    #
+    # normal_operation3.srh = 0
+    # normal_operation3.rad = 1
+    # normal_operation3.aug = 0
+    # normal_operation3.sur = 0
+    # normal_operation3.gen = 0
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_rad"
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    # note = f"""
+    #    T=300
+    #    vint = np.linspace(-6, 4, 1000)
+    #    V = np.linspace(-1.5, 0, 500)  # np
+    #    wl = np.linspace(350, 1200, 500) *1e-9   # version1
+    #    recalculate_absorption = False
+    #    meshpoints ={normal_operation3.meshpoints}
+    #    growth_rate = {normal_operation3.growth_rate}
+    #    coarse = {normal_operation3.coarse}
+    #    fine = {normal_operation3.fine}
+    #    ultrafine = {normal_operation3.ultrafine}
+    #
+    #    clamp = {normal_operation3.clamp}
+    #    nitermax = {normal_operation3.nitermax}
+    #    ATol = {normal_operation3.ATol}
+    #    RTol = {normal_operation3.RTol}
+    #
+    #    srh = {normal_operation3.srh}
+    #    rad = {normal_operation3.rad}
+    #    aug = {normal_operation3.aug}
+    #    sur = {normal_operation3.sur}
+    #    gen = {normal_operation3.gen}
+    #    radiative_coupling: False
+    #    optics_method: "TMM",
+    #    """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation3)
     # version = "dot_InSb_n_bot_sweep"
     # sim_mat, plot_note = dot_InSb_n_bot_sweep()
     # note = f"""
