@@ -917,8 +917,8 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    version = "QDSC_InSb_GaSb_sweep_pn_sur"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    version = "QDSC_InSb_GaSb_new_design_ver_1"
+    sim_mat, plot_note = QDSC_InSb_GaSb_new_design_ver_1()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
