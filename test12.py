@@ -249,7 +249,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             xeq = data["equilibrium_data"]['Bandstructure']['x'] + data['offset']
             neq = data["equilibrium_data"]['Bandstructure']['n']
             peq = data["equilibrium_data"]['Bandstructure']['p']
-            axCar[num].set_title(data["mode"])
+            # axCar[num].set_title(data["mode"])
             axCar[num].semilogy(xsc * 1e9, nsc, 'b', label='e @ short circuit')
             axCar[num].semilogy(xsc * 1e9, psc, 'r', label='h @ short circuit')
             axCar[num].semilogy(xeq * 1e9, neq, 'b--', label='e @ equilibrium')
@@ -257,9 +257,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
             axCar[num].set_xlabel('Position (nm)')
             axCar[num].set_ylabel('Carrier density (m$^{-3}$)')
-            axCar[num].set_ylim(1e6, 1e25)
+            # axCar[num].set_ylim(1e6, 1e25)
             axCar[num].legend()
-            axCar2[num].set_title(data["mode"])
+            # axCar2[num].set_title(data["mode"])
             axCar2[num].semilogy(xsc * 1e9, nsc, 'b', label='e @ short circuit')
             axCar2[num].semilogy(xsc * 1e9, psc, 'r', label='h @ short circuit')
             axCar2[num].semilogy(xeq * 1e9, neq, 'b--', label='e @ equilibrium')
@@ -268,7 +268,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar2[num].set_ylabel('Carrier density (m$^{-3}$)')
             axCar2[num].legend()
             axCar2[num].set_xlim(focus_area)
-            axCar2[num].set_ylim(1e6, 1e25)
+            # axCar2[num].set_ylim(1e6, 1e25)
 
 
         except:
@@ -282,22 +282,22 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             Efh = data['pdd_data']['positive_V']['Bandstructure']['Efh']
             potential = data['pdd_data']['positive_V']['Bandstructure']['potential']
 
-            band1[num].set_title(data["mode"])
+            # band1[num].set_title(data["mode"])
             band1[num].plot(x * 1e9, Ec, 'b', label="Ec")
             band1[num].plot(x * 1e9, Ev, 'r', label="Ev")
-            band1[num].plot(x * 1e9, Efc, 'b--', label="Efe")
-            band1[num].plot(x * 1e9, Efh, 'r--', label="Efh")
-            band1[num].plot(x * 1e9, potential, label="potential")
+            # band1[num].plot(x * 1e9, Efc, 'b--', label="Efe")
+            # band1[num].plot(x * 1e9, Efh, 'r--', label="Efh")
+            # band1[num].plot(x * 1e9, potential, label="potential")
             band1[num].set_xlabel('Position (nm)')
             band1[num].set_ylabel('Energy (eV)')
             band1[num].legend()
 
-            band2[num].set_title(data["mode"])
+            # band2[num].set_title(data["mode"])
             band2[num].plot(x * 1e9, Ec, 'b', label="Ec")
             band2[num].plot(x * 1e9, Ev, 'r', label="Ev")
-            band2[num].plot(x * 1e9, Efc, 'b--', label="Efe")
-            band2[num].plot(x * 1e9, Efh, 'r--', label="Efh")
-            band2[num].plot(x * 1e9, potential, label="potential")
+            # band2[num].plot(x * 1e9, Efc, 'b--', label="Efe")
+            # band2[num].plot(x * 1e9, Efh, 'r--', label="Efh")
+            # band2[num].plot(x * 1e9, potential, label="potential")
             band2[num].set_xlabel('Position (nm)')
             band2[num].set_ylabel('Energy (eV)')
             band2[num].legend()
@@ -352,7 +352,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
     print('save complete')
 
-Templist = [250, 300, 350, 400, 450, 500, 550, 600]
+Templist = [300, 350]
 cell_list = {}
 for i in Templist:
     cell = get_GaAs(i)

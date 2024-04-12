@@ -235,9 +235,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             band1[num].set_title(data["mode"])
             band1[num].plot(x * 1e9, Ec, 'b', label="Ec")
             band1[num].plot(x * 1e9, Ev, 'r', label="Ev")
-            band1[num].plot(x * 1e9, Efc, 'b--', label="Efe")
-            band1[num].plot(x * 1e9, Efh, 'r--', label="Efh")
-            band1[num].plot(x * 1e9, potential, label="potential")
+            # band1[num].plot(x * 1e9, Efc, 'b--', label="Efe")
+            # band1[num].plot(x * 1e9, Efh, 'r--', label="Efh")
+            # band1[num].plot(x * 1e9, potential, label="potential")
             band1[num].set_xlabel('Position (nm)')
             band1[num].set_ylabel('Energy (eV)')
             band1[num].legend()
@@ -245,9 +245,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             band2[num].set_title(data["mode"])
             band2[num].plot(x * 1e9, Ec, 'b', label="Ec")
             band2[num].plot(x * 1e9, Ev, 'r', label="Ev")
-            band2[num].plot(x * 1e9, Efc, 'b--', label="Efe")
-            band2[num].plot(x * 1e9, Efh, 'r--', label="Efh")
-            band2[num].plot(x * 1e9, potential, label="potential")
+            # band2[num].plot(x * 1e9, Efc, 'b--', label="Efe")
+            # band2[num].plot(x * 1e9, Efh, 'r--', label="Efh")
+            # band2[num].plot(x * 1e9, potential, label="potential")
             band2[num].set_xlabel('Position (nm)')
             band2[num].set_ylabel('Energy (eV)')
             band2[num].legend()
@@ -464,7 +464,7 @@ def simulation0D_sun_constant(version, cell, plot_note, pdd_options=None, note='
     print('pdd_options.ultrafine',pdd_options.ultrafine)
     print('pdd_options.clamp',pdd_options.clamp)
     print('pdd_options.nitermax',pdd_options.nitermax)
-    print('pdd_options.RTol',pdd_options.RTol)
+    # print('pdd_options.RTol',pdd_options.RTol)
     print('pdd_options.ATol',pdd_options.ATol)
     print('pdd_options.RTol',pdd_options.RTol)
     print('pdd_options.srh',pdd_options.srh)
@@ -609,10 +609,10 @@ normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-09
 normal_operation.RTol = 1e-4
 
-normal_operation.srh = 1
-normal_operation.rad = 1
+normal_operation.srh = 0
+normal_operation.rad = 0
 normal_operation.aug = 0
-normal_operation.sur = 0
+normal_operation.sur = 1
 normal_operation.gen = 0
 
 normal_operation.recalculate_absorption = True
@@ -901,8 +901,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_no_loss"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_no_loss.pkl')
+    # version = "solar_cell_InSb_and_GaSb_like_paper"
+    # set_of_data_sun_constant = load_old_data('solar_cell_InSb_and_GaSb_like_paper.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
@@ -917,7 +917,7 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    version = "QDSC_InSb_GaSb_sweep_InSb_pn_rad_aug_sur"
+    version = "QDSC_InSb_GaSb_sweep_pn_sur"
     sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
     note = f"""
        T=300
@@ -941,64 +941,44 @@ if __name__ == '__main__':
        aug = {normal_operation.aug}
        sur = {normal_operation.sur}
        gen = {normal_operation.gen}
-       
+    
        recalculate_absorption = {normal_operation.recalculate_absorption}
        radiative_coupling: False
        optics_method: "TMM",
        """
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    
     #
-    # normal_operation2 = State()
-    #
-    # normal_operation2.meshpoints = -400
-    # normal_operation2.growth_rate = 0.5
-    # normal_operation2.coarse = 20e-9
-    # normal_operation2.fine = 1e-9
-    # normal_operation2.ultrafine = 0.2e-9
-    #
-    # normal_operation2.clamp = 5
-    # normal_operation2.nitermax = 1000
-    # normal_operation2.ATol = 1.5e-09
-    # normal_operation2.RTol = 1e-4
-    #
-    # normal_operation2.srh = 0
-    # normal_operation2.rad = 0
-    # normal_operation2.aug = 0
-    # normal_operation2.sur = 1
-    # normal_operation2.gen = 0
-    #
-    # normal_operation2.recalculate_absorption = True
-    #
-    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_sur" #TODO set InSb&GaAs no loss and make GaSb have normal condition
-    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+    # version = "solar_cell_InSb_and_GaSb_like_paper"
+    # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
     # note = f"""
     # T=300
     # vint = np.linspace(-3, 3, 1000)
     # wl = np.linspace(350, 3000, 1000) *1e-9   # version1
     # V = np.linspace(-1.5, 1.5, 1000)  # np
     # recalculate_absorption = False
-    # meshpoints ={normal_operation2.meshpoints}
-    # growth_rate = {normal_operation2.growth_rate}
-    # coarse = {normal_operation2.coarse}
-    # fine = {normal_operation2.fine}
-    # ultrafine = {normal_operation2.ultrafine}
+    # meshpoints ={normal_operation.meshpoints}
+    # growth_rate = {normal_operation.growth_rate}
+    # coarse = {normal_operation.coarse}
+    # fine = {normal_operation.fine}
+    # ultrafine = {normal_operation.ultrafine}
     #
-    # clamp = {normal_operation2.clamp}
-    # nitermax = {normal_operation2.nitermax}
-    # ATol = {normal_operation2.ATol}
-    # RTol = {normal_operation2.RTol}
+    # clamp = {normal_operation.clamp}
+    # nitermax = {normal_operation.nitermax}
+    # ATol = {normal_operation.ATol}
+    # RTol = {normal_operation.RTol}
     #
-    # srh = {normal_operation2.srh}
-    # rad = {normal_operation2.rad}
-    # aug = {normal_operation2.aug}
-    # sur = {normal_operation2.sur}
-    # gen = {normal_operation2.gen}
-    # recalculate_absorption = {normal_operation2.recalculate_absorption}
+    # srh = {normal_operation.srh}
+    # rad = {normal_operation.rad}
+    # aug = {normal_operation.aug}
+    # sur = {normal_operation.sur}
+    # gen = {normal_operation.gen}
     #
+    # recalculate_absorption = {normal_operation.recalculate_absorption}
     # radiative_coupling: False
     # optics_method: "TMM",
     # """
-    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation2)
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
 
     # normal_operation3 = State()
     #
@@ -1074,19 +1054,19 @@ if __name__ == '__main__':
     #    optics_method: "TMM",
     #    """
     # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
-    set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
-    # for i in set_of_data_sun_constant:
-    #     print(i)
-    # print(len(set_of_data_sun_constant))
-    # print(len(set_of_data_sun_constant))
-
-    save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
-    try:
-        movefile(f'Carrier_distribution_{version}.html', f'{version}')
-        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
-    except PermissionError as e:
-        print(f"Error: {e}")
+    # version = "QDSC_InSb_GaSb_sweep_InSb_pn_try"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_pn_try.pkl')
+    # # for i in set_of_data_sun_constant:
+    # #     print(i)
+    # # print(len(set_of_data_sun_constant))
+    # # print(len(set_of_data_sun_constant))
+    #
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(300, 3500))
+    # try:
+    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    # except PermissionError as e:
+    #     print(f"Error: {e}")
     plt.show()

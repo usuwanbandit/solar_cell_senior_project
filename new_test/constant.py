@@ -10,7 +10,7 @@ eV_to_J = 1.60218e-19  # Conversion factor from eV to J
 T=300
 vint = np.linspace(-6, 4, 1000)
 # wl = h * c / ev
-wl = np.linspace(350, 3000, 1000) *1e-9
+wl = np.linspace(350, 2500, 1000) *1e-9
 V = np.linspace(-1.5, 1.5, 1000)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 
@@ -41,24 +41,26 @@ if __name__ == '__main__':
     #                     print(f'sur {sur} ', end='')
     #                     print(f'gen {gen} ', end='')
     #                     print('')
-    A1= [0, 0.5,0.85, 1.35, 1.95, 3.45, 3.95]
-    V1= [7, 100, 160, 240, 320, 400, 480]
-    # plt.plot(A1,V1)
-    # plt.xlabel("Field current(A)")
+    A11= [0, 0.5,0.85, 1.35, 1.95, 3.45, 3.95]
+    V11= [7, 100, 160, 240, 320, 400, 480]
+    plt.plot(A11,V11, label="Armature voltage(V)")
+    plt.xlabel("Field current(A)")
     # plt.ylabel("Armature voltage(V)")
     # plt.legend
-    # plt.title("Armature Voltage - Field current")
     # plt.show()
-    A1 = [0, 0.42, 0.7, 1.3, 1.6, 2, 2.4]
-    A2 = [0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48]
+    A12 = [0, 0.42, 0.7, 1.3, 1.6, 2, 2.4]
+    A22 = np.array([0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48])*1000
+    plt.plot(A12,A22, label="Short circuit current (mA)")
 
-    V1 = [400, 410, 425, 435, 450, 460]
-    A2 = [0.48, 0.4, 0.32, 0.24, 0.16, 0]
-    plt.plot(A2, V1)
-    plt.ylabel("Armature Voltage(V)")
-    plt.xlabel("Armature current(A)")
-    plt.ylim(300, 500)
-    plt.xlim(0, 0.5)
-    plt.legend
-    plt.title("Armature Voltage - Armature current at@(field current 4.3A)")
+    # V1 = [400, 410, 425, 435, 450, 460]
+    # A2 = [0.48, 0.4, 0.32, 0.24, 0.16, 0]
+    # plt.plot(A2, V1)
+    # plt.ylabel("Armature Voltage(V)")
+    # plt.xlabel("Armature current(A)")
+    # plt.ylim(300, 500)
+    # plt.xlim(0, 0.5)
+    plt.title("Field current - Armature volt and short cir current")
+
+    plt.legend()
+    # plt.title("Armature Voltage - Armature current at@(field current 4.3A)")
     plt.show()

@@ -20,7 +20,7 @@
     aug = 0
     sur = 1
     gen = 0
-
+    
     recalculate_absorption = True
     radiative_coupling: False
     optics_method: "TMM",
@@ -42,8 +42,7 @@ end item   =====================================================================
 start item ================================================================================
 <Junction object 
 	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 3e+02nm <'GaAs' material Nd=3.999999999999998e+24>>
-	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
 	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
 end item   ================================================================================
 
@@ -68,7 +67,7 @@ end item   =====================================================================
     aug = 0
     sur = 1
     gen = 0
-
+    
     recalculate_absorption = True
     radiative_coupling: False
     optics_method: "TMM",
@@ -90,7 +89,6 @@ end item   =====================================================================
 start item ================================================================================
 <Junction object 
 	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 3e+02nm <'GaAs' material Nd=3.999999999999998e+24>>
-	<Emitter layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
+	<Emitter layer 3e+02nm <'GaAs' material Nd=9.999999999999994e+23>>
 	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
 end item   ================================================================================

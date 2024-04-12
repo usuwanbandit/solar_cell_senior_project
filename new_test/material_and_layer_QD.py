@@ -1264,6 +1264,7 @@ def QDSC_InSb_GaSb_sweep_InSb():
  #TODO check radiative_recombination
 def QDSC_InSb_GaSb_sweep_InSb_pn():
     dot_size = np.linspace(1, 5, 5)
+    # setup = [5e-6, 5e-7, 5e-8, 5e-9, 5e-10, 5e-11, 5e-12]
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
@@ -1299,12 +1300,12 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
                                             , electron_mobility=si("78000 cm2")
                                             , hole_mobility=si("500 cm2")
                                             , electron_affinity=si("4.59 eV")
-                                            , electron_minority_lifetime=si("1e-6 s")
-                                            , hole_minority_lifetime=si("1e-7 s")
+                                            , electron_minority_lifetime=si("1e-7 s")
+                                            , hole_minority_lifetime=si("1e-8 s")
                                             , relative_permittivity=13.943
-                                            , electron_auger_recombination=si("1e-31 cm6")
+                                            , electron_auger_recombination=si("1e-30 cm6")
                                             , hole_auger_recombination=si("1e-30 cm6")
-                                            , radiative_recombination=si("5e-12 cm3") # add rad_coff
+                                            , radiative_recombination=si(f"5e-11 cm3") # add rad_coff
                                             )
 
         # GaSb = material("GaSb")(T=T, strained=True, hole_mobility=0.09, electron_mobility=0.48)
@@ -1313,10 +1314,10 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
                                 , hole_mobility=si("900 cm2")
                                 , electron_minority_lifetime=si("1e-7 s")
                                 , hole_minority_lifetime=si("1e-7 s")
-                                , radiative_recombination=si("5e-12 cm3")
+                                # , radiative_recombination=si("5e-12 cm3")
                                 # , radiative_recombination=si("5e-15 cm3")  # add rad_coff
 
-                                , electron_auger_recombination = si("1e-31 cm6")
+                                , electron_auger_recombination = si("1e-30 cm6")
                                 , hole_auger_recombination = si("1e-30 cm6")
                                 )
 
@@ -1336,7 +1337,7 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
 
             # +
             # [Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier")]
-            , T=T, repeat=3, substrate=i_GaAs)
+            , T=T, repeat=5, substrate=i_GaAs)
         # E = 1240 / (wl * 1e9) * q
         # alpha_params = {
         #     "well_width": QW.QW_width,
@@ -1358,26 +1359,26 @@ def QDSC_InSb_GaSb_sweep_InSb_pn():
         # QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
         GaAs_junction = Junction([
                                      Layer(width=si("100 nm"), material=n_GaAs_window, role="Emitter"),
-                                     Layer(width=si("30 nm"), material=n_AlInP, role="window"),
+                                     # Layer(width=si("30 nm"), material=n_AlInP, role="window"),
                                      # Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
-                                     Layer(width=si(f"200 nm"), material=n_AlGaAs, role="barrier"),
+                                     # Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
                                  ]
                                  + QW_list
                                  + [
                                      # Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
                                      # Layer(width=si("150 nm"), material=n_GaAs, role="Emitter"),
                                      Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
-                                     Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
-                                     Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
+                                     # Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
+                                     # Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
                                  ],
-                                 T=T, kind="PDD", substrate=p_GaAs_buffer)
+                                 T=T, kind="PDD", substrate=p_GaAs)
         solarcell_InSb_GaSb = SolarCell([
             # Layer(width=si("100 nm"), material=MgF2, role="AR1"),
             # Layer(width=si("50 nm"), material=ZnS, role="AR2"),
             GaAs_junction,
         ]
-            , T=T, substrate=p_GaAs_buffer)
-        solar_each_size_1[f"InSb dot size ={i} (nm)"] = solarcell_InSb_GaSb
+            , T=T, substrate=p_GaAs)
+        solar_each_size_1[f"dot size ={i} nm"] = solarcell_InSb_GaSb
     return solar_each_size_1, plot_note
 
 def QDSC_InSb_GaSb_sweep_GaSb():#this struck work srh 1 rad 1 aug 0 sur 0 gen 1
@@ -2486,16 +2487,16 @@ def QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_swap():
 # TODO make compare QDSC and SC working
 def solar_cell_InSb_and_GaSb_like_paper():
     solar_each_size_1 = {}
-    plot_note = dict(x_axis=[1, 2, 3], x_axis_name="DOT_VS_bulk", x_axis_txt="InSb&GaSb GaSb bulk")
+    plot_note = dict(x_axis=[1, 2], x_axis_name="DOT_VS_bulk", x_axis_txt="InSb&GaSb bulk")
 
     def get_GaSb_InSb():
-        size_InSb = 1
-        size_GaSb = 15
+        size_InSb = 2.5
+        size_GaSb = 16
         AlGaAs = material("AlGaAs")(T=T, Al=0.3)
-        n_GaAs = material('GaAs')(T=T, Nd=si('1e19 cm-3'), )
+        n_GaAs = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
         n_GaAs_min = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
         n_GaAs_inter = material('GaAs')(T=T, Nd=si('1e17 cm-3'), )
-        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e18 cm-3"))
+        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True, Nd=si("1e16 cm-3"))
         i_GaAs = material("GaAs")(T=T)
         p_GaInP = material("GaInP")(T=T, In=0.42, Na=si("2e18 cm-3"))
         p_GaAs_buffer = material("GaAs")(T=T, Na=si("2e18 cm-3"))
@@ -2536,13 +2537,17 @@ def solar_cell_InSb_and_GaSb_like_paper():
             # ]
             # +
             [
-                Layer(width=si(f"{100} nm"), material=i_GaAs, role="interlayer"),
+                Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
                 Layer(width=si(f"{size_InSb} nm"), material=InSb, role="well"),
                 Layer(width=si(f"{100 - size_GaSb} nm"), material=i_GaAs, role="barrier"),
                 Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
-                Layer(width=si(f"{50} nm"), material=i_GaAs, role="barrier"),
+                # Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
+                # Layer(width=si(f"{size_InSb} nm"), material=InSb, role="well"),
+                # Layer(width=si(f"{100 - size_GaSb} nm"), material=i_GaAs, role="barrier"),
+                # Layer(width=si(f"{size_GaSb} nm"), material=GaSb, role="well"),  # 5-20 nm
+                Layer(width=si("50 nm"), material=n_GaAs, role="barrier"),
             ]  # 5-20 nm
-            , T=T, repeat=10, substrate=i_GaAs)
+            , T=T, repeat=1, substrate=i_GaAs)
 
         QW_list = QW.GetEffectiveQW(wavelengths=wl,
                                     use_Adachi=True,
@@ -2554,17 +2559,15 @@ def solar_cell_InSb_and_GaSb_like_paper():
                                     )
         # QW_list = QW.GetEffectiveQW(wavelengths=wl, use_Adachi=True)
         GaAs_junction = Junction([
-                                     Layer(width=si("300 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si("50 nm"), material=n_GaAs, role="Emitter"),
                                      # Layer(width=si("100 nm"), material=n_GaAs_min, role="Emitter"),
-
-                                     # Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
-
+                                     Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
                                  ]
                                  + QW_list
                                  + [
-                                     # Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
-                                     # Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
-                                     Layer(width=si("500 nm"), material=p_GaAs, role="Base"),
+                                     Layer(width=si(f"100 nm"), material=n_AlGaAs, role="barrier"),
+                                     Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
+                                     Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
                                      # Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
                                      # Layer(width=si("150 nm"), material=p_GaAs_buffer, role="Buffer"),
                                  ],
@@ -2683,7 +2686,7 @@ def solar_cell_InSb_and_GaSb_like_paper():
             , T=T, substrate=p_GaAs)
         return solarcell_GaSb
 
-    solar_each_size_1[f"QDSC_GaSb"] = get_GaSb()
+    # solar_each_size_1[f"QDSC_GaSb"] = get_GaSb()
 
     # size_InAs = 11
     # size_GaSb = 15
@@ -2754,12 +2757,14 @@ def solar_cell_InSb_and_GaSb_like_paper():
     # solar_each_size_1[f"QDSC_InAs_GaSb"] = solarcell_InAs_GaSb
     #
     def get_GaAs():
+
         n_GaAs = material('GaAs')(T=T, Nd=si('1e18 cm-3'), )
+        n_GaAs_window = material('GaAs')(T=T, Nd=si('4e18 cm-3'), )
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
 
         GaAs_junction = Junction([
-                                     Layer(width=si("300 nm"), material=n_GaAs, role="Emitter"), ]
-                                 + [
+                                     Layer(width=si("300 nm"), material=n_GaAs_window, role="Emitter"),
+                                     Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
                                      # Layer(width=si("100 nm"), material=n_GaAs, role="Emitter"),
                                      Layer(width=si("1800 nm"), material=p_GaAs, role="Base"),
                                      # Layer(width=si("100 nm"), material=p_GaInP, role="BSF"),
