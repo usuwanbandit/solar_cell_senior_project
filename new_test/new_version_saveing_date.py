@@ -917,8 +917,8 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    version = "QDSC_InSb_GaSb_new_design_ver_1"
-    sim_mat, plot_note = QDSC_InSb_GaSb_new_design_ver_1()
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_small_try"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
@@ -947,7 +947,7 @@ if __name__ == '__main__':
        optics_method: "TMM",
        """
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
-    
+
     #
     # version = "solar_cell_InSb_and_GaSb_like_paper"
     # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()

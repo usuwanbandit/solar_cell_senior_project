@@ -2433,14 +2433,14 @@ def QDSC_InSb_GaSb_sweep_stack_AlGaAs_swap(): #work
 
 #WORK
 def QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type(): #WORK
-    dot_size = np.linspace(0.5, 5, 5)
+    dot_size = np.linspace(0.5, 5, 50)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
     for i in dot_size:
         size_GaSb = 15
         AlGaAs = material("AlGaAs")(T=T, Al=0.3)
-        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e16 cm-3"))
+        n_AlGaAs = material("AlGaAs")(T=T, Al=0.3, Nd=si("1e16 cm-3"), strained=True)
         n_GaAs = material('GaAs')(T=T, Nd=si('1e19 cm-3'), )
         n_GaAs_bot = material('GaAs')(T=T, Nd=si('1e16 cm-3'), )
 
@@ -2490,7 +2490,7 @@ def QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type(): #WORK
             # Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),]*dot
             # +
             # [Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")]
-            , T=T, repeat=5, substrate=i_GaAs)
+            , T=T, repeat=4, substrate=i_GaAs)
 
         QW_list = QW.GetEffectiveQW(wavelengths=wl,
                                     use_Adachi=True,
