@@ -194,7 +194,7 @@ def get_structure_to_potentials():
     # # print(result)
     plt.show()
     return mode, test_structure
-get_structure_to_potentials()
+# get_structure_to_potentials()
 def yo():
 
     GaAs = material("GaAs")(T=300)
@@ -331,7 +331,7 @@ def LDOS1D_h(x, E, psi, m, step=0.001, margin=0.02, broad=0.005):
 
 def ploting(SR_list, con):
     defaults = {'step': 0.001, 'margin': 0.02, 'pdf': False, 'show': False, 'dpi': 100, 'fontsize': 12,
-                'figsize': (7, 6)}
+                'figsize': (11, 8)}
     fig, ax1 = plt.subplots(nrows=1, ncols=len(SR_list))
     for num, schrodinger_result in enumerate(SR_list):
 
@@ -359,15 +359,18 @@ def ploting(SR_list, con):
         ax1[num].contourf(x * 1e9, Eh / q, LDOSh, 100, cmap='gnuplot2_r', vmin=0, vmax=max(LDOSh.flatten()) * 1.2)
         ax1[num].plot(x * 1e9, potentials["Vlh"] / q, 'k--', linewidth=2, label="Vlh"),
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
-        ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
-        ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
-        ax1[num].set_ylim(-1.2, 1.5)
+        ax1[0].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
+        ax1[0].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
+        ax1[num].set_ylim(-1, 1.5)
+        ax1[num].set_xlim(97, 107)
+
         ax1[num].tick_params(labelsize=defaults["fontsize"])
         ax1[num].set_title(con[num])
 
 
 def get_structure_to_potentials_sweep():
-    dot_size = np.linspace(5, 10, 5)
+    dot_size = np.linspace(1, 5, 5)
+    dot_size = np.arange(0.5, 5, 1)
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
@@ -417,11 +420,11 @@ def get_structure_to_potentials_sweep():
         # ]
         # +
             [
-                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
-                Layer(width=si(f"{2} nm"), material=InSb, role="well"),
-                Layer(width=si(f"{15} nm"), material=AlGaAs, role="interlayer"),
-                Layer(width=si(f"{i} nm"), material=GaSb, role="well"),  # 5-20 nm
-                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+                Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
+                Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+                Layer(width=si(f"{100 - 16} nm"), material=i_GaAs, role="interlayer"),
+                Layer(width=si(f"{16} nm"), material=GaSb, role="well"),  # 5-20 nm
+                Layer(width=si(f"{50} nm"), material=i_GaAs, role="barrier"),
             ]
             # +
             # [

@@ -917,12 +917,12 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_small_try"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type()
+    version = "QDSC_InSb_GaSb_sweep_InSb_pn_ver_3"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3000, 1000) *1e-9   # version1
+       wl = np.linspace(350, 2500, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
@@ -941,16 +941,16 @@ if __name__ == '__main__':
        aug = {normal_operation.aug}
        sur = {normal_operation.sur}
        gen = {normal_operation.gen}
-    
+
        recalculate_absorption = {normal_operation.recalculate_absorption}
        radiative_coupling: False
        optics_method: "TMM",
        """
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
 
-    #
-    # version = "solar_cell_InSb_and_GaSb_like_paper"
-    # sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper()
+    # #
+    # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_report"
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type()
     # note = f"""
     # T=300
     # vint = np.linspace(-3, 3, 1000)
