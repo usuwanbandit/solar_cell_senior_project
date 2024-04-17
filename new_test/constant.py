@@ -8,10 +8,10 @@ c = 299792458  # Speed of light in m/s
 eV_to_J = 1.60218e-19  # Conversion factor from eV to J
 # ev = np.linspace(0.15, 3.54, 1000) * eV_to_J
 T=300
-vint = np.linspace(-6, 4, 1000)
+vint = np.linspace(-3, 6, 1000)
 # wl = h * c / ev
-wl = np.linspace(350, 2500, 1000) *1e-9
-V = np.linspace(-1.5, 1.5, 1000)  # np
+wl = np.linspace(350, 3500, 1000) *1e-9
+V = np.linspace(-3, 0, 1000)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 
 light_source = LightSource(source_type="standard"

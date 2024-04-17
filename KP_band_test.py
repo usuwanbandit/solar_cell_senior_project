@@ -354,29 +354,33 @@ def ploting(SR_list, con):
 
         ax1[num].contourf(x * 1e9, Ee / q, LDOSe, 100, cmap='gnuplot2_r', vmin=0, vmax=max(LDOSe.flatten()) * 1.2)
         ax1[num].plot(x * 1e9, potentials["Ve"] / q, 'r', linewidth=2, label='Ve')
-        ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
+        # ax1[num].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
         ax1[num].tick_params(labelsize=defaults["fontsize"])
         ax1[num].contourf(x * 1e9, Eh / q, LDOSh, 100, cmap='gnuplot2_r', vmin=0, vmax=max(LDOSh.flatten()) * 1.2)
         ax1[num].plot(x * 1e9, potentials["Vlh"] / q, 'k--', linewidth=2, label="Vlh"),
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
-        ax1[0].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
-        ax1[0].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
-        ax1[num].set_ylim(-1, 1.5)
-        ax1[num].set_xlim(97, 107)
+
+        ax1[num].set_ylim(-1.1, 1.4) #for no AlGaAs (-1, 1.1)
+        ax1[num].set_xlim(20, 60)
+        ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
 
         ax1[num].tick_params(labelsize=defaults["fontsize"])
         ax1[num].set_title(con[num])
 
+    ax1[0].set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
+    # plt.tight_layout()
+    for ax in ax1.flat:
+        ax.label_outer()
 
 def get_structure_to_potentials_sweep():
     dot_size = np.linspace(1, 5, 5)
-    dot_size = np.arange(0.5, 5, 1)
+    dot_size = np.arange(1, 6, 1)
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
     for i in dot_size:
         print(f"make stack {i} nm")
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3)
         AlGaAs_inter = material("AlGaAs")(T=T, Al=0.3)
         i_GaAs = material("GaAs")(T=T)
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
@@ -413,26 +417,22 @@ def get_structure_to_potentials_sweep():
                                 hole_mobility=si("1e3 cm2"),
                                 )
         # test_structure.substrate = bulk
-
+        size_GaSb = 16
         test_structure = Structure(
-            # [
-            # Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
-        # ]
-        # +
             [
-                Layer(width=si(f"{100} nm"), material=i_GaAs, role="barrier"),
+                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+                # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
-                Layer(width=si(f"{100 - 16} nm"), material=i_GaAs, role="interlayer"),
-                Layer(width=si(f"{16} nm"), material=GaSb, role="well"),  # 5-20 nm
-                Layer(width=si(f"{50} nm"), material=i_GaAs, role="barrier"),
+                # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
+                Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
+                # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
+                Layer(width=si(f"{5} nm"), material=GaSb, role="well"),  # 5-20 nm
+                # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
+                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
             ]
-            # +
-            # [
-            #     Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier"),
-            # ]
             , substrate=i_GaAs)
         # print(QM.structure_utilities.text_render(test_structure))
-        RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS", periodic=True)
+        RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS", periodic=False)
         RS_list.append(RS)
     ploting(RS_list, dot_size)
     plt.show()

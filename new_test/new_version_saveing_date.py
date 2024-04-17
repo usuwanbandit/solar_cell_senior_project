@@ -80,10 +80,10 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig_6, ax1_6 = plt.subplots(1, 1, figsize=(12, 8))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
-    fig2_1, axJ = plt.subplots(1, 1, figsize=(8, 6))
-    fig2_2, axJrad = plt.subplots(1, 1, figsize=(8, 6))
-    fig2_3, axJsrh = plt.subplots(1, 1, figsize=(8, 6))
-    fig2_4, axJaug = plt.subplots(1, 1, figsize=(8, 6))
+    # fig2_1, axJ = plt.subplots(1, 1, figsize=(8, 6))
+    # fig2_2, axJrad = plt.subplots(1, 1, figsize=(8, 6))
+    # fig2_3, axJsrh = plt.subplots(1, 1, figsize=(8, 6))
+    # fig2_4, axJaug = plt.subplots(1, 1, figsize=(8, 6))
     fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
     fig3_5, axCar2 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
     fig_b1, band1 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
@@ -100,9 +100,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     count = 0
     color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
-        # if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101)  or data["iv"]["Voc"] == -1.5:
-        #     delete_point.append(num)
-        #     continue
+        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101)  or data["iv"]["Voc"] == -3:
+            delete_point.append(num)
+            continue
 
 
         print(f'loading {data["mode"]} num = {num}')
@@ -113,7 +113,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         ax1.set_ylim(0, 1.1)
         ax1.set_xlim(350, 1000)
         ax1.legend()
-        plt.tight_layout()
+        # plt.tight_layout()
         fig1.suptitle(f"{version}")
 
         ax1_5.semilogy(data['qe']["WL"] * 1e9, data["qe"]["EQE"], label=f"{data['mode']}", color=color1[count])
@@ -146,37 +146,37 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             # axIV.plot(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1] / 10), label=f"{data['mode']}")
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
 
-            try:
-
-                axJ.semilogy(abs(data["iv"]["IV"][0], data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
-                axJrad.semilogy(abs(V), data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
-                axJsrh.semilogy(abs(V), data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
-                # axJ.semilogy(abs(V), data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
-                axJaug.semilogy(abs(V), data['recombination_currents']['Jaug'], color=color[num],linestyle=linestyle[3])
-            except:
-                pass
+            # try:
+            #
+            #     axJ.semilogy(abs(data["iv"]["IV"][0], data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+            #     axJrad.semilogy(abs(V), data['recombination_currents']['Jrad'], color=color[num],linestyle=linestyle[1])
+            #     axJsrh.semilogy(abs(V), data['recombination_currents']['Jsrh'], color=color[num],linestyle=linestyle[2])
+            #     # axJ.semilogy(abs(V), data['recombination_currents']['Jsur'], color=color[num],linestyle=linestyle[3])
+            #     axJaug.semilogy(abs(V), data['recombination_currents']['Jaug'], color=color[num],linestyle=linestyle[3])
+            # except:
+            #     pass
 
         elif num in simpifly:
             # axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
             # axIV.plot(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1] / 10), label=f"{data['mode']}")
             axIV.plot(-data["iv"]["IV"][0], data["iv"]["IV"][1] / -10, label=f"{data['mode']}")
 
-            try:
-                # axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
-                # axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
-
-                axJ.semilogy(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
-                axJrad.semilogy(abs(V), abs(data['recombination_currents']['Jrad']), color=color[num], linestyle=linestyle[1])
-                axJsrh.semilogy(abs(V), abs(data['recombination_currents']['Jsrh']), color=color[num], linestyle=linestyle[2])
-                # axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsur']), color=color[num], linestyle=linestyle[3])
-                axJaug.semilogy(abs(V), abs(data['recombination_currents']['Jaug']), color=color[num], linestyle=linestyle[3])
-
-
-            except:
-                pass
+            # try:
+            #     # axJ.semilogy(-data["iv"]["IV"][0], abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num], linestyle=linestyle[0])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jrad']), color=color[num],linestyle=linestyle[1])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jsrh']), color=color[num],linestyle=linestyle[2])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jsur']), color=color[num],linestyle=linestyle[3])
+            #     # axJ.semilogy(-V, abs(data['recombination_currents']['Jaug']), color=color[num], linestyle='-.', dashes=(5, 2, 1, 1, 1, 2))
+            #
+            #     axJ.semilogy(abs(data["iv"]["IV"][0]), abs(data["iv"]["IV"][1]), label=f"J{data['mode']}", color=color[num],linestyle=linestyle[0])
+            #     axJrad.semilogy(abs(V), abs(data['recombination_currents']['Jrad']), color=color[num], linestyle=linestyle[1])
+            #     axJsrh.semilogy(abs(V), abs(data['recombination_currents']['Jsrh']), color=color[num], linestyle=linestyle[2])
+            #     # axJ.semilogy(abs(V), abs(data['recombination_currents']['Jsur']), color=color[num], linestyle=linestyle[3])
+            #     axJaug.semilogy(abs(V), abs(data['recombination_currents']['Jaug']), color=color[num], linestyle=linestyle[3])
+            #
+            #
+            # except:
+            #     pass
         axIV.set_ylim(-30, 30)
         axIV.set_xlim(-1.5, 1.5)
         axIV.set_xlabel("Voltage (V)")
@@ -208,6 +208,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar[num].set_ylabel('Carrier density (m$^{-3}$)')
             axCar[num].set_ylim(1e6, 1e25)
             axCar[num].legend()
+
             axCar2[num].set_title(data["mode"])
             axCar2[num].semilogy(xsc * 1e9, nsc, 'b', label='e @ short circuit')
             axCar2[num].semilogy(xsc * 1e9, psc, 'r', label='h @ short circuit')
@@ -218,7 +219,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar2[num].legend()
             axCar2[num].set_xlim(focus_area)
             axCar2[num].set_ylim(1e6, 1e25)
-
+            # axCar2[num].legend()
+            # axCar.legend()
+            # axCar2.legend()
             # plt.tight_layout()
 
         except:
@@ -307,14 +310,14 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     except:
         fig1.suptitle(f'performance of {version}')
     plt.tight_layout()
-    fig1.tight_layout()
-    fig_5.tight_layout()
-    fig2.tight_layout()
+    # fig1.tight_layout()
+    # fig_5.tight_layout()
+    # fig2.tight_layout()
     # fig2_5.tight_layout()
-    fig3.tight_layout()
-    fig3_5.tight_layout()
-    fig_b1.tight_layout()
-    fig_b2.tight_layout()
+    # fig3.tight_layout()
+    # fig3_5.tight_layout()
+    # fig_b1.tight_layout()
+    # fig_b2.tight_layout()
     # fig1.legend()
     # plt.legend()
 
@@ -323,10 +326,10 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     fig_6.savefig(f'EQE_{version}_Check.png', dpi=300)
     fig1.savefig(f'performance_{version}.png', dpi=300)
     fig2.savefig(f'IV_curve_{version}.png', dpi=300)
-    fig2_1.savefig(f'current_curve_{version}.png', dpi=300)
-    fig2_2.savefig(f'radiative_recombination_current_{version}.png', dpi=300)
-    fig2_3.savefig(f'SRH_current_{version}.png', dpi=300)
-    fig2_4.savefig(f'Auger_current_{version}.png', dpi=300)
+    # fig2_1.savefig(f'current_curve_{version}.png', dpi=300)
+    # fig2_2.savefig(f'radiative_recombination_current_{version}.png', dpi=300)
+    # fig2_3.savefig(f'SRH_current_{version}.png', dpi=300)
+    # fig2_4.savefig(f'Auger_current_{version}.png', dpi=300)
 
     mpld3.save_html(fig3, f'Carrier_distribution_{version}.html')
     mpld3.save_html(fig3_5, f'Carrier_distribution_{version}_zoom.html')
@@ -886,7 +889,7 @@ flash.coarse = 20e-9
 flash.fine = 1e-9
 flash.ultrafine = 0.2e-9
 
-flash.clamp = 10
+flash.clamp = 20
 flash.nitermax = 1000
 flash.ATol = 1.5e-9
 flash.RTol = 1e-4
@@ -901,8 +904,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    # version = "solar_cell_InSb_and_GaSb_like_paper"
-    # set_of_data_sun_constant = load_old_data('solar_cell_InSb_and_GaSb_like_paper.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_try_in_report"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_try_in_report.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
@@ -917,12 +920,13 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    version = "QDSC_InSb_GaSb_sweep_InSb_pn_ver_3"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_pn()
+
+    version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_1_try_in_report_ver_3"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_stack_new_design_ver_1()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 2500, 1000) *1e-9   # version1
+       wl = np.linspace(350, 3500, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
@@ -946,7 +950,7 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation)
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation, )
 
     # #
     # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_report"

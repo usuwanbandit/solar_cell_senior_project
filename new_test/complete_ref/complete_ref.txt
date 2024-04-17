@@ -1,0 +1,32 @@
+
+   T=300
+   vint = np.linspace(-3, 3, 1000)
+   wl = np.linspace(350, 2500, 1000) *1e-9   # version1
+   V = np.linspace(-1.5, 0, 500)  # np
+   recalculate_absorption = False
+   meshpoints =-400
+   growth_rate = 0.5
+   coarse = 2e-08
+   fine = 1e-09
+   ultrafine = 2e-10
+   clamp = 20
+   nitermax = 1000
+   ATol = 1.5e-09
+   RTol = 0.0001
+   srh = 0
+   rad = 0
+   aug = 0
+   sur = 1
+   gen = 0
+   recalculate_absorption = True
+   radiative_coupling: False
+   optics_method: "TMM",
+   
+start item ================================================================================
+<ARC1 layer 1.1e+02nm <'MgF2' material>>
+<ARC2 layer 60.0nm <'ZnScub' material>>
+<Junction object 
+	{'T': 300, 'kind': 'PDD'}
+	<Emitter layer 3e+02nm <'GaAs' material Nd=1.999999999999999e+24>>
+	<Base layer 2.8e+03nm <'GaAs' material Na=4.999999999999997e+22>>>
+end item   ================================================================================
