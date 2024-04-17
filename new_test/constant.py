@@ -11,7 +11,7 @@ T=300
 vint = np.linspace(-3, 6, 1000)
 # wl = h * c / ev
 wl = np.linspace(350, 3500, 1000) *1e-9
-V = np.linspace(-3, 0, 1000)  # np
+V = np.linspace(-1.5, 0, 500)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 
 light_source = LightSource(source_type="standard"
