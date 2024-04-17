@@ -100,9 +100,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     count = 0
     color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
-        if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101)  or data["iv"]["Voc"] == -3:
-            delete_point.append(num)
-            continue
+        # if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101)  or data["iv"]["Voc"] == -3:
+        #     delete_point.append(num)
+        #     continue
 
 
         print(f'loading {data["mode"]} num = {num}')
@@ -904,8 +904,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_try_in_report"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_try_in_report.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_1_try_in_report_ver_3"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack_new_design_ver_1_try_in_report_ver_3.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
@@ -920,9 +920,8 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-
-    version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_1_try_in_report_ver_3"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_stack_new_design_ver_1()
+    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_try_in_report"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
