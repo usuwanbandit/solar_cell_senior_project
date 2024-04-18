@@ -32,8 +32,17 @@ start item =====================================================================
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 1.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2884180176727878e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 1.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2885773319203626e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -47,12 +56,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.219564917720572e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -66,12 +70,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1369486234278118e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -85,31 +84,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
-end item   ================================================================================
-start item ================================================================================
-<Junction object 
-	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392075e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -151,8 +126,17 @@ start item =====================================================================
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 1.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2884180176727878e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 1.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2885773319203626e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -166,12 +150,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.219564917720572e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -185,12 +164,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1369486234278118e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -204,31 +178,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
-end item   ================================================================================
-start item ================================================================================
-<Junction object 
-	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392075e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -270,8 +220,17 @@ start item =====================================================================
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 1.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2884180176727878e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 1.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2885773319203626e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -285,12 +244,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.219564917720572e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -304,12 +258,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1369486234278118e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -323,31 +272,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
-end item   ================================================================================
-start item ================================================================================
-<Junction object 
-	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392075e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -389,8 +314,17 @@ start item =====================================================================
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 1.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2884180176727878e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 1.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2885773319203626e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -404,12 +338,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.219564917720572e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -423,12 +352,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1369486234278118e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -442,31 +366,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
-end item   ================================================================================
-start item ================================================================================
-<Junction object 
-	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392075e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -508,8 +408,17 @@ start item =====================================================================
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
+	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
+	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
+end item   ================================================================================
+start item ================================================================================
+<Junction object 
+	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
+	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
+	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 1.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2884180176727878e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 1.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2885773319203626e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -523,12 +432,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.2195649177205739e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.219564917720572e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -542,12 +446,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392077e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 2.5nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.1369486234278118e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
@@ -561,31 +460,7 @@ start item =====================================================================
 	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
 	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
 	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 4.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0013973358211701e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<barrier layer 1e+02nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<Base layer 1.8e+03nm <'GaAs' material Na=9.999999999999994e+21>>>
-end item   ================================================================================
-start item ================================================================================
-<Junction object 
-	{'T': 300, 'kind': 'PDD', 'substrate': <'GaAs' material Na=9.999999999999994e+21>}
-	<Emitter layer 50.0nm <'GaAs' material Nd=9.999999999999994e+24>>
-	<barrier layer 1e+02nm <'AlGaAs' material Al=0.3 Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
-	<layer 84.0nm <'GaAs' material>>
-	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
-	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>
-	<layer 1e+02nm <'GaAs' material>>
-	<layer 5.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=9.520937002744158e-20 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
+	<layer 3.0nm <'InSb' material a_c=-1.11030828678e-18 a_v=-5.767835256e-20 b=-3.20435292e-19 band_gap=1.0960445964392075e-19 c11=684700000000.0 c12=373500000000.0 c44=311100000000.0 d=-7.530229362e-19 eff_mass_electron=0.0022617432780656557 eff_mass_electron_Gamma=2.665905942656526e-23 eff_mass_hh_z=4.581224579290405e-32 eff_mass_lh_z=1.9261086498899815e-32 electron_affinity=6.067249115166166e-19 electron_auger_recombination=1.0000000000000012e-54 electron_minority_lifetime=1e-07 electron_mobility=7.800000000000003 gamma1=34.8 gamma2=15.5 gamma3=16.6 hole_auger_recombination=1.0000000000000012e-54 hole_minority_lifetime=1e-08 hole_mobility=0.050000000000000024 interband_matrix_element=3.7330711518e-18 lattice_constant=6.4793e-10 relative_permittivity=13.943 spin_orbit_splitting=1.2977629326000002e-19 strained=True valence_band_offset=0.0>>
 	<layer 84.0nm <'GaAs' material>>
 	<layer 16.0nm <'GaSb' material electron_mobility=0.30000000000000016 hole_mobility=0.10000000000000005 strained=True>>
 	<layer 50.0nm <'GaAs' material Nd=9.999999999999994e+21>>

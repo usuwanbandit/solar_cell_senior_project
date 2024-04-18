@@ -1,8 +1,12 @@
 import numpy as np
-Ec = 0.8887
-Ec_error = 0.01
-Ev = -0.958
-
+#for AlGaAs
+Ec = 0.7228
+Ec_error = 0.02
+Ev = -0.766
+#for GaAs
+# Ec = 0.623
+# Ec_error = 0.02
+# Ev = -0.8
 def cal_wl_form_ev(state):
     print(f"top wave upper bound is {1240/(np.abs(Ec-state)+Ec_error)} nm")
     print(f"top wave is {1240/(np.abs(Ec-state))} nm")

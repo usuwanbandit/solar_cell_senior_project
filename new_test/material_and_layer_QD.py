@@ -1932,7 +1932,7 @@ def QDSC_InSb_GaSb_sweep_stack_new_design_ver_1():
 
 
 def QDSC_InSb_GaSb_sweep_stack_new_design_ver_2():
-    dot_size = np.linspace(1, 3, 5)
+    dot_size = np.linspace(1, 5, 5)
     # dot_size = np.arange(1, 10, 1)
     # setup = [5e-6, 5e-7, 5e-8, 5e-9, 5e-10, 5e-11, 5e-12]
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
@@ -1997,7 +1997,7 @@ def QDSC_InSb_GaSb_sweep_stack_new_design_ver_2():
             # ]
             # +
             [
-                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+                Layer(width=si(f"{20} nm"), material=AlGaAs, role="barrier"),
                 Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
                 Layer(width=si(f"{i} nm"), material=InSb, role="well"),
                 Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
@@ -2005,7 +2005,7 @@ def QDSC_InSb_GaSb_sweep_stack_new_design_ver_2():
                 # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
                 Layer(width=si(f"{16} nm"), material=GaSb, role="well"),  # 5-20 nm
                 # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
-                Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
+                Layer(width=si(f"{20} nm"), material=AlGaAs, role="barrier"),
             ]  # 5-20 nm
             # Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),]*dot
 
@@ -2558,7 +2558,7 @@ def QDSC_InSb_GaSb_sweep_stack_AlGaAs_swap(): #work
 
 #WORK #TODO sim this model
 def QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type(): #WORK
-    dot_size = np.linspace(1, 3, 5)
+    dot_size = np.linspace(2, 5, 4)
     plot_note = dict(x_axis=dot_size, x_axis_name="InSb Dot size(nm)")
     solar_each_size_1 = {}
 
@@ -2615,7 +2615,7 @@ def QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type(): #WORK
             # Layer(width=si("20 nm"), material=i_GaAs, role="barrier"),]*dot
             # +
             # [Layer(width=si(f"100 nm"), material=AlGaAs, role="barrier")]
-            , T=T, repeat=3, substrate=i_GaAs)
+            , T=T, repeat=1, substrate=i_GaAs)
 
         QW_list = QW.GetEffectiveQW(wavelengths=wl,
                                     use_Adachi=True,

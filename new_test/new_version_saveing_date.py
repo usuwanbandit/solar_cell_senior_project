@@ -920,8 +920,9 @@ if __name__ == '__main__':
     # except PermissionError as e:
     #     print(f"Error: {e}")
     # plt.show()
-    version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_try_in_report"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type()
+    #TODO อย่าลืมใส่ QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4 ในรายงาน
+    version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_stack_new_design_ver_2()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
