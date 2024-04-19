@@ -101,6 +101,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     color1 = get_color(len(set_of_data), darkness=0.9)
     for num, data in enumerate(set_of_data):
         # if np.any(data["qe"]["EQE"] < 0) or np.any(data["qe"]["EQE"] > 101)  or data["iv"]["Voc"] == -3:
+        # if num in [3, 4]:
         #     delete_point.append(num)
         #     continue
 
@@ -228,18 +229,18 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             print("something wrong with carrier distribution")
             pass
         try:
-            x = data['pdd_data']['positive_V']['Bandstructure']['x']
-            Ec = data['pdd_data']['positive_V']['Bandstructure']['Ec']
-            Ev = data['pdd_data']['positive_V']['Bandstructure']['Ev']
-            Efc = data['pdd_data']['positive_V']['Bandstructure']['Efe']
-            Efh = data['pdd_data']['positive_V']['Bandstructure']['Efh']
-            potential = data['pdd_data']['positive_V']['Bandstructure']['potential']
+            x = data["equilibrium_data"]['Bandstructure']['x']
+            Ec = data["equilibrium_data"]['Bandstructure']['Ec']
+            Ev = data["equilibrium_data"]['Bandstructure']['Ev']
+            Efc = data["equilibrium_data"]['Bandstructure']['Efe']
+            Efh = data["equilibrium_data"]['Bandstructure']['Efh']
+            potential = data["equilibrium_data"]['Bandstructure']['potential']
 
             band1[num].set_title(data["mode"])
             band1[num].plot(x * 1e9, Ec, 'b', label="Ec")
             band1[num].plot(x * 1e9, Ev, 'r', label="Ev")
-            # band1[num].plot(x * 1e9, Efc, 'b--', label="Efe")
-            # band1[num].plot(x * 1e9, Efh, 'r--', label="Efh")
+            band1[num].plot(x * 1e9, Efc, 'b--', label="Efe")
+            band1[num].plot(x * 1e9, Efh, 'r--', label="Efh")
             # band1[num].plot(x * 1e9, potential, label="potential")
             band1[num].set_xlabel('Position (nm)')
             band1[num].set_ylabel('Energy (eV)')
@@ -248,8 +249,8 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             band2[num].set_title(data["mode"])
             band2[num].plot(x * 1e9, Ec, 'b', label="Ec")
             band2[num].plot(x * 1e9, Ev, 'r', label="Ev")
-            # band2[num].plot(x * 1e9, Efc, 'b--', label="Efe")
-            # band2[num].plot(x * 1e9, Efh, 'r--', label="Efh")
+            band2[num].plot(x * 1e9, Efc, 'b--', label="Efe")
+            band2[num].plot(x * 1e9, Efh, 'r--', label="Efh")
             # band2[num].plot(x * 1e9, potential, label="potential")
             band2[num].set_xlabel('Position (nm)')
             band2[num].set_ylabel('Energy (eV)')
@@ -904,8 +905,8 @@ flash.gen = 0
 
 # to insert AlGaAs in structure by get AlGaAs out side of dot
 if __name__ == '__main__':
-    # version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_1_try_in_report_ver_3"
-    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack_new_design_ver_1_try_in_report_ver_3.pkl')
+    # version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4"
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4.pkl')
     # # for i in set_of_data_sun_constant:
     # #     print(i)
     # # print(len(set_of_data_sun_constant))
@@ -921,8 +922,9 @@ if __name__ == '__main__':
     #     print(f"Error: {e}")
     # plt.show()
     #TODO อย่าลืมใส่ QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4 ในรายงาน
-    version = "QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_stack_new_design_ver_2()
+
+    version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_test_barrier"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
@@ -950,7 +952,8 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation, )
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation )
+
 
     # #
     # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_report"

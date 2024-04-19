@@ -360,8 +360,8 @@ def ploting(SR_list, con):
         ax1[num].plot(x * 1e9, potentials["Vlh"] / q, 'k--', linewidth=2, label="Vlh"),
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
 
-        ax1[num].set_ylim(-1.1, 1.4) #for no AlGaAs (-1, 1.1)
-        ax1[num].set_xlim(18, 50)
+        ax1[num].set_ylim(-1, 1.3) #for no AlGaAs (-1, 1.1)
+        ax1[num].set_xlim(19, 50)
         ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
 
         ax1[num].tick_params(labelsize=defaults["fontsize"])
@@ -374,13 +374,13 @@ def ploting(SR_list, con):
 
 def get_structure_to_potentials_sweep():
     dot_size = np.linspace(1, 5, 5)
-    dot_size = np.arange(1, 6, 1)
+    dot_size = np.arange(1, 5, 1)
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
     for i in dot_size:
         print(f"make stack {i} nm")
-        AlGaAs = material("AlGaAs")(T=T, Al=0.3)
+        AlGaAs = material("AlGaAs")(T=T, Al=0.3, strained=True)
         AlGaAs_inter = material("AlGaAs")(T=T, Al=0.3)
         i_GaAs = material("GaAs")(T=T)
         p_GaAs = material("GaAs")(T=T, Na=si("1e16 cm-3"), )
