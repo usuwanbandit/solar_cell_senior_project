@@ -35,6 +35,7 @@ data_solar_cell = dict(
     x_axis=[],
     x_axis_name='None',
     mode='None',
+    con = None,
 )
 
 
@@ -433,7 +434,7 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
         back_up_data(set_of_data, version)
     return set_of_data
 
-def simulation0D_sun_constant(version, cell, plot_note, pdd_options=None, note='', mode="None"):
+def simulation0D_sun_sweep(version, ref_cell, plot_note, pdd_options=None, note='' ):
     if pdd_options == None:
         pdd_options = State()
 
@@ -479,32 +480,41 @@ def simulation0D_sun_constant(version, cell, plot_note, pdd_options=None, note='
 
     set_of_data = []
 
-    data_mode = data_solar_cell.copy()
-    data_mode['mode'] = mode
-    data_mode['note'] = note
-    data_mode['x_axis'] = plot_note['x_axis']
-    data_mode['x_axis_name'] = plot_note["x_axis_name"]
-    try:
-        data_mode['x_axis_txt'] = plot_note["x_axis_txt"]
-    except:pass
-    data_mode['list_structure'].append(
-        "start item ================================================================================")
-    _ = [data_mode['list_structure'].append(str(i)) for i in cell]
-    data_mode['list_structure'].append(
-        "end item   ================================================================================")
-    print(data_mode['mode'])
-    cell = savecell(cell, pdd_options)
-    data_mode = defultsaveing(cell, data_mode, version)
-    print(data_mode["iv"]["Pmpp"])
-    print(data_mode["iv"]["Isc"])
-    print(data_mode["iv"]["Voc"])
-    print(data_mode["iv"]["FF"])
-    set_of_data.append(data_mode)
-    back_up_data(set_of_data, version)
+
+
+    for i in plot_note['x_axis']:
+        cell = ref_cell
+        data_mode = data_solar_cell.copy()
+        data_mode['mode'] = f'{i} (sun)'
+        data_mode['note'] = note
+        data_mode['x_axis'] = plot_note['x_axis']
+        data_mode['x_axis_name'] = plot_note["x_axis_name"]
+        data_mode['list_structure'].append(
+            "start item ================================================================================")
+        _ = [data_mode['list_structure'].append(str(i)) for i in cell]
+        data_mode['list_structure'].append(
+            "end item   ================================================================================")
+        print(data_mode['mode'])
+        light_source_con = LightSource(source_type="standard"
+                                       , version="AM1.5g"
+                                       , x=wl
+                                       , output_units="photon_flux_per_m"
+                                       , concentration=i
+                                       )
+        cell = savecell(cell, pdd_options, light_source=light_source_con)
+        data_mode = defultsaveing(cell, data_mode, version)
+        data_mode['con'] = f'{i} sun'
+        print(data_mode['mode'])
+        print(data_mode["iv"]["Pmpp"])
+        print(data_mode["iv"]["Isc"])
+        print(data_mode["iv"]["Voc"])
+        print(data_mode["iv"]["FF"])
+        set_of_data.append(data_mode)
+        back_up_data(set_of_data, version)
     return set_of_data
 
 
-def savecell(cell, pdd_options):
+def savecell(cell, pdd_options, light_source=light_source):
     # offset = 0
     # pdd_options.position = []
     # for junction in cell:
@@ -597,6 +607,26 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_
     # root.update()
     # plt.show()
 
+def sim0D_sun_sweep(version, sim_mat, plot_note, note, pdd_options=None, old_data=None):  # sc = simulation at 1 sun
+    start = time.perf_counter()
+    set_of_data_sun_sweep = simulation0D_sun_sweep(version, sim_mat, plot_note, note=note, pdd_options=pdd_options)
+    stop = time.perf_counter()
+    hours, minutes, seconds = sec_to_hms(stop - start)
+    print(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    # root = tk.Tk()
+    # root.withdraw()
+    save_set_of_data_sun_constant(set_of_data_sun_sweep, version)
+    # note_from_mat = dict(x_axis=list, x_axis_name="txt")
+    try:
+        movefile(f'Carrier_distribution_{version}.html', f'{version}')
+        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    except PermissionError as e:
+        print(f"Error: {e}")
+    # show_warning(f"this run take time {hours} hours/ {minutes} minutes/ {seconds} seconds")
+    # root.update()
+    # plt.show()
 
 # SetMeshParameters(ultrafine=1e-10, growth_rate=0.8)
 
@@ -923,8 +953,39 @@ if __name__ == '__main__':
     # plt.show()
     #TODO อย่าลืมใส่ QDSC_InSb_GaSb_sweep_stack_new_design_ver_2_try_in_report_ver_4 ในรายงาน
 
-    version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_test_barrier"
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1()
+    # version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_try_in_report"
+    # sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1()
+    # note = f"""
+    #    T=300
+    #    vint = np.linspace(-3, 3, 1000)
+    #    wl = np.linspace(350, 3500, 1000) *1e-9   # version1
+    #    V = np.linspace(-1.5, 0, 500)  # np
+    #    recalculate_absorption = False
+    #    meshpoints ={normal_operation.meshpoints}
+    #    growth_rate = {normal_operation.growth_rate}
+    #    coarse = {normal_operation.coarse}
+    #    fine = {normal_operation.fine}
+    #    ultrafine = {normal_operation.ultrafine}
+    #
+    #    clamp = {normal_operation.clamp}
+    #    nitermax = {normal_operation.nitermax}
+    #    ATol = {normal_operation.ATol}
+    #    RTol = {normal_operation.RTol}
+    #
+    #    srh = {normal_operation.srh}
+    #    rad = {normal_operation.rad}
+    #    aug = {normal_operation.aug}
+    #    sur = {normal_operation.sur}
+    #    gen = {normal_operation.gen}
+    #
+    #    recalculate_absorption = {normal_operation.recalculate_absorption}
+    #    radiative_coupling: False
+    #    optics_method: "TMM",
+    #    """
+    # sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation )
+
+    version = "QDSC_InSb_GaSb_sweep_stack_AlGaAs_n_type_0D"
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_stack_AlGaAs_n_type_0D()
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
@@ -952,8 +1013,7 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation )
-
+    sim0D_sun_sweep(version, sim_mat, plot_note, note, pdd_options=normal_operation )
 
     # #
     # version = "QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type_report"

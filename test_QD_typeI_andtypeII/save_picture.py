@@ -282,7 +282,7 @@ def schrodinger_graph_LDOS(schrodinger_result, **kwargs):
     ax1.set_ylabel('Energy (eV)', fontsize=defaults["fontsize"])
     ax1.set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
     ax1.tick_params(labelsize=defaults["fontsize"])
-
+    ax1.set_xlim(20, 50)
     if defaults["show"]:
         plt.tight_layout()
         plt.show()
