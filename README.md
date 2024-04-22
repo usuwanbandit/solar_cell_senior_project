@@ -14,4 +14,4 @@ All .html have carrier distibution and bandsturcture for positive bias
 - [@utaikan](https://github.com/usuwanbandit?tab=overview&from=2024-02-01&to=2024-02-17)
 
 ## Contact me
-- [@utaikan](usuwanbandit@hotmail.com)
+- usuwanbandit@hotmail.com
