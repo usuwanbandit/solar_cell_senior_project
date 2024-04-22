@@ -673,10 +673,10 @@ normal_operation.gen = 0
 normal_operation.recalculate_absorption = True
 
 if __name__ == '__main__':
-    # this program must work with
+    # this program must work with material_and_layer.py
     # simulation part
-    version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_try_in_report" #file name
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1() #sim solar cell
+    version = "solar_cell_InSb_and_GaSb_like_paper_yoyo" #file name
+    sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper() #sim solar cell
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
