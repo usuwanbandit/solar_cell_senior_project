@@ -1,6 +1,6 @@
 import numpy as np
 #for AlGaAs
-Ec = 0.89
+Ec = 0.728
 Ec_error = 0.02
 Ev = -0.958
 #for GaAs

@@ -87,15 +87,15 @@ InSb = material("InSb")(T=T
 def get_structure_to_potentials():
     mode = {}
     GaAs = material("GaAs")(T=300)
-    InSb = material("InSb")(T=300, strained=True
+    InSb = material("InSb")(T=300
                             , electron_mobility=7.7
                             , hole_mobility=0.0850
                             ,valence_band_offset=si("0.0 eV")
                             )
-    bands = kp_bands(InSb, InSb, kx=0, ky=0, kz=0, graph=False, fit_effective_mass=True, effective_mass_direction="L",
-                     return_so=True)
-    bands = kp_bands(GaAs, InSb, kx=0, ky=0, kz=0, graph=False, fit_effective_mass=True, effective_mass_direction="L",
-                     return_so=True)
+    # bands = kp_bands(InSb, GaAs, kx=0, ky=0, kz=0, graph=True, fit_effective_mass=True, effective_mass_direction="L",
+    #                  return_so=True)
+    # bands = kp_bands(GaAs, GaAs, kx=0, ky=0, kz=0, graph=True, fit_effective_mass=True, effective_mass_direction="L",
+    #                  return_so=True)
     bulk = GaAs
     QW = InSb
     top_layer = Layer(width=si("20nm"), material=bulk)
@@ -126,10 +126,10 @@ def get_structure_to_potentials():
     test_structure = Structure(
         [
             Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
-            # Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
+            Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
             Layer(width=si(f"{2} nm"), material=InSb, role="well"),
-            # Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
-            Layer(width=si(f"{15} nm"), material=AlGaAs, role="interlayer"),
+            Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
+            Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
             # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
             Layer(width=si(f"{16} nm"), material=GaSb, role="well"),  # 5-20 nm
             # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
@@ -357,7 +357,7 @@ def ploting(SR_list, con):
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
 
         ax1[num].set_ylim(-1, 1.3) #for no AlGaAs (-1, 1.1)
-        ax1[num].set_xlim(19, 50)
+        ax1[num].set_xlim(20, 50)
         ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
 
         ax1[num].tick_params(labelsize=defaults["fontsize"])
@@ -370,7 +370,7 @@ def ploting(SR_list, con):
 
 def get_structure_to_potentials_sweep():
     dot_size = np.linspace(1, 5, 5)
-    dot_size = np.arange(1, 5, 1)
+    dot_size = [1, 1.5, 2, 2.5]
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
@@ -417,10 +417,10 @@ def get_structure_to_potentials_sweep():
         test_structure = Structure(
             [
                 Layer(width=si(f"{25} nm"), material=AlGaAs, role="barrier"),
-                # Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
-                Layer(width=si(f"{2} nm"), material=InSb, role="well"),
-                # Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
-                Layer(width=si(f"{15} nm"), material=AlGaAs, role="interlayer"),
+                Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
+                Layer(width=si(f"{i} nm"), material=InSb, role="well"),
+                Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
+                Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
                 # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
                 Layer(width=si(f"{16} nm"), material=GaSb, role="well"),  # 5-20 nm
                 # Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
