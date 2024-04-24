@@ -79,7 +79,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
         focus_area = (50, 650)
     simpifly = None
     fig, ax1 = plt.subplots(1, 1, figsize=(6, 4))
-    fig_5, ax1_5 = plt.subplots(1, 1, figsize=(12, 8))
+    fig_5, ax1_5 = plt.subplots(1, 1, figsize=(6, 4))
     fig_6, ax1_6 = plt.subplots(1, 1, figsize=(12, 8))
     fig1, axes = plt.subplots(2, 2, figsize=(11.25, 8))
     fig2, axIV = plt.subplots(1, 1, figsize=(8, 6))
@@ -87,10 +87,10 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     # fig2_2, axJrad = plt.subplots(1, 1, figsize=(8, 6))
     # fig2_3, axJsrh = plt.subplots(1, 1, figsize=(8, 6))
     # fig2_4, axJaug = plt.subplots(1, 1, figsize=(8, 6))
-    fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
-    fig3_5, axCar2 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
-    fig_b1, band1 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
-    fig_b2, band2 = plt.subplots(len(set_of_data), 1, figsize=(16, 5 * len(set_of_data)))
+    fig3, axCar = plt.subplots(len(set_of_data), 1, figsize=(8, 2 * len(set_of_data)))
+    fig3_5, axCar2 = plt.subplots(len(set_of_data), 1, figsize=(8, 2 * len(set_of_data)))
+    fig_b1, band1 = plt.subplots(len(set_of_data), 1, figsize=(8, 2 * len(set_of_data)))
+    fig_b2, band2 = plt.subplots(len(set_of_data), 1, figsize=(8, 2 * len(set_of_data)))
     if len(set_of_data) > 5:
         simpifly = np.linspace(0, len(set_of_data), 5)
         simpifly = [int(i) for i in simpifly].append(len(set_of_data) - 1)
@@ -217,7 +217,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
 
             axCar[num].set_xlabel('Position (nm)')
             axCar[num].set_ylabel('Carrier density (m$^{-3}$)')
-            axCar[num].set_ylim(1e6, 1e25)
+            # axCar[num].set_ylim(1e6, 1e25)
             axCar[num].legend()
 
             axCar2[num].set_title(data["mode"])
@@ -227,9 +227,9 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             axCar2[num].semilogy(xeq * 1e9, peq, 'r--', label='h @ equilibrium')
             axCar2[num].set_xlabel('Position (nm)')
             axCar2[num].set_ylabel('Carrier density (m$^{-3}$)')
-            axCar2[num].legend()
             axCar2[num].set_xlim(focus_area)
-            axCar2[num].set_ylim(1e6, 1e25)
+            # axCar2[num].set_ylim(1e6, 1e25)
+            axCar2[num].legend()
             # axCar2[num].legend()
             # axCar.legend()
             # axCar2.legend()
@@ -264,8 +264,8 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
             # band2[num].plot(x * 1e9, potential, label="potential")
             band2[num].set_xlabel('Position (nm)')
             band2[num].set_ylabel('Energy (eV)')
-            band2[num].legend()
             band2[num].set_xlim(focus_area)
+            band2[num].legend()
 
         except Exception as error:
             print(f'error is {error}')
@@ -301,13 +301,15 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     axes[1, 0].plot(x_axis[:len(set_of_data)], abs(np.array(Voc)), color='b', marker='o',)
     axes[1, 0].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 0].set_ylabel("V$_{OC}$ (V)")
+    # axes[1, 0].set_ylim(0.75, 0.76)
+
     # axes[1, 0].set_ylim("V$_{OC}$ (V)")
 
 
     axes[1, 1].plot(x_axis[:len(set_of_data)], abs(np.array(FF)) * 100, color='k', marker='o',)
     axes[1, 1].set_xlabel(set_of_data[0]['x_axis_name'])
     axes[1, 1].set_ylabel("Fill Factor (%)")
-    (axes[1, 1].set_ylim(80, 100))
+    # axes[1, 1].set_ylim(85, 86)
 
     fig.suptitle(f"EQE of  {version}")
     fig_5.suptitle(f"Zoom EQE of {version}")
@@ -367,7 +369,7 @@ def save_set_of_data_sun_constant(set_of_data, version, focus_area=None):
     print('save complete')
 
 #operate function save data 1D (1D = sweep 1 component)
-def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, note='', old_data=None, simthis=[] ):
+def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, note='', old_data=None, simthis=None ):
     if pdd_options == None:
         pdd_options = State()
 
@@ -422,11 +424,14 @@ def simulation1D_sun_constant(version, sim_mat, plot_note, pdd_options=None, not
     for mode, cell in sim_mat.items():
         if continue_sim >= counting: #skip index
             counting += 1
-            if counting not in simthis:
-                print("skipping", mode)
-                continue
+            if simthis != None:
+                if counting not in simthis:
+                    print("skipping", mode)
+                    continue
+                else:
+                    print("sim ", mode)
             else:
-                print("sim ", mode)
+                continue
 
         counting += 1
         data_mode = data_solar_cell.copy()
@@ -597,8 +602,9 @@ def savecell(cell, pdd_options, light_source=light_source, pass_qe=False):
     return cell
 
 #UI save data 1D (1D = sweep 1 component)
-def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_data=None, simthis=[]):  # sc = simulation at 1 sun
+def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_data=None, simthis=None):  # sc = simulation at 1 sun
     start = time.perf_counter()
+    #old_data input the file path for continue simulation
     # print([i for i in pdd_options.__dict__])
     # print(pdd_options.meshpoints)
     # print(pdd_options.growth_rate)
@@ -618,8 +624,19 @@ def sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=None, old_
     # note_from_mat = dict(x_axis=list, x_axis_name="txt")
     try:
         movefile(f'Carrier_distribution_{version}.html', f'{version}')
+
+    except PermissionError as e:
+        print(f"Error: {e}")
+    try:
         movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+
+    except PermissionError as e:
+        print(f"Error: {e}")
+    try:
         movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    except PermissionError as e:
+        print(f"Error: {e}")
+    try:
         movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
     except PermissionError as e:
         print(f"Error: {e}")
@@ -661,7 +678,7 @@ normal_operation.ultrafine = 0.2e-9
 
 normal_operation.clamp = 20
 normal_operation.nitermax = 1000
-normal_operation.ATol = 1.5e-8
+normal_operation.ATol = 1.5e-9
 normal_operation.RTol = 1e-5
 
 normal_operation.srh = 0
@@ -670,17 +687,19 @@ normal_operation.aug = 0
 normal_operation.sur = 1
 normal_operation.gen = 0
 
+
 normal_operation.recalculate_absorption = True
 
 if __name__ == '__main__':
+    # QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_new ดูดีมากกว่า
     # this program must work with material_and_layer.py
-    # simulation part
-    version = "solar_cell_InSb_and_GaSb_like_paper_yoyo" #file name
-    sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper() #sim solar cell
+    # # simulation part
+    version = "addition_for_work_2_dot" #file name
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type() #sim solar cell
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 3500, 1000) *1e-9   # version1
+       wl = np.linspace(350, 6000, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}
@@ -704,19 +723,18 @@ if __name__ == '__main__':
        radiative_coupling: False
        optics_method: "TMM",
        """ #just note
-    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation ) #simfuction and show graph
-    #                  filename, simmat, note_for_mat, just_note, setp_conversion
-    # load data part
-    version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1" #name for new file
-    set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1.pkl') #load old data file
-    # set_of_data_sun_constant ==> [data, data, data,... ]
-    save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(0, 1800)) #plot graph
-    try:
-        movefile(f'Carrier_distribution_{version}.html', f'{version}')
-        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
-    except PermissionError as e:
-        print(f"Error: {e}")
-    # moving file because .html can't change directories in same function
+    sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation,) #simfuction and show graph
+    ## load data part
+    # version = "try_again" #name for new file
+    # set_of_data_sun_constant = load_old_data('try_again.pkl') #load old data file
+    # # set_of_data_sun_constant ==> [data, data, data,... ]
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(0, 1800)) #plot graph
+    # try:
+    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    # except PermissionError as e:
+    #     print(f"Error: {e}")
+    ## moving file because .html can't change directories in same function
     plt.show()
