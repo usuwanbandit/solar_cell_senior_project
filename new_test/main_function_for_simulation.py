@@ -657,12 +657,12 @@ normal_operation.meshpoints = -400
 normal_operation.growth_rate = 0.4
 normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
-normal_operation.ultrafine = 0.2e-9
+normal_operation.ultrafine = 0.1e-9
 
 normal_operation.clamp = 20
 normal_operation.nitermax = 1000
 normal_operation.ATol = 1.5e-8
-normal_operation.RTol = 1e-5
+normal_operation.RTol = 1e-4
 
 normal_operation.srh = 0
 normal_operation.rad = 0
@@ -675,8 +675,8 @@ normal_operation.recalculate_absorption = True
 if __name__ == '__main__':
     # this program must work with material_and_layer.py
     # simulation part
-    version = "solar_cell_InSb_and_GaSb_like_paper_yoyo" #file name
-    sim_mat, plot_note = solar_cell_InSb_and_GaSb_like_paper() #sim solar cell
+    version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_try" #file name
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1() #sim solar cell
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
@@ -707,16 +707,16 @@ if __name__ == '__main__':
     sim1D_sun_constant(version, sim_mat, plot_note, note, pdd_options=normal_operation ) #simfuction and show graph
     #                  filename, simmat, note_for_mat, just_note, setp_conversion
     # load data part
-    version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1" #name for new file
-    set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1.pkl') #load old data file
-    # set_of_data_sun_constant ==> [data, data, data,... ]
-    save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(0, 1800)) #plot graph
-    try:
-        movefile(f'Carrier_distribution_{version}.html', f'{version}')
-        movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}.html', f'{version}')
-        movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
-    except PermissionError as e:
-        print(f"Error: {e}")
+    # version = "QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1" #name for new file
+    # set_of_data_sun_constant = load_old_data('QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1.pkl') #load old data file
+    # # set_of_data_sun_constant ==> [data, data, data,... ]
+    # save_set_of_data_sun_constant(set_of_data_sun_constant, version, focus_area=(0, 1800)) #plot graph
+    # try:
+    #     movefile(f'Carrier_distribution_{version}.html', f'{version}')
+    #     movefile(f'Carrier_distribution_{version}_zoom.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}.html', f'{version}')
+    #     movefile(f'Band_diagramming_of_{version}_zoom.html', f'{version}')
+    # except PermissionError as e:
+    #     print(f"Error: {e}")
     # moving file because .html can't change directories in same function
     plt.show()

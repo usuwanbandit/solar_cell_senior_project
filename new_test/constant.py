@@ -11,7 +11,7 @@ T=300
 vint = np.linspace(-6, 6, 1000)
 # wl = h * c / ev
 
-wl = np.linspace(350, 3500, 1500) *1e-9
+wl = np.linspace(350, 3500, 500) *1e-9
 V = np.linspace(-3, 3, 1000)  # np
 # V = np.linspace(-3, 0, 1000)  # np
 
