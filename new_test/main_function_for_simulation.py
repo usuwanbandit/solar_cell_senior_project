@@ -676,9 +676,9 @@ normal_operation.coarse = 20e-9
 normal_operation.fine = 1e-9
 normal_operation.ultrafine = 0.2e-9
 
-normal_operation.clamp = 20
+normal_operation.clamp = 10
 normal_operation.nitermax = 1000
-normal_operation.ATol = 1.5e-9
+normal_operation.ATol = 1.5e-8
 normal_operation.RTol = 1e-5
 
 normal_operation.srh = 0
@@ -694,12 +694,12 @@ if __name__ == '__main__':
     # QDSC_InSb_GaSb_sweep_InSb_new_design_ver_1_new ดูดีมากกว่า
     # this program must work with material_and_layer.py
     # # simulation part
-    version = "addition_for_work_2_dot" #file name
-    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_InSb_AlGaAs_n_type() #sim solar cell
+    version = "work_2_dot" #file name
+    sim_mat, plot_note = QDSC_InSb_GaSb_sweep_stack_AlGaAs_n_type() #sim solar cell
     note = f"""
        T=300
        vint = np.linspace(-3, 3, 1000)
-       wl = np.linspace(350, 6000, 1000) *1e-9   # version1
+       wl = np.linspace(350, 4000, 1000) *1e-9   # version1
        V = np.linspace(-1.5, 0, 500)  # np
        recalculate_absorption = False
        meshpoints ={normal_operation.meshpoints}

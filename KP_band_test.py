@@ -357,7 +357,7 @@ def ploting(SR_list, con):
         ax1[num].plot(x * 1e9, potentials["Vhh"] / q, 'k', linewidth=2, label="Vhh")
 
         ax1[num].set_ylim(-1, 1.3) #for no AlGaAs (-1, 1.1)
-        ax1[num].set_xlim(10, 50)
+        ax1[num].set_xlim(40,140)
         ax1[num].set_xlabel('Position (nm)', fontsize=defaults["fontsize"])
 
         ax1[num].tick_params(labelsize=defaults["fontsize"])
@@ -370,7 +370,7 @@ def ploting(SR_list, con):
 
 def get_structure_to_potentials_sweep():
     dot_size = np.linspace(1, 5, 5)
-    dot_size = [1, 1.5, 2, 2.5]
+    dot_size = [5, 10, 15, 20 ]
     stack = np.arange(2, 11, 2)
     RS_list = []
     dot = []
@@ -403,6 +403,35 @@ def get_structure_to_potentials_sweep():
                                             , electron_auger_recombination=si("1e-42 cm6")
                                             , hole_auger_recombination=si("1e-42 cm6")
                                             )
+        InAs = material("INAS", sopra=True)(T=T,
+                                            strained=True,
+                                            valence_band_offset=si("-0.59 eV"),
+                                            band_gap=si("0.417 eV"),
+                                            eff_mass_electron=0.023,
+                                            eff_mass_electron_Gamma=0.026,
+                                            electron_mobility=si("3.5e4 cm2"),
+                                            hole_mobility=si("5e2 cm2"),
+                                            eff_mass_hh_z=0.64,
+                                            eff_mass_lh_z=0.05,
+                                            electron_affinity=si("4.9 eV"),
+                                            gamma1=20,
+                                            gamma2=8.5,
+                                            gamma3=9.2,
+                                            a_c=si("-5.08 eV"),
+                                            a_v=si("-1 eV"),
+                                            b=si("-1.8 eV"), d=si("-3.6 eV"),
+                                            c11=si("832.9 GPa"),
+                                            c12=si("452.6 GPa"),
+                                            c44=si("395.9 GPa"),
+                                            interband_matrix_element=si("22.2 eV"),
+                                            spin_orbit_splitting=si("0.39 eV"),
+                                            lattice_constant=6.0583e-10,
+                                            electron_minority_lifetime=si("150 ps"),
+                                            hole_minority_lifetime=si("1 nm"),
+                                            relative_permittivity=15.15,
+                                            electron_auger_recombination=si("1.6e-27 cm-6"),
+                                            hole_auger_recombination=si("1.6e-27 cm-6"),
+                                            )
         QWmat = material("InGaAs")(T=T, In=0.2, strained=True)
         Bmat = material("GaAsP")(T=T, P=0.1, strained=True)
         i_GaAs = material("GaAs")(T=T)
@@ -415,17 +444,17 @@ def get_structure_to_potentials_sweep():
         # test_structure.substrate = bulk
         size_GaSb = 16
         test_structure = Structure(
-            [
-                Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
-                Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
-                Layer(width=si(f"{i} nm"), material=InSb, role="well"),
-                Layer(width=si(f"{2} nm"), material=i_GaAs, role="well"),
-                Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
-                Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
-                Layer(width=si(f"{16} nm"), material=GaSb, role="well"),  # 5-20 nm
-                Layer(width=si(f"{2} nm"), material=i_GaAs, role="interlayer"),
-                Layer(width=si(f"{15} nm"), material=AlGaAs, role="barrier"),
-            ], substrate=i_GaAs)
+            [Layer(width=si(f"50 nm"), material=i_GaAs, role="barrier"),
+             Layer(width=si(f"{i} nm"), material=GaSb, role="well"),  # 5-20 nm
+             Layer(width=si(f"{50} nm"), material=i_GaAs, role="interlayer"),
+             Layer(width=si(f"{11} nm"), material=InAs, role="well"),  # 5-20 nm
+             Layer(width=si("50 nm"), material=i_GaAs, role="barrier"), ]
+
+
+            +
+            [Layer(width=si("50 nm"), material=AlGaAs, role="barrier"),]
+
+            , substrate=i_GaAs)
         # print(QM.structure_utilities.text_render(test_structure))
         RS, band = schrodinger(test_structure, show=False, graphtype="potentialsLDOS", periodic=False)
         RS_list.append(RS)
